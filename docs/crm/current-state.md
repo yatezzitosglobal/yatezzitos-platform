@@ -177,7 +177,12 @@ El lead pasa a esta etapa cuando el equipo de ventas llena la encuesta interna y
 Es decir, el cambio no ocurre automáticamente por intención del cliente, sino por una acción del asesor al completar el flujo interno de cotización.
 
 #### 3. Recibos pendientes
-Esta etapa representa clientes que ya pagaron el anticipo / ya reservaron, pero todavía no han recibido su recibo de depósito por parte del equipo de ventas.
+Esta etapa representa clientes que ya pagaron el anticipo correspondiente a la reserva, pero todavía no han recibido su recibo de depósito por parte del equipo de ventas.
+
+Es decir:
+- el cliente ya pagó el 50%,
+- pero el equipo aún no le envía el recibo de depósito,
+- por lo tanto todavía no pasa a la etapa de ganada.
 
 #### 4. Envío de métodos de pago
 Se usa cuando el cliente ya quiere completar su reserva y solicita pagar con un método de pago específico.
@@ -185,7 +190,13 @@ Se usa cuando el cliente ya quiere completar su reserva y solicita pagar con un 
 Está antes de la confirmación de la reserva.
 
 #### 5. Ganada - El cliente ha pagado
-Aquí entra el cliente cuando ya pagó el anticipo correspondiente a la reserva.
+Aquí entra el cliente cuando ya se cumplen ambas condiciones:
+
+1. el cliente ya pagó el 50% de anticipo,
+2. y el equipo de ventas ya le envió su recibo de depósito.
+
+No basta con que haya pagado.  
+También debe haberse formalizado el envío del recibo para que el lead pase a esta etapa.
 
 En la lógica actual del negocio, normalmente:
 - el cliente paga el 50% para reservar,
