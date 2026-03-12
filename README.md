@@ -8,7 +8,7 @@
 
 ---
 
-## Visión general
+## Qué es Yatezzitos Global
 
 **Yatezzitos Global** es el proyecto tecnológico y operativo de **Yatezzitos**, una marca enfocada en la renta de yates y experiencias náuticas privadas de lujo.
 
@@ -28,7 +28,7 @@ Busca convertirse en una **plataforma tecnológica de turismo náutico privado**
 
 ## Concepto de marca
 
-**El arte del placer**.
+**El arte del placer**
 
 Para Yatezzitos, esto significa diseñar experiencias náuticas privadas sin fricción, sin estrés innecesario y con la mayor confianza posible para el cliente final.
 
@@ -59,6 +59,7 @@ A largo plazo, Yatezzitos busca evolucionar hacia un ecosistema más amplio que 
 - herramientas tecnológicas para propietarios,
 - automatización comercial y operativa,
 - membresías vacacionales,
+- escuela / formación digital del turismo náutico de lujo,
 - y una futura infraestructura que impulse experiencias náuticas más limpias, eficientes y sostenibles.
 
 La visión final es construir una especie de **cadena global de hospitalidad náutica privada**, con estándares de servicio, tecnología y confianza comparables a las mejores marcas del turismo premium mundial.
@@ -112,31 +113,17 @@ Actualmente, Yatezzitos se encuentra en una etapa de:
 - MVP tecnológico construido sobre WordPress,
 - operación activa con **8 años de experiencia** en el mercado.
 
-### Stack actual
-
-- **WordPress**
-- **Elementor**
-- **Tema Houzez** adaptado al negocio náutico
-- **GoHighLevel** como centro operativo del CRM
-- **Hostinger** como hosting actual
-- Integraciones vía **webhooks**
-- **Twilio** para verificación OTP en buscador
-- Integraciones con **OpenAI** y herramientas de IA complementarias
-- Plugin y endpoints personalizados para mostrar información dinámica de cotizaciones, reservas y páginas relacionadas
-
 ### Qué sí existe hoy
-
-- Sitio web activo e indexado
-- Operación nacional en México
-- Buscador con verificación OTP
-- Sistema actual de cotización
-- Flujo de reserva con anticipo del 50%
-- Visualización de información de cotización / reserva en páginas dinámicas
-- CRM con automatizaciones parciales en GoHighLevel
-- Base comercial operativa real
+- sitio web activo e indexado,
+- operación nacional en México,
+- buscador con verificación OTP,
+- sistema actual de cotización,
+- flujo de reserva con anticipo del 50%,
+- páginas dinámicas de cotización y reserva,
+- CRM con automatizaciones parciales en GoHighLevel,
+- base comercial operativa real.
 
 ### Qué falta construir o mejorar
-
 - rediseño completo del sitio según Figma,
 - automatización total del embudo,
 - mejor organización del CRM,
@@ -169,7 +156,8 @@ Yatezzitos opera actualmente en **10 destinos de México**:
 
 ## Expansión internacional
 
-El proyecto contempla expansión internacional progresiva.  
+El proyecto contempla expansión internacional progresiva.
+
 Los destinos prioritarios identificados actualmente son:
 
 1. Cartagena
@@ -262,6 +250,45 @@ Yatezzitos también contempla desarrollar nuevas líneas de negocio, entre ellas
 
 ---
 
+## Estado actual del stack
+
+### Stack actual
+- **WordPress**
+- **Elementor**
+- **Tema Houzez** adaptado al negocio náutico
+- **GoHighLevel** como centro operativo del CRM
+- **Hostinger** como hosting actual
+- Integraciones vía **webhooks**
+- **Twilio** para verificación OTP en buscador
+- Integraciones con **OpenAI** y herramientas de IA complementarias
+- Plugin y endpoints personalizados para mostrar información dinámica de cotizaciones, reservas y páginas relacionadas
+
+### Decisión técnica actual
+**WordPress seguirá vivo** como capa comercial, editorial y SEO del ecosistema.  
+La futura web app se desarrollará aparte, sin romper la operación actual.
+
+---
+
+## Arquitectura futura resumida
+
+La arquitectura futura del proyecto será híbrida:
+
+### Hoy
+- WordPress como plataforma principal del sitio
+- GoHighLevel como CRM principal
+- Twilio para OTP
+- APIs y webhooks para comunicar sistemas
+- procesos comerciales parcialmente automatizados
+
+### Futuro
+- WordPress como capa SEO / comercial
+- web app moderna para operación, cuentas, reservas y disponibilidad
+- integración más profunda con CRM
+- capa de IA aplicada a atención, marketing, operación y expansión
+- futura app móvil para clientes, propietarios y equipo interno
+
+---
+
 ## Módulos de producto priorizados
 
 Prioridad actual de construcción:
@@ -273,10 +300,6 @@ Prioridad actual de construcción:
 5. **Concierge / asistente inteligente**
 6. **Cuenta de clientes y panel interno**
 7. **App móvil**
-
-### Decisión estratégica importante
-**WordPress seguirá vivo** como capa comercial, editorial y SEO del ecosistema.  
-La futura web app se desarrollará aparte, sin romper la operación actual.
 
 ---
 
@@ -331,16 +354,35 @@ Nuestra estrategia contempla crecimiento orgánico por:
 - ciudad,
 - tipo de embarcación,
 - tipo de experiencia,
-- y páginas orientadas a intención de búsqueda comercial.
+- páginas orientadas a intención de búsqueda comercial,
+- y fichas de producto con keyword principal única.
 
-### Enfoque de expansión SEO
-- posicionamiento fuerte en México,
-- expansión a nuevos destinos y países,
-- autoridad temática en turismo náutico privado,
-- escalado mediante arquitectura ordenada de contenidos.
+### Enfoque actual de SEO
+La prioridad actual no es abrir más destinos.
+
+La prioridad es:
+- completar las ciudades ya abiertas,
+- optimizar las páginas madre de ciudad,
+- asignar keywords únicas a todos los yates ya publicados,
+- evitar canibalización,
+- y convertir tráfico orgánico en cotizaciones y reservas.
+
+### Ciudades más importantes hoy
+- Puerto Vallarta
+- Cancún
+- Mazatlán
+- La Paz
+- Los Cabos
+
+### Ciudades con urgencia SEO inmediata
+- Acapulco
+- Ixtapa
+- Huatulco
+- Nuevo Vallarta
+- Playa del Carmen
 
 ### Contenido programático
-El proyecto también contempla **contenido programático**, es decir, la creación ordenada y escalable de páginas optimizadas con estructuras consistentes para múltiples destinos, experiencias y embarcaciones, siempre cuidando la calidad comercial y SEO.
+El proyecto contempla **contenido programático**, es decir, la creación ordenada y escalable de páginas optimizadas con estructuras consistentes para múltiples destinos, experiencias y embarcaciones, siempre cuidando la calidad comercial y SEO.
 
 ---
 
@@ -348,31 +390,95 @@ El proyecto también contempla **contenido programático**, es decir, la creaci�
 
 Actualmente, **GoHighLevel** funciona como el centro operativo del CRM.
 
-### Flujo comercial actual resumido
-- envío de cotización,
-- solicitud de anticipo del 50%,
-- emisión de recibo / reserva,
-- seguimiento comercial y operativo.
+### Pipeline principal de turistas
+Pipeline actual:
+**renta de yates**
 
-Este flujo ya tiene partes automatizadas, pero todavía depende de procesos manuales internos que deberán reducirse progresivamente.
+Etapas principales:
+- Bienvenidos a bordo
+- Cotización enviada
+- Envío de métodos de pago
+- Recibos pendientes
+- Ganada - El cliente ha pagado
+- En espera - Prórroga
+- Pérdidas - No realizadas
+
+### Lógica comercial importante
+- el cliente reserva con **50% de anticipo**,
+- si ya pagó el 50% pero aún no recibe recibo, permanece en **Recibos pendientes**,
+- solo pasa a **Ganada** cuando:
+  1. ya pagó el 50%,
+  2. y el equipo ya le envió el recibo de depósito.
+
+### Evolución deseada
+Se contempla agregar una etapa nueva de:
+- **Feedback**
+
+para solicitar:
+- reseñas,
+- calificación,
+- feedback,
+- testimonios post-viaje.
+
+### Estado actual del CRM
+El CRM ya contiene estructura real y útil para:
+- cotizaciones,
+- reservas,
+- recibos de depósito,
+- campos personalizados,
+- usuarios WordPress,
+- y operación comercial.
+
+Pero aún necesita:
+- mejor orden,
+- mejor separación de perfiles,
+- mejor automatización,
+- mejor integración con WordPress,
+- y mejor preparación para la futura web app.
 
 ---
 
-## Arquitectura actual y futura
+## Principios de trabajo del proyecto
 
-### Hoy
-- WordPress como plataforma principal del sitio
-- GoHighLevel como CRM principal
-- Twilio para OTP
-- APIs y webhooks para comunicar sistemas
-- procesos comerciales parcialmente automatizados
+### 1. No romper lo que ya funciona
+Antes de construir lo nuevo, debemos proteger:
+- ventas,
+- formularios,
+- reservas,
+- SEO,
+- y automatizaciones actuales.
 
-### Futuro
-- WordPress como capa SEO / comercial
-- web app moderna para operación, cuentas, reservas y disponibilidad
-- integración más profunda con CRM
-- capa de IA aplicada a atención, marketing, operación y expansión
-- futura app móvil para clientes, propietarios y equipo interno
+### 2. Primero documentar, luego escalar
+La carpeta `docs/` es prioritaria porque el proyecto necesita claridad antes de crecer en complejidad.
+
+### 3. Primero se prueba, luego se publica
+No se deben hacer cambios importantes directamente en producción sin revisión previa.
+
+### 4. Integrar antes de reemplazar
+El proyecto evolucionará por fases.  
+No se reemplazará todo de golpe.
+
+### 5. Completar lo abierto antes de abrir más frentes
+La prioridad actual es terminar bien:
+- rediseño,
+- SEO,
+- CRM,
+- automatizaciones,
+- y estructura operativa existente.
+
+---
+
+## Prioridades actuales
+
+Las prioridades inmediatas del proyecto son:
+
+1. terminar el rediseño de Figma a WordPress  
+2. completar el SEO de las ciudades y yates ya publicados  
+3. ordenar el CRM actual  
+4. automatizar mejor cotización, recibo, seguimiento y feedback  
+5. mejorar captación y onboarding de propietarios  
+6. diseñar la lógica del calendario de disponibilidad  
+7. preparar la base de la futura web app y del marketplace  
 
 ---
 
@@ -405,4 +511,3 @@ yatezzitos-global/
 │   ├── faq/
 │   └── templates/
 └── scripts/
-
