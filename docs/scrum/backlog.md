@@ -1,7 +1,7 @@
 # Backlog maestro del proyecto
 
 ## Objetivo del backlog
-Este backlog organiza las prioridades reales de Yatezzitos Global para que el proyecto avance con orden, enfoque y sentido comercial.
+Este backlog organiza las prioridades reales de Yatezzitos para que el proyecto avance con orden, enfoque y sentido comercial.
 
 No todo lo importante debe hacerse al mismo tiempo.  
 La prioridad actual es ejecutar primero lo que más impacto tiene en:
