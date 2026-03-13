@@ -42,17 +42,19 @@ El turista debe poder encontrar la embarcación ideal de forma rápida e intuiti
 | **Destino / Ciudad** | Dropdown / Autocomplete | Mazatlán, Puerto Vallarta, Cancún, Los Cabos, etc. |
 | **Fecha del viaje** | Date picker | Fecha deseada (conecta con calendario de disponibilidad) |
 | **Número de pasajeros** | Selector numérico | 1 – 50+ |
-| **Tipo de experiencia** | Multi-select | Paseo, fiesta, pesca, sunset, whale watching, overnight, etc. |
+| **Tipo de embarcación** | Multi-select | Yate, catamarán, velero, lancha, panga, mega yate |
 
 ### Filtros secundarios (expandibles)
 
 | Filtro | Tipo | Valores |
 |---|---|---|
-| **Tipo de embarcación** | Multi-select | Yate, catamarán, velero, lancha, panga, mega yate |
 | **Rango de precio** | Slider / rango | $X,000 – $XX,000 MXN / USD |
 | **Duración** | Multi-select | 4 hrs, 6 hrs, 8 hrs, 10 hrs, overnight |
 | **Disponibilidad** | Toggle | Solo mostrar yates disponibles en la fecha seleccionada |
 | **Características** | Multi-select | Con dormitorios, con baño, con cocina, con toldo, etc. |
+| **Tipo de experiencia** | Multi-select | Paseo, fiesta, pesca, sunset, whale watching, overnight (futuro) |
+
+> **Nota:** El filtro de "Tipo de experiencia" se integrará como filtro secundario una vez que la categorización de experiencias esté organizada. La prioridad actual es filtrar por tipo de embarcación.
 
 ### Ordenar resultados por
 
@@ -120,7 +122,7 @@ Cada yate en la lista de resultados muestra:
 | Imagen destacada | `imagen_destacada` |
 | Título | `titulo_del_anuncio` |
 | Ciudad | `ciudad` |
-| Tipo de experiencia | `tipo_de_experiencia` |
+| Tipo de embarcación | `tipo_de_embarcacion` |
 | Capacidad | `numero_de_pasajeros` pasajeros |
 | Precio desde | `precio_venta_o_alquiler` + `tipo_de_divisa` |
 | Duración | `duracion_del_alquiler` |
@@ -138,6 +140,7 @@ Cada embarcación tiene su página completa con:
 | Descripción | Texto completo | `descripcion_y_contenido` |
 | Detalles técnicos | Pasajeros, dormitorios, baños, año | Campos de detalle |
 | Precio | Desde $X por Y horas | `precio_venta_o_alquiler` + `duracion_del_alquiler` |
+| Tipo de embarcación | Yate, catamarán, velero, etc. | `tipo_de_embarcacion` |
 | Disponibilidad | Mini-calendario o badge | Calendario de disponibilidad |
 | Recorrido virtual | Video o 360° | `url_del_video` / `recorrido_virtual_iframe` |
 | CTA principal | "Solicitar cotización" | Formulario → GHL |
@@ -194,7 +197,7 @@ sequenceDiagram
 | Ciudad / destino | Automático |
 | Fecha deseada | Formulario o filtro previo |
 | Número de pasajeros | Formulario o filtro previo |
-| Tipo de experiencia | Automático o formulario |
+| Tipo de embarcación | Automático (del listing) |
 | Mensaje adicional | Formulario (opcional) |
 
 ---
@@ -219,7 +222,7 @@ sequenceDiagram
 ### Búsqueda inteligente (futuro con IA)
 Con Yatezzitos IA integrado, el turista podrá escribir:
 
-> *"Quiero un yate para 12 personas en Puerto Vallarta el 5 de mayo para pesca deportiva"*
+> *"Quiero un yate para 12 personas en Puerto Vallarta el 5 de mayo"*
 
 Y la IA interpreta los filtros automáticamente.
 
@@ -232,12 +235,11 @@ Y la IA interpreta los filtros automáticamente.
 | Marketplace home | `/renta-de-yates/` | renta de yates en méxico |
 | Página de ciudad | `/renta-de-yates/cancun/` | renta de yates en cancún |
 | Ficha de yate | `/renta-de-yates/cancun/yate-sunset/` | [keyword única del yate] |
-| Página de experiencia | `/experiencias/pesca-deportiva/` | pesca deportiva en yate |
 
 ### Reglas SEO del marketplace
 - Cada página tiene **title tag y meta description únicos**
 - No hay dos páginas compitiendo por la misma keyword
-- El enlazado interno conecta: ciudad → yates → experiencias
+- El enlazado interno conecta: ciudad → yates
 - Las fichas incluyen schema markup (Product, Offer, AggregateRating)
 
 Ver [docs/seo/](../seo/) para más detalle.
@@ -249,6 +251,7 @@ Ver [docs/seo/](../seo/) para más detalle.
 ### Fase 1 — Mejorar lo actual en WordPress
 No construir desde cero, sino mejorar la búsqueda y fichas actuales:
 - Mejorar filtros del buscador de Houzez
+- Agregar filtro principal por tipo de embarcación
 - Mejorar diseño de tarjetas de resultados
 - Completar fichas con todos los campos
 - Agregar badge de disponibilidad
@@ -260,6 +263,7 @@ Cuando la web app exista:
 - Disponibilidad en tiempo real integrada
 - Cotización instantánea
 - Comparación de yates
+- Filtro por tipo de experiencia (cuando esté organizado)
 - Recomendaciones con IA
 - Multi-idioma y multi-moneda
 
