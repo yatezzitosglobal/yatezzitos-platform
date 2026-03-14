@@ -1,0 +1,661 @@
+﻿.page-title-wrap .item-price-wrap .item-price {
+        font-size: 24px;
+        margin-bottom: 15px;
+        position: relative;
+        right: 100px;
+    }
+
+
+    .page-title-wrap .label {
+        font-size: 12px;
+        padding: 7px 10px 6px;
+        margin-right: 5px;
+        position: relative;
+        left: 100px;
+        bottom: 10px;
+    }   
+/* Link */
+.expanded article p > a{
+ color:#0000ee;
+}
+
+
+@media (min-width:1440px){
+
+
+ /* Image */
+ #header-section a img{
+  width:90px;
+  height:80px;
+ }
+ 
+}
+.property-form-wrap iframe {
+    min-height: 800px;
+        margin-top: -45px;
+}
+.slick-list {
+    height: 100% !important;
+}
+.hl_form-builder--main {
+    padding: 10px;
+}
+
+
+#_builder-form .fields-container {
+    padding-top: 0px !important;
+}
+.agent-information li,.agent-information li a {
+    font-size: 14px;
+}
+
+
+.icon-share:before {
+    content: "\e951" !important;
+}
+.icon-envelope:before {
+    content: "\e91d" !important;
+}
+.agent-information {flex: 0 0 90%;}
+.lightbox-tools .list-inline-item a:hover {
+    color: #00aeef !important;
+}
+/* Cambia el tamaño de la fuente y otros estilos para dispositivos móviles y tabletas */
+@media (max-width: 768px) {
+    .download-images-btn {
+        font-size: 14px; /* Tamaño para tabletas */
+    }
+}
+
+
+@media (max-width: 480px) {
+    .download-images-btn {
+        font-size: 12px; /* Tamaño para móviles */
+    }
+}
+
+
+/* Posicionamiento del botón */
+.contenedor-de-la-descripcion {
+    position: relative;
+}
+
+
+.download-images-btn {
+    position: relative;
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 10px; /* Ajusta la distancia desde la derecha */
+}
+.elementor .e-child p {
+    letter-spacing: 0px;
+}
+.review-date {
+    display: none;
+}
+.label-status.label.status-color-79 {
+    display: none;
+}
+.logo img {
+    transform: scale(0.65);
+}
+.widget ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) ul {
+    padding-left: 0px;
+}
+.listing-tools-wrap .d-flex .flex-grow-1 {
+    display:none;
+}
+.icon-social-instagram:before {
+    content: "\e93b";
+}
+.icon-social-pinterest:before {
+    content: "\e940";
+}
+.grecaptcha-badge {
+    display: none
+}
+.lightbox-logo img {
+    width: 50px;
+    height: 50px;
+}
+@media (min-width:1440px){
+
+
+}
+/* Pinterest */
+.footer-social span .btn-pinterest{
+ display:inline-block;
+ transform:translatex(0px) translatey(0px) !important;
+ background-image:none;
+}
+
+
+/* Italic Tag */
+.footer-social .btn-pinterest i{
+ background-image:url("https://img.icons8.com/?size=15&id=ONeceuvv794Z&format=png&color=FFFFFF");
+}
+
+
+/* Italic Tag */
+.footer-social .btn-instagram i{
+ background-image:url("https://img.icons8.com/?size=15&id=8831&format=png&color=FFFFFF");
+}
+
+
+/* Custom banner */
+#customBanner{
+ display:none !important;
+}
+
+
+@media (min-width:769px){
+
+
+ /* Icon button */
+ #icon-button{
+  display:none;
+ }}
+ /* Button */
+.mobile-property-contact .d-flex a{
+ position:relative;
+}
+
+
+/* Button */
+b .mobile-property-contact .d-flex a{
+ left:-20% !important;
+}
+
+
+/* Button */
+.mobile-property-contact .d-flex .btn-secondary{
+ position:relative;
+}
+
+
+/* Button */
+b .mobile-property-contact .d-flex .btn-secondary{
+ left:-20% !important;
+}
+
+
+/* Container banner */
+#container-banner{
+ left:0%;
+}
+
+
+/* Flex */
+.mobile-property-contact .d-flex .d-flex{
+ position:relative;
+}
+
+
+/* Flex */
+b .mobile-property-contact .d-flex .flex-grow-1 .d-flex{
+ left:20% !important;
+}
+
+
+@media (max-width:425px){
+
+
+ /* Container banner */
+ #container-banner{
+  font-size:14px;
+ }
+ 
+ /* Flex */
+ b .mobile-property-contact .d-flex .flex-grow-1 .d-flex{
+  width:48% !important;
+ }
+ 
+ /* Flex */
+ .mobile-property-contact .d-flex .d-flex{
+  font-size:14px;
+  display:none !important;
+ }
+ 
+ /* Button */
+ b .mobile-property-contact .d-flex .btn-secondary{
+  left:-30% !important;
+ }
+ 
+ /* Button */
+ b .mobile-property-contact .d-flex a{
+  left:-30% !important;
+ }
+ 
+}
+
+
+@media (max-width:390px){
+
+
+ /* Button */
+ b .mobile-property-contact .d-flex .btn-secondary{
+  left:-28% !important;
+ }
+ 
+ /* Button */
+ b .mobile-property-contact .d-flex a{
+  left:-28% !important;
+ }
+ 
+}
+
+
+@media (max-width:320px){
+
+
+ /* Button */
+ b .mobile-property-contact .d-flex .btn-secondary{
+  left:-22% !important;
+ }
+ 
+ /* Button */
+ b .mobile-property-contact .d-flex a{
+  left:-22% !important;
+}}
+.btn-secondary-outlined {
+    color: #dd3333;
+    text-transform: capitalize !important;
+    background-color: transparent;
+    border-color: #dd3333;
+}
+/* Link */
+#property-description-wrap p a{
+ color:#0000ee;
+}
+/* Division */
+.d-flex .form-control .dropdown-toggle div div div{
+ text-transform:uppercase;
+}
+@media (max-width: 991px) {
+  #header-mobile {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Asegura que esté al frente */
+    background-color: #000000; /* Aplica el color de fondo negro */
+    text-align: center; /* Centra el contenido */
+    height: 60px; /* Ajusta la altura */
+    padding: 0 10px; /* Aplica el padding */
+  }
+}
+@media (max-width: 575px) {
+    .listing-view .hz-item-gallery-js .item-wrap-no-frame .d-flex .item-header .listing-image-wrap .listing-thumb div div div div .item a .img-fluid {
+        height: 330px;
+    }
+}
+
+
+/* A partir de aquí inicia el codigo css que útilizo para poder imprimir la información de las embarcaciones correctamente*/
+
+
+@media print {
+  body.print-page img.hz-fte-img,
+  body.print-page img.hz-fte-img.mr-2 {
+    width: 24px !important;
+    height: auto !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    transform: none !important;
+    margin: 0 6px 0 0 !important;
+    padding: 0 !important;
+  }
+
+
+  body.print-page .list-2-cols li {
+    line-height: 1.6 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+@media (max-width: 768px) {
+    .item-tool.houzez-print {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+@media (max-width:1439px){
+
+
+ /* Listing featured thumb */
+ #slick-slide07 .d-flex .listing-featured-thumb{
+  width:100%;
+ }
+ 
+}
+
+
+@media (max-width:991px){
+
+
+ /* Link */
+ #navi-user .login-link a{
+  background-color:#000000;
+  transform:translatex(0px) translatey(0px);
+  color:#ffffff;
+  font-weight:600;
+ }
+ 
+ /* Link */
+ #navi-user .register-link a{
+  color:#ffffff;
+  background-color:#000000;
+  font-weight:600;
+ }
+ 
+ /* Button */
+ #navi-user .btn-create-listing{
+  background-color:#4fbde2;
+ }
+ 
+ /* Span Tag */
+ #mobile-main-nav .nav-item span{
+  color:#ffffff;
+  font-weight:700;
+  font-size:16px;
+  background-color:rgba(255,255,255,0);
+  line-height:3em;
+ }
+ 
+ /* Dropdown item */
+ #mobile-main-nav .nav-item .dropdown-item{
+  background-color:#000000;
+  transform:translatex(0px) translatey(0px);
+  color:#ffffff;
+  font-weight:400;
+  text-shadow:rgba(0, 0, 0, 0.3) 0px 1px 1px;
+  direction:ltr;
+  white-space:normal;
+  line-height:2em;
+  font-style:italic;
+  text-transform:capitalize;
+  font-size:16px;
+  column-count:1;
+  word-spacing:0px;
+}
+    }
+@media (max-width:1439px){
+
+
+ /* Listing featured thumb */
+ #slick-slide07 .d-flex .listing-featured-thumb{
+  width:100%;
+ }
+ 
+}
+
+
+@media (max-width:991px){
+
+
+ /* Link */
+ #navi-user .login-link a{
+  background-color:#000000;
+  transform:translatex(0px) translatey(0px);
+  color:#ffffff;
+  font-weight:600;
+ }
+ 
+ /* Link */
+ #navi-user .register-link a{
+  color:#ffffff;
+  background-color:#000000;
+  font-weight:600;
+ }
+ 
+ /* Button */
+ #navi-user .btn-create-listing{
+  background-color:#4fbde2;
+ }
+ 
+ /* Span Tag */
+ #mobile-main-nav .nav-item span{
+  color:#ffffff;
+  font-weight:700;
+  font-size:16px;
+  background-color:rgba(255,255,255,0);
+  line-height:3em;
+ }
+ 
+ /* Dropdown item */
+ #mobile-main-nav .nav-item .dropdown-item{
+  background-color:#000000;
+  transform:translatex(0px) translatey(0px);
+  color:#ffffff;
+  font-weight:400;
+  text-shadow:rgba(0, 0, 0, 0.3) 0px 1px 1px;
+  direction:ltr;
+  white-space:normal;
+  line-height:2em;
+  font-style:italic;
+  text-transform:capitalize;
+  font-size:16px;
+  column-count:1;
+  word-spacing:0px;
+ }
+    }
+.form-tools a {
+    min-height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.control.control--checkbox {
+    line-height: 22px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    font-size: 12px;
+}
+
+
+@media (max-width: 767px) {
+    .property-view #property-description-wrap .block-wrap .block-content-wrap ul li ul li {
+        font-size: 10px !important;
+    }
+}
+@media (max-width: 479px) {
+    #main-wrap .property-wrap .container .row .bt-full-width-content-wrap .property-view #property-description-wrap .block-wrap .block-content-wrap ul li ul li {
+        width: auto !important;
+        height: auto !important;
+        font-size: 10px !important;
+    }
+}
+
+
+/* Heading */
+.login-page-title .d-flex h2{
+ font-weight:700;
+}
+
+
+/* Active */
+.nav-tabs .nav-item .active{
+ border-style:solid;
+ border-width:1px;
+ border-color:#000000 !important;
+ color:#ffffff;
+ background-color:#000000 !important;
+}
+
+
+/* Nav link */
+.nav-tabs .nav-item .nav-link{
+ border-color:#000000;
+ border-width:1px;
+ border-style:solid;
+ transform:translatex(0px) translatey(0px);
+ text-transform:uppercase;
+ text-align:left;
+ font-size:16px;
+ line-height:1.5em;
+}
+
+
+/* Column 12/12 */
+.blog-wrap .col-lg-12{
+ border-color:#000000;
+ border-width:2px;
+ transform:translatex(0px) translatey(0px);
+}
+
+
+/* Blog wrap */
+#main-wrap .blog-wrap{
+ transform:translatex(0px) translatey(0px);
+}
+
+
+/* Iframe */
+.blog-wrap .container .row .col-lg-12 .login-form-page-wrap .tab-content #login-form-tab form .captcha_wrapper .houzez_google_reCaptcha div div iframe{
+ width:100% !important;
+}
+
+
+/* Link */
+#login-form-tab form a{
+ color:#1b9ec9;
+}
+
+
+/* Label */
+#login-form-tab form label{
+ color:#000000;
+}
+
+
+@media (min-width:671px){
+
+
+ /* Heading */
+ .login-page-title .d-flex h2{
+  font-size:38px;
+ }
+ 
+}
+
+
+/* =========================================
+   YATEZZITOS | Headings (DK Knucklebones)
+   ✅ DK en títulos/subtítulos
+   ✅ letter-spacing:0 (incluye <a>)
+   ✅ Houzez + Elementor
+   ========================================= */
+
+
+/* 1) Carga DK Knucklebones (local) */
+@font-face{
+  font-family:"Dk Knucklebones";
+  src:url("/wp-content/uploads/2026/01/DK-Knucklebones-Regular.woff2") format("woff2");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+
+/* 2) Headings globales */
+h1,h2,h3,h4,h5,h6,
+h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{
+  font-family:"Dk Knucklebones","Barlow",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-style:normal !important;
+  letter-spacing:0 !important;
+}
+
+
+/* 3) Títulos típicos Houzez/Elementor (texto y links) */
+.elementor-heading-title,
+.elementor-heading-title a,
+.houzez-page-title,
+.houzez-page-title a,
+.item-title,
+.item-title a,
+.property-title,
+.property-title a,
+.widget-title,
+.widget-title a,
+.listing-wrap .taxonomy-description h1,
+.listing-wrap .taxonomy-description h1 a,
+.taxonomy-description div h2,
+.taxonomy-description div h2 a,
+.taxonomy-description h2,
+.taxonomy-description h2 a,
+.listing-wrap .item-title a{
+  font-family:"Dk Knucklebones","Barlow",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif !important;
+  font-weight:400 !important;
+  font-style:normal !important;
+  letter-spacing:0 !important;
+}
+
+
+/* 4) Refuerzo desktop (por si el tema aplica tracking por breakpoint) */
+@media (min-width: 1200px){
+  .listing-wrap .item-title a,
+  h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,
+  .elementor-heading-title a,
+  .houzez-page-title a,
+  .item-title a,
+  .property-title a,
+  .widget-title a{
+    letter-spacing:0 !important;
+  }
+}
+
+
+/* =========================================
+   HOUZEZ | Botón DETALLES (cards) 
+   ✅ texto centrado
+   ✅ solo "Detalles" (D mayúscula)
+   ========================================= */
+
+
+/* 1) Centrar el texto del botón */
+a.btn.btn-primary.btn-item.item-no-footer{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding-left:16px !important;  /* evita que se vea pegado */
+  padding-right:16px !important;
+}
+
+
+/* Fondo limpio, sin repetición, estable y responsive */
+selector{
+  position: relative;
+  overflow: hidden;
+  background-image: url("https://yatezzitos.com/wp-content/uploads/2026/03/26_soop_234-1.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-attachment: scroll !important; /* evita efectos raros en móvil/iPad */
+}
+
+
+/* Si el tema mete una capa extra, la neutralizamos */
+selector::before,
+selector::after{
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center top !important;
+}
+
+
+@media (max-width: 767px){
+  selector{
+    background-size: auto 100% !important;  /* mantiene alto visual */
+    background-position: center top !important;
+  }
+}
