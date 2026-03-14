@@ -993,6 +993,27 @@ Se acepta trabajar con versión 1, versión 2, etc., siempre que el contenido se
 
 ---
 
+## DEC-055 — Los assets del rediseño se versionan dentro del repositorio
+**Estado:** Aprobada  
+**Categoría:** Repositorio / Rediseño / Organización
+
+### Decisión
+Los diseños de Figma (PNGs desktop y responsive), el CSS personalizado actual (Yellow Pencil, Personalizar, Houzez) y el código fuente completo del tema Houzez se versionarán dentro del repositorio en la carpeta `redesign/`.
+
+### Motivo
+- Centralizar todos los assets del rediseño en un solo lugar versionado
+- Facilitar la referencia durante el desarrollo del rediseño
+- Documentar el estado actual del CSS personalizado antes de hacer cambios
+- Permitir comparar el "antes" y "después" del rediseño
+- Tener el tema Houzez disponible como referencia técnica sin necesidad de acceder al servidor de producción
+
+### Implicación
+- La carpeta `redesign/` es la fuente de verdad para los diseños aprobados
+- El repositorio pesa más (~300 MB adicionales por los PNGs de Figma y el tema)
+- Todo cambio futuro al tema o CSS debe documentarse contra esta referencia
+
+---
+
 ## Nota final
 Este registro seguirá creciendo.
 

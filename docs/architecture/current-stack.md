@@ -40,6 +40,8 @@ Actualmente, Houzez aporta:
 Limitación importante:
 Houzez no fue creado específicamente para turismo náutico, por lo que muchas partes requieren personalización o adaptación.
 
+> **Nota:** El código fuente completo del tema Houzez y todo el CSS personalizado (Yellow Pencil, Personalizar, Houzez theme) están ahora versionados en `redesign/css/` del repositorio como referencia para el rediseño.
+
 ### 4. GoHighLevel
 GoHighLevel es actualmente el **centro operativo del CRM**.
 

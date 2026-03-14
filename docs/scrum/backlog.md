@@ -90,12 +90,17 @@ Tener claridad total de visión, stack, CRM, SEO, decisiones y prioridades.
 ### Objetivo
 Actualizar visualmente el sitio y mejorar percepción premium, claridad y conversión.
 
+### Assets disponibles
+> Los diseños de Figma (desktop + responsive) y el CSS personalizado actual ya están versionados en `redesign/`. Ver [`redesign/README.md`](../../redesign/README.md) para detalle completo.
+
 ### Tareas
 - terminar home
 - terminar secciones pendientes
 - adaptar diseño a páginas clave
 - mejorar responsive
 - validar que el diseño no rompa SEO ni formularios
+- usar `redesign/figma/` como referencia visual de los diseños aprobados
+- revisar CSS actual documentado en `redesign/css/` antes de hacer cambios
 
 ### Impacto
 Muy alto en:

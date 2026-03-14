@@ -73,6 +73,7 @@ Este directorio contiene la documentación técnica y de arquitectura de **Yatez
 5. **Si necesitas entender un módulo específico** → lee el diseño funcional correspondiente
 6. **Si necesitas implementar algo** → busca el plan en `docs/scrum/`
 7. **Si estás construyendo algo nuevo** → revisa `web-app.md` para la arquitectura
+8. **Si necesitas los diseños de Figma o el CSS actual** → revisa `redesign/`
 
 ---
 

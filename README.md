@@ -124,7 +124,7 @@ Actualmente, Yatezzitos se encuentra en una etapa de:
 - base comercial operativa real.
 
 ### Qué falta construir o mejorar
-- rediseño completo del sitio según Figma,
+- rediseño completo del sitio según Figma (diseños ya disponibles en `redesign/figma/`)
 - automatización total del embudo,
 - mejor organización del CRM,
 - mejor estructura de propietarios y clientes,
@@ -496,6 +496,11 @@ yatezzitos-global/
 │   ├── crm/
 │   ├── architecture/
 │   └── scrum/
+├── redesign/
+│   ├── css/                ← CSS personalizado actual + tema Houzez completo
+│   ├── figma/              ← Diseños de Figma (Home, Help, Contact, Blog, etc.)
+│   ├── tokens/             ← Design tokens del rediseño
+│   └── assets/             ← Assets del rediseño
 ├── wordpress/
 │   ├── themes/
 │   ├── plugins/
