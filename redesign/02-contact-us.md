@@ -271,7 +271,9 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
 .yz-form { 
   display: flex; 
   flex-direction: column; 
-  width: 100%; 
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .yz-form-row {
@@ -279,7 +281,9 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   flex-wrap: wrap; /* Soporte nativo para grid natural */
   gap: 20px;
   margin-bottom: 20px;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .yz-input-group {
@@ -287,10 +291,14 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   display: flex;
   flex-direction: column;
   min-width: 0; /* Previene overflows nativos de inputs */
+  width: 100%;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .yz-full-width {
-  flex: 1 1 100%;
+  flex: 1 1 100% !important;
+  max-width: 100% !important;
 }
 
 .yz-input-group label {
@@ -300,6 +308,7 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   margin-bottom: 10px;
   text-transform: uppercase; /* Así venia en el diseño original "EMAIL*" */
   letter-spacing: 0.5px;
+  box-sizing: border-box !important;
 }
 
 /* Wrappers para los iconos dentro inputs */
@@ -307,7 +316,9 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .yz-input-icon {
@@ -325,6 +336,7 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
 
 .yz-input-wrapper input,
 .yz-input-wrapper textarea {
+  box-sizing: border-box !important;
   background: #F9FBFD;
   border: 1px solid #D1DFE8;
   border-radius: 12px;
@@ -454,6 +466,20 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   .yz-contact-info-card {
     flex: 1 1 100%;
   }
+  
+  /* FORZAR DESDE TABLET PARA EVITAR DESBORDAMIENTOS (SCROLL HORIZONTAL) */
+  .yz-form-row {
+    display: flex !important;
+    flex-direction: column !important; 
+    gap: 20px !important;
+    width: 100% !important;
+  }
+
+  .yz-input-group {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 
   .yz-decor-starfish {
     width: 120px;
@@ -486,22 +512,12 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   .yz-card {
     padding: 30px 20px; 
     border-radius: 20px;
-  }
-
-  /* REGLA CRITICA: Fuerza a que los forms estén en columnas en vez de salirse a la derecha */
-  .yz-form-row {
-    display: flex !important;
-    flex-direction: column !important; 
-    gap: 20px !important;
-  }
-
-  .yz-input-group {
-    flex: 1 1 100% !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   .yz-btn-submit {
-    width: 100%; 
+    width: 100% !important; 
     padding: 16px 20px;
   }
   
