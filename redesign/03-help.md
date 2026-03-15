@@ -271,42 +271,47 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 .yz-faq-answer strong { color: var(--yz-secondary); }
 @keyframes yzSlideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ── CTA equipo (tarjeta oscura dentro de la playa) ── */
+/* ── CTA equipo (tarjeta con fondo de océano) ── */
 .yz-cta-card {
-  max-width: 900px; margin: 0 auto;
-  background: var(--yz-secondary);
-  border-radius: var(--yz-radius-lg);
-  padding: 50px 50px 50px 40px;
-  display: flex; align-items: center; gap: 40px;
-  position: relative; overflow: hidden;
+  max-width: 960px; margin: 0 auto;
+  background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-135-2.png');
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  border-radius: 24px;
+  padding: 48px 48px 48px 48px;
+  display: flex; align-items: flex-end; gap: 0;
+  position: relative; overflow: visible;
+  min-height: 220px;
 }
-.yz-cta-card-img { flex: 0 0 320px; }
-.yz-cta-card-img img {
-  width: 100%; height: auto; display: block;
-  /* La imagen del equipo ya tiene fondo transparente */
-}
-.yz-cta-card-text { flex: 1; }
+.yz-cta-card-text { flex: 1; padding-right: 20px; }
 .yz-cta-card-text h2 {
   font-family: 'DM Serif Display', serif; color: var(--yz-white);
-  font-size: 2.2rem; font-weight: 400; font-style: italic;
-  margin: 0 0 16px; line-height: 1.25;
+  font-size: 2rem; font-weight: 400; font-style: italic;
+  margin: 0 0 14px; line-height: 1.25;
 }
 .yz-cta-card-text p {
-  font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.65);
-  font-size: 1rem; line-height: 1.7; margin: 0 0 28px;
-  text-transform: uppercase; letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.75);
+  font-size: 0.92rem; line-height: 1.65; margin: 0 0 24px;
 }
 .yz-cta-card-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: #5BC5C2; color: var(--yz-secondary); padding: 16px 36px;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #5BC5C2; color: var(--yz-secondary); padding: 14px 32px;
   border-radius: var(--yz-radius-full); font-family: 'Inter', sans-serif;
-  font-weight: 600; font-size: 1.05rem; text-decoration: none;
+  font-weight: 600; font-size: 0.95rem; text-decoration: none;
   transition: var(--yz-transition); border: none; cursor: pointer;
 }
-.yz-cta-card-btn img { width: 22px; height: 22px; }
+.yz-cta-card-btn img { width: 20px; height: 20px; }
 .yz-cta-card-btn:hover {
   background: #4ab5b2; transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(91,197,194,0.35); color: var(--yz-secondary);
+}
+/* Imagen del equipo: en PC sobresale por arriba */
+.yz-cta-card-img {
+  flex: 0 0 380px; align-self: flex-end;
+  margin-bottom: -48px; /* alineado al borde inferior */
+}
+.yz-cta-card-img img {
+  width: 100%; height: auto; display: block;
+  margin-top: -60px; /* la cabeza sobresale por arriba del card */
 }
 
 /* ── Espacio inferior para que la playa respire debajo de la tarjeta ── */
@@ -321,13 +326,19 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
   .yz-faq-answer { padding: 16px 18px 20px; font-size: 0.95rem; }
   .yz-faq-item summary::after { width: 28px; height: 28px; min-width: 28px; font-size: 1rem; }
   .yz-cta-card {
-    flex-direction: column; text-align: center; gap: 24px;
-    padding: 36px 24px;
+    flex-direction: column; text-align: center; gap: 0;
+    padding: 36px 24px 0; overflow: hidden;
+    align-items: center;
   }
-  .yz-cta-card-img { flex: none; max-width: 300px; margin: 0 auto; }
+  .yz-cta-card-text { padding-right: 0; order: 1; }
+  .yz-cta-card-img {
+    flex: none; max-width: 300px; margin: 0 auto;
+    order: 2; margin-bottom: 0;
+  }
+  .yz-cta-card-img img { margin-top: 0; }
   .yz-cta-card-text h2 { font-size: 1.7rem; }
   .yz-cta-card-text p { font-size: 0.9rem; }
-  .yz-cta-card-btn { width: 100%; justify-content: center; }
+  .yz-cta-card-btn { width: 100%; justify-content: center; margin-bottom: 24px; }
   .yz-faq-cta-bottom { padding: 30px 16px 40px; }
 }
 </style>
@@ -389,9 +400,6 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
   <!-- ── CTA Equipo (tarjeta oscura dentro de la playa) ── -->
   <div class="yz-cta-card">
-    <div class="yz-cta-card-img">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
-    </div>
     <div class="yz-cta-card-text">
       <h2>¿No encuentras lo que buscas?</h2>
       <p>Nuestro equipo de expertos en turismo náutico está listo para ayudarte a planear las vacaciones de tus sueños en el mar. Responderemos tu mensaje en menos de 24 horas.</p>
@@ -399,6 +407,9 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
         <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-boton-cta-pag-ayuda.svg" alt="Salvavidas">
         Contáctanos ahora
       </a>
+    </div>
+    <div class="yz-cta-card-img">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
     </div>
   </div>
 
