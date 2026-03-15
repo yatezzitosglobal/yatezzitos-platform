@@ -164,6 +164,18 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   }
   .yz-cat-bar.yz-hint { animation: yzScrollHint 0.8s ease 1.5s 1; }
 }
+
+/* ── Tablet: pills con scroll como en mobile ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .yz-cat-wrapper { overflow: hidden; }
+  .yz-cat-bar {
+    justify-content: flex-start;
+    overflow-x: auto; overflow-y: visible;
+    padding: 6px 8px 12px;
+  }
+  .yz-cat-fade { display: block; }
+  .yz-cat-progress { display: block; margin: 0 8px; width: calc(100% - 16px); }
+}
 </style>
 
 <div class="yz-help-hero">
