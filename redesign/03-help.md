@@ -80,6 +80,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   font-size: 0.95rem; transition: var(--yz-transition);
 }
 .yz-help-search button:hover { background: #4ab5b2; transform: scale(1.03); }
+.yz-help-search button svg { width: 18px; height: 18px; fill: currentColor; }
 
 /* ── Category Pills (dentro del hero) ── */
 .yz-cat-wrapper {
