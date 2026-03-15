@@ -88,9 +88,8 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 .yz-cat-bar {
   display: flex; align-items: center; gap: 14px;
-  width: 100%; padding: 6px 4px 12px;
+  width: 100%; padding: 10px 8px 14px;
   justify-content: center;
-  overflow-x: auto; overflow-y: visible;
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .yz-cat-bar::-webkit-scrollbar { display: none; }
@@ -151,7 +150,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   .yz-help-search input { padding: 12px 16px; width: 100%; text-align: center; }
   .yz-help-search button { width: 100%; justify-content: center; padding: 14px; border-radius: 10px; }
   .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; overflow: hidden; }
-  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; justify-content: flex-start; }
+  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; justify-content: flex-start; overflow-x: auto; overflow-y: visible; }
   .yz-cat-pill { padding: 10px 18px; font-size: 0.82rem; }
   .yz-cat-pill img { width: 18px; height: 18px; }
   /* Mostrar indicadores solo en mobile */
