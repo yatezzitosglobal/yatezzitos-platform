@@ -26,3 +26,16 @@ build/
 *.log
 .DS_Store
 EOF
+
+.builder/config/data.json
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Credentials
+*.json
+scripts/yatezzitos_crawler/logs/
+.vscode/
