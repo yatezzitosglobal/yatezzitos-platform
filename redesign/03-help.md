@@ -84,11 +84,12 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 /* ── Category Pills (dentro del hero) ── */
 .yz-cat-wrapper {
   position: relative; max-width: 920px; width: 100%; margin: 0 auto;
-  animation: yzFadeUp 1.2s ease backwards 0.35s; overflow: hidden;
+  animation: yzFadeUp 1.2s ease backwards 0.35s;
 }
 .yz-cat-bar {
   display: flex; align-items: center; gap: 14px;
   width: 100%; padding: 6px 4px 12px;
+  justify-content: center;
   overflow-x: auto; overflow-y: visible;
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
@@ -149,8 +150,8 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   .yz-help-search { flex-direction: column; border-radius: var(--yz-radius-md); padding: 8px; gap: 8px; margin-bottom: 30px; }
   .yz-help-search input { padding: 12px 16px; width: 100%; text-align: center; }
   .yz-help-search button { width: 100%; justify-content: center; padding: 14px; border-radius: 10px; }
-  .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; }
-  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; }
+  .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; overflow: hidden; }
+  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; justify-content: flex-start; }
   .yz-cat-pill { padding: 10px 18px; font-size: 0.82rem; }
   .yz-cat-pill img { width: 18px; height: 18px; }
   /* Mostrar indicadores solo en mobile */
