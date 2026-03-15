@@ -70,22 +70,22 @@ Una vez optimizado lo actual, se construye la base de:
 Estas tareas tienen impacto directo en ventas, orden y operación actual.
 
 ## 1. Completar documentación base del proyecto
-**Estado:** En progreso
+**Estado:** ✅ Completada (marzo 2026)
 
 ### Objetivo
 Tener claridad total de visión, stack, CRM, SEO, decisiones y prioridades.
 
 ### Tareas
-- completar carpeta `docs/`
-- dejar README sólido
-- dejar AGENTS.md sólido
-- dejar backlog ordenado
-- dejar arquitectura documentada
+- [x] completar carpeta `docs/` (29 documentos organizados en 6 subcarpetas)
+- [x] dejar README sólido
+- [x] dejar AGENTS.md sólido
+- [x] dejar backlog ordenado
+- [x] dejar arquitectura documentada
 
 ---
 
 ## 2. Terminar el rediseño web de Figma a WordPress
-**Estado:** Pendiente
+**Estado:** 🔄 En progreso
 
 ### Objetivo
 Actualizar visualmente el sitio y mejorar percepción premium, claridad y conversión.
@@ -94,13 +94,14 @@ Actualizar visualmente el sitio y mejorar percepción premium, claridad y conver
 > Los diseños de Figma (desktop + responsive) y el CSS personalizado actual ya están versionados en `redesign/`. Ver [`redesign/README.md`](../../redesign/README.md) para detalle completo.
 
 ### Tareas
-- terminar home
-- terminar secciones pendientes
-- adaptar diseño a páginas clave
-- mejorar responsive
-- validar que el diseño no rompa SEO ni formularios
-- usar `redesign/figma/` como referencia visual de los diseños aprobados
-- revisar CSS actual documentado en `redesign/css/` antes de hacer cambios
+- [ ] terminar home
+- [x] **Contact Us** — Código completo en `redesign/02-contact-us.md`
+- [x] **Help / FAQ** — Código completo en `redesign/03-help.md` (5 secciones: hero+buscador+pills, FAQ accordion+CTA equipo, bloques informativos, footer)
+- [ ] adaptar diseño a páginas clave (Blog, Blog Details, Blog Category)
+- [x] mejorar responsive (mobile + tablet + desktop validado en Help y Contact Us)
+- [ ] validar que el diseño no rompa SEO ni formularios
+- [x] usar `redesign/figma/` como referencia visual de los diseños aprobados
+- [x] revisar CSS actual documentado en `redesign/css/` antes de hacer cambios
 
 ### Impacto
 Muy alto en:
@@ -112,24 +113,24 @@ Muy alto en:
 ---
 
 ## 3. Completar SEO de las ciudades ya abiertas
-**Estado:** Pendiente
+**Estado:** 🔄 En progreso
 
 ### Objetivo
 Optimizar todas las ciudades activas y todas las embarcaciones ya publicadas antes de abrir nuevos destinos.
 
 ### Tareas
-- revisar ciudad por ciudad
-- asignar keyword madre a cada ciudad
-- asignar keyword única a cada yate
-- evitar canibalización
-- completar páginas faltantes
-- reforzar enlazado interno
-- completar ciudades urgentes:
-  - Acapulco
-  - Ixtapa
-  - Huatulco
-  - Nuevo Vallarta
-  - Playa del Carmen
+- [x] auditoría SEO completa (`docs/seo/auditoria-seo-completa.md`)
+- [x] análisis de oportunidades de keywords (`docs/seo/oportunidades-keywords-2026.md`)
+- [x] framework de asignación de keywords (`docs/seo/keyword-assignment-framework.md`)
+- [x] guía Search Console 2026 (`docs/seo/guia-search-console-2026.md`)
+- [x] reglas de producción de contenido (`docs/seo/content-production-rules.md`)
+- [ ] revisar ciudad por ciudad e implementar optimizaciones
+- [ ] asignar keyword madre a cada ciudad
+- [ ] asignar keyword única a cada yate
+- [ ] evitar canibalización
+- [ ] completar páginas faltantes
+- [ ] reforzar enlazado interno
+- [ ] completar ciudades urgentes: Acapulco, Ixtapa, Huatulco, Nuevo Vallarta, Playa del Carmen
 
 ### Impacto
 Muy alto en:
@@ -404,10 +405,14 @@ Apoyar internamente:
 ---
 
 ## 19. Definir reglas de IA y AGENTS.md
-**Estado:** Pendiente
+**Estado:** ✅ Completada (marzo 2026)
 
 ### Objetivo
 Dejar documentado cómo deben trabajar los agentes IA dentro del proyecto.
+
+### Resultado
+- `AGENTS.md` en la raíz del repositorio define reglas completas de seguridad, privacidad, tono, escalamiento y control de cambios.
+- 5 specs de agentes IA documentadas en `ai/assistants/` (orquestador, turista, propietario, soporte interno, README).
 
 ---
 
