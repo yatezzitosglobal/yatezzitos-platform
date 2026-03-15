@@ -83,7 +83,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 
 /* ── Category Pills (dentro del hero) ── */
 .yz-cat-wrapper {
-  position: relative; max-width: 740px; width: 100%; margin: 0 auto;
+  position: relative; max-width: 920px; width: 100%; margin: 0 auto;
   animation: yzFadeUp 1.2s ease backwards 0.35s; overflow: hidden;
 }
 .yz-cat-bar {
