@@ -74,23 +74,22 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 .yz-help-search input::placeholder { color: #94a3b8; }
 .yz-help-search button {
-  background: var(--yz-primary); border: none; border-radius: var(--yz-radius-full);
+  background: #5BC5C2; border: none; border-radius: var(--yz-radius-full);
   padding: 14px 28px; cursor: pointer; display: flex; align-items: center; gap: 8px;
-  color: var(--yz-white); font-family: 'Inter', sans-serif; font-weight: 600;
+  color: var(--yz-secondary); font-family: 'Inter', sans-serif; font-weight: 600;
   font-size: 0.95rem; transition: var(--yz-transition);
 }
-.yz-help-search button:hover { background: var(--yz-primary-dark); transform: scale(1.03); }
-.yz-help-search button svg { width: 18px; height: 18px; fill: currentColor; }
+.yz-help-search button:hover { background: #4ab5b2; transform: scale(1.03); }
 
 /* ── Category Pills (dentro del hero) ── */
 .yz-cat-wrapper {
   position: relative; max-width: 740px; width: 100%; margin: 0 auto;
-  animation: yzFadeUp 1.2s ease backwards 0.35s;
+  animation: yzFadeUp 1.2s ease backwards 0.35s; overflow: hidden;
 }
 .yz-cat-bar {
-  display: flex; align-items: stretch; gap: 14px;
-  width: 100%; padding: 0 4px 12px;
-  overflow-x: auto; overflow-y: hidden;
+  display: flex; align-items: center; gap: 14px;
+  width: 100%; padding: 6px 4px 12px;
+  overflow-x: auto; overflow-y: visible;
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .yz-cat-bar::-webkit-scrollbar { display: none; }
@@ -105,13 +104,14 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 /* Scroll progress track + thumb */
 .yz-cat-progress {
-  display: none; width: 100%; height: 3px;
+  display: none; height: 3px;
   background: rgba(255,255,255,0.15); border-radius: 3px;
-  margin-top: 2px; overflow: hidden;
+  margin-top: 2px; overflow: hidden; position: relative;
 }
 .yz-cat-progress-thumb {
   height: 100%; background: var(--yz-white); border-radius: 3px;
-  width: 30%; transition: transform 0.1s ease-out;
+  width: 30%; position: absolute; left: 0; top: 0;
+  transition: left 0.1s ease-out;
 }
 
 .yz-cat-pill {
@@ -130,7 +130,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 .yz-cat-pill:hover {
   background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5);
-  color: var(--yz-white); transform: translateY(-2px);
+  color: var(--yz-white);
 }
 .yz-cat-pill.active {
   background: var(--yz-white); border-color: var(--yz-white);
@@ -150,12 +150,12 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   .yz-help-search input { padding: 12px 16px; width: 100%; text-align: center; }
   .yz-help-search button { width: 100%; justify-content: center; padding: 14px; border-radius: 10px; }
   .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; }
-  .yz-cat-bar { gap: 10px; padding: 0 16px 8px; }
+  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; }
   .yz-cat-pill { padding: 10px 18px; font-size: 0.82rem; }
   .yz-cat-pill img { width: 18px; height: 18px; }
   /* Mostrar indicadores solo en mobile */
   .yz-cat-fade { display: block; }
-  .yz-cat-progress { display: block; margin: 0 16px; }
+  .yz-cat-progress { display: block; margin: 0 16px; width: calc(100% - 32px); }
   /* Hint de scroll */
   @keyframes yzScrollHint {
     0%, 100% { transform: translateX(0); }
@@ -347,12 +347,12 @@ function yzFilterFaq(cat) {
   function updateScroll() {
     var scrollLeft = bar.scrollLeft;
     var maxScroll = bar.scrollWidth - bar.clientWidth;
-    if (maxScroll <= 0) { fade.style.opacity = '0'; thumb.style.transform = 'translateX(0)'; return; }
+    if (maxScroll <= 0) { fade.style.opacity = '0'; thumb.style.left = '0'; return; }
     var pct = scrollLeft / maxScroll;
     var trackWidth = thumb.parentElement.clientWidth;
     var thumbWidth = thumb.clientWidth;
-    var maxTranslate = trackWidth - thumbWidth;
-    thumb.style.transform = 'translateX(' + (pct * maxTranslate) + 'px)';
+    var maxLeft = trackWidth - thumbWidth;
+    thumb.style.left = (pct * maxLeft) + 'px';
     fade.style.opacity = pct > 0.92 ? '0' : '1';
   }
   bar.addEventListener('scroll', updateScroll, { passive: true });
