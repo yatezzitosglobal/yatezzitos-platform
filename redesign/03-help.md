@@ -207,28 +207,37 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 
 ---
 
-## SECCIÓN 2 — Acordeón de Preguntas Frecuentes
+## SECCIÓN 2 — FAQ + CTA Equipo (fusionadas con fondo de playa)
+
+La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta CTA del equipo abajo.
 
 ```html
 <!-- ═══════════════════════════════════════════════════════════
-     SECCIÓN 2: ACORDEÓN FAQ (filtrable por categoría)
+     SECCIÓN 2: FAQ + CTA EQUIPO (fusionadas, fondo de playa)
      ═══════════════════════════════════════════════════════════ -->
 <style>
-.yz-faq-section { background: var(--yz-gray-100); padding: 70px 20px 80px; }
-.yz-faq-inner { max-width: 800px; margin: 0 auto; }
-.yz-faq-inner > h2 {
-  font-family: 'DM Serif Display', serif; color: var(--yz-secondary);
-  font-size: 2rem; text-align: center; margin: 0 0 40px;
+/* ── Contenedor general con fondo de playa ── */
+.yz-faq-cta-section {
+  position: relative;
+  background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Fondo-de-perfil-segunda-seccion-ayuda.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding: 70px 20px 0;
 }
+
+/* ── FAQ accordion ── */
+.yz-faq-inner { max-width: 800px; margin: 0 auto; padding-bottom: 50px; }
 .yz-faq-group { display: none; }
 .yz-faq-group.yz-faq-active { display: block; animation: yzFadeUp 0.5s ease; }
 .yz-faq-group-title {
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem;
-  text-transform: uppercase; letter-spacing: 2px; color: var(--yz-primary);
-  margin: 0 0 20px; padding-left: 4px;
+  font-family: 'DM Serif Display', serif; font-weight: 400; font-size: 1.6rem;
+  color: var(--yz-secondary); margin: 0 0 24px;
 }
 .yz-faq-item {
-  background: var(--yz-white); border: 1px solid var(--yz-gray-200);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.6);
   border-radius: var(--yz-radius-md); margin-bottom: 14px; overflow: hidden;
   transition: var(--yz-transition);
 }
@@ -243,14 +252,14 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 .yz-faq-item summary:hover { color: var(--yz-primary); }
 .yz-faq-item summary::after {
-  content: "+"; font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.6rem;
-  color: var(--yz-primary); width: 36px; height: 36px; min-width: 36px;
+  content: "∨"; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1.2rem;
+  color: var(--yz-gray-500); width: 32px; height: 32px; min-width: 32px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 50%; background: var(--yz-gray-100); transition: var(--yz-transition);
+  border-radius: 50%; transition: var(--yz-transition);
 }
 .yz-faq-item[open] { border-color: var(--yz-primary); box-shadow: 0 4px 12px rgba(0,135,163,0.1); }
-.yz-faq-item[open] summary { color: var(--yz-primary); border-bottom: 1px solid var(--yz-gray-100); }
-.yz-faq-item[open] summary::after { content: "−"; background: var(--yz-primary); color: var(--yz-white); }
+.yz-faq-item[open] summary { color: var(--yz-primary); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.yz-faq-item[open] summary::after { content: "∧"; color: var(--yz-primary); }
 .yz-faq-answer {
   padding: 20px 24px 24px; font-family: 'Inter', sans-serif; color: var(--yz-gray-500);
   font-size: 1rem; line-height: 1.75; animation: yzSlideDown 0.35s ease;
@@ -262,11 +271,64 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 .yz-faq-answer strong { color: var(--yz-secondary); }
 @keyframes yzSlideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
+/* ── CTA equipo (tarjeta oscura dentro de la playa) ── */
+.yz-cta-card {
+  max-width: 900px; margin: 0 auto;
+  background: var(--yz-secondary);
+  border-radius: var(--yz-radius-lg);
+  padding: 50px 50px 50px 40px;
+  display: flex; align-items: center; gap: 40px;
+  position: relative; overflow: hidden;
+}
+.yz-cta-card-img { flex: 0 0 320px; }
+.yz-cta-card-img img {
+  width: 100%; height: auto; display: block;
+  /* La imagen del equipo ya tiene fondo transparente */
+}
+.yz-cta-card-text { flex: 1; }
+.yz-cta-card-text h2 {
+  font-family: 'DM Serif Display', serif; color: var(--yz-white);
+  font-size: 2.2rem; font-weight: 400; font-style: italic;
+  margin: 0 0 16px; line-height: 1.25;
+}
+.yz-cta-card-text p {
+  font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.65);
+  font-size: 1rem; line-height: 1.7; margin: 0 0 28px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.yz-cta-card-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #5BC5C2; color: var(--yz-secondary); padding: 16px 36px;
+  border-radius: var(--yz-radius-full); font-family: 'Inter', sans-serif;
+  font-weight: 600; font-size: 1.05rem; text-decoration: none;
+  transition: var(--yz-transition); border: none; cursor: pointer;
+}
+.yz-cta-card-btn img { width: 22px; height: 22px; }
+.yz-cta-card-btn:hover {
+  background: #4ab5b2; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(91,197,194,0.35); color: var(--yz-secondary);
+}
+
+/* ── Espacio inferior para que la playa respire debajo de la tarjeta ── */
+.yz-faq-cta-bottom { padding: 50px 20px 60px; }
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .yz-faq-section { padding: 50px 16px 60px; }
+  .yz-faq-cta-section { padding: 50px 16px 0; }
+  .yz-faq-inner { padding-bottom: 40px; }
+  .yz-faq-group-title { font-size: 1.3rem; }
   .yz-faq-item summary { font-size: 0.95rem; padding: 16px 18px; }
   .yz-faq-answer { padding: 16px 18px 20px; font-size: 0.95rem; }
-  .yz-faq-item summary::after { width: 30px; height: 30px; min-width: 30px; font-size: 1.3rem; }
+  .yz-faq-item summary::after { width: 28px; height: 28px; min-width: 28px; font-size: 1rem; }
+  .yz-cta-card {
+    flex-direction: column; text-align: center; gap: 24px;
+    padding: 36px 24px;
+  }
+  .yz-cta-card-img { flex: none; max-width: 300px; margin: 0 auto; }
+  .yz-cta-card-text h2 { font-size: 1.7rem; }
+  .yz-cta-card-text p { font-size: 0.9rem; }
+  .yz-cta-card-btn { width: 100%; justify-content: center; }
+  .yz-faq-cta-bottom { padding: 30px 16px 40px; }
 }
 </style>
 
