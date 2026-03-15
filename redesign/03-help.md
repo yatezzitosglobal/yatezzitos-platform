@@ -42,7 +42,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   background-image: linear-gradient(180deg, rgba(0,34,54,0.55) 0%, rgba(0,34,54,0.80) 100%),
     url('https://yatezzitos.com/wp-content/uploads/2026/03/imagen-de-fondo-primera-seccion.png');
   background-size: cover;
-  background-position: center;
+  background-position: right center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,15 +83,36 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 .yz-help-search button svg { width: 18px; height: 18px; fill: currentColor; }
 
 /* ── Category Pills (dentro del hero) ── */
+.yz-cat-wrapper {
+  position: relative; max-width: 740px; width: 100%; margin: 0 auto;
+  animation: yzFadeUp 1.2s ease backwards 0.35s;
+}
 .yz-cat-bar {
   display: flex; align-items: stretch; gap: 14px;
-  max-width: 740px; width: 100%; margin: 0 auto; padding: 0 4px 8px;
-  animation: yzFadeUp 1.2s ease backwards 0.35s;
+  width: 100%; padding: 0 4px 12px;
   overflow-x: auto; overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .yz-cat-bar::-webkit-scrollbar { display: none; }
+
+/* Fade gradient borde derecho (solo mobile) */
+.yz-cat-fade {
+  display: none; position: absolute; top: 0; right: 0;
+  width: 60px; height: calc(100% - 20px);
+  background: linear-gradient(90deg, transparent 0%, rgba(0,34,54,0.7) 100%);
+  pointer-events: none; z-index: 2; border-radius: 0 50px 50px 0;
+  transition: opacity 0.3s ease;
+}
+/* Scroll progress track + thumb */
+.yz-cat-progress {
+  display: none; width: 100%; height: 3px;
+  background: rgba(255,255,255,0.15); border-radius: 3px;
+  margin-top: 2px; overflow: hidden;
+}
+.yz-cat-progress-thumb {
+  height: 100%; background: var(--yz-white); border-radius: 3px;
+  width: 30%; transition: transform 0.1s ease-out;
+}
 
 .yz-cat-pill {
   flex: 0 0 auto; display: flex; align-items: center; gap: 10px;
@@ -128,9 +149,20 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   .yz-help-search { flex-direction: column; border-radius: var(--yz-radius-md); padding: 8px; gap: 8px; margin-bottom: 30px; }
   .yz-help-search input { padding: 12px 16px; width: 100%; text-align: center; }
   .yz-help-search button { width: 100%; justify-content: center; padding: 14px; border-radius: 10px; }
-  .yz-cat-bar { gap: 10px; padding: 0 16px 6px; margin: 0 -16px; width: calc(100% + 32px); }
+  .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; }
+  .yz-cat-bar { gap: 10px; padding: 0 16px 8px; }
   .yz-cat-pill { padding: 10px 18px; font-size: 0.82rem; }
   .yz-cat-pill img { width: 18px; height: 18px; }
+  /* Mostrar indicadores solo en mobile */
+  .yz-cat-fade { display: block; }
+  .yz-cat-progress { display: block; margin: 0 16px; }
+  /* Hint de scroll */
+  @keyframes yzScrollHint {
+    0%, 100% { transform: translateX(0); }
+    30% { transform: translateX(-12px); }
+    60% { transform: translateX(4px); }
+  }
+  .yz-cat-bar.yz-hint { animation: yzScrollHint 0.8s ease 1.5s 1; }
 }
 </style>
 
@@ -146,24 +178,28 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
       Buscar
     </button>
   </div>
-  <!-- Categorías: pills horizontales con scroll en mobile -->
-  <div class="yz-cat-bar">
-    <button class="yz-cat-pill active" onclick="yzFilterFaq('bookings')" data-cat="bookings">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-booking-ayuda.svg" alt="Reservaciones">
-      Bookings & Payments
-    </button>
-    <button class="yz-cat-pill" onclick="yzFilterFaq('safety')" data-cat="safety">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Safeti-Ayuda.svg" alt="Seguridad">
-      Safety & Insurance
-    </button>
-    <button class="yz-cat-pill" onclick="yzFilterFaq('vessel')" data-cat="vessel">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Vessel-Ayuda.svg" alt="Embarcación">
-      Vessels & Services
-    </button>
-    <button class="yz-cat-pill" onclick="yzFilterFaq('cancellations')" data-cat="cancellations">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Cancelaciones-Ayuda.svg" alt="Cancelaciones">
-      Cancellations & Changes
-    </button>
+  <!-- Categorías: pills horizontales con scroll indicator en mobile -->
+  <div class="yz-cat-wrapper">
+    <div class="yz-cat-bar yz-hint" id="yzCatBar">
+      <button class="yz-cat-pill active" onclick="yzFilterFaq('bookings')" data-cat="bookings">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-booking-ayuda.svg" alt="Reservaciones">
+        Bookings &amp; Payments
+      </button>
+      <button class="yz-cat-pill" onclick="yzFilterFaq('safety')" data-cat="safety">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Safeti-Ayuda.svg" alt="Seguridad">
+        Safety &amp; Insurance
+      </button>
+      <button class="yz-cat-pill" onclick="yzFilterFaq('vessel')" data-cat="vessel">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Vessel-Ayuda.svg" alt="Embarcación">
+        Vessels &amp; Services
+      </button>
+      <button class="yz-cat-pill" onclick="yzFilterFaq('cancellations')" data-cat="cancellations">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Cancelaciones-Ayuda.svg" alt="Cancelaciones">
+        Cancellations &amp; Changes
+      </button>
+    </div>
+    <div class="yz-cat-fade" id="yzCatFade"></div>
+    <div class="yz-cat-progress"><div class="yz-cat-progress-thumb" id="yzCatThumb"></div></div>
   </div>
 </div>
 ```
@@ -287,7 +323,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   </div>
 </div>
 
-<!-- ── JavaScript para filtrar categorías ── -->
+<!-- ── JavaScript: filtrar categorías + scroll indicator ── -->
 <script>
 function yzFilterFaq(cat) {
   document.querySelectorAll('.yz-cat-pill').forEach(function(btn) {
@@ -301,6 +337,28 @@ function yzFilterFaq(cat) {
   document.querySelectorAll('.yz-faq-item[open]').forEach(function(d) { d.removeAttribute('open'); });
   document.getElementById('yz-faq-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+/* ── Scroll progress + fade para category pills ── */
+(function() {
+  var bar = document.getElementById('yzCatBar');
+  var thumb = document.getElementById('yzCatThumb');
+  var fade = document.getElementById('yzCatFade');
+  if (!bar || !thumb || !fade) return;
+  function updateScroll() {
+    var scrollLeft = bar.scrollLeft;
+    var maxScroll = bar.scrollWidth - bar.clientWidth;
+    if (maxScroll <= 0) { fade.style.opacity = '0'; thumb.style.transform = 'translateX(0)'; return; }
+    var pct = scrollLeft / maxScroll;
+    var trackWidth = thumb.parentElement.clientWidth;
+    var thumbWidth = thumb.clientWidth;
+    var maxTranslate = trackWidth - thumbWidth;
+    thumb.style.transform = 'translateX(' + (pct * maxTranslate) + 'px)';
+    fade.style.opacity = pct > 0.92 ? '0' : '1';
+  }
+  bar.addEventListener('scroll', updateScroll, { passive: true });
+  window.addEventListener('resize', updateScroll);
+  setTimeout(updateScroll, 100);
+})();
 </script>
 ```
 
