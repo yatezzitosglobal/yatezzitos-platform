@@ -144,7 +144,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .yz-help-hero { min-height: 480px; padding: 50px 16px 30px; }
+  .yz-help-hero { min-height: 480px; padding: 50px 16px 30px; background-position: 65% center; }
   .yz-help-hero-content h1 { font-size: 2.2rem; }
   .yz-help-hero-content p { font-size: 1rem; margin-bottom: 28px; }
   .yz-help-search { flex-direction: column; border-radius: var(--yz-radius-md); padding: 8px; gap: 8px; margin-bottom: 30px; }
