@@ -10,7 +10,6 @@ Los nombres de las categorías se mantienen en inglés como en el diseño de Fig
 
 Los botones de categoría son **pills horizontales con glassmorphism** dentro del Hero. En móvil hacen **scroll horizontal** nativo.
 
-```html
 <!-- ═══════════════════════════════════════════════════════════
      SECCIÓN 1: HERO + BUSCADOR + CATEGORÍAS
      ═══════════════════════════════════════════════════════════ -->
@@ -184,26 +183,25 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
     <div class="yz-cat-bar yz-hint" id="yzCatBar">
       <button class="yz-cat-pill active" onclick="yzFilterFaq('bookings')" data-cat="bookings">
         <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-booking-ayuda.svg" alt="Reservaciones">
-        Bookings &amp; Payments
+        Reservas &amp; pagos
       </button>
       <button class="yz-cat-pill" onclick="yzFilterFaq('safety')" data-cat="safety">
         <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Safeti-Ayuda.svg" alt="Seguridad">
-        Safety &amp; Insurance
+        Seguridad &amp; seguros
       </button>
       <button class="yz-cat-pill" onclick="yzFilterFaq('vessel')" data-cat="vessel">
         <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Vessel-Ayuda.svg" alt="Embarcación">
-        Vessels &amp; Services
+        Botes &amp; servicios
       </button>
       <button class="yz-cat-pill" onclick="yzFilterFaq('cancellations')" data-cat="cancellations">
         <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Cancelaciones-Ayuda.svg" alt="Cancelaciones">
-        Cancellations &amp; Changes
+        Cambios &amp; cancelaciones
       </button>
     </div>
     <div class="yz-cat-fade" id="yzCatFade"></div>
     <div class="yz-cat-progress"><div class="yz-cat-progress-thumb" id="yzCatThumb"></div></div>
   </div>
 </div>
-```
 
 ---
 
@@ -224,6 +222,13 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
   background-position: center bottom;
   background-repeat: no-repeat;
   padding: 70px 20px 0;
+}
+
+/* Estrella de mar y caracolas decorativas (esquina inferior izquierda) */
+.yz-starfish-deco {
+  position: absolute; bottom: 20px; left: 0;
+  width: 160px; height: auto; z-index: 2;
+  pointer-events: none;
 }
 
 /* ── FAQ accordion ── */
@@ -339,6 +344,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
   .yz-cta-card-text h2 { font-size: 1.7rem; }
   .yz-cta-card-text p { font-size: 0.9rem; }
   .yz-cta-card-btn { width: 100%; justify-content: center; margin-bottom: 24px; }
+  .yz-starfish-deco { width: 100px; bottom: 10px; }
   .yz-faq-cta-bottom { padding: 30px 16px 40px; }
 }
 </style>
@@ -350,7 +356,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: BOOKINGS ── -->
     <div class="yz-faq-group yz-faq-active" data-group="bookings">
-      <h2 class="yz-faq-group-title">Bookings &amp; Payments</h2>
+      <h2 class="yz-faq-group-title">Reservas &amp; pagos</h2>
       <details class="yz-faq-item"><summary>¿Cómo es el proceso para reservar un yate?</summary><div class="yz-faq-answer"><p>Selecciona tu destino favorito en <strong>yatezzitos.com</strong>, elige la embarcación de tu preferencia y haz clic en <strong>"Solicitar Cotización"</strong>. Llena el formulario con la fecha, tipo de viaje y horario. Nuestro equipo te enviará una cotización detallada en menos de 48 horas. Una vez aceptada, confirma tu reserva realizando un anticipo del 50%.</p></div></details>
       <details class="yz-faq-item"><summary>¿Cuáles son los métodos de pago aceptados?</summary><div class="yz-faq-answer"><p>Aceptamos <strong>transferencias bancarias y efectivo</strong> sin comisiones adicionales. También tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y Criptomonedas (Bitcoin, USDT) con un cargo adicional del 5%.</p></div></details>
       <details class="yz-faq-item"><summary>¿Se requiere un depósito o anticipo para apartar la fecha?</summary><div class="yz-faq-answer"><p>Sí, es indispensable un <strong>anticipo del 50%</strong> del costo total para poder bloquear la fecha y el horario en la embarcación seleccionada.</p></div></details>
@@ -362,7 +368,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: CANCELLATIONS ── -->
     <div class="yz-faq-group" data-group="cancellations">
-      <h2 class="yz-faq-group-title">Cancellations &amp; Changes</h2>
+      <h2 class="yz-faq-group-title">Cambios &amp; cancelaciones</h2>
       <details class="yz-faq-item"><summary>¿Qué pasa si necesito cancelar mi reservación?</summary><div class="yz-faq-answer"><p>No ofrecemos reembolsos por cancelaciones con <strong>menos de 30 días de anticipación</strong>. Si cancelas a tiempo, es posible "congelar" el anticipo para un futuro viaje.</p></div></details>
       <details class="yz-faq-item"><summary>¿Qué sucede si hay mal clima o fallas mecánicas?</summary><div class="yz-faq-answer"><p>Si se coloca <strong>bandera roja</strong> o hay una falla mecánica, te ofreceremos el <strong>reembolso total</strong> de tu anticipo o la opción de cambiar la fecha.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo modificar la fecha o destino de mi reservación?</summary><div class="yz-faq-answer"><p>Sí, con al menos <strong>15 días de anticipación</strong>, sujeto a disponibilidad. Contáctanos para reprogramar.</p></div></details>
@@ -374,7 +380,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: SAFETY ── -->
     <div class="yz-faq-group" data-group="safety">
-      <h2 class="yz-faq-group-title">Safety &amp; Insurance</h2>
+      <h2 class="yz-faq-group-title">Seguridad &amp; seguros</h2>
       <details class="yz-faq-item"><summary>¿Se requieren chalecos salvavidas para todos?</summary><div class="yz-faq-answer"><p>Sí, todas las embarcaciones cuentan con <strong>chalecos salvavidas certificados</strong>. Si viajas con niños, avísanos para la talla correcta.</p></div></details>
       <details class="yz-faq-item"><summary>¿Las embarcaciones cuentan con seguro de daños?</summary><div class="yz-faq-answer"><p>Sí, todas cuentan con <strong>seguro vigente</strong>, botiquín y equipos de comunicación certificados.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo contratar el servicio si soy menor de edad?</summary><div class="yz-faq-answer"><p>No, el contrato debe ser firmado por un <strong>adulto mayor de 18 años</strong>. Los menores pueden abordar acompañados.</p></div></details>
@@ -386,7 +392,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: VESSEL ── -->
     <div class="yz-faq-group" data-group="vessel">
-      <h2 class="yz-faq-group-title">Vessels &amp; Services</h2>
+      <h2 class="yz-faq-group-title">Botes &amp; servicios</h2>
       <details class="yz-faq-item"><summary>¿Cuántas personas pueden ir a bordo?</summary><div class="yz-faq-answer"><p>Desde <strong>6 personas</strong> en lanchas hasta <strong>más de 40 invitados</strong> en mega-yates y catamaranes.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo llevar mi propia comida y bebidas a bordo?</summary><div class="yz-faq-answer"><p>¡Sí! La mayoría de embarcaciones incluyen <strong>hielera, hielo y aguas/refrescos</strong>. También ofrecemos paquetes premium.</p></div></details>
       <details class="yz-faq-item"><summary>¿Los yates incluyen tripulación?</summary><div class="yz-faq-answer"><p>Sí, todas las rentas incluyen un <strong>Capitán y Marinero</strong> capacitados.</p></div></details>
@@ -412,6 +418,9 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
       <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
     </div>
   </div>
+
+  <!-- Estrella de mar decorativa -->
+  <img class="yz-starfish-deco" src="https://yatezzitos.com/wp-content/uploads/2026/03/Estrella-de-mar-y-caracolas.png" alt="" aria-hidden="true">
 
   <!-- Espacio inferior playa -->
   <div class="yz-faq-cta-bottom"></div>
