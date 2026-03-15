@@ -88,15 +88,15 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 .yz-cat-bar {
   display: flex; align-items: center; gap: 14px;
-  width: 100%; padding: 10px 8px 14px;
-  justify-content: center;
+  width: 100%; padding: 6px 8px 12px;
+  overflow-x: auto; overflow-y: visible;
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .yz-cat-bar::-webkit-scrollbar { display: none; }
 
-/* Fade gradient borde derecho (solo mobile) */
+/* Fade gradient borde derecho (mobile + tablet) */
 .yz-cat-fade {
-  display: none; position: absolute; top: 0; right: 0;
+  position: absolute; top: 0; right: 0;
   width: 60px; height: calc(100% - 20px);
   background: linear-gradient(90deg, transparent 0%, rgba(0,34,54,0.7) 100%);
   pointer-events: none; z-index: 2; border-radius: 0 50px 50px 0;
@@ -104,7 +104,7 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 }
 /* Scroll progress track + thumb */
 .yz-cat-progress {
-  display: none; height: 3px;
+  height: 3px;
   background: rgba(255,255,255,0.15); border-radius: 3px;
   margin-top: 2px; overflow: hidden; position: relative;
 }
@@ -141,7 +141,18 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
 /* ── Animaciones ── */
 @keyframes yzFadeUp { 0% { opacity: 0; transform: translateY(25px); } 100% { opacity: 1; transform: translateY(0); } }
 
-/* ── Responsive ── */
+/* ── Desktop: pills centrados sin scroll (1025px+) ── */
+@media (min-width: 1025px) {
+  .yz-cat-bar {
+    justify-content: center;
+    overflow-x: visible; overflow-y: visible;
+    padding: 10px 8px 14px;
+  }
+  .yz-cat-fade { display: none; }
+  .yz-cat-progress { display: none; }
+}
+
+/* ── Responsive mobile ── */
 @media (max-width: 768px) {
   .yz-help-hero { min-height: 480px; padding: 50px 16px 30px; background-position: 65% center; }
   .yz-help-hero-content h1 { font-size: 2.2rem; }
@@ -150,12 +161,9 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
   .yz-help-search input { padding: 12px 16px; width: 100%; text-align: center; }
   .yz-help-search button { width: 100%; justify-content: center; padding: 14px; border-radius: 10px; }
   .yz-cat-wrapper { margin: 0 -16px; width: calc(100% + 32px); max-width: none; overflow: hidden; }
-  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; justify-content: flex-start; overflow-x: auto; overflow-y: visible; }
+  .yz-cat-bar { gap: 10px; padding: 6px 16px 8px; }
   .yz-cat-pill { padding: 10px 18px; font-size: 0.82rem; }
   .yz-cat-pill img { width: 18px; height: 18px; }
-  /* Mostrar indicadores solo en mobile */
-  .yz-cat-fade { display: block; }
-  .yz-cat-progress { display: block; margin: 0 16px; width: calc(100% - 32px); }
   /* Hint de scroll */
   @keyframes yzScrollHint {
     0%, 100% { transform: translateX(0); }
@@ -163,18 +171,6 @@ Los botones de categoría son **pills horizontales con glassmorphism** dentro de
     60% { transform: translateX(4px); }
   }
   .yz-cat-bar.yz-hint { animation: yzScrollHint 0.8s ease 1.5s 1; }
-}
-
-/* ── Tablet: pills con scroll como en mobile ── */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .yz-cat-wrapper { overflow: hidden; }
-  .yz-cat-bar {
-    justify-content: flex-start;
-    overflow-x: auto; overflow-y: visible;
-    padding: 6px 8px 12px;
-  }
-  .yz-cat-fade { display: block; }
-  .yz-cat-progress { display: block; margin: 0 8px; width: calc(100% - 16px); }
 }
 </style>
 
