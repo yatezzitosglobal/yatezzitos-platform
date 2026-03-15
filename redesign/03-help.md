@@ -1,375 +1,400 @@
-# 03 - Help / FAQ Page (Centro de Ayuda)
+# 03 — Página de Ayuda / Preguntas Frecuentes (FAQ)
 
-Este documento contiene la maqueta HTML responsiva y el código CSS (Pixel-perfect) para la nueva página de Ayuda (Preguntas Frecuentes). Está lista para ser pegada en Elementor usando los widgets de "HTML" o insertada a través de un Shortcode/Bloque personalizado en WordPress. 
+Rediseño completo con 5 secciones. Cada sección contiene su propio HTML + CSS auto-contenido para facilitar su inserción en Elementor mediante widgets HTML individuales.
 
-Se empleó el método de acordiones (Details/Summary) nativos y optimizados con CSS para garantizar el mejor rendimiento SEO y accesibilidad sin necesidad de JavaScript pesado.
-
-El contenido ha sido destilado y unificado para representar de forma magistral todas las reglas y destinos.
+Todo el contenido está en español para SEO. Los textos de la sección 5 se mantienen en inglés como en el diseño de Figma original.
 
 ---
 
-## 1. Código HTML
+## SECCIÓN 1 — Hero con Buscador
 
 ```html
-<!-- HERO SECTION - CENTRO DE AYUDA -->
-<div class="yz-help-hero">
-  <div class="yz-help-hero-content">
-    <h1>Centro de Ayuda</h1>
-    <h2>Preguntas Frecuentes (FAQ)</h2>
-    <p>Todo lo que necesitas saber antes, durante y después de tu aventura en yate.</p>
-  </div>
-</div>
-
-<!-- MAIN HELP SECTION -->
-<div class="yz-help-main">
-  <!-- Decorative Elements -->
-  <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Estrella-de-mar.png" alt="Estrella de mar decorativa" class="yz-decor yz-help-decor-starfish">
-  
-  <div class="yz-help-container">
-    
-    <!-- CATEGORÍA 1: RESERVACIONES Y PAGOS -->
-    <div class="yz-faq-category">
-      <div class="yz-faq-category-header">
-        <span class="yz-faq-icon">💳</span>
-        <h3>1. Reservaciones y Pagos</h3>
-      </div>
-      
-      <details class="yz-faq-item">
-        <summary>¿Cómo es el proceso para reservar un yate?</summary>
-        <div class="yz-faq-content">
-          <p>Puedes reservar fácilmente desde nuestro sitio web (yatezzitos.com). Selecciona tu destino (Mazatlán, Vallarta, Cancún, La Paz, Los Cabos, Acapulco, Playa del Carmen, Huatulco o Ixtapa Zihuatanejo), elige la embarcación de tu preferencia y haz clic en "Solicitar Cotización". Llena el formulario con la fecha, tipo de viaje (por hora, día o semana) y horario. Nuestro equipo te enviará una cotización detallada en menos de 48 horas. Una vez aceptada, confirma tu reserva realizando un anticipo del 50%.</p>
-        </div>
-      </details>
-      
-      <details class="yz-faq-item">
-        <summary>¿Cuáles son los métodos de pago aceptados?</summary>
-        <div class="yz-faq-content">
-          <p>Aceptamos transferencias bancarias y efectivo (depósito directo o en el muelle) sin comisiones adicionales. También puedes pagar con tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y Criptomonedas (Bitcoin, USDT) con un cargo adicional del 5%.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Se requiere un depósito o anticipo para apartar la fecha?</summary>
-        <div class="yz-faq-content">
-          <p>Sí, es indispensable un anticipo del 50% del costo total para poder bloquear la fecha y el horario en la embarcación seleccionada.</p>
-        </div>
-      </details>
-      
-      <details class="yz-faq-item">
-        <summary>¿Con cuánta anticipación necesito reservar?</summary>
-        <div class="yz-faq-content">
-          <p>Recomendamos ampliamente reservar con más de 30 días de anticipación, especialmente para temporadas altas (Semana Santa, Año Nuevo, puentes vacacionales). Sin embargo, en algunas ocasiones contamos con disponibilidad inmediata o de un día para otro; consúltalo con nuestros asesores.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Existe un mínimo de horas para el alquiler?</summary>
-        <div class="yz-faq-content">
-          <p>Sí, el mínimo de horas varía por destino:</p>
-          <ul>
-            <li><strong>Los Cabos:</strong> Desde 2 horas.</li>
-            <li><strong>Mazatlán y Playa del Carmen:</strong> Desde 3 horas.</li>
-            <li><strong>Vallarta y Cancún:</strong> Desde 4 horas.</li>
-            <li><strong>Acapulco:</strong> Desde 5 horas.</li>
-            <li><strong>Ixtapa y Huatulco:</strong> Desde 7 horas.</li>
-            <li><strong>La Paz:</strong> Desde 8 horas.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <!-- CATEGORÍA 2: POLÍTICAS Y REEMBOLSO -->
-    <div class="yz-faq-category">
-      <div class="yz-faq-category-header">
-        <span class="yz-faq-icon">🛡️</span>
-        <h3>2. Políticas de Cancelación y Reembolso</h3>
-      </div>
-      
-      <details class="yz-faq-item">
-        <summary>¿Qué pasa si necesito cancelar mi reservación?</summary>
-        <div class="yz-faq-content">
-          <p>No ofrecemos reembolsos por cancelaciones realizadas por el cliente con menos de 30 días de anticipación a la fecha reservada. Si cancelas con la debida anticipación, es posible dejar "congelado" el anticipo para un futuro viaje, sujeto a disponibilidad y destino.</p>
-        </div>
-      </details>
-      
-      <details class="yz-faq-item">
-        <summary>¿Qué sucede si hay mal clima o fallas mecánicas?</summary>
-        <div class="yz-faq-content">
-          <p>La navegación está sujeta a las indicaciones de la Capitanía de Puerto local. Si colocan bandera roja (puerto cerrado) por clima adverso o si ocurre alguna falla mecánica de último minuto en el yate, te ofreceremos de inmediato el reembolso total de tu anticipo o la opción de cambiar tu viaje de fecha.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- CATEGORÍA 3: DURANTE EL VIAJE -->
-    <div class="yz-faq-category">
-      <div class="yz-faq-category-header">
-        <span class="yz-faq-icon">🛥️</span>
-        <h3>3. Durante el Viaje</h3>
-      </div>
-      
-      <details class="yz-faq-item">
-        <summary>¿Cuántas personas pueden ir a bordo?</summary>
-        <div class="yz-faq-content">
-          <p>Cada embarcación tiene una capacidad máxima fijada por las autoridades navales que debe respetarse. Tenemos lanchas para grupos desde 6 personas hasta mega-yates o catamaranes para más de 40 invitados. Las tarifas por invitado adicional dependen del yate.</p>
-        </div>
-      </details>
-      
-      <details class="yz-faq-item">
-        <summary>¿Puedo llevar mi propia comida y bebidas a bordo?</summary>
-        <div class="yz-faq-content">
-          <p>¡Sí! Eres bienvenido a subir tus propios alimentos y bebidas. Además, la mayoría de nuestras embarcaciones ya incluyen hielera, hielo comestible y aguas/refrescos. Para una experiencia premium, en ciertos destinos (como Cancún y Playa del Carmen) ofrecemos paquetes "Todo Incluido" o el servicio de Chef Privado con costo adicional.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Los yates incluyen tripulación?</summary>
-        <div class="yz-faq-content">
-          <p>Sí, la renta de todas nuestras embarcaciones incluye un Capitán y Marinero capacitados y con amplia experiencia para garantizar tu seguridad y servirte de forma excelente en todo el itinerario. Conocen perfectamente la navegación marítima local.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Puedo celebrar un evento privado a bordo?</summary>
-        <div class="yz-faq-content">
-          <p>¡Por supuesto! Nos enorgullece ofrecer el escenario perfecto para despedidas de soltera/o, bodas, cumpleaños y eventos corporativos. Contáctanos con anticipación para gestionar alimentos, decoración, DJ o agrupaciones musicales (banda, norteño, mariachi).</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Qué equipo para deportes acuáticos se proporciona?</summary>
-        <div class="yz-faq-content">
-          <p>Dependiendo del yate, ofrecemos equipo para snorkel y flotadores (tapetes acuáticos / islas flotantes). Algunos incluyen kayaks, paddle boards, equipamiento de pesca o inflables. Las motos acuáticas (jet skis) de forma independiente usualmente tienen un costo adicional.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- CATEGORÍA 4: REGLAS Y RESTRICCIONES -->
-    <div class="yz-faq-category">
-      <div class="yz-faq-category-header">
-        <span class="yz-faq-icon">🚦</span>
-        <h3>4. Reglas, Seguridad y Restricciones</h3>
-      </div>
-      
-      <details class="yz-faq-item">
-        <summary>¿Se puede fumar a bordo del yate?</summary>
-        <div class="yz-faq-content">
-          <p>Sí, puedes fumar pero <strong>únicamente con precaución y en las áreas exteriores indicadas</strong> por la tripulación. Pide un cenicero para evitar multas por quemaduras en tapicería interior. Las sustancias ilícitas están estrictamente prohibidas y son motivo de cancelación sin reembolso.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Hay un código de vestimenta?</summary>
-        <div class="yz-faq-content">
-          <p>Trae tu ropa favorita de playa, gorras, gafas e indispensablemente <strong>bloqueador solar</strong>, toallas y pastillas para mareos si no tienes mucha experiencia en altamar.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Se requieren chalecos salvavidas para todos?</summary>
-        <div class="yz-faq-content">
-          <p>Sí, todas las embarcaciones cuentan con seguro de daños, botiquín de primeros auxilios, radios VHF y chalecos salvavidas certificados. Si viajas con niños menores, avísanos con antelación para asegurar que llevemos la talla correcta.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Se dejan propinas a la tripulación?</summary>
-        <div class="yz-faq-content">
-          <p>Los precios no incluyen la propina del equipo a bordo. Recomendamos llevar efectivo mexicano y considerar entre un 5% y un 10% del total de alquiler para gratificar el excelente servicio del Capitán y Marinero.</p>
-        </div>
-      </details>
-
-      <details class="yz-faq-item">
-        <summary>¿Existen áreas de navegación o playas restringidas?</summary>
-        <div class="yz-faq-content">
-          <p>En pro de proteger el ecosistema, existen restricciones por destino. Por ejemplo, en Cozumel y La Paz hay arrecifes o zonas de ballenas protegidas; y la Playa del Amor en Vallarta no permite el desembarque masivo desde yates estandar. Tu capitán respetará en todo momento las normativas de la Marina de México para un turismo ecológico.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- CALL TO ACTION (Aún tienes dudas) -->
-    <div class="yz-help-cta">
-      <h3>¿Aún tienes dudas sobre tu viaje?</h3>
-      <p>Nuestros expertos en turismo náutico están listos para ayudarte a planear las vacaciones de tus sueños en el mar.</p>
-      <div class="yz-help-cta-buttons">
-        <a href="https://api.whatsapp.com/send?phone=526691324073" class="yz-btn yz-btn-primary">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Escribir por WhatsApp
-        </a>
-        <a href="https://yatezzitos.com/contacto/" class="yz-btn yz-btn-secondary">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Ir a Contacto
-        </a>
-      </div>
-    </div>
-    
-  </div>
-</div>
-```
-
----
-
-## 2. Código CSS
-
-```css
-/* ==========================================================================
-   YATEZZITOS - HELP / FAQ PAGE STYLES
-   ========================================================================== */
-
-/* --- 1. Topografia y Variables Globales --- */
+<!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 1: HERO CON BUSCADOR
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── S1: Variables Globales ── */
 :root {
   --yz-primary: #0087a3;
   --yz-primary-dark: #006075;
   --yz-secondary: #002236;
   --yz-gold: #c3a152;
   --yz-gold-light: #e6c875;
+  --yz-white: #ffffff;
   --yz-gray-100: #f8fafc;
   --yz-gray-200: #e2e8f0;
   --yz-gray-500: #64748b;
   --yz-gray-800: #1e293b;
-  --yz-white: #ffffff;
-  
-  --yz-shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --yz-shadow-md: 0 4px 15px rgba(0,0,0,0.05);
-  --yz-shadow-hover: 0 10px 25px rgba(0,135,163,0.15);
-  
   --yz-radius-md: 12px;
   --yz-radius-lg: 24px;
-  
+  --yz-radius-full: 50px;
   --yz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --yz-shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --yz-shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+  --yz-shadow-lg: 0 15px 40px rgba(0,0,0,0.12);
 }
 
-/* Resetear estilos internos si es necesario */
-.yz-help-main p, .yz-help-main h1, .yz-help-main h2, .yz-help-main h3 {
-  margin: 0;
-  padding: 0;
-}
-
-/* --- 2. Hero Section (Similar a Contacto pero adaptado a Help) --- */
+/* ── S1: Hero ── */
 .yz-help-hero {
   position: relative;
   width: 100%;
-  height: 380px;
-  background-image: linear-gradient(rgba(0, 34, 54, 0.75), rgba(0, 34, 54, 0.85)), url('https://yatezzitos.com/wp-content/uploads/2026/03/contact-bg-placeholder.jpg'); /* Reemplazar con imagen real si existe */
-  background-color: var(--yz-secondary);
+  min-height: 520px;
+  background-image: linear-gradient(180deg, rgba(0,34,54,0.55) 0%, rgba(0,34,54,0.80) 100%),
+    url('https://yatezzitos.com/wp-content/uploads/2026/03/imagen-de-fondo-primera-seccion.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: -60px; /* Para que el contenido principal monte sobre el Hero */
-  z-index: 1;
+  padding: 80px 20px 100px;
+  box-sizing: border-box;
 }
 
 .yz-help-hero-content {
-  animation: yzFadeInUp 0.8s ease backwards;
-  max-width: 800px;
-  padding: 0 20px;
+  max-width: 720px;
+  animation: yzFadeUp 0.8s ease backwards;
 }
 
 .yz-help-hero-content h1 {
-  color: var(--yz-gold);
   font-family: 'DM Serif Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 5px;
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.yz-help-hero-content h2 {
   color: var(--yz-white);
-  font-family: 'Inter', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
+  font-size: 3.2rem;
+  font-weight: 400;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
 }
 
 .yz-help-hero-content p {
-  color: #e2e8f0;
   font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.8);
   font-size: 1.15rem;
   font-weight: 300;
+  margin: 0 0 40px;
+  line-height: 1.6;
 }
 
-/* --- 3. Main Container y Layout --- */
-.yz-help-main {
-  position: relative;
-  background-color: var(--yz-gray-100);
-  padding: 60px 20px 100px;
-  z-index: 2;
-  overflow: hidden; /* Evitar scroll x de elementos decorativos */
-}
-
-/* Decoraciones (Starfish/Shells) */
-.yz-decor {
-  position: absolute;
-  z-index: -1;
-  opacity: 0.15;
-  pointer-events: none;
-}
-.yz-help-decor-starfish {
-  top: 15%;
-  left: -5%;
-  width: 250px;
-  transform: rotate(15deg);
-}
-
-.yz-help-container {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 10;
-}
-
-/* --- 4. Categorías de FAQ --- */
-.yz-faq-category {
-  background: var(--yz-white);
-  border-radius: var(--yz-radius-lg);
-  padding: 40px;
-  margin-bottom: 40px;
-  box-shadow: var(--yz-shadow-md);
-  animation: yzFadeInUp 0.8s ease backwards;
-}
-
-/* Cascada de animación por cada bloque */
-.yz-faq-category:nth-child(1) { animation-delay: 0.1s; }
-.yz-faq-category:nth-child(2) { animation-delay: 0.2s; }
-.yz-faq-category:nth-child(3) { animation-delay: 0.3s; }
-.yz-faq-category:nth-child(4) { animation-delay: 0.4s; }
-
-.yz-faq-category-header {
+/* ── S1: Buscador ── */
+.yz-help-search {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  border-bottom: 2px solid var(--yz-gray-100);
-  padding-bottom: 15px;
+  background: var(--yz-white);
+  border-radius: var(--yz-radius-full);
+  padding: 6px 6px 6px 24px;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  animation: yzFadeUp 1s ease backwards 0.2s;
 }
 
-.yz-faq-icon {
-  font-size: 2rem;
-  /* Efecto moderno */
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+.yz-help-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--yz-gray-800);
+  background: transparent;
+  padding: 14px 0;
 }
 
-.yz-faq-category-header h3 {
-  color: var(--yz-secondary);
+.yz-help-search input::placeholder {
+  color: #94a3b8;
+}
+
+.yz-help-search button {
+  background: var(--yz-primary);
+  border: none;
+  border-radius: var(--yz-radius-full);
+  padding: 14px 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--yz-white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--yz-transition);
+}
+
+.yz-help-search button:hover {
+  background: var(--yz-primary-dark);
+  transform: scale(1.03);
+}
+
+.yz-help-search button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ── S1: Animaciones ── */
+@keyframes yzFadeUp {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── S1: Responsive ── */
+@media (max-width: 768px) {
+  .yz-help-hero {
+    min-height: 420px;
+    padding: 60px 16px 80px;
+  }
+  .yz-help-hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .yz-help-hero-content p {
+    font-size: 1rem;
+  }
+  .yz-help-search {
+    flex-direction: column;
+    border-radius: var(--yz-radius-md);
+    padding: 8px;
+    gap: 8px;
+  }
+  .yz-help-search input {
+    padding: 12px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .yz-help-search button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    border-radius: 10px;
+  }
+}
+</style>
+
+<div class="yz-help-hero">
+  <div class="yz-help-hero-content">
+    <h1>¿En qué podemos ayudarte?</h1>
+    <p>Encuentra respuestas rápidas sobre reservaciones, pagos, seguridad y todo lo que necesitas saber para tu experiencia en yate.</p>
+  </div>
+  <div class="yz-help-search">
+    <input type="text" placeholder="Buscar preguntas frecuentes..." id="yzFaqSearch">
+    <button type="button" onclick="document.getElementById('yz-faq-section').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      Buscar
+    </button>
+  </div>
+</div>
+```
+
+---
+
+## SECCIÓN 2 — Botones de Categorías
+
+```html
+<!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 2: BOTONES DE CATEGORÍAS
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── S2: Categorías Container ── */
+.yz-help-categories {
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(248,250,252,0.92) 0%, rgba(248,250,252,0.96) 100%),
+    url('https://yatezzitos.com/wp-content/uploads/2026/03/Fondo-de-perfil-segunda-seccion-ayuda.png');
+  background-size: cover;
+  background-position: center;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.yz-help-categories-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.yz-help-categories-inner h2 {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.8rem;
+  color: var(--yz-secondary);
+  font-size: 2rem;
   font-weight: 400;
-  line-margin: 0;
+  margin: 0 0 10px;
 }
 
-/* --- 5. Accordion (Detalles Nativo) --- */
+.yz-help-categories-inner .yz-cat-subtitle {
+  font-family: 'Inter', sans-serif;
+  color: var(--yz-gray-500);
+  font-size: 1.05rem;
+  margin: 0 0 40px;
+}
+
+/* ── S2: Grid de Botones ── */
+.yz-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.yz-cat-btn {
+  background: var(--yz-white);
+  border: 2px solid var(--yz-gray-200);
+  border-radius: var(--yz-radius-lg);
+  padding: 35px 20px 30px;
+  cursor: pointer;
+  transition: var(--yz-transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.yz-cat-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--yz-primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.yz-cat-btn:hover,
+.yz-cat-btn.active {
+  border-color: var(--yz-primary);
+  box-shadow: var(--yz-shadow-lg);
+  transform: translateY(-4px);
+}
+
+.yz-cat-btn:hover::after,
+.yz-cat-btn.active::after {
+  transform: scaleX(1);
+}
+
+.yz-cat-btn img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.yz-cat-btn:hover img {
+  transform: scale(1.1);
+}
+
+.yz-cat-btn span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--yz-secondary);
+  line-height: 1.3;
+}
+
+/* ── S2: Responsive ── */
+@media (max-width: 768px) {
+  .yz-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .yz-cat-btn {
+    padding: 25px 14px 22px;
+  }
+  .yz-cat-btn img {
+    width: 42px;
+    height: 42px;
+  }
+  .yz-cat-btn span {
+    font-size: 0.85rem;
+  }
+  .yz-help-categories {
+    padding: 50px 16px;
+  }
+}
+</style>
+
+<div class="yz-help-categories">
+  <div class="yz-help-categories-inner">
+    <h2>Explora por Categoría</h2>
+    <p class="yz-cat-subtitle">Selecciona un tema para ver las preguntas más relevantes</p>
+    <div class="yz-cat-grid">
+      <button class="yz-cat-btn active" onclick="yzFilterFaq('bookings')" data-cat="bookings">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-booking-ayuda.svg" alt="Reservaciones y Pagos">
+        <span>Reservaciones<br>y Pagos</span>
+      </button>
+      <button class="yz-cat-btn" onclick="yzFilterFaq('cancellations')" data-cat="cancellations">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Cancelaciones-Ayuda.svg" alt="Cancelaciones y Reembolsos">
+        <span>Cancelaciones<br>y Reembolsos</span>
+      </button>
+      <button class="yz-cat-btn" onclick="yzFilterFaq('safety')" data-cat="safety">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Safeti-Ayuda.svg" alt="Seguridad">
+        <span>Seguridad<br>y Protección</span>
+      </button>
+      <button class="yz-cat-btn" onclick="yzFilterFaq('vessel')" data-cat="vessel">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Vessel-Ayuda.svg" alt="Embarcación">
+        <span>Embarcación<br>y Equipamiento</span>
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## SECCIÓN 3 — Acordeón de Preguntas Frecuentes
+
+```html
+<!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 3: ACORDEÓN FAQ (filtrable por categoría)
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── S3: Container ── */
+.yz-faq-section {
+  background: var(--yz-gray-100);
+  padding: 70px 20px 80px;
+}
+
+.yz-faq-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.yz-faq-inner h2 {
+  font-family: 'DM Serif Display', serif;
+  color: var(--yz-secondary);
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+/* ── S3: Grupo de categoría ── */
+.yz-faq-group {
+  display: none;
+}
+.yz-faq-group.yz-faq-active {
+  display: block;
+  animation: yzFadeUp 0.5s ease;
+}
+
+.yz-faq-group-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--yz-primary);
+  margin: 0 0 20px;
+  padding-left: 4px;
+}
+
+/* ── S3: Accordion Items ── */
 .yz-faq-item {
-  margin-bottom: 15px;
+  background: var(--yz-white);
   border: 1px solid var(--yz-gray-200);
   border-radius: var(--yz-radius-md);
-  background-color: var(--yz-white);
-  transition: var(--yz-transition);
+  margin-bottom: 14px;
   overflow: hidden;
+  transition: var(--yz-transition);
 }
 
 .yz-faq-item:hover {
@@ -377,56 +402,49 @@ El contenido ha sido destilado y unificado para representar de forma magistral t
   box-shadow: var(--yz-shadow-sm);
 }
 
-/* Ocultar flecha nativa de Safari/Chrome */
-.yz-faq-item summary::-webkit-details-marker {
-  display: none;
-}
-.yz-faq-item summary {
-  list-style: none; /* Firefox */
-}
+/* Ocultar flecha nativa */
+.yz-faq-item summary::-webkit-details-marker { display: none; }
+.yz-faq-item summary { list-style: none; }
 
-/* Título de la pregunta */
 .yz-faq-item summary {
-  padding: 20px 25px;
+  padding: 20px 24px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--yz-secondary);
   cursor: pointer;
-  position: relative;
-  transition: var(--yz-transition);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  transition: var(--yz-transition);
 }
 
 .yz-faq-item summary:hover {
   color: var(--yz-primary);
-  background-color: rgba(0, 135, 163, 0.02);
 }
 
-/* Icono Plus / Minus personalizado via ::after */
+/* Icono +/- */
 .yz-faq-item summary::after {
   content: "+";
-  font-family: monospace; /* Para centro geométrico */
-  font-weight: 400;
-  font-size: 1.8rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.6rem;
   color: var(--yz-primary);
-  line-height: 1;
-  transition: transform 0.3s ease;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: var(--yz-gray-100);
+  background: var(--yz-gray-100);
+  transition: var(--yz-transition);
 }
 
-/* Estado abierto */
 .yz-faq-item[open] {
   border-color: var(--yz-primary);
-  box-shadow: 0 4px 10px rgba(0, 135, 163, 0.08);
+  box-shadow: 0 4px 12px rgba(0,135,163,0.1);
 }
 
 .yz-faq-item[open] summary {
@@ -435,189 +453,524 @@ El contenido ha sido destilado y unificado para representar de forma magistral t
 }
 
 .yz-faq-item[open] summary::after {
-  content: "−"; /* Menos */
-  background-color: var(--yz-primary);
+  content: "−";
+  background: var(--yz-primary);
   color: var(--yz-white);
-  transform: rotate(180deg);
 }
 
-/* Contenido de la respuesta (Dropdown) */
-.yz-faq-content {
-  padding: 20px 25px 25px;
+.yz-faq-answer {
+  padding: 20px 24px 24px;
   font-family: 'Inter', sans-serif;
   color: var(--yz-gray-500);
   font-size: 1rem;
-  line-height: 1.7;
-  animation: yzDropdown 0.4s ease forwards;
+  line-height: 1.75;
+  animation: yzSlideDown 0.35s ease;
 }
 
-.yz-faq-content p {
-  margin-bottom: 12px;
+.yz-faq-answer p {
+  margin: 0 0 10px;
 }
-.yz-faq-content p:last-child {
-  margin-bottom: 0;
-}
-.yz-faq-content ul {
+.yz-faq-answer p:last-child { margin-bottom: 0; }
+.yz-faq-answer ul {
   padding-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin: 8px 0 0;
 }
-.yz-faq-content li {
-  margin-bottom: 8px;
-}
-.yz-faq-content strong {
-  color: var(--yz-secondary);
+.yz-faq-answer li { margin-bottom: 6px; }
+.yz-faq-answer strong { color: var(--yz-secondary); }
+
+@keyframes yzSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- 6. Call to Action (Aún tienes dudas) --- */
+/* ── S3: Responsive ── */
+@media (max-width: 768px) {
+  .yz-faq-section { padding: 50px 16px 60px; }
+  .yz-faq-item summary { font-size: 0.95rem; padding: 16px 18px; }
+  .yz-faq-answer { padding: 16px 18px 20px; font-size: 0.95rem; }
+  .yz-faq-item summary::after { width: 30px; height: 30px; min-width: 30px; font-size: 1.3rem; }
+}
+</style>
+
+<div class="yz-faq-section" id="yz-faq-section">
+  <div class="yz-faq-inner">
+    <h2>Preguntas Frecuentes</h2>
+
+    <!-- ── GRUPO: BOOKINGS ── -->
+    <div class="yz-faq-group yz-faq-active" data-group="bookings">
+      <p class="yz-faq-group-title">Reservaciones y Pagos</p>
+
+      <details class="yz-faq-item">
+        <summary>¿Cómo es el proceso para reservar un yate?</summary>
+        <div class="yz-faq-answer">
+          <p>Selecciona tu destino favorito en <strong>yatezzitos.com</strong> (Mazatlán, Vallarta, Cancún, La Paz, Los Cabos, Acapulco, Playa del Carmen, Huatulco o Ixtapa Zihuatanejo), elige la embarcación de tu preferencia y haz clic en <strong>"Solicitar Cotización"</strong>. Llena el formulario con la fecha, tipo de viaje y horario. Nuestro equipo te enviará una cotización detallada en menos de 48 horas. Una vez aceptada, confirma tu reserva realizando un anticipo del 50%.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Cuáles son los métodos de pago aceptados?</summary>
+        <div class="yz-faq-answer">
+          <p>Aceptamos <strong>transferencias bancarias y efectivo</strong> (depósito directo o en el muelle) sin comisiones adicionales. También puedes pagar con tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y Criptomonedas (Bitcoin, USDT) con un cargo adicional del 5%.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Se requiere un depósito o anticipo para apartar la fecha?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, es indispensable un <strong>anticipo del 50%</strong> del costo total para poder bloquear la fecha y el horario en la embarcación seleccionada.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Con cuánta anticipación necesito reservar?</summary>
+        <div class="yz-faq-answer">
+          <p>Recomendamos ampliamente reservar con <strong>más de 30 días de anticipación</strong>, especialmente para temporadas altas (Semana Santa, Año Nuevo, puentes vacacionales). Sin embargo, en algunas ocasiones contamos con disponibilidad inmediata; consúltalo con nuestros asesores.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Existe un mínimo de horas para el alquiler?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, el mínimo varía por destino:</p>
+          <ul>
+            <li><strong>Los Cabos:</strong> Desde 2 horas</li>
+            <li><strong>Mazatlán y Playa del Carmen:</strong> Desde 3 horas</li>
+            <li><strong>Vallarta y Cancún:</strong> Desde 4 horas</li>
+            <li><strong>Acapulco:</strong> Desde 5 horas</li>
+            <li><strong>Ixtapa y Huatulco:</strong> Desde 7 horas</li>
+            <li><strong>La Paz:</strong> Desde 8 horas</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué incluyen los paquetes todo incluido?</summary>
+        <div class="yz-faq-answer">
+          <p>Los paquetes todo incluido (disponibles en destinos selectos como Cancún y Playa del Carmen) incluyen <strong>barra de bebidas nacional, snacks, hielo, aguas, refrescos, equipo de snorkel y flotadores</strong>. Algunos yates premium también ofrecen el servicio de Chef Privado a Bordo y mixología con costo adicional.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo extender mi aventura reservando más horas una vez a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>¡Sí! Sujeto a disponibilidad de la embarcación y la tripulación, puedes solicitar directamente al capitán una <strong>extensión de horas</strong>. El costo adicional se acuerda en ese instante y se paga antes de continuar la navegación.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── GRUPO: CANCELLATIONS ── -->
+    <div class="yz-faq-group" data-group="cancellations">
+      <p class="yz-faq-group-title">Cancelaciones y Reembolsos</p>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué pasa si necesito cancelar mi reservación?</summary>
+        <div class="yz-faq-answer">
+          <p>No ofrecemos reembolsos por cancelaciones realizadas por el cliente con <strong>menos de 30 días de anticipación</strong>. Si cancelas con la debida anticipación, es posible dejar "congelado" el anticipo para un futuro viaje, sujeto a disponibilidad.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué sucede si hay mal clima o fallas mecánicas?</summary>
+        <div class="yz-faq-answer">
+          <p>La navegación está sujeta a la Capitanía de Puerto local. Si colocan <strong>bandera roja</strong> (puerto cerrado) o si ocurre una falla mecánica, te ofreceremos el <strong>reembolso total</strong> de tu anticipo o la opción de cambiar la fecha de tu viaje.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo modificar la fecha o destino de mi reservación?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, puedes modificar la fecha de tu viaje <strong>con al menos 15 días de anticipación</strong>, sujeto a disponibilidad de la embarcación. El cambio de destino también es posible pero requiere coordinación con nuestro equipo ya que cada puerto tiene flotas distintas. Contáctanos para reprogramar.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué pasa si recibo un mal servicio?</summary>
+        <div class="yz-faq-answer">
+          <p>Tu satisfacción es nuestra prioridad. Si consideras que la experiencia no cumplió con lo acordado, <strong>contáctanos en las siguientes 48 horas</strong> con una descripción de la situación. Nuestro equipo evaluará tu caso y buscará la mejor solución, que puede incluir un descuento en tu próxima reservación o una compensación parcial.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo congelar mi anticipo para una fecha futura?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, si cancelas con <strong>más de 30 días de anticipación</strong>, tu anticipo puede quedar congelado para reprogramar tu viaje dentro de los siguientes 6 meses, sujeto a disponibilidad y destino.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué sucede si accidentalmente se daña la embarcación?</summary>
+        <div class="yz-faq-answer">
+          <p>Todas nuestras embarcaciones cuentan con <strong>seguro de daños</strong>. Sin embargo, los daños causados por negligencia, uso indebido o bajo la influencia de sustancias son responsabilidad del arrendatario. El capitán documentará cualquier incidente y se evaluará caso por caso.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Cómo se manejan las emergencias médicas a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>Todas las embarcaciones cuentan con <strong>botiquín de primeros auxilios</strong> y radios VHF de comunicación con la Marina. El capitán está capacitado para manejar situaciones de emergencia y coordinar con los servicios de rescate locales. Si tienes alguna condición médica, infórmalo antes de abordar.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── GRUPO: SAFETY ── -->
+    <div class="yz-faq-group" data-group="safety">
+      <p class="yz-faq-group-title">Seguridad y Protección</p>
+
+      <details class="yz-faq-item">
+        <summary>¿Se requieren chalecos salvavidas para todos?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, todas las embarcaciones cuentan con <strong>chalecos salvavidas certificados</strong> para todos los pasajeros. Si viajas con niños menores, avísanos con antelación para asegurar la talla correcta.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Las embarcaciones cuentan con seguro de daños?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, todas nuestras embarcaciones cuentan con <strong>seguro vigente contra daños</strong>, además de botiquín de primeros auxilios y equipos de comunicación certificados por las autoridades marítimas mexicanas.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo contratar el servicio si soy menor de edad?</summary>
+        <div class="yz-faq-answer">
+          <p>No, el contrato de alquiler debe ser firmado por un <strong>adulto mayor de 18 años</strong>. Los menores de edad pueden abordar sin problema, siempre acompañados de un adulto responsable y con chalecos salvavidas de su talla.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Existen áreas de navegación restringidas?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, existen restricciones por destino para proteger el ecosistema. Por ejemplo, en <strong>Cozumel y La Paz</strong> hay arrecifes y zonas de ballenas protegidas, y la <strong>Playa del Amor en Vallarta</strong> (Islas Marietas) no permite desembarque directo desde yates privados. Tu capitán respetará todas las normativas de la Marina de México.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Se puede fumar a bordo del yate?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, puedes fumar pero <strong>únicamente en las áreas exteriores</strong> indicadas por la tripulación. Solicita un cenicero para evitar quemaduras en la tapicería. Las sustancias ilícitas están estrictamente prohibidas y son motivo de cancelación inmediata sin reembolso.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué protocolos de limpieza y sanidad se siguen?</summary>
+        <div class="yz-faq-answer">
+          <p>Cada embarcación es <strong>sanitizada y limpiada profesionalmente</strong> antes y después de cada viaje. Se revisan todas las áreas comunes, el equipo de snorkel, flotadores, baños y cocina. Cumplimos con los estándares de higiene establecidos por las autoridades marítimas locales.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Se dejan propinas a la tripulación?</summary>
+        <div class="yz-faq-answer">
+          <p>Los precios no incluyen propina. Recomendamos llevar <strong>efectivo mexicano</strong> y considerar entre un <strong>5% y 10%</strong> del total del alquiler para gratificar el servicio del Capitán y Marinero.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ── GRUPO: VESSEL ── -->
+    <div class="yz-faq-group" data-group="vessel">
+      <p class="yz-faq-group-title">Embarcación y Equipamiento</p>
+
+      <details class="yz-faq-item">
+        <summary>¿Cuántas personas pueden ir a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>Cada embarcación tiene una <strong>capacidad máxima</strong> fijada por las autoridades navales. Contamos con lanchas desde <strong>6 personas</strong> hasta mega-yates y catamaranes para <strong>más de 40 invitados</strong>.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo llevar mi propia comida y bebidas a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>¡Sí! Eres bienvenido a subir tus alimentos y bebidas. La mayoría de nuestras embarcaciones ya incluyen <strong>hielera, hielo comestible y aguas/refrescos</strong>. Para una experiencia premium ofrecemos paquetes "Todo Incluido" o servicio de Chef Privado con costo adicional.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Los yates incluyen tripulación?</summary>
+        <div class="yz-faq-answer">
+          <p>Sí, todas las rentas incluyen un <strong>Capitán y Marinero</strong> capacitados con amplia experiencia para garantizar tu seguridad y brindarte un servicio excelente durante todo el itinerario.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Qué equipo para deportes acuáticos se proporciona?</summary>
+        <div class="yz-faq-answer">
+          <p>Dependiendo del yate, ofrecemos equipo de <strong>snorkel, tapetes acuáticos (islas flotantes), kayaks, paddle boards</strong> y equipamiento de pesca. Las motos acuáticas (jet skis) usualmente tienen un costo adicional independiente.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Puedo celebrar un evento privado a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>¡Por supuesto! Ofrecemos el escenario perfecto para <strong>despedidas de soltera/o, bodas, cumpleaños y eventos corporativos</strong>. Contáctanos con anticipación para gestionar alimentos, decoración, DJ o agrupaciones musicales (banda, mariachi, norteño).</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Se ofrecen opciones de catering o chef a bordo?</summary>
+        <div class="yz-faq-answer">
+          <p>En destinos selectos como <strong>Cancún y Playa del Carmen</strong>, ofrecemos servicio de Chef Privado a Bordo y barra de mixología preparada. También hay menús personalizado para eventos especiales. Consulta con nuestros asesores para conocer la disponibilidad y costos en tu destino.</p>
+        </div>
+      </details>
+
+      <details class="yz-faq-item">
+        <summary>¿Hay un código de vestimenta o qué recomiendan llevar?</summary>
+        <div class="yz-faq-answer">
+          <p>Trae ropa de playa, gorras y gafas. Es obligatorio llevar <strong>bloqueador solar</strong> y toallas. Si no tienes mucha experiencia en altamar, te recomendamos <strong>pastillas para mareos</strong>. Lleva efectivo (pesos mexicanos) para propinas y actividades extras en la playa.</p>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── S3: JavaScript para filtrar categorías ── -->
+<script>
+function yzFilterFaq(cat) {
+  // Actualizar botones activos
+  document.querySelectorAll('.yz-cat-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+    if (btn.getAttribute('data-cat') === cat) btn.classList.add('active');
+  });
+  // Mostrar/ocultar grupos
+  document.querySelectorAll('.yz-faq-group').forEach(function(g) {
+    g.classList.remove('yz-faq-active');
+    if (g.getAttribute('data-group') === cat) g.classList.add('yz-faq-active');
+  });
+  // Cerrar todos los details abiertos
+  document.querySelectorAll('.yz-faq-item[open]').forEach(function(d) { d.removeAttribute('open'); });
+  // Scroll suave a la sección
+  document.getElementById('yz-faq-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+```
+
+---
+
+## SECCIÓN 4 — CTA con Equipo
+
+```html
+<!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 4: CTA CON FOTO DEL EQUIPO
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── S4: CTA Section ── */
 .yz-help-cta {
   background: var(--yz-secondary);
-  border-radius: var(--yz-radius-lg);
-  padding: 50px 40px;
-  text-align: center;
-  margin-top: 60px;
-  box-shadow: 0 20px 40px rgba(0,34,54,0.2);
+  padding: 80px 20px;
   position: relative;
   overflow: hidden;
-  animation: yzFadeInUp 1s ease backwards;
 }
 
-/* Fondo decorativo CSS sutil */
+/* Decoración sutil */
 .yz-help-cta::before {
   content: '';
   position: absolute;
-  top: -50%; right: -10%;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, var(--yz-gold-light) 0%, transparent 70%);
-  opacity: 0.1;
+  top: -120px; right: -80px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(195,161,82,0.12) 0%, transparent 70%);
   border-radius: 50%;
 }
 
-.yz-help-cta h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.2rem;
-  color: var(--yz-white);
-  margin-bottom: 15px;
-}
-
-.yz-help-cta p {
-  color: #a0aec0;
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 30px;
-}
-
-.yz-help-cta-buttons {
+.yz-help-cta-inner {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap; /* Para móviles */
+  align-items: center;
+  gap: 60px;
 }
 
-/* Botones reutilizables (Mismo estilo que contacto) */
-.yz-btn {
+/* Imagen del equipo */
+.yz-help-cta-img {
+  flex: 0 0 340px;
+  animation: yzFadeUp 0.8s ease backwards;
+}
+
+.yz-help-cta-img img {
+  width: 100%;
+  border-radius: var(--yz-radius-lg);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* Texto */
+.yz-help-cta-text {
+  flex: 1;
+  animation: yzFadeUp 0.8s ease backwards 0.15s;
+}
+
+.yz-help-cta-text h2 {
+  font-family: 'DM Serif Display', serif;
+  color: var(--yz-white);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.yz-help-cta-text p {
+  font-family: 'Inter', sans-serif;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+
+/* Botón CTA */
+.yz-cta-button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px 32px;
-  border-radius: 50px;
+  gap: 12px;
+  background: var(--yz-primary);
+  color: var(--yz-white);
+  padding: 16px 36px;
+  border-radius: var(--yz-radius-full);
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   text-decoration: none;
-  cursor: pointer;
   transition: var(--yz-transition);
-  border: none;
+  box-shadow: 0 6px 20px rgba(0,135,163,0.35);
 }
 
-.yz-btn svg {
-  transition: transform 0.3s ease;
+.yz-cta-button img {
+  width: 26px;
+  height: 26px;
 }
 
-.yz-btn:hover svg {
-  transform: scale(1.1);
-}
-
-.yz-btn-primary {
-  background-color: var(--yz-primary);
-  color: var(--yz-white);
-  box-shadow: 0 4px 15px rgba(0, 135, 163, 0.3);
-}
-
-.yz-btn-primary:hover {
-  background-color: var(--yz-primary-dark);
-  box-shadow: 0 6px 20px rgba(0, 135, 163, 0.4);
-  transform: translateY(-2px);
+.yz-cta-button:hover {
+  background: var(--yz-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,135,163,0.45);
   color: white;
 }
 
-.yz-btn-secondary {
-  background-color: transparent;
-  color: var(--yz-white);
-  border: 2px solid var(--yz-gold);
-}
-
-.yz-btn-secondary:hover {
-  background-color: var(--yz-gold);
-  color: var(--yz-secondary);
-  transform: translateY(-2px);
-}
-
-/* --- 7. Animaciones --- */
-@keyframes yzFadeInUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes yzDropdown {
-  0% { opacity: 0; transform: translateY(-10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 8. Responsive / Mobile --- */
-@media (max-width: 992px) {
-  .yz-help-hero {
-    height: 320px;
-  }
-  .yz-help-hero-content h1 {
-    font-size: 2rem;
-  }
-  .yz-help-hero-content h2 {
-    font-size: 2.4rem;
-  }
-  .yz-faq-category {
-    padding: 30px 20px;
-  }
-  .yz-help-cta {
-    padding: 40px 20px;
-  }
-}
-
+/* ── S4: Responsive ── */
 @media (max-width: 768px) {
-  .yz-help-hero {
-    height: 300px;
-    margin-bottom: -40px;
+  .yz-help-cta { padding: 50px 16px; }
+  .yz-help-cta-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
   }
-  .yz-help-hero-content h1 {
-    font-size: 1.8rem;
-  }
-  .yz-help-hero-content h2 {
-    font-size: 2rem;
-  }
-  .yz-faq-item summary {
-    font-size: 1rem;
-    padding: 15px 20px;
-  }
-  .yz-faq-category-header h3 {
-    font-size: 1.5rem;
-  }
-  .yz-btn {
-    width: 100%; /* Botones bloque 100% en celular */
-  }
-  .yz-faq-content {
-    padding: 15px 20px 20px;
-  }
+  .yz-help-cta-img { flex: none; max-width: 280px; margin: 0 auto; }
+  .yz-help-cta-text h2 { font-size: 1.8rem; }
+  .yz-help-cta-text p { font-size: 1rem; }
+  .yz-cta-button { width: 100%; justify-content: center; }
 }
+</style>
+
+<div class="yz-help-cta">
+  <div class="yz-help-cta-inner">
+    <div class="yz-help-cta-img">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
+    </div>
+    <div class="yz-help-cta-text">
+      <h2>¿No encuentras lo que buscas?</h2>
+      <p>Nuestro equipo de expertos en turismo náutico está listo para ayudarte a planear las vacaciones de tus sueños en el mar. Responderemos tu mensaje en menos de 24 horas.</p>
+      <a href="https://api.whatsapp.com/send?phone=526691324073" class="yz-cta-button" target="_blank" rel="noopener">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-boton-cta-pag-ayuda.svg" alt="Salvavidas">
+        Contáctanos ahora
+      </a>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## SECCIÓN 5 — Bloques Informativos
+
+```html
+<!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 5: BLOQUES INFORMATIVOS (3 tarjetas)
+     ═══════════════════════════════════════════════════════════ -->
+<style>
+/* ── S5: Info Blocks ── */
+.yz-help-info {
+  background: var(--yz-white);
+  padding: 80px 20px;
+}
+
+.yz-help-info-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.yz-info-card {
+  background: var(--yz-gray-100);
+  border-radius: var(--yz-radius-lg);
+  padding: 40px 30px;
+  text-align: center;
+  transition: var(--yz-transition);
+  border: 1px solid transparent;
+}
+
+.yz-info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--yz-shadow-lg);
+  border-color: var(--yz-gray-200);
+}
+
+.yz-info-card-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 22px;
+  display: block;
+  object-fit: contain;
+}
+
+.yz-info-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--yz-secondary);
+  margin: 0 0 10px;
+  line-height: 1.4;
+}
+
+.yz-info-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: var(--yz-gray-500);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── S5: Responsive ── */
+@media (max-width: 768px) {
+  .yz-help-info { padding: 50px 16px; }
+  .yz-help-info-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .yz-info-card { padding: 30px 24px; }
+  .yz-info-card-icon { width: 56px; height: 56px; }
+}
+</style>
+
+<div class="yz-help-info">
+  <div class="yz-help-info-inner">
+
+    <div class="yz-info-card">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Confirm-with-your-captain-24-hours-in-advance.png" alt="Confirma con tu capitán" class="yz-info-card-icon">
+      <h3>Confirm with your captain 24 hours in advance</h3>
+      <p>Confirma los detalles de tu viaje directamente con el capitán asignado al menos 24 horas antes de zarpar.</p>
+    </div>
+
+    <div class="yz-info-card">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Your-payment-is-protected-by-Stripe.png" alt="Pago protegido por Stripe" class="yz-info-card-icon">
+      <h3>Your payment is protected by Stripe</h3>
+      <p>Tus datos de pago están 100% protegidos con la tecnología de encriptación de Stripe, el líder mundial en pagos seguros.</p>
+    </div>
+
+    <div class="yz-info-card">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-Book-more-than-30-days-in-advance-for-the-best-selection.png" alt="Reserva con 30 días de anticipación" class="yz-info-card-icon">
+      <h3>Book more than 30 days in advance for the best selection</h3>
+      <p>Reservar con anticipación te garantiza la mejor disponibilidad de embarcaciones y los mejores precios de temporada.</p>
+    </div>
+
+  </div>
+</div>
 ```
