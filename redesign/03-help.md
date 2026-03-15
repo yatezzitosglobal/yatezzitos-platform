@@ -332,13 +332,14 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 }
 </style>
 
-<div class="yz-faq-section" id="yz-faq-section">
+<div class="yz-faq-cta-section" id="yz-faq-section">
+
+  <!-- ── FAQ Accordion ── -->
   <div class="yz-faq-inner">
-    <h2>Preguntas Frecuentes</h2>
 
     <!-- ── GRUPO: BOOKINGS ── -->
     <div class="yz-faq-group yz-faq-active" data-group="bookings">
-      <p class="yz-faq-group-title">Reservaciones y Pagos</p>
+      <h2 class="yz-faq-group-title">Bookings &amp; Payments</h2>
       <details class="yz-faq-item"><summary>¿Cómo es el proceso para reservar un yate?</summary><div class="yz-faq-answer"><p>Selecciona tu destino favorito en <strong>yatezzitos.com</strong>, elige la embarcación de tu preferencia y haz clic en <strong>"Solicitar Cotización"</strong>. Llena el formulario con la fecha, tipo de viaje y horario. Nuestro equipo te enviará una cotización detallada en menos de 48 horas. Una vez aceptada, confirma tu reserva realizando un anticipo del 50%.</p></div></details>
       <details class="yz-faq-item"><summary>¿Cuáles son los métodos de pago aceptados?</summary><div class="yz-faq-answer"><p>Aceptamos <strong>transferencias bancarias y efectivo</strong> sin comisiones adicionales. También tarjetas de crédito/débito (Visa, Mastercard, Amex), PayPal y Criptomonedas (Bitcoin, USDT) con un cargo adicional del 5%.</p></div></details>
       <details class="yz-faq-item"><summary>¿Se requiere un depósito o anticipo para apartar la fecha?</summary><div class="yz-faq-answer"><p>Sí, es indispensable un <strong>anticipo del 50%</strong> del costo total para poder bloquear la fecha y el horario en la embarcación seleccionada.</p></div></details>
@@ -350,7 +351,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: CANCELLATIONS ── -->
     <div class="yz-faq-group" data-group="cancellations">
-      <p class="yz-faq-group-title">Cancelaciones y Reembolsos</p>
+      <h2 class="yz-faq-group-title">Cancellations &amp; Changes</h2>
       <details class="yz-faq-item"><summary>¿Qué pasa si necesito cancelar mi reservación?</summary><div class="yz-faq-answer"><p>No ofrecemos reembolsos por cancelaciones con <strong>menos de 30 días de anticipación</strong>. Si cancelas a tiempo, es posible "congelar" el anticipo para un futuro viaje.</p></div></details>
       <details class="yz-faq-item"><summary>¿Qué sucede si hay mal clima o fallas mecánicas?</summary><div class="yz-faq-answer"><p>Si se coloca <strong>bandera roja</strong> o hay una falla mecánica, te ofreceremos el <strong>reembolso total</strong> de tu anticipo o la opción de cambiar la fecha.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo modificar la fecha o destino de mi reservación?</summary><div class="yz-faq-answer"><p>Sí, con al menos <strong>15 días de anticipación</strong>, sujeto a disponibilidad. Contáctanos para reprogramar.</p></div></details>
@@ -362,7 +363,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: SAFETY ── -->
     <div class="yz-faq-group" data-group="safety">
-      <p class="yz-faq-group-title">Seguridad y Protección</p>
+      <h2 class="yz-faq-group-title">Safety &amp; Insurance</h2>
       <details class="yz-faq-item"><summary>¿Se requieren chalecos salvavidas para todos?</summary><div class="yz-faq-answer"><p>Sí, todas las embarcaciones cuentan con <strong>chalecos salvavidas certificados</strong>. Si viajas con niños, avísanos para la talla correcta.</p></div></details>
       <details class="yz-faq-item"><summary>¿Las embarcaciones cuentan con seguro de daños?</summary><div class="yz-faq-answer"><p>Sí, todas cuentan con <strong>seguro vigente</strong>, botiquín y equipos de comunicación certificados.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo contratar el servicio si soy menor de edad?</summary><div class="yz-faq-answer"><p>No, el contrato debe ser firmado por un <strong>adulto mayor de 18 años</strong>. Los menores pueden abordar acompañados.</p></div></details>
@@ -374,7 +375,7 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
 
     <!-- ── GRUPO: VESSEL ── -->
     <div class="yz-faq-group" data-group="vessel">
-      <p class="yz-faq-group-title">Embarcación y Equipamiento</p>
+      <h2 class="yz-faq-group-title">Vessels &amp; Services</h2>
       <details class="yz-faq-item"><summary>¿Cuántas personas pueden ir a bordo?</summary><div class="yz-faq-answer"><p>Desde <strong>6 personas</strong> en lanchas hasta <strong>más de 40 invitados</strong> en mega-yates y catamaranes.</p></div></details>
       <details class="yz-faq-item"><summary>¿Puedo llevar mi propia comida y bebidas a bordo?</summary><div class="yz-faq-answer"><p>¡Sí! La mayoría de embarcaciones incluyen <strong>hielera, hielo y aguas/refrescos</strong>. También ofrecemos paquetes premium.</p></div></details>
       <details class="yz-faq-item"><summary>¿Los yates incluyen tripulación?</summary><div class="yz-faq-answer"><p>Sí, todas las rentas incluyen un <strong>Capitán y Marinero</strong> capacitados.</p></div></details>
@@ -383,7 +384,27 @@ La imagen de fondo de playa abarca todo: preguntas frecuentes arriba y tarjeta C
       <details class="yz-faq-item"><summary>¿Se ofrecen opciones de catering o chef a bordo?</summary><div class="yz-faq-answer"><p>En destinos selectos ofrecemos <strong>Chef Privado a Bordo</strong> y barra de mixología con costo adicional.</p></div></details>
       <details class="yz-faq-item"><summary>¿Hay un código de vestimenta?</summary><div class="yz-faq-answer"><p>Ropa de playa, <strong>bloqueador solar</strong> obligatorio, toallas y pastillas para mareos si eres principiante.</p></div></details>
     </div>
+
   </div>
+
+  <!-- ── CTA Equipo (tarjeta oscura dentro de la playa) ── -->
+  <div class="yz-cta-card">
+    <div class="yz-cta-card-img">
+      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
+    </div>
+    <div class="yz-cta-card-text">
+      <h2>¿No encuentras lo que buscas?</h2>
+      <p>Nuestro equipo de expertos en turismo náutico está listo para ayudarte a planear las vacaciones de tus sueños en el mar. Responderemos tu mensaje en menos de 24 horas.</p>
+      <a href="https://api.whatsapp.com/send?phone=526691324073" class="yz-cta-card-btn" target="_blank" rel="noopener">
+        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-boton-cta-pag-ayuda.svg" alt="Salvavidas">
+        Contáctanos ahora
+      </a>
+    </div>
+  </div>
+
+  <!-- Espacio inferior playa -->
+  <div class="yz-faq-cta-bottom"></div>
+
 </div>
 
 <!-- ── JavaScript: filtrar categorías + scroll indicator ── -->
@@ -427,81 +448,11 @@ function yzFilterFaq(cat) {
 
 ---
 
-## SECCIÓN 3 — CTA con Equipo
+## SECCIÓN 3 — Bloques Informativos
 
 ```html
 <!-- ═══════════════════════════════════════════════════════════
-     SECCIÓN 3: CTA CON FOTO DEL EQUIPO
-     ═══════════════════════════════════════════════════════════ -->
-<style>
-.yz-help-cta {
-  background: var(--yz-secondary); padding: 80px 20px; position: relative; overflow: hidden;
-}
-.yz-help-cta::before {
-  content: ''; position: absolute; top: -120px; right: -80px;
-  width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(195,161,82,0.12) 0%, transparent 70%);
-  border-radius: 50%;
-}
-.yz-help-cta-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
-.yz-help-cta-img { flex: 0 0 340px; }
-.yz-help-cta-img img { width: 100%; border-radius: var(--yz-radius-lg); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-.yz-help-cta-text { flex: 1; }
-.yz-help-cta-text h2 {
-  font-family: 'DM Serif Display', serif; color: var(--yz-white);
-  font-size: 2.4rem; font-weight: 400; margin: 0 0 16px; line-height: 1.2;
-}
-.yz-help-cta-text p {
-  font-family: 'Inter', sans-serif; color: #94a3b8;
-  font-size: 1.1rem; line-height: 1.7; margin: 0 0 32px;
-}
-.yz-cta-button {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--yz-primary); color: var(--yz-white); padding: 16px 36px;
-  border-radius: var(--yz-radius-full); font-family: 'Inter', sans-serif;
-  font-weight: 600; font-size: 1.05rem; text-decoration: none;
-  transition: var(--yz-transition); box-shadow: 0 6px 20px rgba(0,135,163,0.35);
-}
-.yz-cta-button img { width: 26px; height: 26px; }
-.yz-cta-button:hover {
-  background: var(--yz-primary-dark); transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,135,163,0.45); color: white;
-}
-
-@media (max-width: 768px) {
-  .yz-help-cta { padding: 50px 16px; }
-  .yz-help-cta-inner { flex-direction: column; text-align: center; gap: 30px; }
-  .yz-help-cta-img { flex: none; max-width: 280px; margin: 0 auto; }
-  .yz-help-cta-text h2 { font-size: 1.8rem; }
-  .yz-help-cta-text p { font-size: 1rem; }
-  .yz-cta-button { width: 100%; justify-content: center; }
-}
-</style>
-
-<div class="yz-help-cta">
-  <div class="yz-help-cta-inner">
-    <div class="yz-help-cta-img">
-      <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-equipo-ayuda-seccion-.png" alt="Equipo Yatezzitos - Expertos en renta de yates">
-    </div>
-    <div class="yz-help-cta-text">
-      <h2>¿No encuentras lo que buscas?</h2>
-      <p>Nuestro equipo de expertos en turismo náutico está listo para ayudarte a planear las vacaciones de tus sueños en el mar. Responderemos tu mensaje en menos de 24 horas.</p>
-      <a href="https://api.whatsapp.com/send?phone=526691324073" class="yz-cta-button" target="_blank" rel="noopener">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Icono-boton-cta-pag-ayuda.svg" alt="Salvavidas">
-        Contáctanos ahora
-      </a>
-    </div>
-  </div>
-</div>
-```
-
----
-
-## SECCIÓN 4 — Bloques Informativos
-
-```html
-<!-- ═══════════════════════════════════════════════════════════
-     SECCIÓN 4: BLOQUES INFORMATIVOS (3 tarjetas)
+     SECCIÓN 3: BLOQUES INFORMATIVOS (3 tarjetas)
      ═══════════════════════════════════════════════════════════ -->
 <style>
 .yz-help-info { background: var(--yz-white); padding: 80px 20px; }
