@@ -469,16 +469,16 @@ Inserta este código en **Pestaña Avanzado > Custom CSS** de Elementor o donde 
   
   /* FORZAR DESDE TABLET PARA EVITAR DESBORDAMIENTOS (SCROLL HORIZONTAL) */
   .yz-form-row {
-    display: flex !important;
-    flex-direction: column !important; 
-    gap: 20px !important;
+    display: block !important;
     width: 100% !important;
+    margin-bottom: 0 !important;
   }
 
   .yz-input-group {
-    flex: 1 1 100% !important;
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
+    margin-bottom: 20px !important;
   }
 
   .yz-decor-starfish {
