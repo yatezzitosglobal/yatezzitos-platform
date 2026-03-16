@@ -8,32 +8,57 @@ Estas reglas se aplican SIEMPRE que se cree o edite un artículo de blog.
 
 ## 1. Palabra clave de enfoque (Focus Keyword)
 
-- La **frase clave** debe tener **mínimo 6 menciones** distribuidas en distintos párrafos del texto.
-- La frase clave debe mencionarse **tal cual está escrita** (exactamente igual) en los 3 lugares obligatorios:
-  1. **Título SEO** — Debe **empezar** con la frase clave exacta.
-  2. **Meta descripción** — Debe **empezar** con la frase clave exacta.
-  3. **Slug (URL)** — Debe **empezar** con la frase clave exacta (en formato slug con guiones).
+### Ubicación obligatoria (al INICIO)
+La frase clave debe mencionarse **tal cual está escrita** y debe **empezar** en estos 3 lugares:
+1. **Título SEO** — Empieza con la frase clave exacta.
+2. **Meta descripción** — Empieza con la frase clave exacta.
+3. **Slug (URL)** — Empieza con la frase clave exacta (formato slug con guiones).
 
 ### Ejemplo:
 Si la frase clave es `yates los cabos`:
-- ✅ Título SEO: `Yates Los Cabos: renta de yates privados y lanchas de lujo`
-- ✅ Meta descripción: `Yates Los Cabos para rentar. Catálogo completo con precios...`
+- ✅ Título SEO: `Yates Los Cabos: renta privada y lanchas de lujo`
+- ✅ Meta descripción: `Yates Los Cabos para rentar. Catálogo completo...`
 - ✅ Slug: `yates-los-cabos-renta-privada`
-- ❌ Título SEO: `Renta de Yates Los Cabos` (la keyword no está al inicio)
+- ❌ Título SEO: `Renta de Yates Los Cabos` (keyword no está al inicio)
 
-## 2. Títulos H2
+## 2. Densidad de keyword — Regla anti-sobreoptimización
 
-- La frase clave debe aparecer en **mínimo 4 títulos H2** del artículo.
-- No es necesario que aparezca en todos los H2, pero sí en al menos 3.
+### Máximos por longitud de texto
+| Caracteres del texto | Menciones máximas (H1+H2+párrafos) |
+|---|---|
+| < 1,500 | 5 |
+| 1,500 – 2,800 | 7 |
+| 2,800 – 3,400 | 9 |
+| 3,400 – 5,000 | 11 |
+| > 5,000 | 11 (nunca exceder 11) |
 
-## 3. Checklist rápido antes de publicar
+> **Regla general:** ~1 mención por cada 400 caracteres, con un **máximo absoluto de 11** menciones totales (incluyendo H1, H2 y párrafos).
+
+### Distribución equitativa
+- Las menciones deben estar **repartidas de forma uniforme** a lo largo del texto.
+- ❌ NO concentrar varias menciones en los primeros párrafos y dejar el resto sin keyword.
+- ✅ Distribuir una mención cada 2-3 párrafos aprox.
+
+## 3. Títulos H2
+
+### Regla del 50% máximo
+- **Menos del 50%** de los H2 deben contener la frase clave.
+- **Mínimo 3 H2** deben contener la frase clave.
+
+### Ejemplo con 7 H2:
+- ✅ 3 de 7 H2 con keyword (43%) → Correcto
+- ❌ 5 de 7 H2 con keyword (71%) → Sobreoptimizado
+
+## 4. Checklist antes de publicar
 
 - [ ] Frase clave al INICIO del título SEO
 - [ ] Frase clave al INICIO de la meta descripción
 - [ ] Frase clave al INICIO del slug
-- [ ] Frase clave mencionada en mínimo 6 párrafos distintos
-- [ ] Frase clave en mínimo 3 títulos H2
+- [ ] Menciones dentro del rango según tabla de caracteres
+- [ ] Menos del 50% de H2 con keyword
+- [ ] Mínimo 3 H2 con keyword
+- [ ] Distribución equitativa de menciones en el texto
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
-- [ ] Enlaces internos cruzados a otros artículos relacionados
+- [ ] Enlaces internos cruzados a otros artículos
 - [ ] CTA con WhatsApp, correo y catálogo al final
