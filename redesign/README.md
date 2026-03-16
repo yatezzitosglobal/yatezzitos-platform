@@ -1,4 +1,4 @@
-# Redesign — Assets del rediseño web
+# Redesign — Assets y código del rediseño web
 
 > **Yatezzitos Global** · Última actualización: 14 de marzo 2026
 
@@ -6,7 +6,7 @@
 
 ## Qué contiene esta carpeta
 
-Esta carpeta contiene todos los assets necesarios para ejecutar el rediseño del sitio web de Yatezzitos, desde los diseños de Figma hasta el código fuente del tema Houzez y el CSS personalizado actual.
+Esta carpeta contiene todos los assets necesarios para ejecutar el rediseño del sitio web de Yatezzitos: diseños de Figma, CSS personalizado actual, y **código fuente del rediseño** listo para implementar en WordPress via Elementor.
 
 ---
 
@@ -14,35 +14,58 @@ Esta carpeta contiene todos los assets necesarios para ejecutar el rediseño del
 
 ```
 redesign/
+├── 02-contact-us.md       ← Código HTML/CSS/JS de Contact Us (✅ completado)
+├── 03-help.md             ← Código HTML/CSS/JS de Help/FAQ (✅ completado)
+├── README.md
 ├── css/
 │   ├── CSS ADICIONAL AÑADIDO CON YELLOW PENCIL EN TODAS LAS PAGINAS/
-│   │   └── CSS global insertado via Yellow Pencil (todas las páginas)
 │   ├── CSS INSERTADO DESDE PERSONALIZAR/
-│   │   └── CSS insertado desde Personalizar de WordPress
 │   ├── CSS PERSONALIZADO EN PAGINA DE HOME A TRAVES DE YELLOW PENCIL/
-│   │   └── CSS específico de Home via Yellow Pencil
 │   ├── css adicional insertado desde housez thema/
-│   │   └── CSS personalizado insertado desde el tema Houzez
-│   ├── css/
-│   │   └── Archivos CSS compilados del tema Houzez
+│   ├── css/               ← Archivos CSS compilados del tema Houzez
 │   └── themes/
-│       └── houzez/          ← Código fuente completo del tema Houzez
-├── figma/
-│   ├── 1_Yatezzitos_Home Page.png
-│   ├── 1_Yatezzitos_Home Page_Responsive.png
-│   ├── 2_Yatezzitos_Help.png
-│   ├── 2_Yatezzitos_Help_Responsive.png
-│   ├── 3_Yatezzitos_Contact Us.png
-│   ├── 3_Yatezzitos_Contact_US_Responsive.png
-│   ├── 4_Yatezzitos_Blog.png
-│   ├── 4_Yatezzitos_Blog_Responsive.png
-│   ├── 5_Yatezzitos_Blog Details.png
-│   ├── 5_Yatezzitos_Blog_Details_Responsive.png
-│   ├── 6_Frame 2085663335.png
-│   └── 6_Yatezzitos_Blog Category.png
-├── tokens/                  ← Design tokens (pendiente)
-└── assets/                  ← Assets adicionales (pendiente)
+│       └── houzez/        ← Código fuente completo del tema Houzez
+├── figma/                 ← 12 diseños PNG (desktop + responsive)
+├── tokens/                ← Design tokens (pendiente)
+└── assets/                ← Assets adicionales (pendiente)
 ```
+
+---
+
+## Código de Rediseño (Páginas Completadas)
+
+Estos archivos `.md` contienen el HTML, CSS y JavaScript listo para copiar y pegar en bloques de código HTML de Elementor.
+
+### Páginas completadas
+
+| # | Página | Archivo | Estado | Secciones |
+|---|--------|---------|--------|-----------|
+| 2 | **Contact Us** | `02-contact-us.md` | ✅ Completada | Hero, formulario, mapa, info de contacto |
+| 3 | **Help / FAQ** | `03-help.md` | ✅ Completada | Hero+buscador+pills, FAQ accordion+CTA equipo con estrella de mar, bloques informativos |
+
+### Páginas pendientes
+
+| # | Página | Archivo | Diseño Figma |
+|---|--------|---------|-------------|
+| 1 | **Home** | `01-home.md` (pendiente) | ✅ Disponible |
+| 4 | **Blog** | `04-blog.md` (pendiente) | ✅ Disponible |
+| 5 | **Blog Details** | `05-blog-details.md` (pendiente) | ✅ Disponible |
+| 6 | **Blog Category** | `06-blog-category.md` (pendiente) | ✅ Disponible |
+
+### Cómo implementar en WordPress
+
+1. Abrir la página en Elementor
+2. Agregar un bloque de **HTML personalizado**
+3. Copiar la sección correspondiente del archivo `.md` (cada sección está separada con comentarios `<!-- SECCIÓN X -->`)
+4. Guardar y previsualizar
+5. Cada archivo incluye CSS inline (dentro de `<style>`) y JavaScript (dentro de `<script>`) — no requiere archivos externos
+
+### Convenciones del código
+
+- **Prefijo de clases CSS:** `yz-` para evitar conflictos con Houzez/Elementor
+- **Variables CSS:** Definidas en `:root` con prefijo `--yz-`
+- **Responsive:** Mobile-first con breakpoints en `768px` (mobile), `1025px` (desktop)
+- **Imágenes:** Todas hosteadas en `yatezzitos.com/wp-content/uploads/`
 
 ---
 
