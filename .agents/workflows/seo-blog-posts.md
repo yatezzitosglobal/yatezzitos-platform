@@ -62,7 +62,14 @@ Para asegurar que el usuario tenga la mejor experiencia (y Google nos premie con
 - ✅ Escribe en un tono conversacional, directo y fácil de comprender (nivel de lectura ágil).
 - ✅ Reemplaza términos muy largos por sinónimos más cortos y familiares. Ejemplo: usa *barcos* en lugar de *embarcaciones*; *hermosos* en vez de *espectaculares*, *servicios* en vez de *amenidades o especificaciones*.
 
-## 5. Checklist antes de publicar
+## 5. Formato de Entrega (HTML Puro)
+
+Para acelerar la implementación en WordPress:
+- **Regla:** Todas las descripciones largas de páginas de categorías y destinos DEBEN ser generadas SIEMPRE en **formato HTML puro** listas para copiar y pegar.
+- ✅ Utilizar etiquetas estructurales (`<h1>`, `<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<li>`, `<strong>`, `<a>`) y tablas HTML (`<table>`, `<tr>`, `<th>`, `<td>`).
+- ❌ NO generar los textos en Markdown sin etiquetas si el destino es el editor (pestaña HTML/Text) de WordPress.
+
+## 6. Checklist antes de publicar
 
 - [ ] Frase clave al INICIO del título SEO
 - [ ] Frase clave al INICIO de la meta descripción
@@ -73,6 +80,7 @@ Para asegurar que el usuario tenga la mejor experiencia (y Google nos premie con
 - [ ] Distribución equitativa de menciones en el texto
 - [ ] **Legibilidad:** Más del 30% de oraciones tienen palabras de transición
 - [ ] **Legibilidad:** Menos del 10% de las palabras son rimbombantes/complejas
+- [ ] **Formato:** El texto entregado es 100% código HTML puro listo para pegar en WP.
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
 - [ ] Enlaces internos cruzados a otros artículos
