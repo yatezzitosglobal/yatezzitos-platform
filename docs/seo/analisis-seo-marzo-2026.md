@@ -142,31 +142,26 @@ Estas keywords tienen miles de impresiones, Yatezzitos ya aparece pero **no tien
 
 ### 🔴 URGENTE (Esta semana)
 
-#### 1. Verificar redirecciones 301
+#### 1. Verificar redirecciones 301 ✅ COMPLETADO
 Las URLs cambiaron y se está perdiendo tráfico:
-- [ ] `renta-de-yates-en-acapulco` → `yates-acapulco` (¿redirect 301?)
-- [ ] `renta-de-yates-huatulco` → `yates-huatulco` (¿redirect 301?)
-- [ ] `en-ciudad-yates-cabos` → `yates-los-cabos` (¿redirect 301?)
-- [ ] `renta-yates-en-ixtapa` → verificar URL actual
+- [x] `renta-de-yates-en-acapulco` → `yates-acapulco` (redirect 301 verificado)
+- [x] `renta-de-yates-huatulco` → `yates-huatulco` (redirect 301 verificado)
+- [x] `en-ciudad-yates-cabos` → `yates-los-cabos` (redirect 301 verificado)
+- [x] `renta-yates-en-ixtapa` → Recuperada y optimizada con nueva descripción SEO HTML
 
-> [!WARNING]
-> Si no hay redirects, estamos perdiendo ~300+ clics/mes que iban a las URLs antiguas.
-
-#### 2. Corregir el Yate Bravo (Issue #41)
-- [ ] Cambiar H1 a: "Yate Bravo 80ft — Renta Privada en La Paz BCS"
-- [ ] Yoast SEO: focus kw `renta yate de lujo la paz`
-- [ ] Meta title: "Renta Yate de Lujo La Paz | Bravo Azimut 80ft | Yatezzitos"
-- [ ] Añadir párrafo transaccional con menciones a La Paz
-- **Impacto potencial:** Recuperar 24K impresiones para búsqueda transaccional
+#### 2. Corregir el Yate Bravo (Issue #41) ✅ COMPLETADO
+- [x] Cambiar H1 a: "Yate Bravo 80ft — Renta Privada en La Paz BCS"
+- [x] Yoast SEO: focus kw `renta yate de lujo la paz`
+- [x] Meta title: "Renta Yate de Lujo La Paz | Bravo Azimut 80ft | Yatezzitos"
+- [x] Añadir párrafo transaccional con menciones a La Paz
 
 ### 🟡 IMPORTANTE (Próximas 2 semanas)
 
-#### 3. Optimizar Cancún (8.4K impresiones, solo 2.46% CTR)
-- [ ] Mejorar meta descripción con CTA + rango de precios
-- [ ] Añadir sección FAQ: "¿Cuánto cuesta rentar un yate en Cancún?"
-- [ ] Añadir tabla de precios por tipo de embarcación
-- [ ] Crear subsección "Opciones económicas"
-- **Impacto potencial:** De 208 a ~350 clics/mes
+#### 3. Optimizar Cancún (8.4K impresiones, solo 2.46% CTR) ✅ COMPLETADO
+- [x] Mejorar meta descripción con CTA + rango de precios
+- [x] Añadir sección FAQ: "¿Cuánto cuesta rentar un yate en Cancún?"
+- [x] Añadir tabla de precios por tipo de embarcación
+- [x] Crear subsección "Opciones económicas"
 
 #### 4. Recuperar Puerto Vallarta (cayó -25.2%)
 - [ ] Revisar si hubo cambios en contenido que afectaron

@@ -49,15 +49,30 @@ Si la frase clave es `yates los cabos`:
 - ✅ 3 de 7 H2 con keyword (43%) → Correcto
 - ❌ 5 de 7 H2 con keyword (71%) → Sobreoptimizado
 
-## 4. Checklist antes de publicar
+## 4. Legibilidad y Comprensión (Yoast SEO)
+
+Para asegurar que el usuario tenga la mejor experiencia (y Google nos premie con tiempo en página), es vital cumplir las reglas de legibilidad de Yoast:
+
+### Palabras de transición
+- **Regla:** Mínimo **30%** de las oraciones deben contener palabras de transición.
+- ✅ Utiliza palabras que conecten ideas: *Además, Por lo tanto, Sin embargo, Primero, Después, Por otro lado, De hecho, Así que, Entonces, Finalmente, También, Porque, Por consiguiente.*
+
+### Complejidad de palabras
+- **Regla:** Mantén las palabras complejas (muy largas o sumamente técnicas) por debajo del **10%** del texto total.
+- ✅ Escribe en un tono conversacional, directo y fácil de comprender (nivel de lectura ágil).
+- ✅ Reemplaza términos muy largos por sinónimos más cortos y familiares. Ejemplo: usa *barcos* en lugar de *embarcaciones*; *hermosos* en vez de *espectaculares*, *servicios* en vez de *amenidades o especificaciones*.
+
+## 5. Checklist antes de publicar
 
 - [ ] Frase clave al INICIO del título SEO
 - [ ] Frase clave al INICIO de la meta descripción
 - [ ] Frase clave al INICIO del slug
-- [ ] Menciones dentro del rango según tabla de caracteres
+- [ ] Menciones dentro del rango según tabla de caracteres (Anti-sobreoptimización)
 - [ ] Menos del 50% de H2 con keyword
 - [ ] Mínimo 3 H2 con keyword
 - [ ] Distribución equitativa de menciones en el texto
+- [ ] **Legibilidad:** Más del 30% de oraciones tienen palabras de transición
+- [ ] **Legibilidad:** Menos del 10% de las palabras son rimbombantes/complejas
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
 - [ ] Enlaces internos cruzados a otros artículos
