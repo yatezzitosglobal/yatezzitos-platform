@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Yatezzitos — Yoast SEO REST API para Taxonomías
  * Plugin URI:  https://github.com/YatezzitosMexico/yatezzitos-platform
- * Description: Habilita la escritura de campos SEO de Yoast (título y meta descripción) vía REST API para las taxonomías property_city, property_category y property_feature. Invalida automáticamente el caché de Yoast Indexable.
- * Version:     1.1.0
+ * Description: Habilita la escritura de campos SEO de Yoast vía REST API para taxonomías y sincroniza con wp_yoast_indexable.
+ * Version:     1.2.0
  * Author:      Yatezzitos Dev Team
  * License:     GPL-2.0-or-later
  * Text Domain: yatezzitos-yoast-rest
@@ -46,52 +46,62 @@ function yatezzitos_register_yoast_rest_meta() {
 }
 
 // ──────────────────────────────────────────────────────────────────────
-// 2. Invalidar caché de Yoast Indexable al actualizar meta vía API
+// 2. Sincronizar cambios con wp_yoast_indexable
 //
-//    Yoast Premium almacena los datos SEO renderizados en la tabla
-//    `wp_yoast_indexable`. Cuando escribimos directamente en termmeta,
-//    Yoast no sabe que debe re-leer esos valores. Al eliminar la fila
-//    del indexable, Yoast la reconstruye automáticamente en la siguiente
-//    visita a la página, usando los valores actualizados de termmeta.
+//    Yoast Premium renderiza el SEO desde su tabla wp_yoast_indexable,
+//    NO desde wp_termmeta. Al escribir en termmeta vía API, debemos
+//    actualizar también la fila correspondiente en la tabla indexable
+//    para que los cambios aparezcan inmediatamente en el frontend.
 // ──────────────────────────────────────────────────────────────────────
 
-add_action( 'updated_term_meta', 'yatezzitos_invalidate_yoast_indexable', 10, 4 );
-add_action( 'added_term_meta',   'yatezzitos_invalidate_yoast_indexable', 10, 4 );
+add_action( 'updated_term_meta', 'yatezzitos_sync_yoast_indexable', 10, 4 );
+add_action( 'added_term_meta',   'yatezzitos_sync_yoast_indexable', 10, 4 );
 
-function yatezzitos_invalidate_yoast_indexable( $meta_id, $term_id, $meta_key, $meta_value ) {
+function yatezzitos_sync_yoast_indexable( $meta_id, $term_id, $meta_key, $meta_value ) {
 
-    // Solo actuar cuando se modifican campos de Yoast SEO.
-    $yoast_keys = array(
-        '_yoast_wpseo_title',
-        '_yoast_wpseo_metadesc',
-        '_yoast_wpseo_focuskw',
+    // Mapeo de meta keys de termmeta → columnas de wp_yoast_indexable.
+    $column_map = array(
+        '_yoast_wpseo_title'    => 'title',
+        '_yoast_wpseo_metadesc' => 'description',
     );
 
-    if ( ! in_array( $meta_key, $yoast_keys, true ) ) {
+    // Solo actuar cuando se modifican campos mapeados.
+    if ( ! isset( $column_map[ $meta_key ] ) ) {
         return;
     }
 
+    $column = $column_map[ $meta_key ];
+
     global $wpdb;
 
-    // Nombre de la tabla de indexables de Yoast (respeta prefijo de tabla).
     $table = $wpdb->prefix . 'yoast_indexable';
 
-    // Verificar que la tabla existe (Yoast Premium puede no estar activo).
+    // Verificar que la tabla existe.
     if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) ) !== $table ) {
         return;
     }
 
-    // Eliminar la fila del indexable para este término.
-    // Yoast la reconstruirá automáticamente en el próximo request.
-    $wpdb->delete(
-        $table,
-        array(
-            'object_id'   => $term_id,
-            'object_type' => 'term',
-        ),
-        array( '%d', '%s' )
-    );
+    // Verificar si existe una fila para este término.
+    $exists = $wpdb->get_var( $wpdb->prepare(
+        "SELECT id FROM {$table} WHERE object_id = %d AND object_type = %s LIMIT 1",
+        $term_id,
+        'term'
+    ) );
 
-    // Limpiar cualquier caché de objeto persistente para este término.
+    if ( $exists ) {
+        // Actualizar la columna correspondiente directamente.
+        $wpdb->update(
+            $table,
+            array( $column => $meta_value ),
+            array(
+                'object_id'   => $term_id,
+                'object_type' => 'term',
+            ),
+            array( '%s' ),
+            array( '%d', '%s' )
+        );
+    }
+
+    // Limpiar caché de objeto persistente.
     clean_term_cache( $term_id );
 }
