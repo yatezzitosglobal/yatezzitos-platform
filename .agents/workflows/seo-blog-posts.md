@@ -75,13 +75,26 @@ Para acelerar la implementación en WordPress:
 - [ ] Frase clave al INICIO de la meta descripción
 - [ ] Frase clave al INICIO del slug
 - [ ] Menciones dentro del rango según tabla de caracteres (Anti-sobreoptimización)
+## 6. Enlaces Internos Estructurales (Guías y Destinos)
+
+Para retener al usuario y traspasar autoridad SEO internamente:
+- **Guías de ciudad:** SIEMPRE debes incluir un enlace saliente (interno) hacia la guía general de esa ciudad al **principio** de la descripción larga. Y debes incluir otra guía clave de la ciudad (o la misma, u otra relevante como guía de antros/restaurantes) al **final** del texto.
+- **Playas y Destinos:** Cada vez que menciones una playa, bahía, isla o destino específico que el yate visita, DEBES enlazarlo a su artículo de blog correspondiente. Debes investigar y usar la mayor cantidad de enlaces salientes útiles categorizados por ciudad.
+
+## 7. Checklist antes de publicar
+
+- [ ] Frase clave al INICIO del título SEO
+- [ ] Frase clave al INICIO de la meta descripción
+- [ ] Frase clave al INICIO del slug
+- [ ] Menciones dentro del rango según tabla de caracteres (Anti-sobreoptimización)
 - [ ] Menos del 50% de H2 con keyword
 - [ ] Mínimo 3 H2 con keyword
 - [ ] Distribución equitativa de menciones en el texto
 - [ ] **Legibilidad:** Más del 30% de oraciones tienen palabras de transición
 - [ ] **Legibilidad:** Menos del 10% de las palabras son rimbombantes/complejas
 - [ ] **Formato:** El texto entregado es 100% código HTML puro listo para pegar en WP.
+- [ ] **Enlaces de Guías:** Enlace a la guía de la ciudad al inicio y al final del texto.
+- [ ] **Enlaces de Destinos:** Todas las playas y puntos de interés tienen enlaces a su post de blog.
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
-- [ ] Enlaces internos cruzados a otros artículos
 - [ ] CTA con WhatsApp, correo y catálogo al final
