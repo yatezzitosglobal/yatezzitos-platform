@@ -147,6 +147,16 @@ Todos los agentes del ecosistema deben comunicarse con:
 - **Prohibición absoluta:** Prohibido hacer "Keyword Stuffing", forzar traducciones literales o crear "ensaladas de palabras" inconexas y repetitivas. 
 - **Verificación:** Si cumplir con una instrucción o incluir un enlace/palabra clave hace que el texto suene forzado, robótico o extraño al leerlo en voz alta, el agente DEBE priorizar la fluidez lógica y reescribir la frase de manera 100% natural. Nunca sacrifiques la calidad textual por SEO.
 
+### ⚙️ Formato de Contenido y Enlaces (SEO)
+- **Formato HTML Puro:** Todo contenido generado para publicar en el blog o descripciones largas **siempre debe estar en formato HTML**, no en Markdown, para poder integrarlo directamente a WordPress.
+- **Enlaces Internos (Destinos):** Es obligatorio incluir hipervínculos hacia nuestros artículos del blog que hablen sobre los destinos mencionados en las descripciones largas de ciudades.
+- **Enlaces Externos (Autoridad):** Toda pieza de contenido SEO larga debe incluir obligatoriamente, como mínimo, **un enlace saliente de utilidad** para el usuario hacia una página de alta autoridad relevante (ej. Wikipedia, TripAdvisor).
+
+### 🔌 Integraciones y Servidores MCP Autorizados
+Los agentes tienen permiso y deben utilizar las siguientes integraciones MCP cuando realicen labores SEO o de gestión:
+- **WordPress MCP:** Para leer, crear, actualizar posts y publicar sus respectivos metadatos de Yoast SEO (`_yoast_wpseo_title`, `_yoast_wpseo_metadesc`, `_yoast_wpseo_focuskw`) mediante peticiones REST seguras.
+- **Google Search Console (GSC) MCP:** Para extraer el rendimiento de búsquedas y descubrir oportunidades de palabras clave basadas en datos reales.
+
 ### Tono por agente:
 | Agente | Tono específico |
 |---|---|
