@@ -40,8 +40,8 @@ graph TB
 | 🧠 Orquestador | — | [orchestrator.md](orchestrator.md) | ✅ Definido | Agente principal que enruta solicitudes al subagente correcto |
 | 🌊 Marina | Turista | [turista.md](turista.md) | ✅ Definido | Atención a turistas: cotización, reserva, dudas, WhatsApp. [Issue #16](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/16) |
 | ⚓ Timón | Propietario | [propietario.md](propietario.md) | ✅ Definido | Asistencia a propietarios: onboarding, documentos, disponibilidad. [Issue #17](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/17) |
-| 🧭 Capitán | Broker | `broker.md` | 📋 Planificado | Asistencia a brokers y agencias B2B |
-| 🌊 Ola | Afiliado | `afiliado.md` | 📋 Planificado | Asistencia a afiliados: links, UTMs, comisiones |
+| 🧭 Capitán | Broker | [broker.md](broker.md) | 📋 Planificado | Asistencia a brokers y agencias B2B |
+| 🌊 Ola | Afiliado | [afiliado.md](afiliado.md) | 📋 Planificado | Asistencia a afiliados: links, UTMs, comisiones |
 | 🔧 Soporte Interno | Equipo | [soporte-interno.md](soporte-interno.md) | ✅ Definido | IA interna para SEO, copy, marketing, desarrollo. [Issue #18](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/18) |
 
 ---
@@ -75,7 +75,7 @@ Fase 1 (completada): Orquestador + Reglas globales (AGENTS.md)
 Fase 2 (spec listo):  Marina — Asistente Turista (Issue #16) ✅
 Fase 3 (spec listo):  Timón — Asistente Propietario (Issue #17) ✅
 Fase 4 (spec listo):  Soporte Interno — Equipo (Issue #18) ✅
-Fase 5:               Capitán y Ola — Brokers / Afiliados
+Fase 5 (spec lista):  Capitán y Ola — Brokers / Afiliados ✅
 ```
 
 ---
@@ -106,4 +106,4 @@ Para agregar un nuevo agente al ecosistema:
 
 ---
 
-*Última actualización: 13 de marzo 2026*
+*Última actualización: 17 de marzo 2026*

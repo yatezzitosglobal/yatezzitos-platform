@@ -1,6 +1,4 @@
-# 🔌 Guía: Conectar WordPress a Antigravity via MCP
-
-> Para realizar mañana como primera tarea.
+# Guía: Conectar WordPress a Claude Code via MCP
 
 ---
 

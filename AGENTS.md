@@ -142,6 +142,11 @@ Todos los agentes del ecosistema deben comunicarse con:
 - **Confianza** — Transmitir seguridad sin prometer lo que no se puede cumplir
 - **Idioma**: Español como idioma principal, inglés cuando el contexto lo requiera
 
+### 🚨 Regla de Oro: Cero "Ensalada de Palabras" y Naturalidad
+- **Naturalidad sobre SEO u Optimización:** Al redactar artículos de blog, descripciones de yates, notas o cualquier otro texto, la **naturalidad humana SIEMPRE tiene prioridad**.
+- **Prohibición absoluta:** Prohibido hacer "Keyword Stuffing", forzar traducciones literales o crear "ensaladas de palabras" inconexas y repetitivas. 
+- **Verificación:** Si cumplir con una instrucción o incluir un enlace/palabra clave hace que el texto suene forzado, robótico o extraño al leerlo en voz alta, el agente DEBE priorizar la fluidez lógica y reescribir la frase de manera 100% natural. Nunca sacrifiques la calidad textual por SEO.
+
 ### Tono por agente:
 | Agente | Tono específico |
 |---|---|

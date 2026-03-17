@@ -53,6 +53,13 @@ Si la frase clave es `yates los cabos`:
 
 Para asegurar que el usuario tenga la mejor experiencia (y Google nos premie con tiempo en página), es vital cumplir las reglas de legibilidad de Yoast:
 
+### 🚨 ANTI-ENSALADA DE PALABRAS (PRIORIDAD MÁXIMA)
+- **Regla:** La naturalidad del texto SIEMPRE tiene prioridad sobre la optimización SEO. 
+- ❌ **Prohibido:** Crear "ensaladas de palabras" (textos inconexos, traducciones forzadas, traducciones literales del inglés o repetir keywords sin sentido gramatical).
+- ❌ **Prohibido:** Forzar la inclusión de un enlace, artículo de blog o palabra clave si rompe el flujo lógico o rítmico del párrafo.
+- ✅ **Acción:** Si intentas cumplir una regla SEO y el resultado suena robótico o sobreoptimizado, IGNORA la regla SEO y prioriza escribir como un humano experto, fluido, coherente y natural.
+- ✅ **Coherencia:** El texto debe leerse perfectamente fluido en voz alta. Si suena raro, forzado o excesivamente repetitivo, debes reescribirlo.
+
 ### Palabras de transición
 - **Regla:** Mínimo **30%** de las oraciones deben contener palabras de transición.
 - ✅ Utiliza palabras que conecten ideas: *Además, Por lo tanto, Sin embargo, Primero, Después, Por otro lado, De hecho, Así que, Entonces, Finalmente, También, Porque, Por consiguiente.*
@@ -69,12 +76,6 @@ Para acelerar la implementación en WordPress:
 - ✅ Utilizar etiquetas estructurales (`<h1>`, `<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<li>`, `<strong>`, `<a>`) y tablas HTML (`<table>`, `<tr>`, `<th>`, `<td>`).
 - ❌ NO generar los textos en Markdown sin etiquetas si el destino es el editor (pestaña HTML/Text) de WordPress.
 
-## 6. Checklist antes de publicar
-
-- [ ] Frase clave al INICIO del título SEO
-- [ ] Frase clave al INICIO de la meta descripción
-- [ ] Frase clave al INICIO del slug
-- [ ] Menciones dentro del rango según tabla de caracteres (Anti-sobreoptimización)
 ## 6. Enlaces Estructurales (Internos y Externos)
 
 Para retener al usuario, traspasar autoridad SEO y dar señales de relevancia a Google:
@@ -87,6 +88,7 @@ Para retener al usuario, traspasar autoridad SEO y dar señales de relevancia a 
 - [ ] Frase clave al INICIO del título SEO
 - [ ] Frase clave al INICIO de la meta descripción
 - [ ] Frase clave al INICIO del slug
+- [ ] **Prioridad Máxima:** El texto es 100% natural, NO ES "ensalada de palabras", ni suena robótico o forzado
 - [ ] Menciones dentro del rango según tabla de caracteres (Anti-sobreoptimización)
 - [ ] Menos del 50% de H2 con keyword
 - [ ] Mínimo 3 H2 con keyword
@@ -95,7 +97,7 @@ Para retener al usuario, traspasar autoridad SEO y dar señales de relevancia a 
 - [ ] **Legibilidad:** Menos del 10% de las palabras son rimbombantes/complejas
 - [ ] **Formato:** El texto entregado es 100% código HTML puro listo para pegar en WP.
 - [ ] **Enlaces de Guías:** Enlace a la guía de la ciudad al inicio y al final del texto.
-- [ ] **Enlaces de Destinos:** Todas las playas y puntos de interés tienen enlaces a su post de blog.
+- [ ] **Enlaces de Destinos:** Todas las playas y puntos de interés tienen enlaces a su post de blog integrados de forma NATURAL.
 - [ ] **Enlace Externo:** Incluye al menos 1 enlace de utilidad hacia un sitio web de autoridad externo.
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML

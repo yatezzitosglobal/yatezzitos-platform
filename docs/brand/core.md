@@ -109,9 +109,9 @@ Personas que buscan reservar una experiencia náutica privada y quieren segurida
 Propietarios, administradores, brokers, agencias, capitanes y aliados que buscan más reservas, orden y herramientas útiles.
 
 ### 3. Equipo interno
-Personas que operan ventas, seguimiento, marketing, atención y administración.+
+Personas que operan ventas, seguimiento, marketing, atención y administración.
 
-## 4. Socios externos
+### 4. Socios externos
 Agencias, Brookers, personas que se dedican al turismo y buscan ofrecer servicios premium de alta calidad, administradores de Airbnbs y hoteles que desean generar ingresos extra con la administración de las propiedades turísticas.
 
 ## Posicionamiento deseado

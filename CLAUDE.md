@@ -1,0 +1,129 @@
+# CLAUDE.md — Contexto del proyecto para Claude Code
+
+Este archivo es leído automáticamente por Claude Code al inicio de cada sesión.
+Contiene el contexto esencial del proyecto para trabajar sin necesidad de re-explicar todo.
+
+---
+
+## Qué es este proyecto
+
+**Yatezzitos Global** — plataforma tecnológica de turismo náutico privado de lujo.
+Operamos en 10 destinos de México. Objetivo: escalar a latinoamérica y el mundo.
+
+- Negocio activo con 8 años de experiencia
+- Stack actual: WordPress + Elementor + Houzez + GoHighLevel (CRM) + Twilio
+- Ver contexto completo en [README.md](README.md)
+
+---
+
+## Reglas de trabajo en este repo
+
+### Ramas
+```
+fix/[descripción]     → correcciones
+feat/[descripción]    → nuevas funcionalidades
+docs/[descripción]    → documentación
+seo/[descripción]     → cambios SEO
+ai/[descripción]      → specs y configs de agentes IA
+```
+
+- **Nunca hacer push directo a `main`** sin revisión
+- Todo cambio significativo requiere PR
+- Ver reglas completas en [AGENTS.md](AGENTS.md)
+
+### Antes de modificar cualquier cosa
+1. Leer el archivo antes de editarlo
+2. No romper lo que ya funciona (ventas, formularios, SEO, automatizaciones)
+3. Probar en staging antes de aplicar en producción
+
+---
+
+## Estructura del repo
+
+```
+docs/          → documentación del proyecto (ver docs/README.md para índice completo)
+  architecture/  → stack, decisiones técnicas, módulos de producto
+  brand/         → identidad de marca
+  business/      → visión y modelo de negocio
+  crm/           → GoHighLevel: pipelines, automatizaciones
+  seo/           → estrategia SEO, auditorías, frameworks de keywords
+  scrum/         → backlog maestro y planes de ejecución por issue
+  tools/         → guías de setup de herramientas externas
+ai/
+  assistants/    → specs de los 6 agentes IA del ecosistema (ver README.md)
+  prompts/       → prompts reutilizables
+  workflows/     → reglas y workflows para agentes (ej. seo-blog-posts.md)
+.agents/
+  workflows/     → workflows para Claude Code (cargados automáticamente)
+redesign/        → CSS, diseños Figma, tokens y assets del rediseño web
+wordpress/       → temas, plugins, mu-plugins, snippets del sitio
+plugins/         → plugins standalone (ej. yatezzitos-yoast-rest-api)
+data/            → yates, destinos, FAQs, templates
+scripts/         → scripts de automatización
+```
+
+---
+
+## Prioridades actuales del proyecto
+
+Ver [docs/scrum/backlog.md](docs/scrum/backlog.md) para el detalle completo.
+
+**Fase 1 (en curso):**
+1. Terminar rediseño web (Home, Blog, Blog Details — Figma → WordPress)
+2. SEO: optimizar ciudades activas y asignar keywords a todos los yates
+3. Ordenar CRM (GoHighLevel)
+4. Automatizar cotización, recibo de depósito y seguimiento
+
+**Fase 2 (siguiente):**
+5. Etapa Feedback en pipeline de turistas
+6. Captación y onboarding de propietarios
+7. Mapa de integraciones actual
+8. Calendario de disponibilidad en tiempo real
+
+---
+
+## Fuentes de verdad
+
+| Dato | Fuente |
+|---|---|
+| Leads, pipeline, reservas | GoHighLevel |
+| Fichas de yates, URLs, SEO | WordPress |
+| Disponibilidad | Propietario / calendario (futuro) |
+| Pagos confirmados | Pasarela / banco |
+| Documentación y decisiones | Este repositorio (GitHub) |
+
+**Nunca inventar:** precios, disponibilidad, capacidad de embarcaciones, fechas.
+
+---
+
+## Reglas SEO
+
+Las reglas de contenido SEO están en [`.agents/workflows/seo-blog-posts.md`](.agents/workflows/seo-blog-posts.md).
+Se aplican siempre que se cree o edite contenido del blog o fichas de yates.
+
+Regla principal: **naturalidad sobre optimización**. Nunca "ensalada de palabras".
+
+---
+
+## Agentes IA del ecosistema
+
+Ver [ai/assistants/README.md](ai/assistants/README.md) para el catálogo completo.
+
+| Agente | Para quién |
+|---|---|
+| Marina | Turistas / clientes |
+| Timón | Propietarios |
+| Capitán | Brokers / agencias B2B |
+| Ola | Afiliados |
+| Soporte Interno | Equipo Yatezzitos |
+
+---
+
+## Lo que no se debe hacer
+
+- Push directo a `main`
+- Cambios en producción de WordPress sin staging previo
+- Modificar automatizaciones en GHL sin aprobación
+- Crear archivos de documentación innecesarios
+- Abrir nuevos destinos SEO antes de completar los actuales
+- Subir credenciales, tokens o datos sensibles al repo
