@@ -10,6 +10,9 @@ Este archivo define las reglas de operación para **todo el ecosistema de agente
 
 Todo agente IA que opere dentro del proyecto debe respetar estas reglas sin excepción.
 
+### 🧠 Memoria Dual del Sistema
+**REGLA ESTRICTA:** Este ecosistema cuenta con dos archivos centrales de memoria persistente: `CLAUDE.md` (contexto general del proyecto) y `AGENTS.md` (este documento, reglas operativas). **Cualquier nuevo aprendizaje, instrucción global o actualización de contexto debe guardarse SIEMPRE en AMBOS archivos a la par.** Ningún agente debe modificar o actualizar una memoria sin sincronizar inmediatamente la otra.
+
 ---
 
 ## Arquitectura del sistema de agentes

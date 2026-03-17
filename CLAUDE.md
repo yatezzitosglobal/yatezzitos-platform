@@ -31,6 +31,9 @@ ai/[descripción]      → specs y configs de agentes IA
 - Todo cambio significativo requiere PR
 - Ver reglas completas en [AGENTS.md](AGENTS.md)
 
+### Memoria Dual del Sistema
+**REGLA ESTRICTA:** Este repositorio cuenta con dos archivos centrales de memoria: `CLAUDE.md` (contexto general del proyecto) y `AGENTS.md` (reglas operativas de la IA). **Cualquier nuevo aprendizaje, regla procedimental o actualización de contexto debe registrarse SIEMPRE en AMBOS archivos al mismo tiempo.** Ningún agente IA debe actualizar una memoria sin actualizar la otra.
+
 ### Antes de modificar cualquier cosa
 1. Leer el archivo antes de editarlo
 2. No romper lo que ya funciona (ventas, formularios, SEO, automatizaciones)
