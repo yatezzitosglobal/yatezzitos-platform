@@ -98,10 +98,25 @@ Ver [docs/scrum/backlog.md](docs/scrum/backlog.md) para el detalle completo.
 
 ## Reglas SEO
 
+## Reglas SEO
+
 Las reglas de contenido SEO están en [`.agents/workflows/seo-blog-posts.md`](.agents/workflows/seo-blog-posts.md).
 Se aplican siempre que se cree o edite contenido del blog o fichas de yates.
 
-Regla principal: **naturalidad sobre optimización**. Nunca "ensalada de palabras".
+Reglas principales de redacción y formato:
+1. **Naturalidad sobre optimización:** Nunca usar "ensaladas de palabras" o traducciones robóticas. La fluidez humana tiene prioridad absoluta sobre la densidad de la palabra clave.
+2. **Formato:** Todo el contenido para WordPress debe generarse siempre en **HTML puro** listo para copiar/pegar o enviar vía API. No usar Markdown.
+3. **Enlaces Internos:** Obligatorio enlazar a nuestros posts de blog de destinos/experiencias dentro de las descripciones largas de ciudades.
+4. **Enlaces Externos:** Todo archivo SEO debe contener, mínimo, **un enlace saliente de utilidad** hacia un sitio con alta autoridad (e.g. Wikipedia, TripAdvisor).
+
+---
+
+## Integraciones e Inteligencia (MCP)
+
+Tenemos acceso a servidores MCP para operar directamente con las plataformas:
+
+- **WordPress MCP:** Lo utilizamos para leer, crear y actualizar entradas del blog o páginas en vivo. Es vital para actualizar los metadatos de **Yoast SEO** (usando los campos `_yoast_wpseo_title`, `_yoast_wpseo_metadesc`, y `_yoast_wpseo_focuskw`) de manera rápida y masiva sin salir de la terminal.
+- **Google Search Console (GSC):** Lo usamos para extraer datos reales de rendimiento, impresiones y clics para descubrir oportunidades de palabras clave y optimizar URLs con base en datos verificados.
 
 ---
 
