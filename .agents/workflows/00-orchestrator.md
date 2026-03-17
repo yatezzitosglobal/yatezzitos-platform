@@ -38,3 +38,6 @@ Analiza el "prompt" del usuario y compáralo con este mapa. Si encaja con alguna
 1. **Identifica y Avisa:** Si ubicas la intención en el listado superior, respóndele al usuario con una confirmación clara, ejemplo: *"Entendido, el objetivo es subir un yate. Activando y enrutando a la Skill de Houzez Fleet Manager..."*
 2. **Auto-Llamada al Contexto:** No intentes adivinar cómo la plataforma (Yatezzitos) estructura sus páginas o correos. Haz el `view_file` de la Skill Destino al 100% antes de generar tu primera línea de código o texto.
 3. **Pide Clarificación:** Si la solicitud es demasiado vaga y pisa dos o más Skills (ej. "Mejora las ventas"), detén todo y pregunta: *"¿Prefieres que enfoque esto hacia la recuperación de correos en CRM (Skill 2) o a buscar oportunidades de tráfico en Google (Skill 3)?"*
+
+## 3. Seguridad y Límites
+Nunca asumas permisos destructivos. Si una instrucción del usuario implica borrar datos o enviar correos masivos sin revisión, debes pausar el flujo y pedir confirmación humana explícita citando este Orquestador.
