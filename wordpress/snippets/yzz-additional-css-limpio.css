@@ -1,0 +1,527 @@
+/* ============================================================
+   WORDPRESS ADDITIONAL CSS — YATEZZITOS
+   Auditado y optimizado
+   
+   CORRECCIONES PRINCIPALES:
+   - ELIMINADO: .item-header{height:355px} → conflicto con PATCH FINAL
+     (355px > 261px Slick = 94px de gap. Esta era la causa raíz real)
+   - ELIMINADO: .listing-image-wrap{height:260px} → conflicto con FIGMA
+   - ELIMINADO: @media 575px .img-fluid{height:330px} → causaba gap
+   - ELIMINADO: @media(max-width:670px) sin cerrar
+   - ELIMINADO: duplicados de Houzez Custom CSS
+   ============================================================ */
+
+
+/* ============================================================
+   ÍCONO PASAJEROS — SVG personalizado
+   ============================================================ */
+.houzez-icon.icon-ruler-triangle::before {
+    content: '' !important;
+    display: none !important;
+}
+.houzez-icon.icon-ruler-triangle {
+    background-image: url('https://yatezzitos.com/wp-content/uploads/2026/02/Frame-Pasajeros.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important;
+    vertical-align: middle;
+    font-size: 0 !important;
+}
+
+
+/* ============================================================
+   LISTINGS V1 — FIGMA DESIGN (fuera de home/front-page)
+   ============================================================ */
+
+/* Card wrapper */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) {
+    max-width: 459px !important;
+    margin-inline: auto !important;
+    height: 100% !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) > .item-wrap {
+    border-radius: 36px !important;
+    overflow: hidden !important;
+    background: #fff !important;
+    border: 1px solid rgba(0, 16, 25, 0.08) !important;
+    box-shadow: 0 8px 22px rgba(15, 38, 58, 0.12) !important;
+    min-height: 0 !important;
+    height: auto !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) > .item-wrap > .d-flex {
+    align-items: stretch !important;
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+/* ============================================================
+   ITEM-HEADER — aspect-ratio (SIN height fijo para evitar gap)
+   CORREGIDO: se quitó height:355px que bloqueaba el PATCH FINAL
+   y causaba 94px de espacio vacío debajo del slider Slick
+   ============================================================ */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header {
+    position: relative !important;
+    overflow: hidden !important;
+    aspect-ratio: 459 / 381 !important;  /* responsive, proporcional */
+    height: auto !important;             /* Slick + imágenes determinan la altura */
+    border-radius: 36px 36px 0 0 !important;
+    background: transparent !important;
+    min-height: 0 !important;
+}
+
+/* Toda la cadena de imagen llena el item-header */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .listing-image-wrap,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .listing-thumb,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .listing-featured-thumb {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .listing-featured-thumb img,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .img-fluid {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* Overlay dark gradient */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 38% !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    background: linear-gradient(180deg, rgba(0,16,25,0) 0%, rgba(0,16,25,0.58) 62%, rgba(0,16,25,0.84) 100%) !important;
+}
+
+/* Capas overlay (z-index) */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .label-featured,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .labels-wrap,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-tools {
+    position: absolute !important;
+    z-index: 4 !important;
+}
+
+/* Pill "Destacado" */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .label-featured.label {
+    top: 14px !important;
+    left: 14px !important;
+    margin: 0 !important;
+    min-height: 30px !important;
+    padding: 6px 12px !important;
+    border-radius: 30px !important;
+    background: #89E6D0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #001019 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.1 !important;
+    text-transform: none !important;
+}
+
+/* Labels derecha */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .labels-wrap {
+    top: 14px !important;
+    right: 14px !important;
+    left: auto !important;
+    display: flex !important;
+    gap: 8px !important;
+    max-width: 55% !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .labels-wrap .label {
+    min-height: 30px !important;
+    padding: 6px 12px !important;
+    border-radius: 30px !important;
+    background: rgba(255,255,255,0.24) !important;
+    border: 1px solid rgba(255,255,255,0.14) !important;
+    color: #243645 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    white-space: nowrap !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .labels-wrap .label:nth-child(n+2) {
+    display: none !important;
+}
+
+/* Precio */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap {
+    left: 14px !important;
+    bottom: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    max-width: calc(100% - 140px) !important;
+    gap: 2px !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap li {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #fff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.25) !important;
+    line-height: 1.08 !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap li:first-child {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap li:last-child {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap .price-postfix,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-price-wrap .item-sub-price {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+/* Botones acción (expandir/like) */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-tools {
+    right: 14px !important;
+    bottom: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    display: flex !important;
+    gap: 6px !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-tools .item-tool:nth-child(n+3) {
+    display: none !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-tools .item-tool > span {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255,255,255,0.24) !important;
+    border: 0 !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-tools .houzez-icon {
+    color: #fff !important;
+    font-size: 15px !important;
+}
+
+/* Card body */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-body {
+    background: #fff !important;
+    padding: 16px 22px 20px !important;
+    border-radius: 0 0 36px 36px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    min-height: 0 !important;
+}
+
+/* Quitar "Features" label extra */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-amenities::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Título */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-title {
+    margin: 0 !important;
+    color: #001019 !important;
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-title a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* Dirección */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-address {
+    margin: 0 !important;
+    color: #505B61 !important;
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-address i { display: none !important; }
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-address span {
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Amenities */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-amenities {
+    margin: 4px 0 0 !important;
+    padding: 10px 0 0 !important;
+    border-top: 1px solid rgba(0,16,25,.10) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    list-style: none !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-amenities > li:not(.h-type) {
+    min-height: 40px !important;
+    padding: 10px 14px !important;
+    border-radius: 40px !important;
+    background: #F8F8F8 !important;
+    border: 0 !important;
+    color: #001019 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-amenities > li.h-type {
+    margin-left: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-amenities > li.h-type span {
+    font-size: 14px !important;
+    color: #505B61 !important;
+    font-weight: 400 !important;
+}
+
+/* Botón Detalles */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-body .btn-item,
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-body a.btn.btn-primary.btn-item {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    align-self: stretch !important;
+    width: 100% !important;
+    min-height: 56px !important;
+    margin: 12px 0 0 0 !important;
+    padding: 12px 20px !important;
+    border-radius: 20px !important;
+    border: 1px solid #012033 !important;
+    background: #012033 !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+}
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-body .btn-item:hover {
+    background: #0A2D44 !important;
+    border-color: #0A2D44 !important;
+}
+
+/* Ocultar footer autor */
+body:not(.home):not(.front-page) .listing-view.grid-view .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-footer {
+    display: none !important;
+}
+
+
+/* ============================================================
+   PATCH FINAL v4 — position:absolute en listing-image-wrap
+   
+   PROBLEMA RAÍZ REAL: height:100% en listing-image-wrap NO
+   funciona cuando su padre (.item-header) tiene height:auto.
+   CSS no resuelve height:100% con parent height:auto.
+   
+   SOLUCIÓN: position:absolute + inset:0 llena el .item-header
+   (que es position:relative) sin depender de height cascading.
+   Los hijos Slick ya SÍ pueden usar height:100% porque su padre
+   (listing-image-wrap absolute) tiene dimensiones explícitas.
+   ============================================================ */
+
+/* listing-image-wrap: absolute, cubre todo el item-header
+   background:#000 = fallback para cualquier gap residual (invisible bajo el gradient) */
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-image-wrap {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #000 !important; /* gap invisible aunque Slick no llegue al borde */
+}
+
+/* Cadena Slick completa — incluyendo wrappers intermedios descubiertos en DevTools:
+   .listing-gallery-wrap_m_hover y .houzez-listing-carousel son los que faltaban */
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-gallery-wrap,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-gallery-wrap_m_hover,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .houzez-listing-carousel,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-thumb,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-featured-thumb,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .houzez-gallery-loaded,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-slider,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-list,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-track,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-slide,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-slide > div,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-slide > div > div {
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Override inline style de Slick JS (height en px) */
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-list[style],
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-track[style] {
+    height: 100% !important;
+}
+
+/* Link y hover-effect */
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header a.hover-effect,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .hover-effect {
+    display: block !important;
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+/* Imagen */
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .listing-featured-thumb img,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .img-fluid,
+body:not(.home):not(.front-page) .item-listing-wrap.item-wrap-v1.hz-map-trigger:not(.item-wrap-v1-half-map) .item-header .slick-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+/* Ocultar preview_loader */
+.listing-image-wrap .preview_loader { display: none !important; }
+
+
+
+/* ============================================================
+   MISCELÁNEA
+   ============================================================ */
+.pl-3, .px-3 {
+    padding-left: 1rem !important;
+    display: none;
+}
+
+.lightbox-logo img {
+    height: auto;
+    width: 50px;
+}
+
+/* Foto de perfil de usuario */
+#houzez_profile_photo .img-fluid img {
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 1000px) {
+    #houzez_profile_photo .img-fluid img {
+        position: relative;
+        left: -25px;
+    }
+}
+
+@media (max-width: 800px) {
+    #houzez_profile_photo .img-fluid img {
+        position: relative;
+        left: -25px;
+    }
+}
+
+@media (max-width: 760px) {
+    #houzez_profile_photo .img-fluid img {
+        left: 0px;
+    }
+}
+
+/* Botón select foto */
+@media (max-width: 1199px) {
+    #select_user_profile_photo {
+        white-space: normal;
+        line-height: 1.4em;
+        font-style: italic;
+    }
+}
+@media (max-width: 800px) {
+    #select_user_profile_photo {
+        font-size: 14px;
+        line-height: 1.2em;
+        text-align: center;
+        white-space: normal;
+        font-style: italic;
+    }
+}
+@media (max-width: 767px) {
+    #select_user_profile_photo {
+        font-size: 16px;
+        line-height: 2.4em;
+    }
+}
+
+/* Agente — ocultar título de contacto en desktop grande */
+@media (min-width: 1440px) {
+    #property-contact-agent-wrap .block-wrap h3 { display: none; }
+}
+
+/* Animaciones — deshabilitar en móvil */
+@media (max-width: 767px) {
+    .elementor-element.animated {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Transiciones hover eficientes */
+.item-wrap, .property-item, .houzez-property-card {
+    transition-property: transform, opacity, box-shadow !important;
+}
+.item-wrap:hover, .property-item:hover {
+    transform: translateY(-3px);
+}
+
+/* Respetar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Estabilidad CLS del Hero */
+@media (max-width: 767px) {
+    #contenedor-principal-img-fondo { min-height: 100vh; }
+}
+
+/* Switcher de idioma */
+#trp-floater-ls.trp-color-light {
+    background: #FFF;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .25);
+    border-radius: 8px 8px 0 0;
+    margin-right: 40px;
+}
+
+/* Botón de login móvil */
+.nav-mobile .navi-login-register .btn-create-listing {
+    width: calc(100% - 20px);
+    padding: 16px;
+}

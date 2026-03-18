@@ -1,0 +1,440 @@
+/* ============================================================
+   YELLOW PENCIL — PLANTILLA (TEMPLATE)
+   Versión corregida — sin reglas que causen espacios vacíos
+   en las imágenes de los yates en páginas de categoría.
+   ============================================================ */
+
+/* Heading */
+.page-title-wrap .d-flex h2{
+	font-weight:400 !important;
+	text-transform:capitalize;
+	letter-spacing:-1px;
+}
+
+.listing-wrap article h1{
+	font-size:32px;
+	line-height:1em;
+	letter-spacing:-1.5px;
+	text-transform:uppercase;
+	font-weight:800;
+}
+
+/* Paragraph */
+.listing-wrap article p{
+	letter-spacing:-0.3px;
+	line-height:1.3em;
+	font-weight:500;
+	font-family:'Montserrat', sans-serif;
+}
+
+/* Flex grow 1 */
+.listing-tools-wrap .d-flex .flex-grow-1{
+	text-transform:uppercase;
+	letter-spacing:-1px;
+}
+
+/* Division */
+.sort-by .d-flex .form-control .dropdown-toggle div div div{
+	letter-spacing:-1px;
+}
+
+.sort-by .d-flex .sort-by-title{
+	letter-spacing:-1px;
+}
+
+/* List Item */
+.listing-view .item-header .item-price-wrap li{
+	font-size:14px;
+	text-transform:uppercase;
+	letter-spacing:-1px;
+}
+
+/* Link */
+.listing-view .item-title a{
+	font-weight:500;
+	text-transform:uppercase;
+	letter-spacing:-1px;
+}
+
+/* Item address */
+.listing-view .d-flex .item-address{
+	font-size:12px;
+	line-height:1em;
+	text-transform:capitalize;
+	letter-spacing:-0.3px;
+}
+
+/* Span Tag */
+.d-flex .flex-grow-1 .item-amenities .h-type span{
+	letter-spacing:-1px;
+}
+
+/* Listing / property */
+.listing-view .d-flex .btn-item{
+	font-size:12px;
+	text-transform:uppercase;
+	letter-spacing:0px;
+	word-spacing:0px;
+	line-height:2.5em;
+	padding-left:0px;
+	padding-right:0px;
+	border-width:0px;
+	height:auto;
+	bottom:0px;
+	right:0px;
+	left:auto !important;
+	width:100%;
+	font-weight:600;
+}
+
+/* ============================================================
+   LISTING FEATURED THUMB — CORREGIDO
+   ELIMINADO: heights fijos por breakpoint (.img-fluid widths
+   hardcodeados más anchos que la pantalla) que causaban el
+   espacio vacío / gap negro en las imágenes de los yates.
+   SOLUCIÓN: una sola regla adaptativa con width:100% y
+   height:auto para todos los tamaños de pantalla.
+   ============================================================ */
+
+.listing-view .listing-featured-thumb,
+.listing-view .d-flex .listing-featured-thumb,
+.listing-image-wrap .listing-featured-thumb,
+.listing-image-wrap img,
+.listing-image-wrap .img-fluid {
+	display: block !important;
+	width: 100% !important;
+	height: auto !important;
+	max-width: 100% !important;
+	object-fit: cover !important;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.listing-image-wrap {
+	overflow: hidden !important;
+	background: transparent !important;
+}
+
+/* Bold Tag */
+.listing-wrap p b{
+	font-size:24px;
+	line-height:2em;
+	text-transform:uppercase;
+	letter-spacing:-2px;
+	word-spacing:1.2px;
+	font-family:'Montserrat', sans-serif;
+}
+
+/* Bold Tag */
+.listing-wrap h2 b{
+	font-size:24px;
+	text-transform:uppercase;
+	font-weight:700;
+	line-height:1.2em;
+	letter-spacing:-2px;
+	font-family:'Montserrat', sans-serif;
+}
+
+/* Heading */
+.listing-wrap article h3{
+	font-family:'Montserrat', sans-serif;
+	text-transform:uppercase;
+	letter-spacing:-1.5px;
+	font-size:20px;
+	font-weight:700 !important;
+}
+
+.listing-wrap article h2{
+	font-family:'Montserrat', sans-serif;
+	font-weight:700;
+	text-transform:uppercase;
+	font-size:20px;
+	letter-spacing:-1.5px;
+}
+
+/* Strong Tag */
+.listing-wrap p strong{
+	font-size:14px;
+}
+
+/* Span Tag */
+.listing-view .item-header .item-price span{
+	line-height:1.2em;
+	letter-spacing:0px;
+}
+
+/* Button */
+#main-wrap .listing-wrap .container .row .col-lg-12 .listing-view .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 .btn-item{
+	top:auto !important;
+}
+
+/* Betterdocs search form wrapper */
+#main-wrap .betterdocs-docs-archive-wrapper .betterdocs-search-form-wrapper{
+	background-color:#0c2d38;
+}
+
+/* Popular search title */
+.betterdocs-live-search .betterdocs-popular-search-keyword .popular-search-title{
+	color:#ffffff;
+}
+
+/* Button */
+.advanced-search-v1-geolocation .d-flex .btn-secondary{
+	background-color:#00aeef;
+}
+
+/* Search submit */
+.betterdocs-live-search .betterdocs-advance-searchform .search-submit{
+	background-color:#00aeef;
+	letter-spacing:1.2px;
+	line-height:1em;
+	font-size:14px;
+	font-weight:600;
+	word-spacing:0px;
+}
+
+/* Select */
+.betterdocs-live-search .betterdocs-advance-searchform select{
+	font-size:12px;
+	color:#020202;
+	text-transform:none;
+}
+
+/* Input */
+.betterdocs-advance-searchform .betterdocs-searchform-input-wrap input[type=text]{
+	font-size:14px;
+	color:#020202;
+	font-weight:600;
+}
+
+/* Docs search icon */
+.betterdocs-advance-searchform .betterdocs-searchform-input-wrap .docs-search-icon{
+	color:#020202;
+}
+
+/* Popular keyword */
+.betterdocs-live-search .betterdocs-popular-search-keyword .popular-keyword{
+	color:#020202;
+}
+
+/* Heading */
+.single-kb .category-grid h2{
+	color:#0c2d38 !important;
+}
+
+/* Span Tag */
+.single-kb a span{
+	font-size:14px;
+	line-height:1em;
+	color:#0c2d38;
+}
+
+/* Link */
+.betterdocs-shortcode .single-kb .category-grid .betterdocs-single-category-inner .betterdocs-body .betterdocs-articles-list li a{
+	font-size:14px !important;
+}
+
+/* Link */
+.single-kb li a{
+	line-height:1.5em;
+}
+
+/* Betterdocs search form wrapper */
+#main-wrap .betterdocs-taxonomy-wrapper .betterdocs-search-form-wrapper{
+	background-color:#0c2d38;
+}
+
+/* Link */
+.betterdocs-breadcrumb-list .betterdocs-breadcrumb-item a{
+	color:#020202 !important;
+}
+
+/* Heading */
+#main .betterdocs-entry-title h2{
+	color:#0c2d38;
+}
+
+/* Paragraph */
+#main .betterdocs-entry-title p{
+	color:#0c2d38;
+}
+
+/* Link */
+.betterdocs-taxonomy-doc-category ul a{
+	color:#0c2d38 !important;
+	line-height:2em !important;
+}
+
+/* Link */
+#betterdocs-sidebar .active a{
+	color:#0c2d38;
+}
+
+/* Heading */
+#betterdocs-sidebar .active h2{
+	color:#0c2d38;
+}
+
+/* Span Tag */
+#betterdocs-sidebar .active span{
+	color:#020202;
+}
+
+/* Heading */
+#betterdocs-sidebar .category-grid h2{
+	color:#0c2d38;
+}
+
+/* Betterdocs content wrapper */
+#main-wrap .betterdocs-taxonomy-wrapper .betterdocs-content-wrapper{
+	background-color:#ffffff;
+}
+
+/* Span Tag */
+.active .betterdocs-single-category-inner .betterdocs-category-header .betterdocs-category-header-inner .betterdocs-category-items-counts span{
+	color:#ffffff !important;
+}
+
+#header-section a img{
+	left:-25px;
+}
+
+.listing-wrap .page-title-wrap{
+	height:100px;
+}
+
+.listing-wrap article{
+	height:96px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* 1439px y menores */
+@media (max-width:1439px){
+
+	.footer-bottom-wrap .footer-copyright a{
+		background-color:transparent;
+		color:#ffffff;
+	}
+
+	.d-flex .form-control .dropdown-toggle div div div{
+		text-transform:uppercase;
+	}
+
+	.listing-wrap article{
+		height:122px;
+	}
+
+}
+
+/* 1199px y menores */
+@media (max-width:1199px){
+
+	.listing-view .item-header .item-price-wrap li{
+		letter-spacing:0px;
+	}
+
+	.listing-view .item-title a{
+		letter-spacing:0px;
+	}
+
+}
+
+/* 1200px y mayores */
+@media (min-width:1200px){
+
+	#property-description-wrap .houzez-more-content h2{
+		font-size:24px;
+	}
+
+}
+
+/* 670px y menores */
+@media (max-width:670px){
+
+	.listing-wrap article{
+		transform:translatex(0px) translatey(0px);
+	}
+
+	.listing-view .item-header .item-price-wrap li{
+		letter-spacing:0px;
+	}
+
+	#main-wrap .betterdocs-docs-archive-wrapper .betterdocs-search-form-wrapper{
+		position:relative;
+		top:58px;
+	}
+
+	.listing-tools-wrap .d-flex .d-flex{
+		width:241px;
+	}
+
+	.listing-wrap article h1{
+		font-size:24px;
+	}
+
+	.listing-wrap article h2{
+		font-size:16px;
+		letter-spacing:0px;
+	}
+
+}
+
+/* 600px y menores */
+@media (max-width:600px){
+
+	.listing-view .item-header .item-price-wrap li{
+		font-size:12px;
+	}
+
+	#main-wrap .listing-wrap .container .row .col-lg-12 .listing-view .hz-item-gallery-js .item-wrap-no-frame .d-flex .item-header .item-price-wrap .item-price span{
+		font-size:12px !important;
+	}
+
+}
+
+/* 575px y menores */
+@media (max-width:575px){
+
+	.listing-view .item-header .item-price-wrap li{
+		letter-spacing:0px;
+	}
+
+}
+
+/* 425px y menores */
+@media (max-width:425px){
+
+	.listing-wrap article h2{
+		font-size:14px !important;
+		letter-spacing:0px;
+	}
+
+}
+
+/* 390px y menores */
+@media (max-width:390px){
+
+	.listing-wrap .listing-tools-wrap > .d-flex{
+		padding-top:40px;
+	}
+
+}
+
+/* 767px y menores */
+@media (max-width:767px){
+
+	.listing-view .item-header .hz-label{
+		display:inline-block;
+		font-size:6px;
+	}
+
+	.listing-view .d-flex span.label{
+		font-size:6px;
+	}
+
+}
