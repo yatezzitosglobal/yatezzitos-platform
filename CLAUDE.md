@@ -111,6 +111,7 @@ Reglas principales de redacción y formato:
 2. **Formato:** Todo el contenido para WordPress debe generarse siempre en **HTML puro** listo para copiar/pegar o enviar vía API. No usar Markdown.
 3. **Enlaces Internos:** Obligatorio enlazar a nuestros posts de blog de destinos/experiencias dentro de las descripciones largas de ciudades.
 4. **Enlaces Externos:** Todo archivo SEO debe contener, mínimo, **un enlace saliente de utilidad** hacia un sitio con alta autoridad (e.g. Wikipedia, TripAdvisor).
+5. **Legibilidad Estricta (Yoast):** Palabras de transición en >30% de las oraciones, subtítulos cada <300 palabras, y complejidad de palabras en <10%. Priorizar frases cortas y claras.
 
 ---
 

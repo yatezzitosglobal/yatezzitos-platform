@@ -83,7 +83,51 @@ Para retener al usuario, traspasar autoridad SEO y dar señales de relevancia a 
 - **Playas y Destinos (Internos):** Cada vez que menciones una playa, bahía, isla o destino específico que el yate visita, DEBES enlazarlo a su artículo de blog correspondiente. Debes investigar y usar la mayor cantidad de enlaces salientes útiles categorizados por ciudad.
 - **Enlaces Externos (Outbound):** SIEMPRE debes incluir por lo menos **un enlace saliente hacia un sitio web externo** de alta autoridad (que no sea yatezzitos.com). Este enlace debe aportar utilidad o contexto real al usuario (ej. Wikipedia local, Fideicomiso de Turismo oficial, pronóstico del clima local, información medioambiental).
 
-## 7. Checklist antes de publicar
+## 7. Contenido en Volumen — Regla de Cross-Linking entre Entradas de una Serie
+
+Cuando se crea un **grupo de entradas relacionadas** (por ejemplo: todas las playas de Nuevo Vallarta, todos los destinos de una ciudad, o todos los posts de pesca deportiva), se aplican las siguientes reglas adicionales para construir autoridad temática y mejorar el posicionamiento del grupo completo:
+
+### Definición de "serie de contenido"
+Una serie es un conjunto de 3 o más entradas que comparten:
+- La misma ciudad o destino geográfico, O
+- El mismo tipo de experiencia (pesca deportiva, playas secretas, snorkel, etc.)
+
+### Reglas de cross-linking en volumen
+
+**a) Cross-link obligatorio dentro de la serie:**
+- Cada entrada de la serie debe enlazar a **al menos 1 otra entrada de la misma serie**, de forma natural dentro del texto.
+- El enlace debe aparecer en contexto relevante (ej. "También puedes visitar [Playa Destiladeras](url), a solo 10 min de aquí"), no como lista al pie.
+
+**b) Post ancla (hub) de la serie:**
+- Toda serie debe tener una entrada principal (hub/pillar) que **enlace a TODAS las entradas de la serie**.
+- Este hub suele ser: Guía de ciudad, Guía de playas, o Guía de experiencias.
+- Las entradas individuales deben enlazar de regreso al hub.
+
+**c) No forzar los enlaces:**
+- Los cross-links deben fluir de forma natural. Si no hay una razón orgánica para enlazar a otra entrada, no se fuerza.
+- ❌ Prohibido: sección "También te puede interesar" como lista al pie de página.
+- ✅ Correcto: "Desde aquí también se puede llegar a [Playa X](url), donde además hay programas de conservación de tortugas."
+
+**d) Mapa de la serie antes de escribir:**
+Antes de generar contenido en volumen, definir:
+1. Lista de todas las entradas que formarán la serie
+2. URLs definitivas de cada entrada (aunque no existan aún)
+3. Qué entry enlaza a qué (evitar solo dependencia lineal, construir red)
+
+### Ejemplo de red de cross-links (serie "Nuevo Vallarta / Riviera Nayarit"):
+```
+Guía Completa NV → enlaza a TODAS
+Guía Playas NV → enlaza a cada playa individual
+Islas Marietas → enlaza a El Anclote (punto de salida) + Guía NV
+El Anclote → enlaza a Marietas (razón principal de ir) + Destiladeras
+Destiladeras → enlaza a Punta Mita + El Anclote
+Punta Mita → enlaza a Marietas + El Anclote + Litibú + Destiladeras
+Litibú → enlaza a Punta Mita + Destiladeras
+```
+
+---
+
+## 8. Checklist antes de publicar
 
 - [ ] Frase clave al INICIO del título SEO
 - [ ] Frase clave al INICIO de la meta descripción

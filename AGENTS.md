@@ -155,6 +155,12 @@ Todos los agentes del ecosistema deben comunicarse con:
 - **Enlaces Internos (Destinos):** Es obligatorio incluir hipervínculos hacia nuestros artículos del blog que hablen sobre los destinos mencionados en las descripciones largas de ciudades.
 - **Enlaces Externos (Autoridad):** Toda pieza de contenido SEO larga debe incluir obligatoriamente, como mínimo, **un enlace saliente de utilidad** para el usuario hacia una página de alta autoridad relevante (ej. Wikipedia, TripAdvisor).
 
+### 🟢 Reglas de Legibilidad Estricta (Yoast SEO)
+Todo contenido redactado debe cumplir obligatoriamente con los siguientes estándares de legibilidad para mantener el semáforo verde en Yoast SEO:
+1. **Palabras de Transición (>30%):** Al menos 1 de cada 3 oraciones debe contener una palabra de transición (ej. sin embargo, además, por consiguiente, en resumen, primero) para guiar al lector y conectar ideas.
+2. **Distribución de Subtítulos (<300 palabras):** Ningún bloque de texto seguido después de un encabezado puede superar las 300 palabras. Usa una jerarquía lógica de etiquetas `<h2>` y `<h3>` para dividir los párrafos largos y crear unidades temáticas.
+3. **Complejidad de Palabras (<10%):** Usa un vocabulario sencillo y común. Evita que más del 10% del texto contenga palabras "complejas" (largas, poco frecuentes, que no empiecen con mayúscula). Prioriza siempre la claridad sobre la redundancia técnica.
+
 ### 🔌 Integraciones y Servidores MCP Autorizados
 Los agentes tienen permiso y deben utilizar las siguientes integraciones MCP cuando realicen labores SEO o de gestión:
 - **WordPress MCP:** Para leer, crear, actualizar posts y publicar sus respectivos metadatos de Yoast SEO (`_yoast_wpseo_title`, `_yoast_wpseo_metadesc`, `_yoast_wpseo_focuskw`) mediante peticiones REST seguras.
