@@ -1,0 +1,208 @@
+/**
+ * YZZ | Gap imagen cards + Precio premium — SOLUCIÓN DEFINITIVA
+ * ================================================================
+ * PROBLEMA 1: .listing-image-wrap hereda h-100 del flex parent
+ *   (el grid iguala la altura de todas las cards en la fila).
+ *   Slick JS fija inline style height ~261px en .slick-list,
+ *   sin cubrir el contenedor completo (~355px) → fondo negro visible.
+ *
+ *   SOLUCIÓN DEFINITIVA: usar aspect-ratio en .listing-image-wrap
+ *   para desacoplar su altura del flex parent y que sea siempre
+ *   proporcional al ancho. Luego los hijos de Slick llenan con
+ *   position:absolute, evitando que el inline style de JS interfiera.
+ *
+ * PROBLEMA 2: área de precio sin jerarquía visual ni responsive.
+ *   Aplica en: tarjeta de categoría + página individual de yate.
+ * ================================================================
+ */
+
+/* ================================================================
+   1. FIX DEFINITIVO: gap vacío en imagen de cards de ciudad
+   ================================================================ */
+
+/* Contenedor: aspect-ratio fijo, independiente del flex parent */
+.listing-image-wrap {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;      /* 4:3 = 75% de la anchura */
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    /* Desacoplar de h-100 del parent */
+    align-self: auto !important;
+    height: auto !important;
+}
+
+/* El gallery wrapper llena el contenedor con position absolute */
+.listing-image-wrap .listing-gallery-wrap,
+.listing-image-wrap .listing-gallery-wrap.on_hover,
+.listing-image-wrap .houezz-listing-carousel,
+.listing-image-wrap .slick-initialized {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Cadena Slick: todos llenan el contenedor */
+.listing-image-wrap .slick-slider,
+.listing-image-wrap .slick-list,
+.listing-image-wrap .slick-track {
+    height: 100% !important;
+}
+
+/* Slides individuales y sus divs hijos */
+.listing-image-wrap .slick-slide,
+.listing-image-wrap .slick-slide > div {
+    height: 100% !important;
+}
+
+/* Enlace hover-effect: block y llena el slide */
+.listing-image-wrap a.hover-effect,
+.listing-image-wrap .hover-effect {
+    display: block !important;
+    height: 100% !important;
+}
+
+/* Imagen: cubre sin deformar, sin baseline gap */
+.listing-image-wrap img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* Botón prev/next de Slick: z-index sobre la imagen */
+.listing-image-wrap .slick-prev,
+.listing-image-wrap .slick-next {
+    z-index: 10 !important;
+}
+
+/* Aspect-ratio responsive */
+@media (max-width: 767px) {
+    .listing-image-wrap {
+        aspect-ratio: 16 / 10 !important;   /* más panorámico en móvil */
+    }
+}
+@media (min-width: 1200px) {
+    .listing-image-wrap {
+        aspect-ratio: 3 / 2 !important;     /* más horizontal en desktop grande */
+    }
+}
+
+
+/* ================================================================
+   2. PRECIO PREMIUM — jerarquía tipográfica profesional
+   Aplica en: tarjetas de ciudad + página individual de yate
+   ================================================================ */
+
+/* --- CONTENEDOR GENERAL del precio --- */
+li.item-price,
+.item-price {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    line-height: 1 !important;
+    padding: 2px 0 !important;
+    gap: 1px !important;
+}
+
+/* --- PREFIX: "Por 6 horas" ---
+   Pequeño, mayúsculas, tracking amplio → actúa como etiqueta */
+.price-prefix,
+span.price-prefix {
+    display: block !important;
+    font-size: 0.62em !important;          /* relativo al item-price */
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.10em !important;
+    opacity: 0.85;
+    line-height: 1.2 !important;
+}
+
+/* --- MONTO: "$26,500" ---
+   Grande, negrita, protagonista */
+.price,
+span.price {
+    display: block !important;
+    font-size: 1.55em !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.0 !important;
+}
+
+/* --- POSTFIX: "/MXN" ---
+   Pequeño, pegado al precio, como superíndice visual */
+.price-postfix,
+span.price-postfix {
+    display: inline !important;
+    font-size: 0.50em !important;
+    font-weight: 600 !important;
+    opacity: 0.75;
+    letter-spacing: 0.06em !important;
+    vertical-align: baseline !important;
+    margin-left: 2px !important;
+}
+
+/* --- TARJETA DE CATEGORÍA: precio sobre imagen (fondo oscuro → texto blanco) --- */
+.item-price-wrap .item-price,
+.item-price-wrap li.item-price {
+    align-items: flex-start !important;
+}
+
+/* Asegurar blanco en el contexto de la tarjeta */
+.item-price-wrap .price-prefix,
+.item-price-wrap .price,
+.item-price-wrap .price-postfix {
+    color: #ffffff !important;
+}
+
+/* --- PÁGINA INDIVIDUAL DEL YATE — precio más grande --- */
+.property-price-wrap .item-price,
+.property-price-wrap li.item-price {
+    align-items: flex-end !important;      /* alineado a la derecha */
+}
+
+.property-price-wrap .price-prefix {
+    font-size: 0.58em !important;
+    color: #0C2D38 !important;
+}
+
+.property-price-wrap .price {
+    font-size: 1.8em !important;
+    color: #0C2D38 !important;
+}
+
+.property-price-wrap .price-postfix {
+    color: #0C2D38 !important;
+    opacity: 0.65;
+}
+
+/* --- RESPONSIVE PRECIO --- */
+
+/* Móvil (<576px): precio de tarjeta más compacto */
+@media (max-width: 575px) {
+    .item-price-wrap .price {
+        font-size: 1.3em !important;
+    }
+    .property-price-wrap .price {
+        font-size: 1.5em !important;
+    }
+}
+
+/* Tablet (576–991px) */
+@media (min-width: 576px) and (max-width: 991px) {
+    .property-price-wrap .price {
+        font-size: 1.65em !important;
+    }
+}
+
+/* Desktop grande (≥1200px) */
+@media (min-width: 1200px) {
+    .property-price-wrap .price {
+        font-size: 2em !important;
+    }
+}

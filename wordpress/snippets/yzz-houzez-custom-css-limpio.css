@@ -1,0 +1,450 @@
+/* ============================================================
+   HOUZEZ CUSTOM CSS — Optimizado
+   Correcciones aplicadas:
+   - ELIMINADO: .slick-list { height: 100% !important } → causaba gap
+   - ELIMINADO: .img-fluid { height: 330px } @ 575px → causaba gap
+   - ELIMINADO: bloque "selector { }" → CSS inválido (sin clase/id)
+   - ELIMINADO: bloques @media 991px y 1439px duplicados
+   ============================================================ */
+
+/* ============================================================
+   PRECIO — página individual de yate
+   ============================================================ */
+.page-title-wrap .item-price-wrap .item-price {
+    font-size: 24px;
+    margin-bottom: 15px;
+    position: relative;
+    right: 100px;
+}
+
+.page-title-wrap .label {
+    font-size: 12px;
+    padding: 7px 10px 6px;
+    margin-right: 5px;
+    position: relative;
+    left: 100px;
+    bottom: 10px;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+.expanded article p > a {
+    color: #0000ee;
+}
+
+#property-description-wrap p a {
+    color: #0000ee;
+}
+
+/* ============================================================
+   FORMULARIO DE CONTACTO / IFRAME
+   ============================================================ */
+.property-form-wrap iframe {
+    min-height: 800px;
+    margin-top: -45px;
+}
+
+.hl_form-builder--main {
+    padding: 10px;
+}
+
+#_builder-form .fields-container {
+    padding-top: 0px !important;
+}
+
+/* ============================================================
+   AGENTE
+   ============================================================ */
+.agent-information li,
+.agent-information li a {
+    font-size: 14px;
+}
+
+.agent-information {
+    flex: 0 0 90%;
+}
+
+/* ============================================================
+   ICONOS — reemplazos de glifos
+   ============================================================ */
+.icon-share:before    { content: "\e951" !important; }
+.icon-envelope:before { content: "\e91d" !important; }
+
+.icon-social-instagram:before { content: "\e93b"; }
+.icon-social-pinterest:before { content: "\e940"; }
+
+/* ============================================================
+   LIGHTBOX / HERRAMIENTAS
+   ============================================================ */
+.lightbox-tools .list-inline-item a:hover {
+    color: #00aeef !important;
+}
+
+.lightbox-logo img {
+    width: 50px;
+    height: 50px;
+}
+
+/* ============================================================
+   BOTÓN DESCARGAR IMÁGENES
+   ============================================================ */
+.contenedor-de-la-descripcion {
+    position: relative;
+}
+
+.download-images-btn {
+    position: relative;
+    top: 10px;
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .download-images-btn { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+    .download-images-btn { font-size: 12px; }
+}
+
+/* ============================================================
+   MISCELÁNEA UI
+   ============================================================ */
+.elementor .e-child p {
+    letter-spacing: 0px;
+}
+
+.review-date {
+    display: none;
+}
+
+.label-status.label.status-color-79 {
+    display: none;
+}
+
+.logo img {
+    transform: scale(0.65);
+}
+
+.widget ul:not(.item-amenities):not(.item-price-wrap):not(.contact-list):not(.dropdown-menu):not(.nav-tabs) ul {
+    padding-left: 0px;
+}
+
+.listing-tools-wrap .d-flex .flex-grow-1 {
+    display: none;
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
+.btn-secondary-outlined {
+    color: #dd3333;
+    text-transform: capitalize !important;
+    background-color: transparent;
+    border-color: #dd3333;
+}
+
+/* ============================================================
+   REDES SOCIALES — FOOTER
+   ============================================================ */
+.footer-social span .btn-pinterest {
+    display: inline-block;
+    background-image: none;
+}
+
+.footer-social .btn-pinterest i {
+    background-image: url("https://img.icons8.com/?size=15&id=ONeceuvv794Z&format=png&color=FFFFFF");
+}
+
+.footer-social .btn-instagram i {
+    background-image: url("https://img.icons8.com/?size=15&id=8831&format=png&color=FFFFFF");
+}
+
+/* ============================================================
+   BANNERS CUSTOM
+   ============================================================ */
+#customBanner {
+    display: none !important;
+}
+
+#container-banner {
+    left: 0%;
+}
+
+/* ============================================================
+   BOTONES MOBILE PROPERTY CONTACT
+   ============================================================ */
+.mobile-property-contact .d-flex a,
+.mobile-property-contact .d-flex .btn-secondary {
+    position: relative;
+}
+
+.mobile-property-contact .d-flex .d-flex {
+    position: relative;
+}
+
+b .mobile-property-contact .d-flex a          { left: -20% !important; }
+b .mobile-property-contact .d-flex .btn-secondary { left: -20% !important; }
+b .mobile-property-contact .d-flex .flex-grow-1 .d-flex { left: 20% !important; }
+
+@media (max-width: 425px) {
+    #container-banner { font-size: 14px; }
+    b .mobile-property-contact .d-flex .flex-grow-1 .d-flex { width: 48% !important; }
+    .mobile-property-contact .d-flex .d-flex { font-size: 14px; display: none !important; }
+    b .mobile-property-contact .d-flex .btn-secondary { left: -30% !important; }
+    b .mobile-property-contact .d-flex a { left: -30% !important; }
+}
+
+@media (max-width: 390px) {
+    b .mobile-property-contact .d-flex .btn-secondary { left: -28% !important; }
+    b .mobile-property-contact .d-flex a { left: -28% !important; }
+}
+
+@media (max-width: 320px) {
+    b .mobile-property-contact .d-flex .btn-secondary { left: -22% !important; }
+    b .mobile-property-contact .d-flex a { left: -22% !important; }
+}
+
+/* ============================================================
+   DROPDOWNS / SORT
+   ============================================================ */
+.d-flex .form-control .dropdown-toggle div div div {
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   HEADER MÓVIL
+   ============================================================ */
+@media (max-width: 991px) {
+    #header-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #000000;
+        text-align: center;
+        height: 60px;
+        padding: 0 10px;
+    }
+}
+
+/* ============================================================
+   CSS DE IMPRESIÓN
+   ============================================================ */
+@media print {
+    body.print-page img.hz-fte-img,
+    body.print-page img.hz-fte-img.mr-2 {
+        width: 24px !important;
+        height: auto !important;
+        max-width: 24px !important;
+        max-height: 24px !important;
+        object-fit: contain !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+        transform: none !important;
+        margin: 0 6px 0 0 !important;
+        padding: 0 !important;
+    }
+
+    body.print-page .list-2-cols li {
+        line-height: 1.6 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .item-tool.houzez-print {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ============================================================
+   NAVEGACIÓN MÓVIL / USUARIO
+   ============================================================ */
+@media (min-width: 769px) {
+    #icon-button { display: none; }
+}
+
+@media (max-width: 1439px) {
+    #slick-slide07 .d-flex .listing-featured-thumb { width: 100%; }
+}
+
+@media (max-width: 991px) {
+    #navi-user .login-link a {
+        background-color: #000000;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    #navi-user .register-link a {
+        color: #ffffff;
+        background-color: #000000;
+        font-weight: 600;
+    }
+
+    #navi-user .btn-create-listing {
+        background-color: #4fbde2;
+    }
+
+    #mobile-main-nav .nav-item span {
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 16px;
+        background-color: rgba(255, 255, 255, 0);
+        line-height: 3em;
+    }
+
+    #mobile-main-nav .nav-item .dropdown-item {
+        background-color: #000000;
+        color: #ffffff;
+        font-weight: 400;
+        text-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+        direction: ltr;
+        white-space: normal;
+        line-height: 2em;
+        font-style: italic;
+        text-transform: capitalize;
+        font-size: 16px;
+        column-count: 1;
+        word-spacing: 0px;
+    }
+}
+
+/* ============================================================
+   FORMULARIOS
+   ============================================================ */
+.form-tools a {
+    min-height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.control.control--checkbox {
+    line-height: 22px;
+    display: flex;
+    flex-flow: column;
+    font-size: 12px;
+}
+
+/* ============================================================
+   DESCRIPCIÓN DEL YATE — texto
+   ============================================================ */
+@media (max-width: 767px) {
+    .property-view #property-description-wrap .block-wrap .block-content-wrap ul li ul li {
+        font-size: 10px !important;
+    }
+}
+
+@media (max-width: 479px) {
+    #main-wrap .property-wrap .container .row .bt-full-width-content-wrap .property-view #property-description-wrap .block-wrap .block-content-wrap ul li ul li {
+        width: auto !important;
+        height: auto !important;
+        font-size: 10px !important;
+    }
+}
+
+/* ============================================================
+   LOGIN / REGISTRO
+   ============================================================ */
+.login-page-title .d-flex h2 {
+    font-weight: 700;
+}
+
+@media (min-width: 671px) {
+    .login-page-title .d-flex h2 { font-size: 38px; }
+}
+
+.nav-tabs .nav-item .active {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000 !important;
+    color: #ffffff;
+    background-color: #000000 !important;
+}
+
+.nav-tabs .nav-item .nav-link {
+    border-color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+.blog-wrap .container .row .col-lg-12 .login-form-page-wrap .tab-content #login-form-tab form .captcha_wrapper .houzez_google_reCaptcha div div iframe {
+    width: 100% !important;
+}
+
+#login-form-tab form a     { color: #1b9ec9; }
+#login-form-tab form label { color: #000000; }
+
+/* ============================================================
+   HEADER — LOGO GRANDE
+   ============================================================ */
+@media (min-width: 1440px) {
+    #header-section a img {
+        width: 90px;
+        height: 80px;
+    }
+}
+
+/* ============================================================
+   TIPOGRAFÍA — DK Knucklebones
+   ============================================================ */
+@font-face {
+    font-family: "Dk Knucklebones";
+    src: url("/wp-content/uploads/2026/01/DK-Knucklebones-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    font-family: "Dk Knucklebones", "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    letter-spacing: 0 !important;
+}
+
+.elementor-heading-title, .elementor-heading-title a,
+.houzez-page-title, .houzez-page-title a,
+.item-title, .item-title a,
+.property-title, .property-title a,
+.widget-title, .widget-title a,
+.listing-wrap .taxonomy-description h1, .listing-wrap .taxonomy-description h1 a,
+.taxonomy-description div h2, .taxonomy-description div h2 a,
+.taxonomy-description h2, .taxonomy-description h2 a,
+.listing-wrap .item-title a {
+    font-family: "Dk Knucklebones", "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    letter-spacing: 0 !important;
+}
+
+@media (min-width: 1200px) {
+    .listing-wrap .item-title a,
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+    .elementor-heading-title a, .houzez-page-title a,
+    .item-title a, .property-title a, .widget-title a {
+        letter-spacing: 0 !important;
+    }
+}
+
+/* ============================================================
+   BOTÓN DETALLES — centrado
+   ============================================================ */
+a.btn.btn-primary.btn-item.item-no-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
