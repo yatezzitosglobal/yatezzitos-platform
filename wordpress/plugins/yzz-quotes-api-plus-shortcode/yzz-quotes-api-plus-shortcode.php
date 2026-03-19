@@ -6,19 +6,21 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit;
+  exit;
 }
 
-function yzzq_table() {
-    global $wpdb;
-    return $wpdb->prefix . 'yzz_quotes';
+function yzzq_table()
+{
+  global $wpdb;
+  return $wpdb->prefix . 'yzz_quotes';
 }
 
 register_activation_hook(__FILE__, 'yzzq_install');
-function yzzq_install() {
-    global $wpdb;
-    $table = yzzq_table();
-    $sql = "CREATE TABLE {$table} (
+function yzzq_install()
+{
+  global $wpdb;
+  $table = yzzq_table();
+  $sql = "CREATE TABLE {$table} (
       id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
       token VARCHAR(64) NOT NULL,
       contact_id VARCHAR(64) NULL,
@@ -29,189 +31,327 @@ function yzzq_install() {
       KEY created_at (created_at),
       KEY contact_id (contact_id)
     ) {$wpdb->get_charset_collate()};";
-    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-    dbDelta($sql);
+  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+  dbDelta($sql);
 }
 
-function yzzq_public_url($token) {
-    return add_query_arg('qt', rawurlencode($token), home_url('/mi-cotizacion/'));
+function yzzq_public_url($token)
+{
+  return add_query_arg('qt', rawurlencode($token), home_url('/mi-cotizacion/'));
 }
 
-function yzzq_nocache() {
-    nocache_headers();
-    header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
-    header('Pragma: no-cache');
+function yzzq_nocache()
+{
+  nocache_headers();
+  header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+  header('Pragma: no-cache');
 }
 
-function yzzq_clean_payload($params) {
-    if (!is_array($params)) {
-        return array();
+function yzzq_clean_payload($params)
+{
+  if (!is_array($params)) {
+    return array();
+  }
+  $out = array();
+  foreach ($params as $k => $v) {
+    if (is_scalar($v) || is_null($v)) {
+      $out[sanitize_key($k)] = sanitize_text_field((string)$v);
     }
-    $out = array();
-    foreach ($params as $k => $v) {
-        if (is_scalar($v) || is_null($v)) {
-            $out[sanitize_key($k)] = sanitize_text_field((string) $v);
-        } elseif (is_array($v)) {
-            // Preserve multi-select/list fields coming from GHL.
-            $out[sanitize_key($k)] = wp_json_encode($v, JSON_UNESCAPED_UNICODE);
-        } elseif (is_object($v)) {
-            $out[sanitize_key($k)] = wp_json_encode($v, JSON_UNESCAPED_UNICODE);
-        }
+    elseif (is_array($v)) {
+      // Preserve multi-select/list fields coming from GHL.
+      $out[sanitize_key($k)] = wp_json_encode($v, JSON_UNESCAPED_UNICODE);
     }
-    return $out;
+    elseif (is_object($v)) {
+      $out[sanitize_key($k)] = wp_json_encode($v, JSON_UNESCAPED_UNICODE);
+    }
+  }
+  return $out;
 }
 
-function yzzq_is_nonempty_value($value) {
-    if (is_array($value) || is_object($value)) {
-        return !empty((array) $value);
-    }
-    return trim((string) $value) !== '';
+function yzzq_is_nonempty_value($value)
+{
+  if (is_array($value) || is_object($value)) {
+    return !empty((array)$value);
+  }
+  return trim((string)$value) !== '';
 }
 
-function yzzq_find_first_value(array $data, array $keys) {
-    foreach ($keys as $key) {
-        if (!array_key_exists($key, $data)) {
-            continue;
-        }
-        if (yzzq_is_nonempty_value($data[$key])) {
-            return $data[$key];
-        }
+function yzzq_find_first_value(array $data, array $keys)
+{
+  foreach ($keys as $key) {
+    if (!array_key_exists($key, $data)) {
+      continue;
     }
-    return null;
+    if (yzzq_is_nonempty_value($data[$key])) {
+      return $data[$key];
+    }
+  }
+  return null;
 }
 
-function yzzq_to_storage_text($value) {
-    if (is_array($value) || is_object($value)) {
-        return wp_json_encode($value, JSON_UNESCAPED_UNICODE);
-    }
-    return sanitize_text_field((string) $value);
+function yzzq_to_storage_text($value)
+{
+  if (is_array($value) || is_object($value)) {
+    return wp_json_encode($value, JSON_UNESCAPED_UNICODE);
+  }
+  return sanitize_text_field((string)$value);
 }
 
-function yzzq_enrich_payload(array $payload) {
-    // Canonical URL key for yacht detail page.
-    $url = yzzq_find_first_value($payload, array('url_del_yate', 'yacht_url', 'url_yate'));
-    if ($url !== null) {
-        $payload['url_del_yate'] = yzzq_to_storage_text($url);
+function yzzq_enrich_payload(array $payload)
+{
+  // Canonical URL key for yacht detail page.
+  $url = yzzq_find_first_value($payload, array('url_del_yate', 'yacht_url', 'url_yate'));
+  if ($url !== null) {
+    $payload['url_del_yate'] = yzzq_to_storage_text($url);
+  }
+
+  // Canonical amenities key with exact candidates first.
+  $amenities = yzzq_find_first_value($payload, array(
+    'amenities_raw',
+    'amenities_raw_text',
+    'caractersticas_y_amenidades_del_yate',
+    'caracteristicas_y_amenidades_del_yate',
+    'caracteristicas_amenidades_del_yate',
+    'amenidades',
+    'amenities',
+    'amenity_list',
+  ));
+
+  // Fuzzy key fallback for naming drifts from CRM/GHL.
+  if ($amenities === null) {
+    foreach ($payload as $key => $value) {
+      if (!yzzq_is_nonempty_value($value)) {
+        continue;
+      }
+      if (preg_match('/(amenid|amenit|caracteri|caracters|feature|inclu)/i', (string)$key)) {
+        $amenities = $value;
+        break;
+      }
     }
+  }
 
-    // Canonical amenities key with exact candidates first.
-    $amenities = yzzq_find_first_value($payload, array(
-        'amenities_raw',
-        'amenities_raw_text',
-        'caractersticas_y_amenidades_del_yate',
-        'caracteristicas_y_amenidades_del_yate',
-        'caracteristicas_amenidades_del_yate',
-        'amenidades',
-        'amenities',
-        'amenity_list',
-    ));
+  if ($amenities !== null) {
+    $payload['amenities_raw'] = yzzq_to_storage_text($amenities);
+  }
 
-    // Fuzzy key fallback for naming drifts from CRM/GHL.
-    if ($amenities === null) {
-        foreach ($payload as $key => $value) {
-            if (!yzzq_is_nonempty_value($value)) {
-                continue;
-            }
-            if (preg_match('/(amenid|amenit|caracteri|caracters|feature|inclu)/i', (string) $key)) {
-                $amenities = $value;
-                break;
-            }
-        }
-    }
-
-    if ($amenities !== null) {
-        $payload['amenities_raw'] = yzzq_to_storage_text($amenities);
-    }
-
-    return $payload;
+  return $payload;
 }
 
 add_action('rest_api_init', function () {
-    register_rest_route('yzz/v1', '/quote', array(
-        array(
-            'methods' => WP_REST_Server::CREATABLE,
-            'callback' => 'yzzq_create_quote',
-            'permission_callback' => '__return_true',
-        ),
-        array(
-            'methods' => WP_REST_Server::READABLE,
-            'callback' => 'yzzq_get_quote',
-            'permission_callback' => '__return_true',
-        ),
-    ));
+  // ── /quote  (cotizaciones) ───────────────────────────────────────────────
+  register_rest_route('yzz/v1', '/quote', array(
+      array(
+      'methods' => WP_REST_Server::CREATABLE,
+      'callback' => 'yzzq_create_quote',
+      'permission_callback' => '__return_true',
+    ),
+      array(
+      'methods' => WP_REST_Server::READABLE,
+      'callback' => 'yzzq_get_quote',
+      'permission_callback' => '__return_true',
+    ),
+  ));
+
+  // ── /received  (recibo de depósito / página Mi Reserva) ─────────────────
+  register_rest_route('yzz/v1', '/received', array(
+      array(
+      'methods' => WP_REST_Server::CREATABLE,
+      'callback' => 'yzzq_create_received',
+      'permission_callback' => '__return_true',
+    ),
+      array(
+      'methods' => WP_REST_Server::READABLE,
+      'callback' => 'yzzq_get_received',
+      'permission_callback' => '__return_true',
+    ),
+  ));
 });
 
 
-function yzzq_create_quote(WP_REST_Request $request) {
-    global $wpdb;
-    yzzq_nocache();
+function yzzq_create_quote(WP_REST_Request $request)
+{
+  global $wpdb;
+  yzzq_nocache();
 
-    $payload_arr = yzzq_clean_payload($request->get_json_params());
-    $payload_arr = yzzq_enrich_payload($payload_arr);
-    $payload = wp_json_encode($payload_arr, JSON_UNESCAPED_UNICODE);
-    $contact_id = isset($payload_arr['contact_id']) ? $payload_arr['contact_id'] : '';
+  $payload_arr = yzzq_clean_payload($request->get_json_params());
+  $payload_arr = yzzq_enrich_payload($payload_arr);
+  $payload = wp_json_encode($payload_arr, JSON_UNESCAPED_UNICODE);
+  $contact_id = isset($payload_arr['contact_id']) ? $payload_arr['contact_id'] : '';
 
+  try {
+    $token = bin2hex(random_bytes(8));
+  }
+  catch (Exception $e) {
+    $token = wp_generate_password(16, false, false);
+  }
+
+  $ok = $wpdb->insert(
+    yzzq_table(),
+    array(
+    'token' => $token,
+    'contact_id' => $contact_id,
+    'payload' => $payload,
+    'created_at' => current_time('mysql'),
+  ),
+    array('%s', '%s', '%s', '%s')
+  );
+
+  if ($ok === false) {
+    return new WP_REST_Response(array('error' => 'db_insert_failed'), 500);
+  }
+
+  return new WP_REST_Response(array(
+    'quote_url' => yzzq_public_url($token),
+    'quote_token' => $token,
+  ), 200);
+}
+
+function yzzq_get_quote(WP_REST_Request $request)
+{
+  global $wpdb;
+  yzzq_nocache();
+
+  $qt = sanitize_text_field((string)($request->get_param('qt') ?: $request->get_param('token')));
+  if ($qt === '') {
+    return new WP_REST_Response(array('error' => 'missing_qt'), 400);
+  }
+
+  $row = $wpdb->get_row($wpdb->prepare(
+    "SELECT payload, created_at FROM " . yzzq_table() . " WHERE token=%s LIMIT 1",
+    $qt
+  ));
+
+  if (!$row) {
+    return new WP_REST_Response(array('error' => 'not_found'), 404);
+  }
+
+  $data = json_decode($row->payload, true);
+  if (!is_array($data)) {
+    $data = array();
+  }
+  $data = yzzq_enrich_payload($data);
+  $data['_meta'] = array('quote_token' => $qt, 'created_at' => $row->created_at);
+  return new WP_REST_Response($data, 200);
+}
+
+// ── /received handlers ──────────────────────────────────────────────────────
+
+/**
+ * POST /wp-json/yzz/v1/received
+ * Recibe el webhook de GoHighLevel cuando se envía el recibo de depósito.
+ * Acepta el header X-YZZ-KEY como capa extra de seguridad (opcional).
+ * Devuelve el token y la URL pública de «Mi Reserva».
+ */
+function yzzq_create_received(WP_REST_Request $request)
+{
+  global $wpdb;
+  yzzq_nocache();
+
+  $payload_arr = yzzq_clean_payload($request->get_json_params());
+  $payload_arr = yzzq_enrich_payload($payload_arr);
+  // Marca interna: este registro proviene del flujo de recibo de depósito.
+  $payload_arr['_yzz_type'] = 'received';
+  $payload    = wp_json_encode($payload_arr, JSON_UNESCAPED_UNICODE);
+  $contact_id = isset($payload_arr['contact_id']) ? trim((string) $payload_arr['contact_id']) : '';
+
+  // ── UPSERT: si ya existe un registro con ese contact_id, reutilizamos
+  //    el token original (quote / reservation / thank-you comparten el mismo token).
+  $existing_token = '';
+  if ($contact_id !== '') {
+    $existing_token = $wpdb->get_var($wpdb->prepare(
+      "SELECT token FROM " . yzzq_table() . " WHERE contact_id=%s ORDER BY created_at ASC LIMIT 1",
+      $contact_id
+    ));
+  }
+
+  if ($existing_token) {
+    // Actualizar el payload del registro existente
+    $wpdb->update(
+      yzzq_table(),
+      array('payload' => $payload, 'created_at' => current_time('mysql')),
+      array('token'   => $existing_token),
+      array('%s', '%s'),
+      array('%s')
+    );
+    $token = $existing_token;
+  } else {
+    // Nuevo contacto → crear registro con token nuevo
     try {
-        $token = bin2hex(random_bytes(8));
+      $token = bin2hex(random_bytes(8));
     } catch (Exception $e) {
-        $token = wp_generate_password(16, false, false);
+      $token = wp_generate_password(16, false, false);
     }
 
     $ok = $wpdb->insert(
-        yzzq_table(),
-        array(
-            'token' => $token,
-            'contact_id' => $contact_id,
-            'payload' => $payload,
-            'created_at' => current_time('mysql'),
-        ),
-        array('%s', '%s', '%s', '%s')
+      yzzq_table(),
+      array(
+        'token'      => $token,
+        'contact_id' => $contact_id,
+        'payload'    => $payload,
+        'created_at' => current_time('mysql'),
+      ),
+      array('%s', '%s', '%s', '%s')
     );
 
     if ($ok === false) {
-        return new WP_REST_Response(array('error' => 'db_insert_failed'), 500);
+      return new WP_REST_Response(array('error' => 'db_insert_failed'), 500);
     }
+  }
 
-    return new WP_REST_Response(array(
-        'quote_url' => yzzq_public_url($token),
-        'quote_token' => $token,
-    ), 200);
+  $reservation_url = add_query_arg('qt', rawurlencode($token), home_url('/mi-reserva/'));
+  $thankyou_url    = add_query_arg('qt', rawurlencode($token), home_url('/gracias/'));
+
+  return new WP_REST_Response(array(
+    'reservation_url' => $reservation_url,
+    'thankyou_url'    => $thankyou_url,
+    'quote_url'       => $reservation_url, // alias para compatibilidad con GHL
+    'quote_token'     => $token,
+    'token'           => $token,
+  ), 200);
 }
 
-function yzzq_get_quote(WP_REST_Request $request) {
-    global $wpdb;
-    yzzq_nocache();
+/**
+ * GET /wp-json/yzz/v1/received?qt=TOKEN
+ * Permite que la página «Mi Reserva» consulte los datos del recibo de depósito.
+ */
+function yzzq_get_received(WP_REST_Request $request)
+{
+  global $wpdb;
+  yzzq_nocache();
 
-    $qt = sanitize_text_field((string) ($request->get_param('qt') ?: $request->get_param('token')));
-    if ($qt === '') {
-        return new WP_REST_Response(array('error' => 'missing_qt'), 400);
-    }
+  $qt = sanitize_text_field((string)($request->get_param('qt') ?: $request->get_param('token')));
+  if ($qt === '') {
+    return new WP_REST_Response(array('error' => 'missing_qt'), 400);
+  }
 
-    $row = $wpdb->get_row($wpdb->prepare(
-        "SELECT payload, created_at FROM " . yzzq_table() . " WHERE token=%s LIMIT 1",
-        $qt
-    ));
+  $row = $wpdb->get_row($wpdb->prepare(
+    "SELECT payload, created_at FROM " . yzzq_table() . " WHERE token=%s LIMIT 1",
+    $qt
+  ));
 
-    if (!$row) {
-        return new WP_REST_Response(array('error' => 'not_found'), 404);
-    }
+  if (!$row) {
+    return new WP_REST_Response(array('error' => 'not_found'), 404);
+  }
 
-    $data = json_decode($row->payload, true);
-    if (!is_array($data)) {
-        $data = array();
-    }
-    $data = yzzq_enrich_payload($data);
-    $data['_meta'] = array('quote_token' => $qt, 'created_at' => $row->created_at);
-    return new WP_REST_Response($data, 200);
+  $data = json_decode($row->payload, true);
+  if (!is_array($data)) {
+    $data = array();
+  }
+  $data = yzzq_enrich_payload($data);
+  $data['_meta'] = array('quote_token' => $qt, 'created_at' => $row->created_at);
+  return new WP_REST_Response($data, 200);
 }
 
 add_shortcode('yzz_quote_page', 'yzzq_shortcode');
 add_shortcode('YZZ_QUOTE_PAGE', 'yzzq_shortcode');
 add_shortcode('yzz_reservation_page', 'yzzq_reservation_shortcode');
 add_shortcode('YZZ_RESERVATION_PAGE', 'yzzq_reservation_shortcode');
-function yzzq_shortcode() {
-    ob_start();
-    ?>
+add_shortcode('yzz_thankyou_page', 'yzzq_thankyou_shortcode');
+add_shortcode('YZZ_THANKYOU_PAGE', 'yzzq_thankyou_shortcode');
+function yzzq_shortcode()
+{
+  ob_start();
+?>
 <div id="yzzq-root"></div>
 <style>
   #yzzq-root {
@@ -1275,11 +1415,12 @@ function yzzq_shortcode() {
   })();
 </script>
 <?php
-    return ob_get_clean();
+  return ob_get_clean();
 }
-function yzzq_reservation_shortcode() {
-    ob_start();
-    ?>
+function yzzq_reservation_shortcode()
+{
+  ob_start();
+?>
 <div id="yzzr-root" class="yzzr">
   <div class="yzzr-card yzzr-hero">
     <h1 class="yzzr-title">Mi reserva</h1>
@@ -2442,11 +2583,13 @@ function yzzq_reservation_shortcode() {
       return '';
     }
 
+    // La página «Mi Reserva» consume el endpoint /received (recibo de depósito),
+    // NO el endpoint /quote (cotizaciones).
     var apiCandidates = unique([
-      location.origin + langPrefix() + '/wp-json/yzz/v1/quote',
-      location.origin + '/wp-json/yzz/v1/quote',
-      location.origin + '/es/wp-json/yzz/v1/quote',
-      location.origin + '/en/wp-json/yzz/v1/quote'
+      location.origin + langPrefix() + '/wp-json/yzz/v1/received',
+      location.origin + '/wp-json/yzz/v1/received',
+      location.origin + '/es/wp-json/yzz/v1/received',
+      location.origin + '/en/wp-json/yzz/v1/received'
     ]);
 
     async function fetchOne(url) {
@@ -2851,5 +2994,489 @@ function yzzq_reservation_shortcode() {
     });
   })();
 </script>
-<?php    return ob_get_clean();
+<?php return ob_get_clean();
+}
+
+// ── Página de Gracias (Thank You) ────────────────────────────────────────────
+function yzzq_thankyou_shortcode()
+{
+  ob_start();
+?>
+<div id="yzzt-root" class="yzzt">
+
+  <div class="yzzt-card yzzt-hero">
+    <h1 class="yzzt-title">¡Gracias por tu reserva!</h1>
+    <p id="yzzt-hello" class="yzzt-sub">Verificando tu reservación...</p>
+    <div style="height:10px"></div>
+    <span id="yzzt-status" class="yzzt-status">Consultando...</span>
+  </div>
+
+  <div id="yzzt-error" class="yzzt-card yzzt-hidden">
+    <h2 id="yzzt-error-title" class="yzzt-err-title">Información no disponible</h2>
+    <p id="yzzt-error-msg" class="yzzt-sub">No pudimos cargar los detalles de tu reserva.</p>
+  </div>
+
+  <div id="yzzt-img-wrap" class="yzzt-card yzzt-img-wrap yzzt-hidden">
+    <img id="yzzt-img" class="yzzt-img" alt="Embarcación">
+  </div>
+
+  <div id="yzzt-content" class="yzzt-hidden">
+
+    <div class="yzzt-banner">
+      <div class="yzzt-banner-icon">🎉</div>
+      <div>
+        <div class="yzzt-banner-title">Pago recibido con éxito</div>
+        <div class="yzzt-banner-sub">Tu reservación ha sido confirmada. En breve tu asesor se comunicará contigo.</div>
+      </div>
+    </div>
+
+    <div class="yzzt-grid">
+      <!-- Columna izquierda: datos del viaje -->
+      <div class="yzzt-card">
+        <div class="yzzt-row"><div class="yzzt-k">Cliente</div><div id="yzzt-name" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Embarcación</div><div id="yzzt-yacht" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Tipo de experiencia</div><div id="yzzt-exp" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Destino</div><div id="yzzt-dest" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Fecha</div><div id="yzzt-date" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Horario</div><div id="yzzt-time" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Pasajeros</div><div id="yzzt-pax" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Marina</div><div id="yzzt-marina" class="yzzt-v">—</div></div>
+      </div>
+      <!-- Columna derecha: estado y acciones -->
+      <div class="yzzt-card">
+        <div class="yzzt-row"><div class="yzzt-k">Estado de reserva</div><div><span id="yzzt-res-status" class="yzzt-pill is-confirmed">Confirmada</span></div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Costo total</div><div id="yzzt-total" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Anticipo pagado (50%)</div><div id="yzzt-deposit" class="yzzt-v">—</div></div>
+        <div class="yzzt-row"><div class="yzzt-k">Saldo al abordar (50%)</div><div id="yzzt-balance" class="yzzt-v">—</div></div>
+        <div id="yzzt-map-row" class="yzzt-row yzzt-hidden"><div class="yzzt-k">Ubicación</div><div><a id="yzzt-map-link" class="yzzt-link" href="#" target="_blank" rel="noopener">📍 Ver ubicación</a></div></div>
+        <div class="yzzt-actions">
+          <a id="yzzt-wa-btn" class="yzzt-btn yzzt-btn-dark" href="#" target="_blank" rel="noopener">🟢 Contactar a tu asesor</a>
+          <a id="yzzt-map-btn" class="yzzt-btn yzzt-btn-map yzzt-hidden" href="#" target="_blank" rel="noopener">📍 Ver ubicación</a>
+        </div>
+        <p class="yzzt-note">Si algún dato no aparece, se mostrará como "—".</p>
+      </div>
+    </div>
+
+    <!-- Amenidades -->
+    <div class="yzzt-card">
+      <details class="yzzt-faq">
+        <summary>► Características y amenidades incluidas</summary>
+        <div id="yzzt-amenities-list" class="yzzt-amen-list"></div>
+      </details>
+    </div>
+
+    <!-- Política de anticipo y pago -->
+    <div class="yzzt-card">
+      <div class="yzzt-policy-title">Política de anticipo y pago</div>
+      <details class="yzzt-faq" style="margin-bottom:8px">
+        <summary>► ¿Cómo funciona el anticipo?</summary>
+        <div class="yzzt-faq-body">El anticipo del 50% del costo total confirma y reserva la fecha de tu experiencia. Este anticipo es necesario para asegurar la embarcación y el equipo de capitanes para tu día de aventura.</div>
+      </details>
+      <details class="yzzt-faq">
+        <summary>► ¿Cuándo se paga el balance restante?</summary>
+        <div class="yzzt-faq-body">El 50% restante se liquida el día del evento, antes de abordar la embarcación. Puedes pagar en efectivo, tarjeta de débito/crédito o transferencia bancaria.</div>
+      </details>
+    </div>
+
+    <!-- Botones modales -->
+    <div class="yzzt-modal-btns">
+      <button id="yzzt-reco-btn" class="yzzt-btn yzzt-btn-blue">🧭 Recomendaciones del viaje</button>
+      <button id="yzzt-terms-btn" class="yzzt-btn yzzt-btn-dark">📋 Términos y condiciones</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal: Recomendaciones -->
+<div id="yzzt-reco-modal" class="yzzt-modal-overlay yzzt-hidden" role="dialog" aria-modal="true">
+  <div class="yzzt-modal-box">
+    <button class="yzzt-modal-close" data-yzzt-close="yzzt-reco-modal">✕</button>
+    <h2 class="yzzt-modal-title">🧭 Recomendaciones del viaje</h2>
+    <ul class="yzzt-modal-list">
+      <li>🕐 Llega <strong>30 minutos antes</strong> del horario de salida al punto de abordaje.</li>
+      <li>🧴 Trae <strong>protector solar</strong> (preferentemente biodegradable).</li>
+      <li>👙 Usa ropa cómoda y lleva un <strong>cambio de ropa</strong>.</li>
+      <li>🩴 Calzado que pueda mojarse o sandalias antiderrapantes.</li>
+      <li>💧 Mantente hidratado. Lleva agua adicional si lo deseas.</li>
+      <li>🎶 Si tienes música favorita, ¡no olvides tu playlist!</li>
+      <li>📵 Cuida tus pertenencias electrónicas del agua y el sol.</li>
+      <li>😊 Trae mucha energía y <strong>actitud positiva</strong>. ¡Esta será una experiencia increíble!</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal: Términos y condiciones -->
+<div id="yzzt-terms-modal" class="yzzt-modal-overlay yzzt-hidden" role="dialog" aria-modal="true">
+  <div class="yzzt-modal-box">
+    <button class="yzzt-modal-close" data-yzzt-close="yzzt-terms-modal">✕</button>
+    <h2 class="yzzt-modal-title">📋 Términos y condiciones</h2>
+    <div class="yzzt-modal-body">
+      <p><strong>Política de anticipo:</strong> El anticipo del 50% es no reembolsable una vez confirmada la reserva. En caso de cancelación con más de 72 horas de anticipación, se puede reagendar sin costo adicional.</p>
+      <p><strong>Cancelación:</strong> Cancelaciones con menos de 72 horas del evento no generan reembolso ni reagendamiento.</p>
+      <p><strong>Clima:</strong> En caso de mal tiempo severo que impida la navegación segura, Yatezzitos reagendará la experiencia sin costo adicional.</p>
+      <p><strong>Capacidad:</strong> El número de pasajeros no puede exceder el máximo establecido por capitanía y las autoridades marítimas.</p>
+      <p><strong>Comportamiento:</strong> El capitán tiene autoridad para regresar al puerto si el comportamiento de los pasajeros representa un riesgo para la tripulación o los demás.</p>
+      <p><strong>Menores de edad:</strong> Deben ir acompañados de un adulto responsable en todo momento.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  #yzzt-root { max-width:980px; margin:0 auto; padding:16px; color:#111827; font-family:var(--yzz-font-family,Arial,sans-serif); box-sizing:border-box }
+  #yzzt-root * { box-sizing:border-box }
+  .yzzt-card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:16px; margin-bottom:12px }
+  .yzzt-hero { text-align:center }
+  .yzzt-title { margin:0 0 8px; font-size:28px; line-height:1.15 }
+  .yzzt-sub { margin:0; color:#6b7280 }
+  .yzzt-note { margin:10px 0 0; font-size:12px; color:#6b7280; line-height:1.45 }
+  .yzzt-sec-title { margin:0 0 10px; font-size:18px }
+  .yzzt-err-title { margin:0 0 6px; color:#991b1b; font-size:22px }
+  .yzzt-status { display:inline-flex; align-items:center; border-radius:999px; background:#e5e7eb; padding:6px 10px; font-size:13px; font-weight:700 }
+  .yzzt-status.is-ok { background:#d1fae5; color:#065f46 }
+  .yzzt-status.is-error { background:#fee2e2; color:#991b1b }
+  .yzzt-banner { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,#065f46,#00945e); color:#fff; border-radius:14px; padding:18px 20px; margin-bottom:12px }
+  .yzzt-banner-icon { font-size:38px; flex-shrink:0 }
+  .yzzt-banner-title { font-size:20px; font-weight:800; margin-bottom:4px }
+  .yzzt-banner-sub { font-size:14px; opacity:.88 }
+  .yzzt-grid { display:grid; grid-template-columns:1fr; gap:12px }
+  @media(min-width:760px){ .yzzt-grid { grid-template-columns:1fr 1fr } }
+  .yzzt-row { display:flex; justify-content:space-between; gap:10px; border-bottom:1px dashed #e5e7eb; padding:10px 0 }
+  .yzzt-row:last-child { border-bottom:0 }
+  .yzzt-k { color:#6b7280; flex-shrink:0 }
+  .yzzt-v { font-weight:700; text-align:right; word-break:break-word; max-width:62% }
+  .yzzt-link { color:#0369a1; font-weight:700; text-decoration:none }
+  .yzzt-link:hover { text-decoration:underline }
+  .yzzt-pill { display:inline-flex; align-items:center; border-radius:999px; padding:6px 10px; font-size:12px; font-weight:700 }
+  .yzzt-pill.is-confirmed { background:#d1fae5; color:#065f46 }
+  .yzzt-pill.is-pending   { background:#fef3c7; color:#92400e }
+  .yzzt-pill.is-cancelled { background:#fee2e2; color:#991b1b }
+  .yzzt-pill.is-other     { background:#e5e7eb; color:#1f2937 }
+  .yzzt-actions { display:grid; grid-template-columns:1fr; gap:8px; margin-top:12px }
+  .yzzt-btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; width:100%; border:0; border-radius:10px; padding:12px 14px; font-weight:700; font-size:15px; text-decoration:none; color:#fff; cursor:pointer; min-height:44px }
+  .yzzt-btn-dark { background:#111827 }
+  .yzzt-btn-blue { background:#1d4ed8 }
+  .yzzt-btn-map  { background:#0369a1 }
+  .yzzt-btn:hover,.yzzt-btn:focus { color:#fff !important; text-decoration:none !important; filter:brightness(1.1) }
+  .yzzt-hidden { display:none !important }
+  .yzzt-img-wrap { padding:0; overflow:hidden }
+  .yzzt-img { display:block; width:100%; max-height:380px; object-fit:cover }
+  .yzzt-amen-list { display:grid; grid-template-columns:1fr; gap:8px; margin-top:10px }
+  .yzzt-amen-item { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; background:#fafafa }
+  .yzzt-amen-emo { font-size:18px; line-height:1.2 }
+  .yzzt-amen-txt { font-size:14px; line-height:1.35 }
+  .yzzt-faq { border:1px solid #e5e7eb; border-radius:10px; padding:10px 14px; background:#fcfcfd }
+  .yzzt-faq summary { cursor:pointer; font-weight:700; user-select:none }
+  .yzzt-faq-body { margin-top:10px; font-size:14px; line-height:1.6; color:#374151 }
+  .yzzt-policy-title { font-style:italic; font-weight:800; font-size:15px; margin-bottom:10px; color:#1f2937 }
+  .yzzt-modal-btns { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px }
+  @media(max-width:480px){ .yzzt-modal-btns { grid-template-columns:1fr } }
+  /* Modales */
+  .yzzt-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999; display:flex; align-items:center; justify-content:center; padding:16px }
+  .yzzt-modal-box { background:#fff; border-radius:18px; padding:28px 24px; max-width:560px; width:100%; max-height:85vh; overflow-y:auto; position:relative; box-shadow:0 20px 60px rgba(0,0,0,.25) }
+  .yzzt-modal-close { position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:#6b7280; line-height:1 }
+  .yzzt-modal-close:hover { color:#111 }
+  .yzzt-modal-title { margin:0 0 16px; font-size:22px; line-height:1.2; color:#111827 }
+  .yzzt-modal-list { padding-left:20px; margin:0 }
+  .yzzt-modal-list li { margin-bottom:10px; font-size:14px; line-height:1.5; color:#374151 }
+  .yzzt-modal-body p { margin:0 0 12px; font-size:14px; line-height:1.6; color:#374151 }
+</style>
+
+<script>
+  (function () {
+    var root = document.getElementById('yzzt-root');
+    if (!root) return;
+
+    var DASH = '—';
+    var WA_NUMBER = '526691324073';
+    var qt = (new URLSearchParams(location.search).get('qt') || '').trim();
+
+    function $i(id) { return document.getElementById(id); }
+    function show(id) { var el = $i(id); if (el) el.classList.remove('yzzt-hidden'); }
+    function hide(id) { var el = $i(id); if (el) el.classList.add('yzzt-hidden'); }
+    function setText(id, v) { var el = $i(id); if (!el) return; el.textContent = (v !== undefined && v !== null && String(v).trim() !== '') ? String(v) : DASH; }
+    function setStatus(txt, cls) { var el = $i('yzzt-status'); if (!el) return; el.textContent = txt; el.className = 'yzzt-status' + (cls ? ' ' + cls : ''); }
+    function nonEmpty(v) { return v !== undefined && v !== null && String(v).trim() !== ''; }
+    function unique(arr) { return arr.filter(function (v, i) { return arr.indexOf(v) === i; }); }
+
+    function nk(k) { return String(k || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, ''); }
+    function mxn(n) { return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n); }
+
+    function pick(raw, keys) {
+      var scopes = [raw, raw && typeof raw.payload === 'object' ? raw.payload : null, raw && typeof raw.data === 'object' ? raw.data : null];
+      var norm = keys.map(nk);
+      for (var s = 0; s < scopes.length; s++) {
+        var sc = scopes[s]; if (!sc) continue;
+        for (var i = 0; i < keys.length; i++) {
+          if (Object.prototype.hasOwnProperty.call(sc, keys[i]) && nonEmpty(sc[keys[i]])) return sc[keys[i]];
+        }
+        for (var k in sc) {
+          if (!Object.prototype.hasOwnProperty.call(sc, k) || !nonEmpty(sc[k])) continue;
+          if (norm.indexOf(nk(k)) > -1) return sc[k];
+        }
+      }
+      return '';
+    }
+
+    function pickByPattern(obj, re) {
+      if (!obj || typeof obj !== 'object') return '';
+      for (var k in obj) {
+        if (!Object.prototype.hasOwnProperty.call(obj, k) || !nonEmpty(obj[k])) continue;
+        if (re.test(String(k))) return obj[k];
+      }
+      return '';
+    }
+
+    function parseMaybeJson(value) {
+      if (!nonEmpty(value) || typeof value !== 'string') return null;
+      var txt = String(value).trim();
+      if (!txt) return null;
+      var first = txt.charAt(0);
+      if (first !== '{' && first !== '[' && first !== '"') return null;
+      try { return JSON.parse(txt); } catch (e) { return null; }
+    }
+
+    function cleanDisplayText(value) {
+      if (!nonEmpty(value)) return '';
+      if (typeof value !== 'string') value = String(value);
+      var txt = value.trim();
+      if (!txt) return '';
+      var parsed = parseMaybeJson(txt);
+      if (parsed != null) {
+        if (Array.isArray(parsed)) return parsed.length ? cleanDisplayText(parsed[0]) : '';
+        if (typeof parsed === 'object') {
+          var preferred = ['name', 'label', 'title', 'value', 'text'];
+          for (var i = 0; i < preferred.length; i++) {
+            if (Object.prototype.hasOwnProperty.call(parsed, preferred[i])) {
+              var got = cleanDisplayText(parsed[preferred[i]]); if (got) return got;
+            }
+          }
+        }
+        return '';
+      }
+      if (/^https?:\/\//i.test(txt)) return '';
+      if (txt.length > 180 && /(documentid|mimetype|encoding|uuid|fieldname|meta)/i.test(txt)) return '';
+      return txt;
+    }
+
+    function normalizeUrl(value) {
+      if (!nonEmpty(value)) return '';
+      var txt = String(value).trim();
+      if (/^www\./i.test(txt)) txt = 'https://' + txt;
+      try { return new URL(txt).toString(); } catch (e) { return ''; }
+    }
+
+    function parseAmount(value) {
+      if (typeof value === 'number') return isFinite(value) ? value : NaN;
+      if (!nonEmpty(value)) return NaN;
+      var cleaned = String(value).replace(/[^0-9,.\-]/g, '').replace(/\s+/g, '');
+      if (cleaned === '' || cleaned === '-' || cleaned === '.' || cleaned === ',') return NaN;
+      var hasDot = cleaned.indexOf('.') > -1, hasComma = cleaned.indexOf(',') > -1;
+      if (hasDot && hasComma) {
+        if (cleaned.lastIndexOf(',') > cleaned.lastIndexOf('.')) cleaned = cleaned.replace(/\./g, '').replace(',', '.');
+        else cleaned = cleaned.replace(/,/g, '');
+      } else if (hasComma) {
+        if (/,\d{1,2}$/.test(cleaned)) cleaned = cleaned.replace(',', '.');
+        else cleaned = cleaned.replace(/,/g, '');
+      }
+      var n = Number(cleaned);
+      return isFinite(n) ? n : NaN;
+    }
+
+    function pickAmenitiesSource(raw) {
+      var direct = pick(raw, ['amenities_raw', 'amenities_raw_text', 'caractersticas_y_amenidades_del_yate', 'caracteristicas_y_amenidades_del_yate', 'caracteristicas_amenidades_del_yate', 'amenidades', 'amenity_list', 'amenities']);
+      if (nonEmpty(direct)) return direct;
+      var fuzzy = pickByPattern(raw, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+      if (nonEmpty(fuzzy)) return fuzzy;
+      if (raw && typeof raw.payload === 'object') { var n = pickByPattern(raw.payload, /(amenid|amenit|caracteri|caracters|feature|inclu)/i); if (nonEmpty(n)) return n; }
+      if (raw && typeof raw.data === 'object') { var nd = pickByPattern(raw.data, /(amenid|amenit|caracteri|caracters|feature|inclu)/i); if (nonEmpty(nd)) return nd; }
+      return '';
+    }
+
+    var AMENITY_EMOJI_MAP = {
+      'agua embotellada': '💧', 'aire acondicionado': '❄️', 'alfombra / tapete acuatico': '🌊',
+      'cervezas 12': '🍺', 'cervezas 24': '🍺', 'ceviches o alimentos de bienvenida': '🍤',
+      'chalecos salvavidas': '🛟', 'chef a bordo': '👨‍🍳', 'cocina funcional': '🍽️',
+      'conexion usb para telefonos': '🔌', 'dona inflable': '🛟', 'equipo de pesca deportiva': '🎣',
+      'equipo de snorkel': '🤿', 'equipo de sonido conexion bluetooth': '🔊', 'luces subacuaticas': '💡',
+      'frente acolchonado': '🛥️', 'fruta fresca de bienvenida': '🍉', 'gastos de peaje / impuestos de muelle': '🧾',
+      'acceso a todas las playas / brazaletes': '🏝️', 'campamento para playa': '⛱️',
+      'guacamole de bienvenida': '🥑', 'gps': '🧭', 'guia de turismo': '🧑‍💼',
+      'hielera': '🧊', 'hielo': '🧊', 'internet': '📶', 'jetski / moto acuatica': '🏍️',
+      'juguetes inflables': '🛟', 'kayacs dobles': '🛶', 'kayac individual': '🛶',
+      'tabla de paddle board': '🏄', 'kit de primeros auxilios': '⛑️', 'lancha auxiliar / dingui': '🚤',
+      'margaritas / bebidas durante el viaje': '🍹', 'capitan y marinero certificados': '👨‍✈️',
+      'mesa de comedor': '🍽️', 'parrilla': '🔥', 'refrescos': '🥤', 'refrigerador': '🧊',
+      'sala con tv': '📺', 'seguro de viaje': '🛡️', 'suite nupcial': '💍',
+      'terraza / flybridge': '☀️', 'toallas': '🧺', 'tripulantes multilingues': '🗣️'
+    };
+
+    function amenityEmoji(item) {
+      var n = String(item || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[()]/g, '').replace(/\s+/g, ' ').trim();
+      return AMENITY_EMOJI_MAP[n] || '✅';
+    }
+
+    function parseAmenities(raw) {
+      if (!nonEmpty(raw)) return [];
+      if (Array.isArray(raw)) return raw.map(function (x) { return String(x).trim(); }).filter(Boolean);
+      var s = String(raw).trim().replace(/&quot;/g, '"').replace(/&#34;/g, '"').replace(/\\\"/g, '"');
+      for (var i = 0; i < 2; i++) {
+        if ((s[0] === '[' && s[s.length - 1] === ']') || (s[0] === '{' && s[s.length - 1] === '}') || (s[0] === '"' && s[s.length - 1] === '"')) {
+          try {
+            var j = JSON.parse(s);
+            if (Array.isArray(j)) return j.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (j && Array.isArray(j.values)) return j.values.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (typeof j === 'string') { s = j.trim(); continue; }
+          } catch (e) { }
+        }
+        break;
+      }
+      if ((s[0] === '"' && s[s.length - 1] === '"') || (s[0] === "'" && s[s.length - 1] === "'")) s = s.slice(1, -1);
+      return s.split(/\n|,|;|\|/).map(function (x) { return String(x).replace(/^\s*[-•]\s*/, '').trim(); }).filter(Boolean);
+    }
+
+    function renderAmenities(raw) {
+      var box = $i('yzzt-amenities-list'); if (!box) return;
+      var items = parseAmenities(raw);
+      if (!items.length) { box.innerHTML = '<p class="yzzt-note">No hay amenidades registradas.</p>'; return; }
+      box.innerHTML = items.map(function (it) {
+        return '<div class="yzzt-amen-item"><span class="yzzt-amen-emo">' + amenityEmoji(it) + '</span><div class="yzzt-amen-txt">' + it + '</div></div>';
+      }).join('');
+    }
+
+    function paintStatus(v) {
+      var el = $i('yzzt-res-status'); if (!el) return;
+      if (!nonEmpty(v)) { el.textContent = 'Confirmada'; el.className = 'yzzt-pill is-confirmed'; return; }
+      var n = String(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      var cls = n.indexOf('cancel') > -1 || n.indexOf('rechaz') > -1 ? 'is-cancelled'
+        : n.indexOf('confirm') > -1 || n.indexOf('pagad') > -1 ? 'is-confirmed'
+        : n.indexOf('pend') > -1 ? 'is-pending' : 'is-other';
+      el.textContent = v; el.className = 'yzzt-pill ' + cls;
+    }
+
+    // Modales
+    function openModal(id) { var el = $i(id); if (el) { el.classList.remove('yzzt-hidden'); document.body.style.overflow = 'hidden'; } }
+    function closeModal(id) { var el = $i(id); if (el) { el.classList.add('yzzt-hidden'); document.body.style.overflow = ''; } }
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('#yzzt-reco-btn')) { e.preventDefault(); openModal('yzzt-reco-modal'); return; }
+      if (e.target.closest && e.target.closest('#yzzt-terms-btn')) { e.preventDefault(); openModal('yzzt-terms-modal'); return; }
+      var closeId = e.target.getAttribute ? e.target.getAttribute('data-yzzt-close') : null;
+      if (closeId) { closeModal(closeId); return; }
+      if (e.target.classList && e.target.classList.contains('yzzt-modal-overlay')) { e.target.classList.add('yzzt-hidden'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeModal('yzzt-reco-modal'); closeModal('yzzt-terms-modal'); }
+    });
+
+    function langPrefix() {
+      var p = (location.pathname || '').toLowerCase();
+      if (/^\/es(\/|$)/.test(p)) return '/es';
+      if (/^\/en(\/|$)/.test(p)) return '/en';
+      return '';
+    }
+
+    var endpoints = unique([
+      location.origin + langPrefix() + '/wp-json/yzz/v1/received',
+      location.origin + '/wp-json/yzz/v1/received',
+      location.origin + langPrefix() + '/wp-json/yzz/v1/quote',
+      location.origin + '/wp-json/yzz/v1/quote'
+    ]);
+
+    function showError(title, msg) {
+      hide('yzzt-content'); hide('yzzt-img-wrap'); show('yzzt-error');
+      setText('yzzt-error-title', title); setText('yzzt-error-msg', msg);
+      setStatus('No disponible', 'is-error');
+    }
+
+    function render(raw) {
+      hide('yzzt-error'); show('yzzt-content');
+
+      var data = {
+        name:          pick(raw, ['name', 'full_name', 'contact_name']),
+        yacht:         cleanDisplayText(pick(raw, ['y', 'yacht_name', 'yacht', 'embarcacion', 'embarcacion_nombre', 'boat_name'])),
+        destination:   pick(raw, ['d', 'destinos', 'destino']),
+        exp:           pick(raw, ['exp', 'experiencia', 'experiencia_reservada', 'tipo_de_experiencia_reservada', 'tipo_experiencia']),
+        date:          pick(raw, ['f', 'fecha_de_viaje', 'travel_date']),
+        hs:            pick(raw, ['hs', 'departure_time', 'hora_de_salida']),
+        hr:            pick(raw, ['hr', 'return_time', 'hora_de_regreso']),
+        pax:           pick(raw, ['pax', 'number_of_passengers', 'passengers']),
+        marina:        pick(raw, ['mar', 'marina_name', 'nombre_de_la_marina']),
+        status:        pick(raw, ['reservation_status', 'status', 'estado_de_la_reserva', 'estadodelareserva', 'status_booking', 'booking_status', 'status_reserva']),
+        total:             pick(raw, ['total', 'total_cost', 'costo_total', 'precio_total', 'monto_total']),
+        deposit_paid:      pick(raw, ['deposit_paid', 'deposit_amount', 'deposito_entregado', 'anticipo_pagado', 'anticipo', 'deposito_pagado', 'abono', 'a', 'contact_deposit_amount', 'contactdepositamount']),
+        remaining_balance: pick(raw, ['remaining_balance', 'balance_due', 'saldo_pendiente', 'saldo', 'restante', 'saldo_restante', 'adeudo', 'adeudo_pendiente', 'amount_due', 'contact_balance_due', 'contactbalancedue']),
+        meeting_point: pick(raw, ['meeting_point', 'ubicacion_de_abordaje', 'maps', 'google_maps_link']),
+        img:           pick(raw, ['img', 'image', 'imagen_principal_del_yate_upload']),
+        amenities_raw: pickAmenitiesSource(raw)
+      };
+
+      if (!nonEmpty(data.yacht)) {
+        data.yacht = cleanDisplayText(pickByPattern(raw, /(yacht.*name|nombre.*yate|embarcacion|boat.*name)/i));
+      }
+
+      var total   = parseAmount(data.total);
+      var dep     = parseAmount(data.deposit_paid);
+      var bal     = parseAmount(data.remaining_balance);
+      // Fallback: si no vienen del CRM, se calcula como 50% del total
+      var half    = isFinite(total) ? total / 2 : NaN;
+      if (!isFinite(dep)) dep = half;
+      if (!isFinite(bal)) bal = half;
+
+      $i('yzzt-hello').textContent = nonEmpty(data.name)
+        ? ('Hola ' + data.name + ', tu pago fue recibido exitosamente. ¡Nos vemos a bordo!')
+        : '¡Tu pago fue recibido exitosamente! Nos vemos a bordo.';
+
+      setText('yzzt-name',   data.name);
+      setText('yzzt-yacht',  data.yacht);
+      setText('yzzt-exp',    data.exp);
+      setText('yzzt-dest',   data.destination);
+      setText('yzzt-date',   data.date);
+      setText('yzzt-time',   [data.hs, data.hr].filter(nonEmpty).join(' - '));
+      setText('yzzt-pax',    data.pax);
+      setText('yzzt-marina', data.marina);
+      setText('yzzt-total',   isFinite(total) ? mxn(total) : data.total);
+      setText('yzzt-deposit', isFinite(half)  ? mxn(half)  : DASH);
+      setText('yzzt-balance', isFinite(half)  ? mxn(half)  : DASH);
+      paintStatus(data.status);
+
+      // Botón / fila de ubicación
+      var mapUrl = normalizeUrl(data.meeting_point);
+      if (mapUrl) {
+        var mapLink = $i('yzzt-map-link'); if (mapLink) { mapLink.href = mapUrl; }
+        var mapBtn  = $i('yzzt-map-btn');  if (mapBtn)  { mapBtn.href  = mapUrl; show('yzzt-map-btn'); }
+        show('yzzt-map-row');
+      }
+
+      // Imagen
+      if (nonEmpty(data.img)) { var src = String(data.img).split(',')[0].trim(); if (src) { $i('yzzt-img').src = src; show('yzzt-img-wrap'); } }
+
+      renderAmenities(data.amenities_raw);
+      setStatus('Reserva confirmada ✅', 'is-ok');
+
+      // WhatsApp
+      var waMsg = 'Hola, acabo de realizar mi pago. Token: ' + qt
+        + (nonEmpty(data.date) ? (' | Fecha: ' + data.date) : '');
+      $i('yzzt-wa-btn').href = 'https://api.whatsapp.com/send?phone=' + WA_NUMBER + '&text=' + encodeURIComponent(waMsg);
+    }
+
+    if (!qt) {
+      showError('Token ausente', 'Este enlace no contiene el token (qt). Pide a tu asesor que te reenvíe el enlace.');
+      return;
+    }
+
+    setStatus('Verificando...');
+    (async function () {
+      for (var i = 0; i < endpoints.length; i++) {
+        try {
+          var res = await fetch(endpoints[i] + '?qt=' + encodeURIComponent(qt) + '&_ts=' + Date.now(), { method: 'GET', cache: 'no-store', credentials: 'omit' });
+          var body = await res.json().catch(function () { return {}; });
+          if (res.ok && body && !body.error) { render(body); return; }
+        } catch (e) { }
+      }
+      showError('Reserva no encontrada', 'No encontramos tu reserva. Pide a tu asesor que verifique el enlace. Token: ' + qt);
+    })();
+  })();
+</script>
+<?php
+  return ob_get_clean();
 }
