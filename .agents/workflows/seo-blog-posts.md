@@ -146,3 +146,33 @@ Litibú → enlaza a Punta Mita + Destiladeras
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
 - [ ] CTA con WhatsApp, correo y catálogo al final
+- [ ] Archivo guardado en `docs/seo/{carpeta-destino}/` según Sección 9
+
+## 9. Organización de Archivos por Destino (OBLIGATORIO)
+
+### Regla de directorio único
+**TODA** entrada de blog, guía, descripción larga o contenido SEO relacionado con un destino **DEBE** guardarse en su carpeta correspondiente dentro de `docs/seo/`:
+
+```
+docs/seo/
+├── acapulco/
+├── cancun/
+├── huatulco/
+├── ixtapa/
+├── la-paz/
+├── los-cabos/
+├── mazatlan/
+├── nuevo-vallarta/
+├── playa-del-carmen/
+├── puerto-vallarta/
+└── tips-y-recomendaciones/
+```
+
+### Reglas estrictas
+1. **Categoría = Carpeta:** Si la entrada tiene categoría "Experiencias La Paz", va en `docs/seo/la-paz/`. Si es "Experiencias Los Cabos", va en `docs/seo/los-cabos/`. Sin excepciones.
+2. **Incluir borradores:** Las entradas en estado **borrador (draft)** también se guardan aquí, con la etiqueta `> **Estado:** 🟡 BORRADOR (Draft)` en el header del Markdown.
+3. **Formato Markdown:** Todos los archivos dentro de `docs/seo/` deben ser `.md`. Los HTML se convierten a Markdown y se elimina el HTML original.
+4. **Cero duplicados:** No puede haber dos archivos con el mismo slug/contenido. Si se detecta un duplicado, se elimina el más antiguo o menos completo.
+5. **Cero subcarpetas innecesarias:** No crear carpetas como `entradas/`, `posts/`, `borradores/` dentro de cada ciudad. Todo va en la raíz de la ciudad.
+6. **Descripción larga:** Cada ciudad debe tener su `descripcion_larga_{ciudad}.md` dentro de su carpeta.
+7. **Contenido general/tips:** Las entradas que no pertenecen a un destino específico van en `tips-y-recomendaciones/`.
