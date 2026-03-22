@@ -1,0 +1,58 @@
+/**
+ * YZZ | Fix espacio vacío en imagen de cards de ciudad (v2)
+ *
+ * PROBLEMA:
+ * El contenedor .listing-image-wrap vive dentro de un flex column con h-100.
+ * El grid de cards iguala la altura de todas las tarjetas en cada fila, por
+ * lo que .listing-image-wrap recibe una altura variable (ej. 355px).
+ * El slider Slick inicializa sus hijos (.slick-list, .slick-track) con una
+ * altura calculada en px desde el JS (ej. 261px), dejando ~93px de fondo
+ * negro visible entre la imagen y la barra de precio.
+ *
+ * SOLUCIÓN:
+ * Propagar height:100% desde .listing-image-wrap hacia abajo por toda la
+ * cadena de divs del carousel de Slick, para que el slider LLENE el
+ * espacio del contenedor en lugar de quedar corto.
+ *
+ * Aplica en: WordPress → Apariencia → Personalizar → CSS adicional
+ */
+
+/* 1. El contenedor debe tener posición relativa y overflow oculto */
+.listing-image-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+/* 2. El carousel wrapper inicializado por Slick debe llenar el contenedor */
+.listing-image-wrap .houezz-listing-carousel,
+.listing-image-wrap .slick-initialized {
+    height: 100% !important;
+}
+
+/* 3. Toda la cadena interna de Slick propaga la altura hacia abajo */
+.listing-image-wrap .slick-slider,
+.listing-image-wrap .slick-list,
+.listing-image-wrap .slick-track {
+    height: 100% !important;
+}
+
+/* 4. Cada slide individual llena su espacio */
+.listing-image-wrap .slick-slide,
+.listing-image-wrap .slick-slide > div {
+    height: 100% !important;
+}
+
+/* 5. El enlace hover-effect y la imagen cubren todo el slide */
+.listing-image-wrap .hover-effect,
+.listing-image-wrap a.hover-effect {
+    display: block;
+    height: 100% !important;
+}
+
+/* 6. Imagen cubre sin deformar y sin baseline gap */
+.listing-image-wrap img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
