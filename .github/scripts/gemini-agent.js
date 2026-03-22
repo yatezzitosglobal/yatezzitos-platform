@@ -216,8 +216,9 @@ async function main() {
   // Cargar contexto del proyecto
   const context = loadContext();
 
-  // Construir prompt
-  const prompt = `Eres un agente de desarrollo autónomo trabajando en Yatezzitos Global — plataforma de turismo náutico de lujo en México (yatezzitos.com). Tienes 8 años de historial operativo y trabajas en 10+ destinos.
+  // Construir prompt — copilot-instructions.md es la instrucción principal
+  const copilotInstructions = readFileSafe('.github/copilot-instructions.md');
+  const prompt = `${copilotInstructions}
 ${context}
 
 ---
@@ -235,14 +236,9 @@ ${ISSUE_BODY || 'Sin descripción adicional.'}
 
 ## INSTRUCCIONES DE RESPUESTA
 
-Analiza la tarea y genera los archivos necesarios para completarla dentro del repositorio.
-
-Reglas estrictas:
-- Trabaja SOLO con archivos del repositorio (docs, seo, configs, código, scripts)
-- NUNCA inventes precios, disponibilidad o capacidad de embarcaciones
-- Para contenido SEO: HTML puro, keywords naturales, reglas Yoast, enlaces internos y externos
-- Si la tarea es ambigua, haz lo más razonable y documéntalo en el PR
-- El branch_name debe seguir: fix/, feat/, docs/, seo/, ai/ seguido de descripción en kebab-case
+Analiza la tarea y genera los archivos necesarios para completarla.
+Si la tarea es ambigua, haz lo más razonable y documéntalo en el PR.
+El branch_name debe seguir las convenciones del proyecto: fix/, feat/, docs/, seo/, ai/
 
 Responde ÚNICAMENTE con JSON válido en este formato (sin texto adicional, sin markdown):
 
