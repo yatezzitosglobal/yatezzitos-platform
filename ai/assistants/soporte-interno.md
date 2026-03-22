@@ -83,7 +83,7 @@ Ver [docs/seo/](../../docs/seo/) para estrategia completa.
 | Herramienta | Para qué |
 |---|---|
 | **GitHub** | Leer repos, crear issues, revisar PRs, documentar |
-| **GoHighLevel** | Leer datos de CRM (modo lectura) |
+| **GoHighLevel MCP Server** | Leer datos de CRM e interactuar de forma segura (modo lectura/tareas) |
 | **WordPress** | Leer contenido, fichas, SEO |
 | **Google Search Console** | Análisis de keywords y tráfico (futuro) |
 | **Google Analytics** | Métricas de tráfico (futuro) |
@@ -99,6 +99,7 @@ Ver [docs/seo/](../../docs/seo/) para estrategia completa.
 | No enviar comunicaciones a clientes | Solo genera borradores |
 | No inventar métricas | Solo reporta datos reales |
 | Respetar AGENTS.md | Todas las reglas globales aplican |
+| **GoHighLevel Whitelist (Seguridad)** | 🟢 **SOLO PERMITIDO**: `search_contacts`, `get_contact`, `search_opportunities`, `get_pipelines`, `get_calendar_events`, `create_contact_note`, `create_contact_task`.<br>🚫 **BLOQUEO TOTAL**: `delete_contact`, `delete_opportunity`, `send_sms`, `send_email` o operaciones `bulk*` sin revisión humana explícita. |
 
 ---
 
