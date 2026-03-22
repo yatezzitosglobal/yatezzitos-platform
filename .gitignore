@@ -39,3 +39,6 @@ __pycache__/
 *.json
 scripts/yatezzitos_crawler/logs/
 .vscode/
+
+# GHL MCP Env Variables
+.env.ghl-mcp
