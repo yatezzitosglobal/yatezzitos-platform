@@ -94,7 +94,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
 .vertical-card .card-overlay, .horizontal-card .card-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,20,40,0.05) 0%, rgba(0,25,45,0.55) 100%); }
 .vertical-card:hover .card-bg, .horizontal-card:hover .card-bg { transform: scale(1.05); }
 .vertical-card .card-content, .horizontal-card .card-content { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-.vertical-card .card-content, .vertical-card .card-content *, .horizontal-card .card-content, .horizontal-card .card-content * { color: #FFFFFF !important; }
+#yz-blog-masonry .vertical-card .card-content, #yz-blog-masonry .vertical-card .card-content *, #yz-blog-masonry .horizontal-card .card-content, #yz-blog-masonry .horizontal-card .card-content * { color: #FFFFFF !important; }
 
 /* CATEGORÍAS (VERTICALES) */
 .vertical-card { height: 480px; }
@@ -178,7 +178,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
 <!-- ==============================================
      COMPONENTE 2: MASONRY GRID Y CTA 
      ============================================== -->
-<section class="latest-articles-section">
+<section class="latest-articles-section" id="yz-blog-masonry">
   <!-- Cabecera -->
   <div class="header-container">
     <h2 class="masonry-title"><span class="cursive">Últimos</span> Artículos</h2>

@@ -116,11 +116,11 @@
 
 /* DISEÑO TARJETAS GENERAL */
 .vertical-card, .horizontal-card { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-.vertical-card .card-bg, .horizontal-card .card-bg { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; min-width: 100% !important; min-height: 100% !important; max-width: none !important; max-height: none !important; object-fit: cover !important; object-position: center !important; z-index: 1; transition: transform 0.6s ease; display: block !important; }
+.vertical-card .card-bg, .horizontal-card .card-bg { position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; min-width: 100% !important; min-height: 100% !important; max-width: none !important; max-height: none !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; z-index: 1; transition: transform 0.6s ease; display: block !important; }
 .vertical-card .card-overlay, .horizontal-card .card-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,20,40,0.05) 0%, rgba(0,25,45,0.55) 100%); }
 .vertical-card:hover .card-bg, .horizontal-card:hover .card-bg { transform: scale(1.05); }
 .vertical-card .card-content, .horizontal-card .card-content { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-.vertical-card .card-content, .vertical-card .card-content *, .horizontal-card .card-content, .horizontal-card .card-content * { color: #FFFFFF !important; }
+#yz-blog-masonry .vertical-card .card-content, #yz-blog-masonry .vertical-card .card-content *, #yz-blog-masonry .horizontal-card .card-content, #yz-blog-masonry .horizontal-card .card-content * { color: #FFFFFF !important; }
 
 /* TARJETAS VERTICALES */
 .vertical-card { height: 480px; }
