@@ -1,17 +1,8 @@
-name: Auto-assign Copilot to AI Tasks
+# Este workflow está desactivado — reemplazado por gemini-agent.yml
+# Copilot coding agent no puede ser disparado programáticamente (limitación de GitHub).
+# El agente Gemini (gemini-agent.yml) realiza la misma función de forma 100% automática.
+
+name: Auto-assign Copilot to AI Tasks (DISABLED)
 
 on:
-  issues:
-    types: [opened, labeled]
-
-jobs:
-  assign-copilot:
-    # Solo ejecutar cuando el issue tenga el label ai-task
-    if: contains(github.event.issue.labels.*.name, 'ai-task')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Assign Issue to Copilot
-        uses: otto-de/assign_issue_toCopilot_action@v1.0.1
-        with:
-          issue_number: ${{ github.event.issue.number }}
-          github_token: ${{ secrets.COPILOT_PAT }}
+  workflow_dispatch: # Solo manual — no se dispara automáticamente

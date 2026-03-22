@@ -1,0 +1,823 @@
+/* ============================================================
+   CSS PERSONALIZADO — YELLOW PENCIL — SOLO HOME
+   Fuente: Plugin Yellow Pencil, sección específica de Home
+   Depurado: 2026-03-17
+
+   CAMBIOS RESPECTO AL ORIGINAL:
+   - ELIMINADO: transform:translatex(0px) translatey(0px) en múltiples elementos
+     → Transformaciones identidad sin efecto real; solo añaden especificidad innecesaria.
+     Afectados: footer (1024px, 991px, 670px, 600px, 520px, 479px),
+     #main-wrap .elementor > .elementor-element (767px),
+     .e-con-inner > .elementor-element > .e-con-inner > .elementor-element (670px)
+
+   - CORREGIDO: top:0px !important → top:0px en .login-register-nav li a (base)
+     → El !important bloqueaba los valores responsive de top:30px (1399px) y
+       top:26px (1024px), dejándolos como código muerto. Ahora la cascada funciona.
+
+   - ELIMINADO: background-size, background-position-x/y después de background-image:none
+     → En .footer-wrap .footer-bottom-wrap a 1024px y 1000px: sin imagen de fondo
+       esas propiedades no tienen efecto.
+
+   CONFLICTOS CON CSS GLOBAL (PENDIENTE DE REVISAR):
+   ⚠ footer { background-color:#244664 } en base es ANULADO por el global
+     que tiene rgba(36,70,100,0) !important (transparente). Si quieres el fondo
+     azul en home, añade !important aquí.
+   ⚠ #main-nav { top:40px } en base es ANULADO por el global top:0px !important.
+     Los valores de top en #main-nav dentro de media queries también están bloqueados
+     por la misma regla global.
+   ⚠ background-attachment:fixed en #contenedor-principal-img-fondo a 670px
+     NO funciona en iOS Safari (parallax desactivado en móvil). Marcado abajo.
+   ============================================================ */
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.logo-splash a img {
+  left: -20px;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+/* ⚠ CONFLICTO: background-color:#244664 es anulado por el global (rgba transparent !important).
+   Si quieres fondo azul en home, añade !important a background-color. */
+footer {
+  background-size: contain;
+  background-position-x: 0%;
+  height: 100% !important;
+  background-color: #244664;
+}
+
+.footer-wrap .footer-top-wrap {
+  position: relative;
+  top: 50px;
+}
+
+
+/* ============================================================
+   HEADER & NAVEGACIÓN
+   ============================================================ */
+
+.login-register .nav-item a {
+  background-color: #ffffff !important;
+}
+
+.login-register .nav-item i {
+  color: #000000;
+}
+
+/* ⚠ CONFLICTO: top:40px es anulado por el global top:0px !important en #main-nav.
+   Si quieres mover el nav, ajusta el valor en el CSS global. */
+#main-nav {
+  position: relative;
+  top: 40px;
+}
+
+/* Se quitó top:0px !important para que los responsive top:30px/26px funcionen */
+.login-register-nav li a {
+  top: 0px;
+}
+
+
+/* ============================================================
+   HERO — IMÁGENES Y CONTENEDOR PRINCIPAL
+   ============================================================ */
+
+.elementor .elementor-element .wp-image-56521 {
+  position: relative;
+  left: 40px;
+}
+
+#contenedor-principal-img-fondo .wp-image-56522 img {
+  position: relative;
+  text-align: right;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  left: 150px;
+}
+
+#contenedor-principal-img-fondo .elementor-widget-image {
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+#contenedor-principal-img-fondo .wp-image-56523 img {
+  position: relative;
+  left: -150px;
+}
+
+.elementor > .elementor-element > .e-con-inner {
+  padding-bottom: 120px;
+}
+
+
+/* ============================================================
+   CAROUSEL DE YATES
+   ============================================================ */
+
+.houzez-properties-carousel-js div .listing-featured-thumb {
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+}
+
+.houzez-properties-carousel-js div .btn-item {
+  left: 0px;
+}
+
+/* Type — ancho ajustado para evitar desbordamiento */
+.elementor-element-14cbff3 .elementor-element .elementor-widget-container .property-carousel-module .listing-view .houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 .item-amenities .h-type {
+  width: 46% !important;
+}
+
+.houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 .item-amenities .h-type {
+  width: 46% !important;
+}
+
+.elementor-element-14cbff3 .elementor-top-column .elementor-widget-wrap .elementor-element .elementor-widget-container .property-carousel-module .property-carousel-buttons-wrap .btn-primary-outlined {
+  transform: translatex(0px) translatey(0px) !important;
+}
+
+
+/* ============================================================
+   SECCIÓN DESTINOS
+   ============================================================ */
+
+.yzz-dest-header .yzz-dest-header-text h2 {
+  text-align: left;
+}
+
+
+/* ============================================================
+   BETTERDOCS
+   ============================================================ */
+
+.grid .category-grid .betterdocs-single-category-inner .betterdocs-body .betterdocs-articles-list li a span {
+  text-transform: uppercase !important;
+}
+
+.betterdocs-articles-list a span {
+  text-align: left;
+}
+
+
+/* ============================================================
+   FORMULARIO PROPIETARIO
+   ============================================================ */
+
+#btn-owner-form .btn-text {
+  font-weight: 500;
+  width: 158px;
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ≤ 1399px */
+@media (max-width: 1399px) {
+
+  .login-register-nav li a {
+    height: 32px;
+    width: 126px;
+    position: relative;
+    left: 0px;
+    top: 30px;
+  }
+
+  #main-nav {
+    top: 0px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -150px;
+  }
+
+}
+
+/* ≤ 1280px */
+@media (max-width: 1280px) {
+
+  #main-nav {
+    left: -40px;
+    top: 66px;
+  }
+
+  .login-register-nav li a {
+    left: -40px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -110px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 110px;
+  }
+
+  footer {
+    height: 900px;
+  }
+
+}
+
+/* ≤ 1199px */
+@media (max-width: 1199px) {
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -70px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 70px;
+  }
+
+  footer {
+    height: 840px;
+  }
+
+}
+
+/* ≤ 1024px */
+@media (max-width: 1024px) {
+
+  .login-register-nav li a {
+    left: -40px;
+    top: 26px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -120px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 10px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 72px;
+  }
+
+  footer {
+    background-position-x: 100%;
+    background-position-y: 100%;
+    margin-bottom: 0px;
+    background-size: cover;
+    min-height: 815px;
+  }
+
+  /* background-image:none → background-size y background-position no tienen efecto, eliminados */
+  .footer-wrap .footer-bottom-wrap {
+    background-image: none;
+    width: 100%;
+  }
+
+}
+
+/* ≤ 1000px */
+@media (max-width: 1000px) {
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 20px;
+  }
+
+  /* background-image:none → background-size y background-position no tienen efecto, eliminados */
+  .footer-wrap .footer-bottom-wrap {
+    background-image: none;
+  }
+
+  footer {
+    background-size: cover;
+    background-position-x: 100%;
+    background-position-y: 100%;
+    min-height: 815px;
+  }
+
+}
+
+/* ≤ 991px */
+@media (max-width: 991px) {
+
+  #hz-offcanvas-mobile-menu {
+    z-index: 9999999999;
+  }
+
+  #navi-user {
+    z-index: 9999999999;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -12px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 12px;
+  }
+
+  footer {
+    background-position-x: 100%;
+    background-position-y: 100%;
+    height: 1110px;
+    background-size: cover;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    top: 0px;
+    background-image: none;
+  }
+
+}
+
+/* ≤ 959px */
+@media (max-width: 959px) {
+
+  .houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-tools {
+    display: none !important;
+  }
+
+  footer {
+    background-position-x: 20%;
+  }
+
+}
+
+/* ≤ 920px */
+@media (max-width: 920px) {
+
+  #yzzDestErr {
+    display: none;
+  }
+
+  #yzzSearch .yzz-figSearch__grid .yzz-figBtnWrap {
+    position: relative;
+    top: -40px;
+  }
+
+  /* Mueve las tools fuera del viewport intencionalmente */
+  .houzez-properties-carousel-js div .item-tools {
+    transform: translatex(280px) translatey(-10px);
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 10px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -10px;
+  }
+
+  footer {
+    background-position-x: 30%;
+  }
+
+}
+
+/* ≤ 800px */
+@media (max-width: 800px) {
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    left: -10px;
+  }
+
+}
+
+/* ≤ 782px */
+@media (max-width: 782px) {
+
+  .elementor .wp-image-57478 img {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 72px;
+  }
+
+  footer {
+    background-position-x: 30%;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-position-y: 0%;
+  }
+
+}
+
+/* ≤ 767px */
+@media (max-width: 767px) {
+
+  .houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 a {
+    top: -6px !important;
+  }
+
+  .houzez-properties-carousel-js div .btn-item {
+    top: -5px;
+  }
+
+  /* Mueve las tools fuera del viewport intencionalmente */
+  .houzez-properties-carousel-js div .item-tools {
+    left: 0px;
+    transform: translatex(580px);
+  }
+
+  .elementor .wp-image-57478 img {
+    position: relative;
+    top: -180px;
+    left: 140px;
+  }
+
+  .elementor .wp-image-57194 img {
+    width: 211px !important;
+    position: relative;
+    top: -100px;
+    opacity: 1 !important;
+  }
+
+  /* Eliminado: transform:translatex(0px) translatey(0px) — identidad sin efecto */
+
+  #main-wrap .elementor > .elementor-element:nth-child(5) {
+    background-size: cover;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56523 img {
+    top: 0px;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56522 img {
+    left: 12px;
+    top: -20px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 72px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element p {
+    display: block;
+    font-size: 20px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -900px;
+    background-size: cover;
+  }
+
+  footer {
+    margin-bottom: 0px;
+    background-size: cover;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    background-clip: border-box;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-image: url("https://yatezzitos.com/wp-content/uploads/2026/03/Group-90.png");
+    background-position-y: 99%;
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 760px */
+@media (max-width: 760px) {
+
+  .elementor-element-14cbff3 .elementor-element .elementor-widget-container .property-carousel-module .listing-view .houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .d-flex .flex-grow-1 .btn-item {
+    top: -10px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-prev {
+    width: 76px !important;
+    height: 52px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-next {
+    width: 76px !important;
+  }
+
+  .yzz-dest-header .yzz-dest-nav .yzz-dest-next {
+    height: 52px !important;
+  }
+
+  .elementor .wp-image-57478 img {
+    position: relative;
+    left: 130px;
+    top: -180px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -900px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 670px */
+@media (max-width: 670px) {
+
+  .houzez-properties-carousel-js div .btn-item {
+    top: -10px !important;
+    right: 0px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-next {
+    width: 76px !important;
+    height: 52px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-prev {
+    width: 76px !important;
+    height: 52px !important;
+  }
+
+  .elementor .elementor-element .wp-image-57188 {
+    position: relative;
+    top: 230px;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-header-text h2 {
+    text-align: center !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-header-text p {
+    text-align: center !important;
+  }
+
+  /* Eliminado: transform:translatex(0px) translatey(0px) — identidad sin efecto */
+
+  .elementor .wp-image-57478 img {
+    position: relative;
+    top: -30px;
+    left: 120px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 60px;
+  }
+
+  /* ⚠ background-attachment:fixed NO funciona en iOS Safari (parallax desactivado en móvil).
+     Considera usar background-attachment:scroll para evitar pantalla negra en iPhone. */
+  #contenedor-principal-img-fondo {
+    background-position-x: -800px;
+    background-size: cover;
+    background-position-y: 0px;
+    background-attachment: fixed;
+  }
+
+  footer {
+    height: 1000px;
+    min-height: 1040px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+  #contenedor-principal-img-fondo > .e-con-inner {
+    max-width: 100%;
+    min-width: 100%;
+    height: 100% !important;
+  }
+
+}
+
+/* ≤ 600px */
+@media (max-width: 600px) {
+
+  .elementor .wp-image-57478 img {
+    top: -30px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 54px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -900px;
+  }
+
+  footer {
+    background-position-x: 40%;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-position-y: 100%;
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 575px */
+@media (max-width: 575px) {
+
+  .elementor .wp-image-57478 img {
+    top: -30px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -900px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 550px */
+@media (max-width: 550px) {
+
+  .elementor .wp-image-57478 img {
+    left: 100px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 48px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -900px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 520px */
+@media (max-width: 520px) {
+
+  .elementor .wp-image-57478 img {
+    left: 100px;
+    top: 0px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 42px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element p {
+    font-size: 16px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -940px;
+  }
+
+  footer {
+    background-position-x: 40%;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 500px */
+@media (max-width: 500px) {
+
+  .elementor .wp-image-57478 img {
+    left: 0px;
+    top: 0px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -940px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-size: auto;
+    background-position-y: 100%;
+    background-position-x: 0%;
+  }
+
+}
+
+/* ≤ 479px */
+@media (max-width: 479px) {
+
+  .elementor .wp-image-57478 img {
+    top: 0px;
+    left: 0px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -940px;
+  }
+
+  /* Eliminado: transform:translatex(0px) translatey(0px) — identidad sin efecto */
+
+  .footer-wrap .footer-bottom-wrap {
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-size: auto;
+  }
+
+}
+
+/* ≤ 425px */
+@media (max-width: 425px) {
+
+  .elementor .wp-image-57478 img {
+    left: 0px;
+    top: 0px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 38px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -940px;
+  }
+
+  .footer-wrap .footer-bottom-wrap {
+    background-position-x: 100%;
+    background-position-y: 100%;
+    background-size: auto;
+  }
+
+  footer {
+    background-position-y: 100%;
+    min-height: 1060px;
+  }
+
+}
+
+/* ≤ 390px */
+@media (max-width: 390px) {
+
+  .elementor .wp-image-57478 img {
+    left: 0px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 32px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -960px;
+  }
+
+}
+
+/* ≤ 320px */
+@media (max-width: 320px) {
+
+  .elementor .wp-image-57478 img {
+    top: 10px;
+  }
+
+  #contenedor-principal-img-fondo .elementor-element h1 {
+    font-size: 28px;
+  }
+
+  #contenedor-principal-img-fondo {
+    background-position-x: -985px;
+    background-size: cover;
+  }
+
+  footer {
+    min-height: 1084px;
+  }
+
+}
+
+/* ≥ 768px */
+@media (min-width: 768px) {
+
+  .houzez-properties-carousel-js div div .hz-item-gallery-js .item-wrap-no-frame .d-flex .item-header .listing-image-wrap .listing-thumb div div .slick-prev {
+    display: none !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-prev {
+    width: 76px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner .elementor-widget-html .elementor-widget-container .yzz-dest-wrapper .yzz-dest-header .yzz-dest-nav .yzz-dest-next {
+    width: 76px !important;
+  }
+
+}

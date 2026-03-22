@@ -165,6 +165,7 @@ Todo contenido redactado debe cumplir obligatoriamente con los siguientes están
 Los agentes tienen permiso y deben utilizar las siguientes integraciones MCP cuando realicen labores SEO o de gestión:
 - **WordPress MCP:** Para leer, crear, actualizar posts y publicar sus respectivos metadatos de Yoast SEO (`_yoast_wpseo_title`, `_yoast_wpseo_metadesc`, `_yoast_wpseo_focuskw`) mediante peticiones REST seguras.
 - **Google Search Console (GSC) MCP:** Para extraer el rendimiento de búsquedas y descubrir oportunidades de palabras clave basadas en datos reales.
+- **NotebookLM MCP:** (`jacob-bd/notebooklm-mcp-cli`) Autorizado para crear libretas, sincronizar documentos canónicos de arquitectura/negocio, y facilitar búsquedas de conocimiento global del repositorio usando los agentes de soporte.
 
 ### Tono por agente:
 | Agente | Tono específico |

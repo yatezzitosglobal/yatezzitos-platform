@@ -1,0 +1,13 @@
+name = "whatsapp-to-github"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Variables de entorno públicas
+[vars]
+GITHUB_OWNER = "YatezzitosMexico"
+GITHUB_REPO = "yatezzitos-platform"
+
+# Secrets (configurar con: wrangler secret put NOMBRE_DEL_SECRET)
+# GITHUB_TOKEN       → wrangler secret put GITHUB_TOKEN
+# GHL_WEBHOOK_SECRET → wrangler secret put GHL_WEBHOOK_SECRET
+# ALLOWED_CONTACTS   → wrangler secret put ALLOWED_CONTACTS

@@ -146,3 +146,66 @@ Litibú → enlaza a Punta Mita + Destiladeras
 - [ ] Categoría correcta asignada según la ciudad
 - [ ] 2-3 imágenes con atribución en comentarios HTML
 - [ ] CTA con WhatsApp, correo y catálogo al final
+- [ ] Archivo guardado en `docs/seo/{carpeta-destino}/` según Sección 9
+
+## 9. Organización de Archivos por Destino (OBLIGATORIO)
+
+### Regla de directorio único
+**TODA** entrada de blog, guía, descripción larga o contenido SEO relacionado con un destino **DEBE** guardarse en su carpeta correspondiente dentro de `docs/seo/`:
+
+```
+docs/seo/
+├── acapulco/
+├── cancun/
+├── huatulco/
+├── ixtapa/
+├── la-paz/
+├── los-cabos/
+├── mazatlan/
+├── nuevo-vallarta/
+├── playa-del-carmen/
+├── puerto-vallarta/
+└── tips-y-recomendaciones/
+```
+
+### Reglas estrictas
+1. **Categoría = Carpeta:** Si la entrada tiene categoría "Experiencias La Paz", va en `docs/seo/la-paz/`. Si es "Experiencias Los Cabos", va en `docs/seo/los-cabos/`. Sin excepciones.
+2. **Incluir borradores:** Las entradas en estado **borrador (draft)** también se guardan aquí, con la etiqueta `> **Estado:** 🟡 BORRADOR (Draft)` en el header del Markdown.
+3. **Formato Markdown:** Todos los archivos dentro de `docs/seo/` deben ser `.md`. Los HTML se convierten a Markdown y se elimina el HTML original.
+4. **Cero duplicados:** No puede haber dos archivos con el mismo slug/contenido. Si se detecta un duplicado, se elimina el más antiguo o menos completo.
+5. **Cero subcarpetas innecesarias:** No crear carpetas como `entradas/`, `posts/`, `borradores/` dentro de cada ciudad. Todo va en la raíz de la ciudad.
+6. **Descripción larga:** Cada ciudad debe tener su `descripcion_larga_{ciudad}.md` dentro de su carpeta.
+7. **Contenido general/tips:** Las entradas que no pertenecen a un destino específico van en `tips-y-recomendaciones/`.
+
+## 10. Formato Dual y Sincronización con NotebookLM (OBLIGATORIO)
+
+### Regla de formato dual
+Cada entrada de blog debe existir en **dos formatos** dentro de su carpeta de destino:
+
+| Archivo | Formato | Propósito |
+|---|---|---|
+| `{slug}.md` | Markdown limpio | Compatible con NotebookLM, legible, auditable |
+| `{slug}.html` | HTML original de WordPress | Referencia exacta del contenido publicado |
+
+### Contenido del archivo HTML
+El HTML debe contener el **contenido original tal cual está en WordPress** (`content.rendered` de la API REST), envuelto en un documento HTML semántico con metadatos:
+```html
+<head>
+  <meta name="post-slug" content="{slug}">
+  <meta name="destination" content="{ciudad}">
+  <meta name="post-date" content="{fecha}">
+  <meta name="post-status" content="publish|draft">
+</head>
+```
+
+### Sincronización con NotebookLM
+Cuando se **crea o actualiza** una entrada de blog:
+
+1. **Guardar HTML:** Descargar el HTML original de WordPress y guardarlo como `{slug}.html`
+2. **Generar Markdown:** Convertir el HTML a Markdown limpio y guardarlo como `{slug}.md`
+3. **Subir a NotebookLM:** Subir el archivo `.md` al notebook `YZZ — SEO, Contenido y Landing Pages` (NB6, ID: `64e01a62-27e9-4960-ae1e-d309a893cd7e`)
+4. **Commit al repositorio:** Hacer commit de ambos archivos (`.html` + `.md`) en la carpeta correcta de `docs/seo/{ciudad}/`
+
+### Excepciones
+- Los archivos creados localmente (guías, contenido no publicado en WP) solo tienen versión `.md`. El `.html` se genera cuando se publiquen en WordPress.
+- Las `descripcion_larga_*.md` se mantienen solo en formato Markdown a menos que se publiquen en WP.
