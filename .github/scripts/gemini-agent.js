@@ -121,27 +121,51 @@ function loadContext() {
 // GEMINI API
 // ============================================================
 
-async function listAvailableModels() {
-  const url = `https://generativelanguage.googleapis.com/v1/models?key=${GEMINI_API_KEY}`;
+async function detectModel() {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
-  if (data.models) {
-    const names = data.models.map(m => m.name).join(', ');
-    console.log(`📋 Modelos disponibles: ${names}`);
-    return data.models.map(m => m.name.replace('models/', ''));
+
+  if (!data.models) {
+    console.log(`⚠️ No se pudieron listar modelos: ${JSON.stringify(data)}`);
+    return GEMINI_MODEL;
   }
-  console.log(`⚠️ ListModels response: ${JSON.stringify(data)}`);
-  return [];
+
+  // Mostrar todos los modelos disponibles para diagnóstico
+  const allNames = data.models.map(m => m.name).join('\n  ');
+  console.log(`📋 Modelos disponibles:\n  ${allNames}`);
+
+  // Filtrar modelos que soporten generateContent
+  const generateContent = data.models.filter(m =>
+    m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent')
+  );
+
+  // Preferir modelos flash/pro más recientes
+  const priority = ['gemini-2.5', 'gemini-2.0', 'gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
+  for (const p of priority) {
+    const match = generateContent.find(m => m.name.includes(p));
+    if (match) {
+      const modelId = match.name.replace('models/', '');
+      console.log(`✅ Modelo seleccionado: ${modelId}`);
+      return modelId;
+    }
+  }
+
+  // Fallback: primer modelo que soporte generateContent
+  if (generateContent.length > 0) {
+    const modelId = generateContent[0].name.replace('models/', '');
+    console.log(`✅ Modelo fallback: ${modelId}`);
+    return modelId;
+  }
+
+  console.log(`⚠️ Usando modelo por defecto: ${GEMINI_MODEL}`);
+  return GEMINI_MODEL;
 }
 
 async function callGemini(prompt) {
-  // Auto-detectar modelo disponible
-  const available = await listAvailableModels();
-  const preferred = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro', 'gemini-2.0-flash'];
-  const model = preferred.find(m => available.includes(m)) || GEMINI_MODEL;
-  console.log(`🤖 Usando modelo: ${model}`);
+  const model = await detectModel();
 
-  const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
 
   const response = await fetch(url, {
     method: 'POST',
