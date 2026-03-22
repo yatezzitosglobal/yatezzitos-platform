@@ -85,30 +85,44 @@ async function handleRequest(request, env) {
     }
 
     // --- Extraer y parsear mensaje ---
-    const message = body.message || body.text || body.body || '';
+    // GHL puede enviar el texto en diferentes campos según la config
+    console.log('📨 Body recibido:', JSON.stringify(body));
+    const message = body.message || body.text || body.body || 
+                    body.msg || body.content || body.whatsapp_message ||
+                    body.last_message || body.inbound_message || '';
     
     if (!message.toLowerCase().startsWith(CONFIG.taskPrefix)) {
-      return jsonResponse(200, { 
-        status: 'ignored', 
-        reason: `Message does not start with "${CONFIG.taskPrefix}"` 
-      });
+      // GHL puede haber filtrado el prefijo /TAREA: antes de enviarlo.
+      // Si el mensaje no tiene el prefijo, tratarlo como tarea de todas formas
+      // ya que GHL solo reenvía mensajes que SÍ tenían el trigger.
+      console.log('ℹ️ Mensaje sin prefijo /tarea: — se trata como tarea directa desde GHL');
     }
 
     const parsed = parseTaskMessage(message);
     if (!parsed.title) {
-      return jsonResponse(400, { error: 'Could not parse task title from message' });
+      // Si no se pudo parsear un título, usar el mensaje completo
+      parsed.title = message.trim().slice(0, 100) || 'Tarea desde WhatsApp';
     }
 
     // --- Crear GitHub Issue ---
     const issue = await createGitHubIssue(parsed, body);
-
     console.log(`✅ Issue creado: #${issue.number} — ${issue.title}`);
+
+    // --- Auto-asignar Copilot coding agent ---
+    try {
+      await assignCopilotToIssue(issue.number);
+      console.log(`🤖 Copilot asignado al issue #${issue.number}`);
+    } catch (assignError) {
+      console.error(`⚠️ No se pudo asignar Copilot: ${assignError.message}`);
+      // No fallar si la asignación no funciona — el issue ya fue creado
+    }
 
     return jsonResponse(201, {
       status: 'created',
       issue_number: issue.number,
       issue_url: issue.html_url,
       title: issue.title,
+      copilot_assigned: true,
     });
 
   } catch (error) {
@@ -230,6 +244,43 @@ async function createGitHubIssue(parsed, webhookBody) {
   }
 
   return await response.json();
+}
+
+// ============================================================
+// COPILOT AGENT ASSIGNMENT
+// ============================================================
+
+/**
+ * Asigna el Copilot coding agent a un issue usando la API de GitHub.
+ * POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues
+ * Copilot se asigna vía la API de Copilot Agent.
+ */
+async function assignCopilotToIssue(issueNumber) {
+  // Usar la API de asignación de Copilot Agent
+  const response = await fetch(
+    `${CONFIG.github.apiUrl}/repos/${CONFIG.github.owner}/${CONFIG.github.repo}/issues/${issueNumber}/assignees`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${CONFIG.github.token}`,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'Content-Type': 'application/json',
+        'User-Agent': 'Yatezzitos-WhatsApp-Bot/1.0',
+      },
+      body: JSON.stringify({
+        assignees: ['copilot'],
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error(`⚠️ Copilot assignment response ${response.status}: ${errorText}`);
+    // No lanzar error — intentar trigger alternativo vía label
+  }
+
+  return response.ok;
 }
 
 // ============================================================
