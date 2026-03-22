@@ -121,8 +121,27 @@ function loadContext() {
 // GEMINI API
 // ============================================================
 
+async function listAvailableModels() {
+  const url = `https://generativelanguage.googleapis.com/v1/models?key=${GEMINI_API_KEY}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  if (data.models) {
+    const names = data.models.map(m => m.name).join(', ');
+    console.log(`📋 Modelos disponibles: ${names}`);
+    return data.models.map(m => m.name.replace('models/', ''));
+  }
+  console.log(`⚠️ ListModels response: ${JSON.stringify(data)}`);
+  return [];
+}
+
 async function callGemini(prompt) {
-  const url = `https://generativelanguage.googleapis.com/v1/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  // Auto-detectar modelo disponible
+  const available = await listAvailableModels();
+  const preferred = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro', 'gemini-2.0-flash'];
+  const model = preferred.find(m => available.includes(m)) || GEMINI_MODEL;
+  console.log(`🤖 Usando modelo: ${model}`);
+
+  const url = `https://generativelanguage.googleapis.com/v1/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
 
   const response = await fetch(url, {
     method: 'POST',
