@@ -47,12 +47,12 @@ const rateLimitMap = new Map();
 
 /**
  * Handler principal — compatible con múltiples plataformas.
- * Para Cloudflare Workers, exportar como default { fetch: handleRequest }
- * Para GCF, exportar como exports.whatsappToGithub = handleRequest
+ * Para Cloudflare Workers: env se pasa como 2do argumento del fetch handler.
+ * Para GCF: se usa process.env.
  */
-async function handleRequest(request) {
-  // --- Cargar config desde env ---
-  loadConfig();
+async function handleRequest(request, env) {
+  // --- Cargar config desde env (Workers pasa env como 2do arg) ---
+  loadConfig(env);
 
   // --- Solo aceptar POST ---
   if (request.method !== 'POST') {
@@ -236,9 +236,9 @@ async function createGitHubIssue(parsed, webhookBody) {
 // UTILIDADES
 // ============================================================
 
-function loadConfig() {
-  // Cloudflare Workers usa env global, GCF usa process.env
-  const env = typeof process !== 'undefined' ? process.env : globalThis;
+function loadConfig(workerEnv) {
+  // Cloudflare Workers pasa env como argumento; GCF usa process.env
+  const env = workerEnv || (typeof process !== 'undefined' ? process.env : {});
   
   CONFIG.github.owner = env.GITHUB_OWNER || 'YatezzitosMexico';
   CONFIG.github.repo = env.GITHUB_REPO || 'yatezzitos-platform';

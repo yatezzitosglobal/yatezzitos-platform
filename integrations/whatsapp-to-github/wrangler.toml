@@ -1,14 +1,13 @@
-name: whatsapp_to_github
-compatibility_date = "2024-01-01"
+name = "whatsapp-to-github"
 main = "index.js"
+compatibility_date = "2024-01-01"
 
-# Variables de entorno — Configurar en el dashboard de Cloudflare
-# NO poner valores reales aquí, usar `wrangler secret put`
+# Variables de entorno públicas
 [vars]
 GITHUB_OWNER = "YatezzitosMexico"
 GITHUB_REPO = "yatezzitos-platform"
 
-# Secrets (configurar con: wrangler secret put GITHUB_TOKEN)
-# GITHUB_TOKEN = "ghp_xxxx"     ← NO poner aquí, usar wrangler secret put
-# GHL_WEBHOOK_SECRET = "xxx"    ← NO poner aquí, usar wrangler secret put
-# ALLOWED_CONTACTS = "id1,id2"  ← NO poner aquí, usar wrangler secret put
+# Secrets (configurar con: wrangler secret put NOMBRE_DEL_SECRET)
+# GITHUB_TOKEN       → wrangler secret put GITHUB_TOKEN
+# GHL_WEBHOOK_SECRET → wrangler secret put GHL_WEBHOOK_SECRET
+# ALLOWED_CONTACTS   → wrangler secret put ALLOWED_CONTACTS
