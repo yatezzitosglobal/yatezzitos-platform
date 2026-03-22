@@ -89,7 +89,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
 .vertical-card .card-bg, .horizontal-card .card-bg { 
   position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; 
   min-width: 100% !important; min-height: 100% !important; max-width: none !important; max-height: none !important; 
-  object-fit: cover !important; object-position: center !important; z-index: 1; transition: transform 0.6s ease; display: block !important; 
+  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; z-index: 1; transition: transform 0.6s ease; display: block !important; 
 }
 .vertical-card .card-overlay, .horizontal-card .card-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,20,40,0.05) 0%, rgba(0,25,45,0.55) 100%); }
 .vertical-card:hover .card-bg, .horizontal-card:hover .card-bg { transform: scale(1.05); }
@@ -217,7 +217,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
     <!-- COLUMNA 1: CATEGORÍAS (Izquierda) -->
     <div class="masonry-col">
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg" alt="La Paz" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="La Paz"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Destino</span></div>
         <div class="card-content">
@@ -227,7 +227,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png" alt="Cancún" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Cancún"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Caribe</span></div>
         <div class="card-content">
@@ -237,7 +237,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png" alt="Los Cabos" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Los Cabos"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Lujo</span></div>
         <div class="card-content">
@@ -247,7 +247,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg" alt="Mazatlán" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Mazatlán"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Pacífico</span></div>
         <div class="card-content">
@@ -257,7 +257,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png" alt="Puerto Vallarta" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Puerto Vallarta"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Sunset</span></div>
         <div class="card-content">
@@ -270,7 +270,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
     <!-- COLUMNA 2: CATEGORÍAS (Centro) -->
     <div class="masonry-col">
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg" alt="Nuevo Vallarta" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Nuevo Vallarta"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Resorts</span></div>
         <div class="card-content">
@@ -280,7 +280,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png" alt="Playa del Carmen" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Playa del Carmen"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Riviera</span></div>
         <div class="card-content">
@@ -290,7 +290,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png" alt="Huatulco" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Huatulco"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Paraíso</span></div>
         <div class="card-content">
@@ -300,7 +300,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg" alt="Ixtapa" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Ixtapa"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Relax</span></div>
         <div class="card-content">
@@ -310,7 +310,7 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       </article>
 
       <article class="vertical-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png" alt="Acapulco" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Acapulco"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Clásico</span></div>
         <div class="card-content">
@@ -326,93 +326,93 @@ body { margin: 0; padding: 0; background-color: #E3F8F9; }
       
       <!-- 10 Tarjetas de Entradas -->
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#LaPaz</span></div>
         <div class="card-content">
           <div class="card-date">16 Mar, 2026</div><h3 class="card-title">Playa Tecolote: Rincón Natural para Aventureros</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/playa-tecolote-la-paz-baja-california-sur/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Ballenas</span> <span class="tag">#LosCabos</span></div>
         <div class="card-content">
           <div class="card-date">16 Mar, 2026</div><h3 class="card-title">Avistamiento de Ballenas en Los Cabos</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/avistamiento-de-ballenas-en-los-cabos/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Marlin</span> <span class="tag">#Mazatlán</span></div>
         <div class="card-content">
           <div class="card-date">15 Mar, 2026</div><h3 class="card-title">Pesca Deportiva: Capital del Marlín</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/pesca-de-lujo-en-mazatlan-reserva-tu-aventura-en-yate-hoy/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Arco</span></div>
         <div class="card-content">
           <div class="card-date">14 Mar, 2026</div><h3 class="card-title">El Arco de Cabo San Lucas en Yate</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/el-arco-de-cabo-san-lucas/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Cancún</span></div>
         <div class="card-content">
           <div class="card-date">13 Mar, 2026</div><h3 class="card-title">Renta de Yates en Cancún: Guía rápida</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/cancun-quintana-roo/" class="invisible-link"></a>
       </article>
       
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Riviera</span> <span class="tag">#Playa</span></div>
         <div class="card-content">
           <div class="card-date">10 Mar, 2026</div><h3 class="card-title">Las mejores playas virgenes cerca de Tulum</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/top-5-playas-de-cancun-en-yate/" class="invisible-link"></a>
       </article>
       
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Acapulco</span></div>
         <div class="card-content">
           <div class="card-date">9 Mar, 2026</div><h3 class="card-title">Atardeceres Mágicos paseando en Acapulco</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/category/experiencias-acapulco/" class="invisible-link"></a>
       </article>
       
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Vallarta</span></div>
         <div class="card-content">
           <div class="card-date">8 Mar, 2026</div><h3 class="card-title">Islas Marietas: Tour Responsable</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/category/experiencias-puerto-vallarta/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Huatulco</span></div>
         <div class="card-content">
           <div class="card-date">7 Mar, 2026</div><h3 class="card-title">Bahías de Huatulco: Paraíso Virgen 2026</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/renta-un-yate-en-huatulco-y-descubre-sus-tesoros-escondidos/" class="invisible-link"></a>
       </article>
 
       <article class="horizontal-card filterable-item">
-        <img src="https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png" alt="Post" class="card-bg">
+        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
         <div class="card-overlay"></div>
         <div class="card-tags"><span class="tag">#Mazatlán</span></div>
         <div class="card-content">
           <div class="card-date">6 Mar, 2026</div><h3 class="card-title">Guía de las tres islas en Mazatlán</h3>
-        </div><a href="#" class="invisible-link"></a>
+        </div><a href="https://yatezzitos.com/es/principales-playas-e-islas-de-la-ciudad-de-mazatlan/" class="invisible-link"></a>
       </article>
 
       <!-- BLOQUE CTA NEWSLETTER -->
