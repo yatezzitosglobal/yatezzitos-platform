@@ -30,7 +30,7 @@ const ISSUE_TITLE    = process.env.ISSUE_TITLE || '';
 const ISSUE_BODY     = process.env.ISSUE_BODY  || '';
 const ISSUE_LABELS   = JSON.parse(process.env.ISSUE_LABELS || '[]');
 const REPO           = process.env.REPO;
-const GEMINI_MODEL   = 'gemini-2.0-flash';
+const GEMINI_MODEL   = 'gemini-1.5-flash';
 
 // ============================================================
 // HELPERS
