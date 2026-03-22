@@ -1,0 +1,379 @@
+/* ============================================================
+   CSS ADICIONAL — YELLOW PENCIL — GLOBAL (TODAS LAS PÁGINAS)
+   Fuente: Plugin Yellow Pencil, sección Global
+   Depurado: 2026-03-17
+
+   CAMBIOS RESPECTO AL ORIGINAL:
+   - ELIMINADO: transform: translatex(-280px) en .nav-link
+     → Desplazaba los links del menú 280px a la izquierda (ocultos)
+   - ELIMINADO: margin-right:-50px en #main-nav
+     → Márgenes negativos causaban solapamiento impredecible
+   - ELIMINADO: right:auto !important, padding-right:0px en #main-nav
+     → Conflicto con las reglas responsive del tema
+   - ELIMINADO: transform:translatex(0px) translatey(0px) en varios elementos
+     → Transformaciones identidad sin efecto, añaden especificidad innecesaria
+   - ELIMINADO: background-attachment:scroll en #header-section
+     → Valor por defecto del navegador, redundante
+   - ELIMINADO: direction:ltr y left:0px !important en .login-register-nav (1199px)
+     → Interferían con el flujo natural del botón CTA
+   - FUSIONADOS: breakpoints 959px, 800px, 782px para .item-header
+     → Todos repetían height:250px, ya cubierto por el breakpoint de 991px
+   ============================================================ */
+
+
+/* ============================================================
+   LISTING — GALERÍA DE YATES
+   ============================================================ */
+
+.listing-image-wrap > div {
+  position: relative;
+  top: 0;   /* CORREGIDO: top:-12px causaba el espacio vacío en la imagen */
+}
+
+/* El listing-image-wrap debe llenar su contenedor .item-header */
+.listing-image-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Toda la cadena Slick hereda la altura del contenedor */
+.listing-image-wrap .listing-gallery-wrap,
+.listing-image-wrap .houezz-listing-carousel,
+.listing-image-wrap .slick-slider,
+.listing-image-wrap .slick-list,
+.listing-image-wrap .slick-track {
+  height: 100% !important;
+}
+
+.listing-image-wrap .slick-slide,
+.listing-image-wrap .slick-slide > div,
+.listing-image-wrap a.hover-effect,
+.listing-image-wrap .hover-effect {
+  display: block !important;
+  height: 100% !important;
+}
+
+.listing-image-wrap img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.listing-wrap .flex-column .item-header {
+  min-width: 0%;
+  max-width: 100%;
+}
+
+/* Tarjeta — tamaño en escritorio */
+#main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header {
+  width: 100% !important;
+  height: 275px !important;
+}
+
+/* Precio */
+#main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap li {
+  font-size: 16px !important;
+}
+
+/* Precio — postfix */
+#main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price-postfix {
+  font-size: 16px !important;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+footer {
+  background-color: rgba(36, 70, 100, 0) !important;
+  background-image: url("https://yatezzitos.com/wp-content/uploads/2026/03/26_soop_234-1.png");
+  background-size: cover !important;
+  padding-bottom: 254px;
+  position: static;
+}
+
+.footer-wrap .footer-top-wrap {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.footer-wrap .footer-bottom-wrap {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+/* ============================================================
+   HEADER & NAVEGACIÓN
+   ============================================================ */
+
+#main-nav {
+  top: 0px !important;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 16px;
+  left: 0px;
+}
+
+#main-nav .menu-item {
+  text-align: left;
+  letter-spacing: 0px;
+}
+
+/* Botón CTA */
+.login-register-nav li a {
+  text-transform: capitalize !important;
+  line-height: 2em;
+}
+
+#header-section .container .header-inner-wrap .navbar .login-register .login-register-nav li a {
+  font-size: 16px !important;
+  height: 38px !important;
+}
+
+#main-wrap .header-main-wrap #header-section .container .header-inner-wrap .navbar .login-register .login-register-nav li a {
+  width: 180px !important;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ≤ 1439px */
+@media (max-width: 1439px) {
+
+  .logo-splash a img {
+    width: 100px;
+    height: 90px;
+  }
+
+}
+
+/* ≤ 1199px */
+@media (max-width: 1199px) {
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header {
+    height: 210px !important;
+  }
+
+  .footer-wrap .footer-top-wrap {
+    padding-top: 0px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  footer {
+    background-image: url("https://yatezzitos.com/wp-content/uploads/2026/03/26_soop_234-1.png");
+  }
+
+  .login-register-nav li a {
+    width: 100%;
+    line-height: 2em;
+    font-size: 14px;
+    text-align: center;
+    text-transform: none !important;
+  }
+
+  #main-nav .menu-item .nav-link {
+    width: 141px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  #main-nav {
+    left: 150px !important;
+    top: 0px !important;
+  }
+
+  #header-section .container .header-inner-wrap .navbar .login-register .login-register-nav li a {
+    height: 32px !important;
+  }
+
+}
+
+/* ≤ 1024px */
+@media (max-width: 1024px) {
+
+  /* Nota: el valor de 210px ya está cubierto por el breakpoint de 1199px.
+     Se mantiene por si hay lógica de cascada específica del tema. */
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header {
+    height: 210px !important;
+  }
+
+}
+
+/* ≤ 1000px */
+@media (max-width: 1000px) {
+
+  #main-wrap .header-main-wrap .top-bar-wrap {
+    height: 0px;
+  }
+
+  #main-wrap header {
+    margin-left: 0px;
+    height: 100px;
+  }
+
+  #header-section {
+    height: auto !important;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .elementor .elementor-element .e-con-inner {
+    padding-bottom: 0px !important;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56521 img {
+    position: relative;
+    top: -250px;
+  }
+
+}
+
+/* ≤ 991px — layout móvil/tablet */
+@media (max-width: 991px) {
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header {
+    height: 250px !important;
+  }
+
+  #main-wrap .listing-wrap .container {
+    position: relative;
+    top: 49px;
+  }
+
+  footer {
+    position: relative;
+    top: 100px;
+  }
+
+  #header-mobile a img {
+    width: 80px;
+    height: 70px;
+  }
+
+  #main-wrap .elementor > .elementor-element {
+    max-width: 100%;
+    min-width: 0px;
+    z-index: 1;
+  }
+
+  #main-wrap .content-wrap .elementor > .elementor-element > .e-con-inner {
+    height: 324px !important;
+  }
+
+  .elementor .elementor-element .e-con-inner {
+    padding-bottom: 0px !important;
+  }
+
+  #contenedor-principal-img-fondo .wp-image-56521 img {
+    top: -150px;
+  }
+
+}
+
+/* ≤ 920px */
+@media (max-width: 920px) {
+
+  #contenedor-principal-img-fondo .wp-image-56521 img {
+    top: -340px;
+  }
+
+  #main-wrap .elementor .elementor-element-14cbff3 {
+    padding-top: 1px !important;
+    top: 150px;
+  }
+
+  #yzzSearch {
+    z-index: 0;
+    position: relative;
+    top: 12px;
+  }
+
+  #main-wrap .elementor {
+    background-color: #dae8ee;
+  }
+
+  #main-wrap .elementor > .elementor-element {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+  }
+
+  #main-wrap .content-wrap .elementor > .elementor-element > .e-con-inner {
+    height: 100% !important;
+  }
+
+}
+
+/* ≤ 760px */
+@media (max-width: 760px) {
+
+  footer {
+    position: relative;
+    top: 100px;
+  }
+
+}
+
+/* ≤ 600px */
+@media (max-width: 600px) {
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap li {
+    font-size: 12px !important;
+  }
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price-prefix {
+    font-size: 14px !important;
+  }
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price {
+    font-size: 14px !important;
+  }
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price-postfix {
+    font-size: 14px !important;
+  }
+
+}
+
+/* ≤ 479px */
+@media (max-width: 479px) {
+
+  /* Fondo negro sólido en móviles muy pequeños (imagen no se ve bien en ese ancho) */
+  footer {
+    background-color: #000000 !important;
+  }
+
+}
+
+/* ≤ 425px */
+@media (max-width: 425px) {
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price-prefix {
+    font-size: 13px !important;
+  }
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price {
+    font-size: 13px !important;
+  }
+
+  #main-wrap .listing-wrap .container .row .col-lg-12 .row-cols-lg-3 .hz-item-gallery-js .item-wrap-no-frame .flex-column .item-header .item-price-wrap .item-price .price-postfix {
+    font-size: 13px !important;
+  }
+
+}
+
+/* ≥ 768px */
+@media (min-width: 768px) {
+
+  .footer-wrap .footer-top-wrap {
+    padding-bottom: 0px;
+  }
+
+}

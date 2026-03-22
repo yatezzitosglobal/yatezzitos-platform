@@ -26,7 +26,7 @@ redesign/
 │   └── themes/
 │       └── houzez/        ← Código fuente completo del tema Houzez
 ├── figma/                 ← 12 diseños PNG (desktop + responsive)
-├── tokens/                ← Design tokens (pendiente)
+├── paginas-redisenadas/   ← Páginas rediseñadas
 └── assets/                ← Assets adicionales (pendiente)
 ```
 
@@ -120,7 +120,7 @@ El código fuente completo del tema Houzez se encuentra en `css/themes/houzez/`.
 1. **Para implementar el rediseño** → Usa los PNGs de `figma/` como referencia visual
 2. **Para entender el CSS actual** → Revisa las carpetas de CSS personalizado
 3. **Para modificar el tema** → El código fuente de Houzez está en `css/themes/houzez/`
-4. **Para desarrollo futuro** → Los design tokens estarán en `tokens/` cuando se definan
+4. **Para desarrollo futuro** → Las páginas rediseñadas estarán en `paginas-redisenadas/`
 
 ---
 
