@@ -6,63 +6,64 @@ on:
 
 jobs:
   assign-copilot:
-    # Solo ejecutar cuando el issue tenga ambos labels
-    if: |
-      contains(github.event.issue.labels.*.name, 'ai-task') &&
-      contains(github.event.issue.labels.*.name, 'from-whatsapp')
+    # Solo ejecutar cuando el issue tenga el label ai-task
+    if: contains(github.event.issue.labels.*.name, 'ai-task')
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      contents: read
+      contents: write
+
     steps:
-      - name: Assign Copilot to Issue
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const issueNumber = context.issue.number;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            
-            console.log(`🤖 Attempting to assign Copilot to issue #${issueNumber}`);
-            
-            try {
-              // Intentar asignar via la API de Copilot coding agent
-              await github.request('POST /repos/{owner}/{repo}/issues/{issue_number}/assignees', {
-                owner,
-                repo,
-                issue_number: issueNumber,
-                assignees: ['copilot-swe-agent'],
-                headers: {
-                  'X-GitHub-Api-Version': '2022-11-28'
-                }
-              });
-              console.log(`✅ Copilot assigned to issue #${issueNumber}`);
-            } catch (error) {
-              console.log(`⚠️ Direct assignment failed: ${error.message}`);
-              console.log('Trying alternative assignment method...');
-              
-              try {
-                // Método alternativo: usar el endpoint de Copilot tasks
-                await github.request('POST /repos/{owner}/{repo}/copilot/tasks', {
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  headers: {
-                    'X-GitHub-Api-Version': '2022-11-28'
-                  }
-                });
-                console.log(`✅ Copilot assigned via tasks API to issue #${issueNumber}`);
-              } catch (error2) {
-                console.log(`⚠️ Tasks API failed: ${error2.message}`);
-                
-                // Método de fallback: comentar @copilot para trigger manual
-                await github.rest.issues.createComment({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  body: '🤖 **Auto-asignación solicitada.** Este issue fue creado desde WhatsApp y requiere asignación al Copilot coding agent.\n\n@copilot por favor trabaja en esta tarea siguiendo las instrucciones del issue y las reglas en `.github/copilot-instructions.md`.'
-                });
-                console.log(`📝 Fallback comment added to issue #${issueNumber}`);
-              }
-            }
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Pre-crear la rama para que Copilot no tenga que crearla desde cero
+      - name: Create branch for Copilot
+        id: create_branch
+        env:
+          GH_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          BRANCH_NAME="copilot/issue-${{ github.event.issue.number }}"
+
+          if git ls-remote --exit-code --heads origin "$BRANCH_NAME" > /dev/null 2>&1; then
+            echo "Branch $BRANCH_NAME already exists — skipping creation"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git checkout -b "$BRANCH_NAME"
+            git push origin "$BRANCH_NAME"
+            echo "Created branch: $BRANCH_NAME"
+          fi
+
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+
+      # Asignar el issue a Copilot vía API (necesario para activar el agente)
+      - name: Assign issue to Copilot via API
+        env:
+          GH_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          gh issue edit ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --add-assignee "copilot"
+
+      # Comentar con @copilot explícito — esta es la forma que activa
+      # el Copilot coding agent correctamente vía texto, igual que el botón de UI
+      - name: Trigger Copilot agent via comment
+        env:
+          GH_TOKEN: ${{ secrets.COPILOT_PAT }}
+        run: |
+          BRANCH_NAME="${{ steps.create_branch.outputs.branch_name }}"
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+
+          gh issue comment ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --body "@copilot Por favor trabaja en esta tarea.
+
+          **Rama preparada:** \`${BRANCH_NAME}\`
+
+          **Instrucciones:**
+          1. Trabaja en la rama \`${BRANCH_NAME}\` (ya fue creada)
+          2. Lee \`.github/copilot-instructions.md\` para el contexto completo del proyecto
+          3. Abre un Pull Request hacia \`main\` al terminar con descripción clara de los cambios
+
+          > _Tarea creada automáticamente desde WhatsApp vía GoHighLevel_"
