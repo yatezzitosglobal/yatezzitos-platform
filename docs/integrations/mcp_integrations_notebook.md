@@ -10,6 +10,8 @@ Yatezzitos Global es una plataforma de turismo náutico privado de lujo con 8 a�
 
 ## 2. Integraciones con GoHighLevel (CRM)
 
+> **[ESTADO: ACTIVA]** A partir de Marzo 2026, la integración nativa de GoHighLevel (GHL) está completamente operativa en el entorno del Copilot Agent vía Docker y stdio local, habilitando 253 herramientas de lectura/escritura en tiempo real. Para un detalle técnico y casos de uso empresarial completos, consultar la [Guía de Integración GHL MCP](ghl_mcp_integration_guide.md).
+
 Las habilidades de los agentes de IA en el ámbito del CRM se centran en GoHighLevel (GHL), utilizando MCP para interactuar con sus endpoints y datos, siempre con un enfoque en la preparación para el equipo humano, no en la ejecución directa de acciones críticas.
 
 ### 2.1 El Rescatista de Ventas (Abandoned Pipeline Recovery)
