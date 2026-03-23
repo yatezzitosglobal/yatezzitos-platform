@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Nuevo mensaje - Widget de chat</title>
+  <style>
+    /* =========================
+      YATEZZITOS | Email interno (GHL)
+      ✅ 100% tablas
+      ✅ Container 640 + table-layout:fixed
+      ✅ Mobile safe (sin overflow)
+      ❌ Sin botón
+    ========================= */
+
+    html, body { margin:0 !important; padding:0 !important; height:100% !important; width:100% !important; }
+    * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+    table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; }
+    table { border-collapse:collapse !important; }
+    img { -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; }
+    a { text-decoration:none; }
+    .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; max-height:0; max-width:0; overflow:hidden; }
+    .no-scroll { padding-left:16px; padding-right:16px; }
+    .container { width:640px; max-width:640px; table-layout:fixed; }
+    .font { font-family: 'Barlow', Arial, Helvetica, sans-serif; }
+    .h1 { font-size:20px; line-height:26px; font-weight:800; margin:0; }
+    .p  { font-size:14px; line-height:20px; font-weight:400; margin:0; }
+    .label { font-size:12px; line-height:16px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; margin:0; }
+    .value { font-size:14px; line-height:20px; font-weight:500; margin:0; word-break:break-word; overflow-wrap:anywhere; }
+    .card { background:#FFFFFF; border:1px solid rgba(11,18,32,.10); border-radius:12px; }
+    .divider { height:1px; background:rgba(11,18,32,.10); }
+    .badge { display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(0,148,94,.12); color:#00945E; font-size:12px; line-height:16px; font-weight:800; }
+    .muted { color:rgba(11,18,32,.70); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    /* Mobile */
+    @media screen and (max-width: 680px){
+      .container { width:100% !important; max-width:100% !important; }
+      .no-scroll { padding-left:0 !important; padding-right:0 !important; }
+      .pad { padding-left:14px !important; padding-right:14px !important; }
+      .stack { display:block !important; width:100% !important; }
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+
+<body style="background:#F6F7FB; margin:0; padding:0;">
+  <!-- Preheader -->
+  <div class="preheader">Nuevo cliente: mensaje recibido desde el widget de chat. Acción: contactar ASAP.</div>
+
+  <!-- Wrapper -->
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#F6F7FB;">
+    <tr>
+      <td align="center" class="no-scroll" style="padding:18px 16px;">
+
+        <!-- Container -->
+        <table role="presentation" class="container" width="640" cellspacing="0" cellpadding="0" border="0" style="width:640px; max-width:640px;">
+          <!-- Header -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed;">
+                <tr>
+                  <td class="font" style="background:#000000; padding:16px 18px; border-radius:14px;">
+                    <p class="label" style="color:rgba(255,255,255,.75);">Yatezzitos México • Notificación interna</p>
+                    <p class="h1" style="color:#FFFFFF; margin-top:4px;">Nuevo mensaje desde el widget de chat</p>
+                    <div style="margin-top:10px;">
+                      <span class="badge font">Lead nuevo</span>
+                      <span class="font" style="color:rgba(255,255,255,.70); font-size:12px; line-height:16px; font-weight:600; margin-left:10px;">
+                        Fecha/hora: {{system.timestamp}}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td height="12" style="font-size:12px; line-height:12px;">&nbsp;</td></tr>
+
+          <!-- Intro -->
+          <tr>
+            <td class="font pad" style="padding:0 4px;">
+              <p class="p muted" style="margin:0;">
+                Hola equipo de ventas, un nuevo cliente dejó un mensaje a través del widget de chat en el sitio web. A continuación, los detalles del contacto:
+              </p>
+            </td>
+          </tr>
+
+          <tr><td height="12" style="font-size:12px; line-height:12px;">&nbsp;</td></tr>
+
+          <!-- Card: Datos -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card" style="table-layout:fixed;">
+                <tr>
+                  <td class="font" style="padding:16px 16px 8px;">
+                    <p class="label" style="color:#0B1220;">Detalles del contacto</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="padding:0 16px 16px;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed;">
+                      <tr>
+                        <td class="stack" valign="top" style="padding:10px 0; width:50%;">
+                          <p class="label muted font">Nombre</p>
+                          <p class="value font">{{contact.name}}</p>
+                        </td>
+                        <td class="stack" valign="top" style="padding:10px 0; width:50%;">
+                          <p class="label muted font">Teléfono</p>
+                          <p class="value font mono">{{contact.phone}}</p>
+                        </td>
+                      </tr>
+
+                      <tr><td colspan="2"><div class="divider"></div></td></tr>
+
+                      <tr>
+                        <td class="stack" valign="top" style="padding:10px 0; width:50%;">
+                          <p class="label muted font">Ciudad</p>
+                          <p class="value font">{{contact.destinos}}</p>
+                        </td>
+                        <td class="stack" valign="top" style="padding:10px 0; width:50%;">
+                          <p class="label muted font">Fecha de viaje</p>
+                          <p class="value font">{{contact.fecha_de_viaje}}</p>
+                        </td>
+                      </tr>
+
+                      <tr><td colspan="1"><div class="divider"></div></td></tr>
+
+                      <tr>
+                        <td colspan="1" valign="top" style="padding:10px 0;">
+                          <p class="label muted font">Mensaje</p>
+                          <p class="value font" style="white-space:pre-wrap; word-break:break-word; overflow-wrap:anywhere;">
+                            {{contact.message}}
+                          </p>
+                        </td>
+                      </tr>
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td height="12" style="font-size:12px; line-height:12px;">&nbsp;</td></tr>
+
+          <!-- Acción requerida -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="card" style="table-layout:fixed;">
+                <tr>
+                  <td class="font" style="padding:16px;">
+                    <p class="label" style="color:#0B1220;">Acción requerida</p>
+                    <p class="p muted" style="margin-top:8px;">
+                      Revisa el mensaje completo en la aplicación de Go High Level y contacta al cliente lo antes posible para darle seguimiento y mantener su interés.
+                    </p>
+                    <p class="p" style="margin-top:10px; color:#0B1220; font-weight:700;">
+                      Recuerda: responder rápido = más cierres.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr><td height="14" style="font-size:14px; line-height:14px;">&nbsp;</td></tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="font pad" style="padding:0 4px 10px;">
+              <p class="p muted" style="font-size:12px; line-height:16px;">
+                Este es un aviso automático del sitio web. No responder a este correo.
+              </p>
+              <p class="p muted" style="font-size:12px; line-height:16px; margin-top:6px;">
+                © {{system.year}} Yatezzitos México
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Container -->
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

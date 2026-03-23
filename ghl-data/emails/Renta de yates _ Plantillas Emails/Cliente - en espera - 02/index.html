@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Confirmación sin vueltas | Yatezzitos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin:0 !important; padding:0 !important; width:100% !important; background:#f5f7fb; }
+    * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+    table, td { border-collapse:collapse !important; mso-table-lspace:0pt !important; mso-table-rspace:0pt !important; }
+    img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; display:block; }
+    a { text-decoration:none; }
+    .container { width:640px; max-width:640px; table-layout:fixed; }
+    .font-main { font-family:"Barlow", Arial, Helvetica, sans-serif; color:#111827; }
+    @media screen and (max-width:640px){
+      .container { width:100% !important; max-width:100% !important; }
+      .pad { padding:16px !important; }
+      .cta { width:100% !important; }
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+<body style="margin:0;padding:0;background:#f5f7fb;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f7fb;">
+    <tr>
+      <td style="display:none;visibility:hidden;mso-hide:all;opacity:0;color:transparent;height:0;width:0;overflow:hidden;line-height:1px;font-size:1px;">
+        Elige método y te mando el paso a paso para confirmar tu fecha.
+      </td>
+    </tr>
+
+    <tr>
+      <td align="center" style="padding:20px 10px;">
+        <table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" class="container" style="width:640px;max-width:640px;table-layout:fixed;">
+          <tr>
+            <td style="background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;">
+
+                <tr>
+                  <td align="center" style="background:#ffffff;padding:18px 20px;border-bottom:1px solid #eef2f7;">
+                    <img src="https://assets.cdn.filesafe.space/4vhgNiuaT3jtuf3hWj35/media/656acf3f45e5a0601e677d1a.png" width="100" alt="Yatezzitos" style="width:100px;max-width:100px;height:auto;background:#ffffff;">
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="font-main" style="background:#000000;padding:12px 22px;">
+                    <p style="margin:0;font-size:13px;line-height:18px;color:#ffffff;font-weight:700;letter-spacing:.4px;text-transform:uppercase;">
+                      Confirmación sin vueltas
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="font-main pad" style="padding:24px 22px 18px 22px;">
+
+                    <!-- Hero -->
+                    <p style="margin:0 0 10px 0;font-size:28px;line-height:32px;font-weight:800;color:#000000;">
+                      Te lo dejo fácil para cerrar tu fecha
+                    </p>
+                    <p style="margin:0 0 14px 0;font-size:15px;line-height:22px;color:#111827;">
+                      Hola {{ contact.full_name }},<br>
+                      solo paso a ponértelo en modo “cero vueltas”. Si el tema fue el pago o decidir, dime qué prefieres y yo me encargo del resto.
+                    </p>
+
+                    <!-- Resumen -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td style="background:#f9fbff;border:1px solid #e8ecf4;border-radius:10px;padding:12px 14px;">
+                          <p style="margin:0;font-size:14px;line-height:22px;color:#111827;">
+                            <strong>Tu plan:</strong> {{ contact.yacht_name }} en {{ contact.destinos }}<br>
+                            <strong>Fecha:</strong> {{ contact.fecha_de_viaje }} | {{ contact.duration_hours }} h | {{ contact.number_of_passengers }} pax<br>
+                            <strong>Anticipo para confirmar:</strong> {{ contact.balance_due }}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- CTA -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 10px 0;">
+                      <tr>
+                        <td align="center">
+                          <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                            href="{{ contact.quote_url }}" style="height:50px;v-text-anchor:middle;width:330px;" arcsize="10%" stroke="f" fillcolor="#194395">
+                            <w:anchorlock/>
+                            <center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">
+                              ABRIR MI COTIZACIÓN
+                            </center>
+                          </v:roundrect>
+                          <![endif]-->
+                          <!--[if !mso]><!-- -->
+                          <a href="{{ contact.quote_url }}" target="_blank" rel="noopener" class="cta"
+                             style="background:#194395;border-radius:8px;color:#ffffff;display:inline-block;font-family:'Barlow',Arial,Helvetica,sans-serif;font-size:15px;font-weight:800;line-height:50px;text-align:center;text-transform:uppercase;letter-spacing:.6px;width:330px;max-width:100%;">
+                            Abrir mi cotización
+                          </a>
+                          <!--<![endif]-->
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td style="background:#ecfdf5;border:1px solid #b7ebd5;border-radius:10px;padding:11px 12px;">
+                          <p style="margin:0;font-size:14px;line-height:21px;color:#00734a;font-weight:700;">
+                            1) Abre la cotización<br>
+                            2) Respóndeme con una palabra: <strong>TRANSFER</strong> / <strong>TARJETA</strong> / <strong>REACTIVAR</strong>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <p style="margin:0 0 14px 0;font-size:14px;line-height:21px;color:#111827;">
+                      Si necesitas mover horario o fecha: responde <strong>FECHA PAGO</strong> y te doy opciones.
+                    </p>
+
+                    <!-- FAQ mini -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;">
+                          <p style="margin:0 0 8px 0;font-size:14px;line-height:21px;color:#111827;">
+                            <strong>¿Puedo cambiar de embarcación?</strong> Sí: te propongo 3 alternativas similares.
+                          </p>
+                          <p style="margin:0 0 8px 0;font-size:14px;line-height:21px;color:#111827;">
+                            <strong>¿Qué pasa si sube/baja el grupo?</strong> Ajustamos a tu número real.
+                          </p>
+                          <p style="margin:0;font-size:14px;line-height:21px;color:#111827;">
+                            <strong>¿Ubicación de salida?</strong> {{ contact.marina_name }} — 
+                            <a href="{{ contact.google_maps_link }}" target="_blank" rel="noopener" style="color:#194395;text-decoration:underline;word-break:break-word;; mso-style-textfill-fill-color: #194395;"><!--[if mso]><font color="#194395"><![endif]-->
+                              {{ contact.google_maps_link }}
+                            <!--[if mso]></font><![endif]--></a>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="font-main" align="center" style="padding:14px 12px 18px 12px;font-size:12px;line-height:18px;color:#6b7280;">
+                    Yatezzitos México · Experiencias premium en yate
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

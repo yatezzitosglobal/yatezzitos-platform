@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Aventura Te Espera</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header { background-color: #002d5b; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 28px; font-weight: 300; letter-spacing: 1px; color: #d4af37; }
+        .content { padding: 40px 30px; color: #333333; line-height: 1.6; }
+        .content p { margin-bottom: 20px; font-size: 16px; }
+        .highlight { color: #002d5b; font-weight: bold; }
+        .cta-container { text-align: center; margin: 30px 0; }
+        .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 15px 30px; font-size: 16px; font-weight: bold; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.3s ease; }
+        .footer { background-color: #f9f9f9; color: #777777; text-align: center; padding: 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+        .social-links { margin-bottom: 15px; }
+        .social-links a { color: #002d5b; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    </style>
+<!-- outlook-fixes-applied --></head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>YATEZZITOS</h1>
+            <p style="margin: 10px 0 0 0; font-size: 14px; opacity: 0.9;">Experiencias MarÃ­timas de Lujo</p>
+        </div>
+        <div class="content">
+            <p>Hola {{contact.first_name}},</p>
+            <p>Hemos notado que faltan <strong>menos de 30 dÃ­as</strong> para la fecha en la que planeabas tu prÃ³xima aventura marÃ­tima y aÃºn no hemos concretado los detalles.</p>
+            <p>Sabemos que organizar la experiencia perfecta requiere tiempo, pero no queremos que te pierdas la oportunidad de disfrutar del lujo y la exclusividad que solo <span class="highlight">Yatezzitos</span> puede ofrecerte en el mar.</p>
+            <p>Nuestra flota tiene alta demanda para tus fechas, por lo que te invitamos a reactivar tu plan hoy mismo y asegurar tu embarcaciÃ³n ideal antes de que no quede disponibilidad.</p>
+            
+            <div class="cta-container">
+                <a href="https://wa.me/5213221234567?text=Hola%20Yatezzitos,%20quiero%20continuar%20con%20mi%20reserva" class="cta-button">Retomar Mi Reserva Especial</a>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-size: 14px;">Â¿Tienes dudas? Responde este correo o comunÃ­cate al nÃºmero directo de concierge.</p>
+            <p>El ocÃ©ano te espera,<br><strong>El Equipo de Yatezzitos</strong></p>
+        </div>
+        <div class="footer">
+            <div class="social-links">
+                <a href="https://yatezzitos.com">Sitio Web</a> |
+                <a href="https://instagram.com/yatezzitos">Instagram</a>
+            </div>
+            <p>&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+            <p>Has recibido este correo porque nos contactaste recientemente para solicitar informaciÃ³n.</p>
+        </div>
+    </div>
+</body>
+</html>

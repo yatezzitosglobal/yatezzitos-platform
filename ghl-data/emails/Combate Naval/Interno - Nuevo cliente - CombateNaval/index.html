@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Nueva compra confirmada | Combate Naval 2026</title>
+
+  <style>
+    body{margin:0;padding:0;background:#0a0a0a;}
+    table{border-collapse:collapse;}
+    img{border:0;outline:none;text-decoration:none;display:block;}
+    a{text-decoration:none;}
+    .wrap{width:100%;background:#0a0a0a;}
+    .container{width:100%;max-width:640px;margin:0 auto;}
+    .card{background:#111214;border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;}
+    .p24{padding:24px;}
+    .muted{color:rgba(255,255,255,.75);font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;}
+    .text{color:rgba(255,255,255,.92);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;}
+    .title{color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:20px;letter-spacing:.2px;line-height:1.2;margin:0;}
+    .badge{display:inline-block;background:rgba(202,0,61,.18);border:1px solid rgba(202,0,61,.45);color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase;border-radius:999px;padding:8px 12px;}
+    .chip{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:8px 12px;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:12px;letter-spacing:.3px;}
+    .row{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+    .row:last-child{border-bottom:0;}
+    .label{color:rgba(255,255,255,.65);font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:.8px;text-transform:uppercase;}
+    .value{color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:14px;line-height:1.35;word-break:break-word;}
+    .hr{height:1px;background:rgba(255,255,255,.10);margin:18px 0;}
+
+    /* Botones (table buttons) */
+    .btn-td{border-radius:12px;}
+    .btn-a{display:block;width:100%;padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-weight:900;font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:#ffffff;text-decoration:none;border-radius:12px;-webkit-text-size-adjust:100%;mso-style-textfill-fill-color:#ffffff;}
+    .btn-primary-td{background:#194395;box-shadow:0 10px 24px rgba(0,0,0,.35);}
+    .btn-ghost-td{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);}
+    .btn-spacer{height:12px;line-height:12px;font-size:12px;}
+
+    @media (max-width:680px){
+      .p24{padding:18px !important;}
+      .stack{display:block !important;width:100% !important;}
+      .btn-table{width:100% !important;}
+      .btn-td{width:100% !important;}
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+
+<body>
+  <!-- Preheader -->
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+    Nueva compra Combate Naval · {{contact.name}} · {{contact.number_of_passengers}} boletos · {{contact.fecha_de_viaje}}
+  </div>
+
+  <table role="presentation" class="wrap" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" style="padding:28px 14px;">
+        <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding-bottom:14px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="left">
+                    <span class="badge">Nueva compra confirmada</span>
+                  </td>
+                  <td align="right">
+                    <span class="chip">Sáb 14 Feb 2026 · 9:00 PM · Mazatlán</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Card -->
+          <tr>
+            <td class="card">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="p24" style="background:#0f1012;">
+                    <h1 class="title">Combate Naval 2026 — Notificación interna</h1>
+                    <div class="muted">
+                      Se registró una nueva compra. Validar datos y preparar logística del evento.
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="p24">
+                    <!-- Data -->
+                    <div class="row">
+                      <div class="label">Nombre</div>
+                      <div class="value">{{contact.name}}</div>
+                    </div>
+
+                    <div class="row">
+                      <div class="label">Email</div>
+                      <div class="value">{{contact.email}}</div>
+                    </div>
+
+                    <div class="row">
+                      <div class="label">Teléfono</div>
+                      <div class="value">{{contact.phone}}</div>
+                    </div>
+
+                    <div class="row">
+                      <div class="label">Boletos / pasajeros</div>
+                      <div class="value">{{contact.number_of_passengers}}</div>
+                    </div>
+
+                    <div class="row">
+                      <div class="label">Fecha del evento</div>
+                      <div class="value">{{contact.fecha_de_viaje}}</div>
+                    </div>
+
+                    <div class="hr"></div>
+
+                    <!-- ✅ BOTONES CORREGIDOS (Mobile-proof) -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="btn-td btn-primary-td" align="center" valign="middle" style="border-radius:12px;">
+                          <a class="btn-a"
+                             href="https://yatezzitos.com/gracias-por-tu-compra-combate-naval/?full_name={{contact.name}}&email={{ contact.email }}&phone={{ contact.phone }}&pasajeros={{ contact.number_of_passengers }}&fecha_de_viaje={{ contact.fecha_de_viaje }}"
+                             target="_blank" rel="noopener">
+                            <!--[if mso]><font color="#ffffff"><![endif]-->
+                            VER CONFIRMACIÓN DEL CLIENTE
+                            <!--[if mso]></font><![endif]-->
+                          </a>
+                        </td>
+                      </tr>
+
+                      <tr><td class="btn-spacer">&nbsp;</td></tr>
+
+                      <tr>
+                        <td class="btn-td btn-ghost-td" align="center" valign="middle" style="border-radius:12px;">
+                          <a class="btn-a"
+                             href="https://maps.app.goo.gl/DFAwWrrp4cputhoQ9"
+                             target="_blank" rel="noopener">
+                            <!--[if mso]><font color="#ffffff"><![endif]-->
+                            ABRIR UBICACIÓN DE ABORDAJE
+                            <!--[if mso]></font><![endif]-->
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <div class="hr"></div>
+
+                    <!-- Checklist -->
+                    <div class="text" style="font-weight:900;margin-bottom:8px;">
+                      Checklist interno (operación)
+                    </div>
+                    <div class="text">
+                      1) Validar <b>fecha</b> y <b>número de boletos</b>.<br>
+                      2) Confirmar que recibió el correo + página de confirmación.<br>
+                      3) Agregar a lista oficial del Combate Naval.<br>
+                      4) Enviar WhatsApp operativo: <b>llegar 30 min antes</b>, acceso y recomendaciones.<br>
+                      5) Si no responde: segundo intento en <b>2–4 horas</b>.
+                    </div>
+
+                    <div class="muted" style="margin-top:14px;">
+                      Tip interno: si la fecha llega vacía o incorrecta, revisar el campo
+                      <b>fecha_de_viaje</b> en el checkout / redirect.
+                    </div>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:14px 6px 0;text-align:center;">
+              <div class="muted">
+                Yatezzitos México · Notificación interna automática<br>
+                <span style="color:rgba(255,255,255,.55);">No responder este correo.</span>
+              </div>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
