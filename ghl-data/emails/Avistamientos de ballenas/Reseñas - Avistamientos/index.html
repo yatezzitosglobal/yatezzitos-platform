@@ -1,0 +1,348 @@
+<!--
+  YATEZZITOS | EMAIL CLIENTE — SOLICITUD DE RESEÑA + BENEFICIO 20% (POST-TOUR)
+  ✅ HTML + CSS ONLY (sin JS)
+  ✅ SIN link a página de gracias
+  ✅ SIN ubicación de abordaje
+  ✅ Incluye:
+     - CTA a reseña Google
+     - Incentivo: 20% en próximo tour compartido si te etiquetan en historias
+     - Redes sociales con íconos BLANCOS (inline SVG)
+  ✅ Listo para pegar en GoHighLevel (Email HTML)
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reseña + 20% | Yatezzitos México</title>
+  <style>
+    html,body{margin:0!important;padding:0!important;width:100%!important;height:100%!important;background:#000000;}
+    *{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+    table,td{mso-table-lspace:0pt!important;mso-table-rspace:0pt!important;border-collapse:collapse!important;}
+    img{-ms-interpolation-mode:bicubic;border:0;outline:none;text-decoration:none;display:block;}
+    a{text-decoration:none;}
+    .wrap{width:100%;background:#000000;}
+    .container{width:100%;max-width:640px;margin:0 auto;}
+    .pad{padding:20px;}
+
+    :root{
+      --yzz-black:#000000;
+      --yzz-green:#00945E;
+      --yzz-red:#CA003D;
+      --yzz-blue:#194395;
+      --yzz-yellow:#F6EA69;
+      --yzz-ink:#0b2b3a;
+      --yzz-white:#ffffff;
+    }
+
+    .card{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.92);
+      color:var(--yzz-ink);
+      padding:8px 12px;
+      border-radius:999px;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+    .dot{
+      display:inline-block;
+      width:10px;height:10px;border-radius:999px;
+      background:var(--yzz-green);
+      vertical-align:middle;
+      margin-right:8px;
+      box-shadow:0 0 0 4px rgba(0,148,94,.18);
+    }
+
+    .logo{width:75px;height:auto;margin:0 auto;}
+
+    .h1{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:26px;
+      line-height:1.15;
+      font-weight:900;
+      color:var(--yzz-white);
+      margin:0;
+    }
+    .h1 span{color:var(--yzz-yellow);}
+
+    .p{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:14px;
+      line-height:1.6;
+      color:rgba(255,255,255,.92);
+      margin:0;
+    }
+
+    .divider{height:1px;background:rgba(255,255,255,.14);margin:16px 0;}
+
+    .btn{
+      display:inline-block;
+      font-family:Arial,Helvetica,sans-serif;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+      border-radius:10px;
+      padding:14px 16px;
+      border:1px solid transparent;
+    }
+    .btn-primary{background:var(--yzz-blue);color:#ffffff;}
+    .btn-ghost{background:rgba(255,255,255,.10);color:#ffffff;border-color:rgba(255,255,255,.20);}
+
+    .note{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:13px;
+      line-height:1.55;
+      color:rgba(255,255,255,.85);
+      margin:0;
+    }
+    .note strong{color:var(--yzz-yellow);}
+
+    .chip{
+      display:inline-block;
+      font-family:Arial,Helvetica,sans-serif;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.4px;
+      color:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);
+      border-radius:999px;
+      padding:10px 12px;
+    }
+    .chip b{color:var(--yzz-yellow);}
+
+    .social-wrap{margin-top:14px;}
+    .social-title{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.78);
+      margin:0 0 10px;
+      text-align:center;
+    }
+    .social a{display:inline-block;margin:0 6px;}
+    .ico{
+      width:22px;height:22px;
+      fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+      vertical-align:middle;
+    }
+
+    .footer{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      line-height:1.5;
+      color:rgba(255,255,255,.70);
+      text-align:center;
+      margin:14px 0 0;
+    }
+
+    @media (max-width:480px){
+      .pad{padding:16px;}
+      .h1{font-size:24px;}
+      .logo{width:160px;}
+      .btn{display:block;text-align:center;}
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+
+<body>
+  <table role="presentation" class="wrap" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center">
+        <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0">
+
+          <!-- HEADER -->
+          <tr>
+            <td class="pad" align="center" style="padding-top:26px;padding-bottom:14px;">
+              <img class="logo" src="https://storage.googleapis.com/msgsndr/4vhgNiuaT3jtuf3hWj35/media/66e3c2fa3622c4a8958a615d.png" alt="Yatezzitos México">
+            </td>
+          </tr>
+
+          <!-- MAIN CARD -->
+          <tr>
+            <td class="pad">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card">
+                <tr>
+                  <td class="pad" style="padding:18px;">
+
+                    <span class="badge"><span class="dot"></span>Gracias por acompañarnos</span>
+
+                    <div style="height:12px;"></div>
+
+                    <h1 class="h1">¿Nos regalas una <span>reseña</span>?</h1>
+
+                    <div style="height:10px;"></div>
+
+                    <p class="p">
+                      Hola <strong>{{contact.name}}</strong>, esperamos que hayas disfrutado el avistamiento 🐋⚓
+                      Tu opinión nos ayuda muchísimo a seguir mejorando y a que más personas vivan esta experiencia con confianza.
+                    </p>
+
+                    <div style="height:14px;"></div>
+
+                    <!-- CTA REVIEW -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="left">
+                          <a class="btn btn-primary" href="https://g.page/r/CW7dI6-38lzkEBM/review" target="_blank" rel="noopener">
+                            DEJAR RESEÑA EN GOOGLE
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <div class="divider"></div>
+
+                    <!-- 20% OFFER -->
+                    <span class="chip">🎁 Beneficio: <b>20% OFF</b> en tu próximo tour compartido</span>
+
+                    <div style="height:12px;"></div>
+
+                    <p class="p" style="margin-bottom:10px;">
+                      Si nos <strong>etiquetas en tus historias</strong> (Instagram / Facebook / TikTok),
+                      te damos <strong>20% de descuento</strong> en tu próximo <strong>tour compartido</strong> de Yatezzitos.
+                    </p>
+
+                    <p class="note">
+                      <strong>¿Cómo reclamarlo?</strong> Dejanos tu reseña, sube tu historia, etiquétenos y guarda captura de ambos.
+                      Luego envíanosla por WhatsApp y listo ✅
+                    </p>
+
+                    <div style="height:14px;"></div>
+
+                    <!-- ACTIONS -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="left">
+                          <a class="btn btn-ghost" href="https://wa.me/526691324073" target="_blank" rel="noopener">
+                            ENVIAR CAPTURA POR WHATSAPP
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <div style="height:10px;"></div>
+
+                    <p class="note">
+                      Si te late, en tu reseña menciona: <strong>la atención</strong>, <strong>la experiencia a bordo</strong>,
+                      y si viste ballenas 🐋 (eso ayuda muchísimo).
+                    </p>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- SOCIALS -->
+          <tr>
+            <td class="pad" style="padding-top:6px;padding-bottom:6px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="card">
+                <tr>
+                  <td class="pad" style="padding:16px 14px;">
+                    <p class="social-title">Síguenos y compártenos tus historias ✨</p>
+
+                    <div class="social" style="text-align:center;">
+                      <!-- Facebook -->
+                      <a href="https://www.facebook.com/Yatezzitos" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z"/>
+                        </svg>
+                      </a>
+
+                      <!-- Instagram -->
+                      <a href="https://www.instagram.com/yatezzitos_mx" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <rect x="5" y="5" width="14" height="14" rx="4" />
+                          <rect x="7" y="7" width="10" height="10" rx="3" />
+                          <path d="M16.5 7.5h0" />
+                          <path d="M10 12a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" />
+                        </svg>
+                      </a>
+
+                      <!-- TikTok -->
+                      <a href="https://www.tiktok.com/@yatezzitosmexico?lang=es" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M14 3v10a4 4 0 1 1-3-3.9" />
+                          <path d="M14 7c1.2 1.8 2.8 3 5 3" />
+                        </svg>
+                      </a>
+
+                      <!-- X -->
+                      <a href="https://x.com/yatezzitos" target="_blank" rel="noopener" aria-label="X">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M4 4l16 16" />
+                          <path d="M20 4L4 20" />
+                        </svg>
+                      </a>
+
+                      <!-- YouTube -->
+                      <a href="https://www.youtube.com/channel/UCbuxpBSUvfAs0XqMV-HD7AA" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M21 12s0-4-1-5-5-1-8-1-7 0-8 1-1 5-1 5 0 4 1 5 5 1 8 1 7 0 8-1 1-5 1-5Z"/>
+                          <path d="M10 9l6 3-6 3V9Z"/>
+                        </svg>
+                      </a>
+
+                      <!-- Pinterest -->
+                      <a href="https://mx.pinterest.com/yatezzitosm/?invite_code=000c8d57908a401b9ee47815918b21af&sender=924293660932145144" target="_blank" rel="noopener" aria-label="Pinterest">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12c0 4.2 2.6 7.8 6.2 9.3" />
+                          <path d="M10 20l2-8" />
+                          <path d="M9.5 12.5c0-2.3 1.6-4 3.7-4 2 0 3.3 1.3 3.3 3 0 2.4-1.3 4.4-3.2 4.4-.8 0-1.4-.4-1.6-1" />
+                        </svg>
+                      </a>
+
+                      <!-- Google Maps -->
+                      <a href="https://www.google.com.mx/maps/place/Yatezzitos+M%C3%A9xico/@23.2708575,-106.5798378,12z/data=!4m7!3m6!1s0x869f5387b04c0f39:0xe45cf2b7af23dd6e!8m2!3d23.2708575!4d-106.4274025!15sCgp5YXRlenppdG9zkgETYm9hdF9yZW50YWxfc2VydmljZeABAA!16s%2Fg%2F11nn47p1bh?entry=tts"
+                         target="_blank" rel="noopener" aria-label="Google Maps">
+                        <svg class="ico" viewBox="0 0 24 24">
+                          <path d="M12 21s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z" />
+                          <path d="M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                        </svg>
+                      </a>
+                    </div>
+
+                    <p class="footer" style="margin-top:12px;">
+                      Yatezzitos México · Turismo náutico premium · Gracias por confiar en nosotros 🐋⚓
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td class="pad" style="padding-top:10px;padding-bottom:28px;">
+              <p class="footer">
+                ¿Quieres apartar tu siguiente tour? Escríbenos por WhatsApp:
+                <a href="https://wa.me/526691324073" target="_blank" rel="noopener" style="color:#F6EA69;font-weight:900;; mso-style-textfill-fill-color: #F6EA69;"><!--[if mso]><font color="#F6EA69"><![endif]-->
+                  669 132 4073
+                <!--[if mso]></font><![endif]--></a>
+              </p>
+              <p class="footer" style="margin-top:8px;">
+                © Yatezzitos México
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

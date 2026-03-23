@@ -210,6 +210,7 @@ Los agentes tienen permiso y deben utilizar las siguientes integraciones MCP cua
 - **Google Search Console (GSC) MCP:** Para extraer el rendimiento de búsquedas y descubrir oportunidades de palabras clave basadas en datos reales.
 - **NotebookLM MCP:** (`jacob-bd/notebooklm-mcp-cli`) Autorizado para crear libretas, sincronizar documentos canónicos de arquitectura/negocio, y facilitar búsquedas de conocimiento global del repositorio usando los agentes de soporte.
 - **GoHighLevel (GHL) MCP:** Autorizado exclusivamente para el agente de **Soporte Interno**. Operará bajo un modelo de "Zero Trust" leyendo contactos, notas y oportunidades, pudiendo escribir tareas/notas sin acciones destructivas ni envíos directos a clientes.
+  - **Identidad en GHL:** Todo correo, plantilla o automatización generada por un agente IA en GoHighLevel DEBE incluir la etiqueta **`(IA)`** en su título o nombre para dejar un rastro de auditoría claro (Ej. "Plantilla de Rescate de Ventas (IA)").
 
 ### Tono por agente:
 | Agente | Tono específico |

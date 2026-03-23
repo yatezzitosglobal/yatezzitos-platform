@@ -135,6 +135,7 @@ Tenemos acceso a servidores MCP para operar directamente con las plataformas:
 - **Google Search Console (GSC):** Lo usamos para extraer datos reales de rendimiento, impresiones y clics para descubrir oportunidades de palabras clave y optimizar URLs con base en datos verificados.
 - **NotebookLM MCP (`jacob-bd/notebooklm-mcp-cli`):** Herramienta autorizada para ingestar, organizar, consultar y gestionar programáticamente la base de conocimiento del proyecto dentro de Google NotebookLM. Se usa para mantener actualizados los documentos canónicos en libretas de estudio.
 - **GoHighLevel (GHL) MCP:** Herramienta para conectar agentes IA al CRM de Yatezzitos mediante comandos de WhatsApp / GitHub Issues. Opera bajo Whitelist estricta, previniendo alucinaciones y con protección contra "Prompt Injection".
+  - **REGLA DE ETIQUETADO:** Todo correo o plantilla generada de manera autónoma o asistida por un agente de IA en GoHighLevel, **debe llevar obligatoriamente la etiqueta `(IA)` al final de su nombre/título** (Ej. "Recordatorio de Pago (IA)") para garantizar la trazabilidad visual por el equipo humano.
 
 ---
 

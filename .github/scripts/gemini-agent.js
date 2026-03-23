@@ -25,12 +25,12 @@ const os = require('os');
 // ============================================================
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const ISSUE_NUMBER   = process.env.ISSUE_NUMBER;
-const ISSUE_TITLE    = process.env.ISSUE_TITLE || '';
-const ISSUE_BODY     = process.env.ISSUE_BODY  || '';
-const ISSUE_LABELS   = JSON.parse(process.env.ISSUE_LABELS || '[]');
-const REPO           = process.env.REPO;
-const GEMINI_MODEL   = 'gemini-1.5-flash';
+const ISSUE_NUMBER = process.env.ISSUE_NUMBER;
+const ISSUE_TITLE = process.env.ISSUE_TITLE || '';
+const ISSUE_BODY = process.env.ISSUE_BODY || '';
+const ISSUE_LABELS = JSON.parse(process.env.ISSUE_LABELS || '[]');
+const REPO = process.env.REPO;
+const GEMINI_MODEL = 'gemini-1.5-flash';
 
 // ============================================================
 // HELPERS
@@ -74,8 +74,8 @@ function commentOnIssue(message) {
 
 function loadContext() {
   const titleAndBody = (ISSUE_TITLE + ' ' + ISSUE_BODY).toLowerCase();
-  const labelStr     = ISSUE_LABELS.join(' ').toLowerCase();
-  let context        = '';
+  const labelStr = ISSUE_LABELS.join(' ').toLowerCase();
+  let context = '';
 
   // Contexto base — siempre se carga
   const coreInstructions = readFileSafe('.github/copilot-instructions.md');
@@ -86,8 +86,8 @@ function loadContext() {
   // SEO / blog / contenido
   const isSeo = labelStr.includes('seo') ||
     ['seo', 'blog', 'meta', 'keyword', 'post', 'contenido', 'descripcion', 'cancun',
-     'cabos', 'vallarta', 'mazatlan', 'huatulco', 'ixtapa', 'acapulco', 'nayarit',
-     'playa', 'lapaz'].some(w => titleAndBody.includes(w));
+      'cabos', 'vallarta', 'mazatlan', 'huatulco', 'ixtapa', 'acapulco', 'nayarit',
+      'playa', 'lapaz'].some(w => titleAndBody.includes(w));
 
   if (isSeo) {
     const seoWorkflow = readFileSafe('.agents/workflows/seo-blog-posts.md');

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Nueva compra confirmada | Avistamiento de Ballenas</title>
+    <style>
+      /* Email-safe CSS */
+      body{margin:0;padding:0;background:#0a0a0a;}
+      table{border-collapse:collapse;}
+      img{border:0;outline:none;text-decoration:none;display:block;}
+      a{text-decoration:none;}
+      .wrap{width:100%;background:#0a0a0a;}
+      .container{width:100%;max-width:640px;margin:0 auto;}
+      .card{background:#111214;border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;}
+      .p24{padding:24px;}
+      .p18{padding:18px;}
+      .muted{color:rgba(255,255,255,.75);font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;}
+      .text{color:rgba(255,255,255,.92);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;}
+      .title{color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:20px;letter-spacing:.2px;line-height:1.2;margin:0;}
+      .badge{display:inline-block;background:rgba(0,148,94,.18);border:1px solid rgba(0,148,94,.45);color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:12px;letter-spacing:.6px;text-transform:uppercase;border-radius:999px;padding:8px 12px;}
+      .hr{height:1px;background:rgba(255,255,255,.10);margin:18px 0;}
+      .row{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+      .row:last-child{border-bottom:0;}
+      .label{color:rgba(255,255,255,.70);font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:.8px;text-transform:uppercase;}
+      .value{color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:14px;line-height:1.35;word-break:break-word;}
+      .chip{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:8px 12px;font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:12px;letter-spacing:.3px;}
+      .btn{display:inline-block;border-radius:10px;padding:13px 16px;font-family:Arial,Helvetica,sans-serif;font-weight:900;font-size:13px;letter-spacing:.6px;text-transform:uppercase;}
+      .btn-primary{background:#194395;color:#ffffff;}
+      .btn-ghost{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:#ffffff;}
+      .two-col{width:100%;}
+      .col{vertical-align:top;}
+      .small{font-size:12px;}
+      @media (max-width:680px){
+        .p24{padding:18px !important;}
+        .stack{display:block !important;width:100% !important;}
+        .btn{width:100% !important;text-align:center !important;box-sizing:border-box;}
+      }
+    </style>
+  <!-- outlook-fixes-applied --></head>
+
+  <body>
+    <!-- Preheader (invisible) -->
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+      Nueva compra confirmada: {{contact.name}} · {{contact.number_of_passengers}} pax · {{contact.fecha_de_viaje}}
+    </div>
+
+    <table role="presentation" class="wrap" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center" style="padding:28px 14px;">
+          <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0">
+            
+            <!-- Header -->
+            <tr>
+              <td style="padding:0 0 14px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="left" style="padding:0;">
+                      <span class="badge">Nueva compra confirmada</span>
+                    </td>
+                    <td align="right" style="padding:0;">
+                      <span class="chip">Domingos · 9:00 AM – 2:00 PM · Mazatlán</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Card -->
+            <tr>
+              <td class="card">
+                <!-- Top -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="p24" style="background:#0f1012;">
+                      <h1 class="title" style="margin:0 0 8px 0;">Avistamiento de Ballenas — Notificación interna</h1>
+                      <div class="muted">
+                        Se registró una compra. Favor de validar datos y dar seguimiento al cliente.
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Content -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="p24">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        
+                        <!-- Data rows -->
+                        <tr><td class="row">
+                          <div class="label">Nombre</div>
+                          <div class="value">{{contact.name}}</div>
+                        </td></tr>
+
+                        <tr><td class="row">
+                          <div class="label">Email</div>
+                          <div class="value">{{contact.email}}</div>
+                        </td></tr>
+
+                        <tr><td class="row">
+                          <div class="label">Teléfono</div>
+                          <div class="value">{{contact.phone}}</div>
+                        </td></tr>
+
+                        <tr><td class="row">
+                          <div class="label">Pasajeros / boletos</div>
+                          <div class="value">{{contact.number_of_passengers}}</div>
+                        </td></tr>
+
+                        <tr><td class="row">
+                          <div class="label">Fecha elegida</div>
+                          <div class="value">{{contact.fecha_de_viaje}}</div>
+                        </td></tr>
+
+                      </table>
+
+                      <div class="hr"></div>
+
+                      <!-- Buttons -->
+                      <table role="presentation" class="two-col" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="col stack" style="padding:0 8px 10px 0;">
+                            <a class="btn btn-primary" style="display:block;"
+                               href="https://yatezzitos.com/gracias-avistamientos-de-ballena/?full_name={{contact.name}}&email={{contact.email}}&phone={{contact.phone}}&pasajeros={{contact.number_of_passengers}}&fecha_de_viaje={{contact.fecha_de_viaje}}">
+                              Ver confirmación (página de gracias)
+                            </a>
+                          </td>
+                          <td class="col stack" style="padding:0 0 10px 8px;">
+                            <a class="btn btn-ghost" style="display:block;"
+                               href="https://maps.app.goo.gl/o7UJD65bZKqRS58G9">
+                              Abrir punto de abordaje
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <div class="hr"></div>
+
+                      <!-- Checklist -->
+                      <div class="text" style="font-weight:900;margin:0 0 8px 0;">Checklist interno (seguimiento)</div>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td class="text">
+                            <div style="margin:0 0 8px 0;">1) Validar <b>fecha</b> y <b>pasajeros</b> en la confirmación.</div>
+                            <div style="margin:0 0 8px 0;">2) Enviar WhatsApp de confirmación: <b>salida puntual</b>, <b>llegar 20 min antes</b>, <b>INE si es local</b>.</div>
+                            <div style="margin:0 0 8px 0;">3) Actualizar lista del domingo: <b>cupo</b> y <b>asistencia</b>.</div>
+                            <div style="margin:0;">4) Si no responde: 2º intento en <b>2–4 horas</b>.</div>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <div style="margin-top:14px;" class="muted small">
+                        Tip: si la fecha llega vacía o rara, revisar el campo <b>fecha_de_viaje</b> en el form/redirect.
+                      </div>
+
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="padding:14px 6px 0;">
+                <div class="muted" style="text-align:center;">
+                  Yatezzitos México · Notificación interna<br>
+                  <span style="color:rgba(255,255,255,.55);">Este correo se genera automáticamente.</span>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

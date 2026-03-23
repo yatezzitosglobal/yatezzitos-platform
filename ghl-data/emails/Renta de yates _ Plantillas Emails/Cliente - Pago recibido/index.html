@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Anticipo recibido | Fecha bloqueada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      background: #f4f7fb;
+    }
+    * {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    table, td {
+      border-collapse: collapse !important;
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+    }
+    img {
+      border: 0;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+      display: block;
+    }
+    a { text-decoration: none; }
+
+    .container { width: 640px; max-width: 640px; }
+    .font-main { font-family: "Barlow", Arial, Helvetica, sans-serif; color: #111827; }
+    .muted { color: #6b7280; }
+
+    @media screen and (max-width:640px) {
+      .container { width: 100% !important; max-width: 100% !important; }
+      .pad-outer { padding-left: 10px !important; padding-right: 10px !important; }
+      .pad-inner { padding: 16px !important; }
+      .stack { display: block !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .cta { width: 100% !important; }
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+<body style="margin:0;padding:0;background:#f4f7fb;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;">
+    Recibimos tu anticipo con tarjeta y tu fecha ya quedo bloqueada. Revisa aqui el detalle de tu reserva.
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f4f7fb;">
+    <tr>
+      <td align="center" class="pad-outer" style="padding:22px 16px;">
+
+        <table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" class="container" style="width:640px;max-width:640px;">
+          <tr>
+            <td style="background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;">
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="background:#ffffff;padding:18px 20px;border-bottom:1px solid #eef2f7;">
+                    <img src="https://assets.cdn.filesafe.space/4vhgNiuaT3jtuf3hWj35/media/656acf3f45e5a0601e677d1a.png" width="220" alt="Yatezzitos" style="width:100px;max-width:100%;height:auto;background:#ffffff;">
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="background:#1e2140;padding:10px 20px;" class="font-main">
+                    <p style="margin:0;font-size:13px;line-height:18px;font-weight:700;color:#ffffff;letter-spacing:.4px;">
+                      CONFIRMACION DE PAGO | FECHA BLOQUEADA
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="pad-inner font-main" style="padding:22px 22px 10px 22px;">
+                    <p style="margin:0 0 8px 0;font-size:24px;line-height:32px;font-weight:800;color:#0b1939;">
+                      Anticipo recibido con tarjeta
+                    </p>
+                    <p style="margin:0 0 14px 0;font-size:16px;line-height:23px;color:#111827;">
+                      Hola <strong>{{contact.name}}</strong>, confirmamos tu pago de anticipo con tarjeta.
+                      Tu fecha ya quedo bloqueada para tu experiencia.
+                    </p>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td style="background:#ecfdf5;border:1px solid #b7ebd5;border-radius:10px;padding:10px 12px;" class="font-main">
+                          <p style="margin:0;font-size:14px;line-height:20px;color:#0a6e4a;font-weight:700;">
+                            Estado: Pago recibido y reserva activa.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;" class="font-main">
+                          <p style="margin:0;font-size:14px;line-height:22px;color:#111827;">
+                            <strong>Embarcacion:</strong> {{contact.yacht_name}}}<br>
+                            <strong>Destino:</strong> {{ contact.destinos }}<br>
+                            <strong>Fecha de viaje:</strong> {{ contact.fecha_de_viaje }}<br>
+                            <strong>Horario:</strong> {{ contact.departure_time }} - {{ contact.return_time }}<br>
+                            <strong>Marina:</strong> {{contact.marina_name}}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;">
+                      <tr>
+                        <td width="50%" class="stack" style="padding:0 6px 8px 0;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="background:#eef4ff;border:1px solid #dbe7ff;border-radius:10px;padding:12px;" class="font-main">
+                                <p style="margin:0 0 4px 0;font-size:12px;line-height:16px;color:#194395;font-weight:700;text-transform:uppercase;">Total</p>
+                                <p style="margin:0;font-size:16px;line-height:24px;color:#194395;font-weight:800;">{{contact.total_cost}}</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td width="50%" class="stack" style="padding:0 0 8px 6px;">
+                          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="background:#fff4f7;border:1px solid #ffd8e4;border-radius:10px;padding:12px;" class="font-main">
+                                <p style="margin:0 0 4px 0;font-size:12px;line-height:16px;color:#ca003d;font-weight:700;text-transform:uppercase;">Saldo pendiente</p>
+                                <p style="margin:0;font-size:16px;line-height:24px;color:#ca003d;font-weight:800;">{{contact.balance_due}}</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 10px 0;">
+                      <tr>
+                        <td align="center">
+                          <!--[if mso]>
+                          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                            href="{{ contact.quote_url }}" style="height:48px;v-text-anchor:middle;width:330px;" arcsize="12%" stroke="f" fillcolor="#194395">
+                            <w:anchorlock/>
+                            <center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;">
+                              VER DETALLE DE MI RESERVA
+                            </center>
+                          </v:roundrect>
+                          <![endif]-->
+                          <!--[if !mso]><!-- -->
+                          <a href="https://yatezzitos.com/es/gracias/?qt={{contact.quote_token}}" target="_blank" rel="noopener" class="cta"
+                            style="background:#194395;border-radius:8px;color:#ffffff;display:inline-block;font-family:'Barlow',Arial,Helvetica,sans-serif;font-size:15px;font-weight:800;line-height:48px;text-align:center;text-transform:uppercase;letter-spacing:.6px;width:330px;max-width:100%;">
+                            Ver detalle de mi reserva
+                          </a>
+                          <!--<![endif]-->
+                        </td>
+                      </tr>
+                    </table>
+
+                    <p class="font-main muted" style="margin:0 0 18px 0;font-size:12px;line-height:18px;">
+                      Si el boton no abre, usa este enlace:
+                      <a href="https://yatezzitos.com/es/gracias/?qt={{contact.quote_token}}" target="_blank" rel="noopener" style="color:#194395;text-decoration:underline;word-break:break-word;; mso-style-textfill-fill-color: #194395;"><!--[if mso]><font color="#194395"><![endif]-->
+                        https://yatezzitos.com/es/gracias/?qt={{contact.quote_token}}
+                      <!--[if mso]></font><![endif]--></a>
+                    </p>
+
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px;" class="font-main">
+                          <p style="margin:0 0 8px 0;font-size:16px;line-height:20px;font-weight:800;color:#0b1939;">Proximos pasos</p>
+                          <p style="margin:0 0 6px 0;font-size:14px;line-height:21px;color:#111827;">1. Llega a la marina 15 minutos antes de tu horario de salida.</p>
+                          <p style="margin:0;font-size:14px;line-height:21px;color:#111827;">2. Que llevar: identificacion oficial, traje de bano, toalla, bloqueador biodegradable, lentes de sol y efectivo para extras.</p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <p class="font-main muted" style="margin:14px 0 0 0;font-size:12px;line-height:18px;">
+                      Si necesitas soporte con tu reserva, responde este correo y te ayudamos.
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center" class="font-main" style="padding:14px 10px 18px 10px;font-size:12px;line-height:18px;color:#6b7280;">
+                    Yatezzitos Mexico
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

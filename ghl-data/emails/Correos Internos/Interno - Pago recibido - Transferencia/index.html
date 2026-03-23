@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Interno | Pago transferencia completado</title>
+
+  <!-- Preheader (oculto) -->
+  <style>
+    .preheader{display:none!important;visibility:hidden;opacity:0;color:transparent;height:0;width:0;overflow:hidden;mso-hide:all;}
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    html, body { margin:0 !important; padding:0 !important; width:100% !important; background:#f5f7fb; }
+    * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+    table, td { border-collapse:collapse !important; mso-table-lspace:0pt !important; mso-table-rspace:0pt !important; }
+    table { border-collapse:collapse !important; }
+    img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; display:block; }
+    a { text-decoration:none; }
+
+    .container { width:640px; max-width:640px; table-layout:fixed; }
+    .font-main { font-family:"Barlow", Arial, Helvetica, sans-serif; color:#111827; }
+    .card { background:#ffffff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden; }
+    .pad { padding:22px; }
+
+    .box { background:#f9fbff; border:1px solid #e6ecf7; border-radius:10px; padding:12px; }
+    .boxTitle { margin:0 0 6px 0; font-size:13px; line-height:18px; font-weight:800; color:#194395; }
+    .kv { margin:0; font-size:13px; line-height:20px; word-break:break-word; overflow-wrap:anywhere; }
+
+    /* CTA bulletproof (tabla) */
+    .btn-table { width:300px; }
+    .btn-link {
+      background:#194395;
+      border-radius:8px;
+      color:#ffffff !important;
+      display:block;
+      font-family:"Barlow", Arial, Helvetica, sans-serif;
+      font-size:14px;
+      font-weight:800;
+      line-height:46px;
+      text-align:center;
+      width:100%;
+      box-sizing:border-box;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      white-space:normal;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    @media screen and (max-width:640px){
+      .container { width:100% !important; max-width:100% !important; }
+      .pad { padding:16px !important; }
+      .no-scroll { padding-left:0 !important; padding-right:0 !important; }
+      .btn-table { width:100% !important; }
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+
+<body style="margin:0;padding:0;background:#f5f7fb;">
+  <div class="preheader">Pago por transferencia completado · Conciliar comprobante y confirmar bloqueo de fecha.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f7fb;">
+    <tr>
+      <td align="center" class="no-scroll" style="padding:20px 10px;">
+        <table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" class="container" style="width:640px;max-width:640px;table-layout:fixed;">
+          <tr>
+            <td class="card">
+
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed;">
+                <!-- Logo -->
+                <tr>
+                  <td align="center" style="background:#ffffff;padding:16px 20px;border-bottom:1px solid #eef2f7;">
+                    <img src="https://assets.cdn.filesafe.space/4vhgNiuaT3jtuf3hWj35/media/656acf3f45e5a0601e677d1a.png"
+                         width="100" alt="Yatezzitos" style="width:100px;max-width:100px;height:auto;background:#ffffff;">
+                  </td>
+                </tr>
+
+                <!-- Ribbon -->
+                <tr>
+                  <td class="font-main" style="background:#000000;padding:12px 22px;">
+                    <p style="margin:0;font-size:13px;line-height:18px;color:#ffffff;font-weight:700;letter-spacing:.4px;text-transform:uppercase;">
+                      Notificación interna · Transferencia confirmada
+                    </p>
+                  </td>
+                </tr>
+
+                <!-- Content -->
+                <tr>
+                  <td class="font-main pad">
+
+                    <p style="margin:0 0 8px 0;font-size:24px;line-height:28px;font-weight:800;color:#000000;">
+                      Cliente completó su pago por transferencia
+                    </p>
+                    <p style="margin:0 0 12px 0;font-size:14px;line-height:21px;color:#111827;">
+                      Prioridad alta: conciliar comprobante, bloquear fecha y avisar a operaciones.
+                    </p>
+
+                    <!-- Acción operativa -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td style="background:#ecfdf5;border:1px solid #b7ebd5;border-radius:10px;padding:10px 12px;">
+                          <p style="margin:0;font-size:14px;line-height:20px;color:#00734a;font-weight:800;">
+                            Acción: validar comprobante y marcar “RESERVA BLOQUEADA” (contabilidad + operaciones).
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Cliente -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;">
+                      <tr>
+                        <td class="box">
+                          <p class="boxTitle">Cliente</p>
+                          <p class="kv">
+                            <strong>Nombre:</strong> {{contact.name}}<br>
+                            <strong>Teléfono:</strong> {{contact.phone}}<br>
+                            <strong>Email:</strong> {{contact.email}}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Reserva -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 12px 0;">
+                      <tr>
+                        <td class="box">
+                          <p class="boxTitle">Reserva</p>
+                          <p class="kv">
+                            <strong>Yate:</strong> {{contact.yacht_name}}<br>
+                            <strong>Destino:</strong> {{contact.destinos}}<br>
+                            <strong>Fecha de viaje:</strong> {{contact.fecha_de_viaje}}<br>
+                            <strong>Horario:</strong> {{contact.departure_time}} - {{contact.return_time}}<br>
+                            <strong>Pasajeros:</strong> {{contact.number_of_passengers}}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Monto -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 14px 0;">
+                      <tr>
+                        <td class="box">
+                          <p class="boxTitle">Pago</p>
+                          <p class="kv">
+                            <strong>Total:</strong> {{contact.total_cost}}<br>
+                            <strong>Depósito:</strong> {{contact.deposit_amount}}}<br>
+                            <strong>Pendiente:</strong> {{contact.balance_due}}
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- CTA -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn-table" style="width:300px;">
+                            <tr>
+                              <td align="center">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                                  href="{{ contact.quote_url }}" style="height:46px;v-text-anchor:middle;width:300px;" arcsize="9%" stroke="f" fillcolor="#194395">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;">ABRIR COTIZACIÓN</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-- -->
+                                <a href="{{contact.quote_url}}" target="_blank" rel="noopener" class="btn-link">Abrir cotización</a>
+                                <!--<![endif]-->
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                  <td class="font-main" align="center" style="padding:12px 16px 16px 16px;font-size:12px;line-height:17px;color:#6b7280;">
+                    Uso interno Yatezzitos · Ventas y contabilidad
+                  </td>
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

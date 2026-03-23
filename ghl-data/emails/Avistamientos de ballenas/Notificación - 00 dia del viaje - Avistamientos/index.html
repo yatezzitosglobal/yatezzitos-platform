@@ -1,0 +1,378 @@
+<!--
+  YATEZZITOS | EMAIL CLIENTE (DÍA DEL VIAJE - SIN HORA) — HTML + CSS ONLY
+  ✅ Personaliza con URL params (mismos keys de tu página de gracias):
+     full_name, email, phone, pasajeros, fecha_de_viaje
+  ✅ Incluye:
+     - Link a página de gracias con parámetros
+     - Ubicación de abordaje (Google Maps)
+     - Redes sociales con íconos BLANCOS (inline SVG)
+  ⚠️ Sin JS. Compatible con GHL / email clients.
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yatezzitos México</title>
+  <style>
+    html,body{margin:0!important;padding:0!important;width:100%!important;height:100%!important;background:#000000;}
+    *{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+    table,td{mso-table-lspace:0pt!important;mso-table-rspace:0pt!important;border-collapse:collapse!important;}
+    img{-ms-interpolation-mode:bicubic;border:0;outline:none;text-decoration:none;display:block;}
+    a{text-decoration:none;}
+
+    :root{
+      --yzz-black:#000000;
+      --yzz-green:#00945E;
+      --yzz-blue:#194395;
+      --yzz-yellow:#F6EA69;
+      --yzz-ink:#0b2b3a;
+      --yzz-white:#ffffff;
+    }
+
+    .wrap{width:100%;background:var(--yzz-black);}
+    .container{width:100%;max-width:640px;margin:0 auto;}
+    .pad{padding:20px;}
+    .card{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,255,255,.92);
+      color:var(--yzz-ink);
+      padding:8px 12px;
+      border-radius:999px;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+    .dot{
+      display:inline-block;
+      width:10px;height:10px;border-radius:999px;
+      background:var(--yzz-green);
+      vertical-align:middle;
+      margin-right:8px;
+      box-shadow:0 0 0 4px rgba(0,148,94,.18);
+    }
+
+    .h1{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:28px;
+      line-height:1.15;
+      font-weight:900;
+      color:var(--yzz-white);
+      margin:0;
+    }
+    .p{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:14px;
+      line-height:1.6;
+      color:rgba(255,255,255,.92);
+      margin:0;
+    }
+    .muted{color:rgba(255,255,255,.78);}
+
+    .chip{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.4px;
+      color:var(--yzz-white);
+    }
+    .chip b{color:var(--yzz-yellow);}
+
+    .kv-label{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:11px;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+      font-weight:900;
+      color:rgba(255,255,255,.78);
+      margin:0 0 4px;
+    }
+    .kv-value{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:14px;
+      font-weight:800;
+      color:rgba(255,255,255,.95);
+      margin:0;
+      word-break:break-word;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 16px;
+      border-radius:10px;
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.8px;
+      text-transform:uppercase;
+    }
+    .btn-primary{background:var(--yzz-blue);color:var(--yzz-white);}
+    .btn-ghost{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.20);
+      color:var(--yzz-white);
+    }
+
+    .divider{height:1px;background:rgba(255,255,255,.14);line-height:1px;font-size:1px;}
+
+    .socialWrap{
+      display:inline-block;
+      width:40px;height:40px;
+      border-radius:12px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      text-align:center;
+    }
+    .socialWrap svg{width:18px;height:18px;fill:#ffffff;display:inline-block;margin-top:11px;}
+
+    .footer{
+      font-family:Arial,Helvetica,sans-serif;
+      font-size:12px;
+      line-height:1.6;
+      color:rgba(255,255,255,.70);
+    }
+
+    @media (max-width:480px){
+      .pad{padding:16px;}
+      .h1{font-size:24px;}
+    }
+  </style>
+<!-- outlook-fixes-applied --></head>
+
+<body>
+  <center class="wrap">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="wrap">
+      <tr>
+        <td align="center" style="padding:18px 12px 28px;">
+
+          <!-- HEADER -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="container">
+            <tr>
+              <td align="center" style="padding:10px 0 14px;">
+                <img
+                  src="https://storage.googleapis.com/msgsndr/4vhgNiuaT3jtuf3hWj35/media/66e3c2fa3622c4a8958a615d.png"
+                  width="170"
+                  alt="Yatezzitos México"
+                  style="width:75px;height:auto;display:block;"
+                >
+              </td>
+            </tr>
+          </table>
+
+          <!-- MAIN CARD -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="container card">
+            <tr>
+              <td class="pad">
+
+                <div class="badge"><span class="dot"></span>Es hoy 🐋⚓</div>
+
+                <div style="height:12px;"></div>
+
+                <h1 class="h1">
+                  ¡Hoy es el gran día, {{contact.name}}!
+                </h1>
+
+                <div style="height:10px;"></div>
+
+                <p class="p">
+                  Tu experiencia de <b>avistamiento de ballenas</b> ya llegó.  
+                  Solo queremos recordarte algo importante: <b>disfruta, respira y vive el momento</b>.
+                  Nosotros nos encargamos del resto.
+                </p>
+
+                <div style="height:14px;"></div>
+
+                <span class="chip">📍 <b>Mazatlán</b> · Avistamiento de ballenas</span>
+
+                <div style="height:16px;"></div>
+
+                <!-- RESUMEN (sin depender de JS, lo ve en la página de gracias) -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.14);border-radius:14px;">
+                  <tr>
+                    <td style="padding:14px 14px 12px;">
+                      <p class="kv-label">Tu confirmación personalizada</p>
+                      <p class="p muted" style="margin:0;">
+                        Abre tu página de confirmación para ver tus datos, copiar detalles y agregar al calendario.
+                      </p>
+
+                      <div style="height:12px;"></div>
+
+                      <a
+                        class="btn btn-primary"
+                        href="https://yatezzitos.com/gracias-avistamientos-de-ballena/?full_name={{contact.name}}&email={{contact.email}}&phone={{contact.phone}}&pasajeros={{contact.number_of_passengers}}&fecha_de_viaje={{contact.fecha_de_viaje}}"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        VER MI CONFIRMACIÓN
+                      </a>
+
+                      <div style="height:10px;"></div>
+
+                      <p class="p muted" style="font-size:12px;">
+                        Si quieres compartir tu reserva con tu grupo, usa el botón “Compartir” dentro de esa página.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+
+                <div style="height:14px;"></div>
+
+                <!-- UBICACIÓN -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;">
+                  <tr>
+                    <td style="padding:14px;">
+                      <p class="kv-label">Ubicación de abordaje</p>
+                      <p class="kv-value" style="margin:0 0 10px;">
+                        Punto de reunión en Google Maps
+                      </p>
+
+                      <a
+                        class="btn btn-ghost"
+                        href="https://maps.app.goo.gl/o7UJD65bZKqRS58G9"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        ABRIR MAPA
+                      </a>
+
+                      <div style="height:10px;"></div>
+
+                      <p class="p muted" style="font-size:12px;margin:0;">
+                        Tip: llega con anticipación para abordar con calma y sin prisas.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+
+                <div style="height:16px;"></div>
+
+                <div class="divider"></div>
+
+                <div style="height:14px;"></div>
+
+                <!-- MINI LIST -->
+                <p class="p">
+                  <b>Checklist rápido:</b> bloqueador · gorra · lentes · ropa cómoda · celular cargado (vas a grabar el show).
+                </p>
+
+                <div style="height:8px;"></div>
+
+                <p class="p muted" style="font-size:13px;">
+                  <b>Nota:</b> la observación depende de condiciones naturales. Nosotros ponemos el barco, el equipo y el plan… ellas ponen el espectáculo 🐋
+                </p>
+
+              </td>
+            </tr>
+          </table>
+
+          <!-- SOCIAL + FOOTER -->
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="container">
+            <tr>
+              <td align="center" style="padding:16px 8px 0;">
+                <p class="p muted" style="font-weight:800;margin:0 0 10px;">
+                  Síguenos y etiqueta tu experiencia 👇
+                </p>
+
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://www.instagram.com/yatezzitos_mx" target="_blank" rel="noopener" aria-label="Instagram">
+                        <!-- Instagram -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9z"/>
+                          <path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+                          <path d="M17.5 6.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://www.facebook.com/Yatezzitos" target="_blank" rel="noopener" aria-label="Facebook">
+                        <!-- Facebook -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M13.5 22v-8h2.7l.5-3H13.5V9.2c0-.9.3-1.6 1.7-1.6h1.8V4.9c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8V11H7v3h2.7v8h3.8z"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://www.tiktok.com/@yatezzitosmexico?lang=es" target="_blank" rel="noopener" aria-label="TikTok">
+                        <!-- TikTok -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M16 3c.5 2.9 2.4 4.7 5 4.9v3.1c-1.9.1-3.6-.6-5-1.7v6.6c0 3.7-3 6.1-6.2 6.1-3.4 0-6.3-2.6-6.3-6.2 0-3.5 2.7-6.1 6.3-6.1.4 0 .8 0 1.2.1v3.4c-.4-.2-.8-.3-1.2-.3-1.6 0-3 1.2-3 2.9 0 1.8 1.4 3 3 3 1.8 0 3.2-1.1 3.2-3.5V3h3z"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://x.com/yatezzitos" target="_blank" rel="noopener" aria-label="X">
+                        <!-- X -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M18.9 2H22l-6.8 7.8L23 22h-6.8l-5.3-6.9L4.7 22H2l7.4-8.5L1 2h6.9l4.9 6.2L18.9 2zm-1.2 18h1.7L7.2 3.9H5.4L17.7 20z"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://www.youtube.com/channel/UCbuxpBSUvfAs0XqMV-HD7AA" target="_blank" rel="noopener" aria-label="YouTube">
+                        <!-- YouTube -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M22 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.5c-.9.2-1.6.9-1.8 1.8C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7z"/>
+                          <path d="M10 15V9l6 3-6 3z" fill="#000000"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://mx.pinterest.com/yatezzitosm/?invite_code=000c8d57908a401b9ee47815918b21af&sender=924293660932145144" target="_blank" rel="noopener" aria-label="Pinterest">
+                        <!-- Pinterest -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 .1-2.9l1.6-6.8s-.4-.9-.4-2.2c0-2.1 1.2-3.6 2.7-3.6 1.3 0 1.9 1 1.9 2.1 0 1.3-.8 3.2-1.3 5-.4 1.5.8 2.7 2.3 2.7 2.8 0 4.9-2.9 4.9-7.1 0-3.7-2.6-6.3-6.5-6.3-4.5 0-7.1 3.3-7.1 6.8 0 1.3.5 2.6 1.1 3.3.1.1.2.3.1.5l-.4 1.6c-.1.5-.4.6-.8.4-1.5-.7-2.4-2.8-2.4-4.6 0-3.8 2.8-7.3 8-7.3 4.2 0 7.4 3 7.4 7 0 4.2-2.6 7.6-6.3 7.6-1.2 0-2.4-.6-2.8-1.4l-.8 3.1c-.3 1-.9 2.1-1.3 2.8A10 10 0 1 0 12 2z"/>
+                        </svg>
+                      </a>
+                    </td>
+
+                    <td style="padding:0 6px;">
+                      <a class="socialWrap" href="https://www.google.com.mx/maps/place/Yatezzitos+M%C3%A9xico/@23.2708575,-106.5798378,12z/data=!4m7!3m6!1s0x869f5387b04c0f39:0xe45cf2b7af23dd6e!8m2!3d23.2708575!4d-106.4274025!15sCgp5YXRlenppdG9zkgETYm9hdF9yZW50YWxfc2VydmljZeABAA!16s%2Fg%2F11nn47p1bh?entry=tts" target="_blank" rel="noopener" aria-label="Google Maps">
+                        <!-- Pin -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 22s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12zm0-9.5A2.5 2.5 0 1 1 12 7a2.5 2.5 0 0 1 0 5.5z"/>
+                        </svg>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
+                <div style="height:14px;"></div>
+
+                <div class="footer">
+                  Yatezzitos México · Turismo náutico premium · Gracias por confiar en nosotros.<br>
+                  Si necesitas ayuda, responde este correo o contáctanos por WhatsApp.
+                </div>
+
+                <div style="height:14px;"></div>
+
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
+</html>

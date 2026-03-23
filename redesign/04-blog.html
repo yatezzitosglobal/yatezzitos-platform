@@ -1,505 +1,615 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yatezzitos - Rediseño de Blog</title>
-    
-    <!-- Este archivo es la Documentación Oficial Front-End del Layout del Blog.
-         Contiene todo el HTML y el CSS compilado nativo 100% funcional. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yatezzitos - Rediseño de Blog</title>
 
-    <style>
-/* ==========================================================================
-   YATEZZITOS BLOG REDESIGN (HERO & LATEST ARTICLES + CTA)
-   Documentación CSS Embebida para Renderizado Frontend Independiente
-   ========================================================================== */
+  <!-- Este archivo es la Documentación Oficial Front-End del Layout del Blog.
+         Contiene todo el HTML y el CSS compilado nativo 100% funcional. -->  <style>
+    /* ==========================================================================
+       YATEZZITOS BLOG REDESIGN (HERO & LATEST ARTICLES + CTA)
+       CSS SCOPED UNDER #yatezzitos-blog-redesign
+       ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
 
-body { margin: 0; padding: 0; background-color: #E3F8F9; }
+    #yatezzitos-blog-redesign {
+      --bg-color: #E3F8F9;
+      --dark-navy: #041B2D;
+      --green-mint: #9DE0CA;
+      --green-mint-hover: #7bcfb3;
+      --white: #FFFFFF;
+      background-color: var(--bg-color);
+    }
 
-/* =========================================
-   1. HERO SECTION (PORTADA)
-   ========================================= */
-.blog-hero-section {
-  position: relative; width: 100%; min-height: 60vh; display: flex; align-items: center; justify-content: flex-start; 
-  background-position: center; background-repeat: no-repeat; background-size: cover;
-  background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');
-}
-.blog-hero-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(to right, rgba(10, 25, 45, 0.85) 0%, rgba(10, 25, 45, 0.45) 50%, rgba(10, 25, 45, 0) 100%); z-index: 1;
-}
-.blog-hero-content {
-  position: relative; z-index: 2; text-align: left; padding: 0 6%; width: 100%; max-width: 1200px; margin: 0 auto; 
-}
-.blog-hero-title {
-  color: #ffffff; font-family: 'Playfair Display', 'Georgia', serif; font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 700; margin: 0; line-height: 1.15; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-@media screen and (max-width: 480px) { .blog-hero-title br { display: none; } }
-@media screen and (min-width: 768px) {
-  .blog-hero-section { min-height: 550px; background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png'); }
-  .blog-hero-content { padding: 0 8%; }
-}
+    .newsletter-block .newsletter-input-wrap .mail-icon {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+      color: #FFFFFF;
+    }
 
-/* =========================================
-   2. SECCIÓN MASONRY (ÚLTIMOS ARTÍCULOS)
-   ========================================= */
-:root {
-  --bg-color: #E3F8F9;
-  --dark-navy: #041B2D;
-  --green-mint: #9DE0CA;
-  --green-mint-hover: #7bcfb3;
-}
+    .newsletter-block .newsletter-input-wrap input {
+      background: transparent !important;
+      border: none !important;
+      color: #FFFFFF !important;
+      padding: 12px 10px;
+      flex-grow: 1;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.9rem !important;
+      width: 100%;
+      border-radius: 0;
+    }
 
-.latest-articles-section { background-color: var(--bg-color); padding: 80px 4%; font-family: 'Inter', sans-serif; }
-.latest-articles-section * { box-sizing: border-box; }
+    .newsletter-block .newsletter-input-wrap input::placeholder {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
 
-/* CABECERA Y BUSCADOR AJAX */
-.header-container { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
-.header-container h2.masonry-title { font-size: 3.5rem !important; color: var(--dark-navy) !important; font-family: 'Playfair Display', serif; margin-bottom: 10px; font-weight: 700 !important; }
-.header-container h2.masonry-title .cursive { font-family: 'Great Vibes', cursive !important; font-size: 4.5rem !important; color: var(--dark-navy) !important; text-transform: none !important; margin-right: 15px; }
-.header-container p.masonry-subtitle { color: #4A5568 !important; font-size: 1.15rem; margin-bottom: 30px; }
+    .newsletter-block .newsletter-input-wrap input:focus {
+      outline: none;
+    }
 
-.search-filter-bar { display: flex; justify-content: center; gap: 15px; }
-.search-filter-bar .search-input-wrap { flex-grow: 1; max-width: 350px; }
-.search-filter-bar .search-input-wrap input { width: 100%; padding: 12px 20px; border-radius: 30px; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-family: 'Inter', sans-serif; }
-.search-filter-bar .search-input-wrap input:focus { outline: 2px solid var(--green-mint); }
-.search-filter-bar button { border: none; border-radius: 30px; padding: 12px 25px; font-family: 'Inter', sans-serif !important; font-weight: 600; cursor: pointer; transition: 0.3s; }
-.search-filter-bar .btn-search { background-color: var(--dark-navy); color: #FFF; }
-.search-filter-bar .btn-search:hover { background-color: #082841; }
-.search-filter-bar .btn-filter { background-color: #FFF; color: var(--dark-navy); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .newsletter-block .newsletter-input-wrap .btn-submit {
+      background: var(--green-mint) !important;
+      border: none !important;
+      border-radius: 50% !important;
+      min-width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+      color: var(--dark-navy) !important;
+    }
 
-/* DROPDOWN DE FILTROS */
-.filter-dropdown-container { position: relative; }
-.filter-dropdown-menu { position: absolute; top: 120%; right: 0; background: #FFFFFF; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); min-width: 250px; display: none; flex-direction: column; z-index: 999; overflow: auto; max-height: 450px; border: 1px solid #EAEAEA; }
-.filter-dropdown-menu.active { display: flex; }
-.filter-dropdown-menu .filter-option { background: transparent !important; border: none !important; padding: 14px 20px !important; text-align: left; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--dark-navy) !important; cursor: pointer; width: 100%; transition: 0.3s; border-radius: 0 !important; font-weight: 500 !important; }
-.filter-dropdown-menu .filter-option:hover { background-color: #F8FAFC !important; color: var(--green-mint-hover) !important; }
+    .newsletter-block .newsletter-input-wrap .btn-submit svg {
+      width: 22px;
+      height: 22px;
+    }
 
-/* REJILLA MASONRY (CSS GRID) */
-.articles-masonry { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; }
-@media (min-width: 768px) { .articles-masonry { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .articles-masonry { grid-template-columns: repeat(3, 1fr); } }
-.masonry-col { display: flex; flex-direction: column; gap: 30px; }
+    .newsletter-block .newsletter-input-wrap .btn-submit:hover {
+      background: var(--green-mint-hover) !important;
+      transform: scale(1.05);
+    }
 
-/* DISEÑO DE TARJETAS BLINDADO ANTI-ELEMENTOR */
-.vertical-card, .horizontal-card { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-.vertical-card .card-bg, .horizontal-card .card-bg { 
-  position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; 
-  min-width: 100% !important; min-height: 100% !important; max-width: none !important; max-height: none !important; 
-  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; z-index: 1; transition: transform 0.6s ease; display: block !important; 
-}
-.vertical-card .card-overlay, .horizontal-card .card-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,20,40,0.05) 0%, rgba(0,25,45,0.55) 100%); }
-.vertical-card:hover .card-bg, .horizontal-card:hover .card-bg { transform: scale(1.05); }
-.vertical-card .card-content, .horizontal-card .card-content { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
-#yz-blog-masonry .vertical-card .card-content, #yz-blog-masonry .vertical-card .card-content *, #yz-blog-masonry .horizontal-card .card-content, #yz-blog-masonry .horizontal-card .card-content * { color: #FFFFFF !important; }
+    .newsletter-block .btn-solid-green {
+      background-color: var(--green-mint) !important;
+      color: var(--dark-navy) !important;
+      padding: 16px;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
 
-/* CATEGORÍAS (VERTICALES) */
-.vertical-card { height: 480px; }
-.vertical-card .card-content { padding: 30px; }
-.vertical-card .card-content .card-title { font-family: 'Playfair Display', serif; font-size: 1.8rem !important; line-height: 1.2 !important; margin: 0 0 20px 0 !important; text-transform: none !important; }
-.vertical-card .card-content .btn-read-more { align-self: flex-start; background-color: var(--green-mint) !important; color: var(--dark-navy) !important; padding: 10px 22px; border-radius: 25px; font-weight: 700 !important; text-decoration: none; transition: 0.3s; }
-.vertical-card .card-content .btn-read-more:hover { background-color: var(--green-mint-hover) !important; }
-.vertical-card .card-tags { position: absolute; top: 20px; left: 20px; z-index: 3; display: flex; gap: 8px; }
-.vertical-card .card-tags .tag { background: rgba(255,255,255,0.25); color: #FFFFFF !important; padding: 6px 14px; border-radius: 12px; font-size: 0.8rem; backdrop-filter: blur(5px); }
+    .newsletter-block .btn-solid-green svg {
+      width: 18px;
+      height: 18px;
+    }
 
-/* ENTRADAS (HORIZONTALES) */
-.side-col h2.title-small { font-size: 2.2rem !important; color: var(--dark-navy) !important; font-family: 'Playfair Display', serif; margin: 0 0 15px 0 !important; }
-.side-col h2.title-small .cursive { font-family: 'Great Vibes', cursive !important; font-size: 3rem !important; text-transform: none !important; margin-right: 10px; }
-.horizontal-card { height: 180px; }
-.horizontal-card .card-content { padding: 20px; }
-.horizontal-card .card-content .card-date { font-size: 0.75rem; margin-bottom: 5px; font-family: 'Inter', sans-serif; }
-.horizontal-card .card-content .card-title { font-size: 1.2rem !important; margin: 0 !important; font-family: 'Playfair Display', serif; line-height: 1.3 !important; }
-.horizontal-card .card-tags { position: absolute; top: 15px; left: 15px; z-index: 3; display: flex; gap: 6px; }
-.horizontal-card .card-tags .tag { background: rgba(255,255,255,0.2); color: #FFFFFF !important; padding: 4px 10px; border-radius: 10px; font-size: 0.7rem; }
-.horizontal-card .invisible-link { position: absolute; inset: 0; z-index: 4; }
+    .newsletter-block .btn-solid-green:hover {
+      background-color: var(--green-mint-hover) !important;
+      transform: translateY(-2px);
+    }
 
-/* =========================================
-   3. CTA NEWSLETTER AL FINAL DE ENTRADAS
-   ========================================= */
-.newsletter-block { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: flex; flex-direction: column; margin-top: 10px; }
-.newsletter-block .newsletter-bg { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
-.newsletter-block .newsletter-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 30, 50, 0.4), rgba(0, 30, 50, 0.75)); z-index: 2; }
-.newsletter-block .newsletter-content { position: relative; z-index: 3; padding: 40px 25px; display: flex; flex-direction: column; gap: 18px; }
-.newsletter-block h3.newsletter-title { font-family: 'Playfair Display', serif !important; font-size: 2.2rem !important; line-height: 1.1 !important; margin: 0 !important; color: #FFFFFF !important; text-transform: none !important; }
-.newsletter-block h3.newsletter-title .cursive { font-family: 'Great Vibes', cursive !important; font-size: 3.4rem !important; font-weight: 400 !important; display: block; margin-bottom: 5px; }
-.newsletter-block p { font-family: 'Inter', sans-serif !important; font-size: 0.95rem !important; line-height: 1.5 !important; color: #FFFFFF !important; opacity: 0.9; margin: 0 !important; }
-.newsletter-block .newsletter-input-wrap { display: flex; align-items: center; background: rgba(255,255,255,0.08) !important; border: 1px solid rgba(255,255,255,0.3) !important; border-radius: 30px; padding: 5px 5px 5px 18px; margin-top: 5px; }
-.newsletter-block .newsletter-input-wrap .mail-icon { width: 20px; height: 20px; opacity: 0.8; color: #FFFFFF; }
-.newsletter-block .newsletter-input-wrap input { background: transparent !important; border: none !important; color: #FFFFFF !important; padding: 12px 10px; flex-grow: 1; font-family: 'Inter', sans-serif !important; font-size: 0.9rem !important; width: 100%; border-radius: 0; }
-.newsletter-block .newsletter-input-wrap input::placeholder { color: rgba(255,255,255,0.6) !important; }
-.newsletter-block .newsletter-input-wrap input:focus { outline: none; }
-.newsletter-block .newsletter-input-wrap .btn-submit { background: var(--green-mint) !important; border: none !important; border-radius: 50% !important; min-width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; color: var(--dark-navy) !important; }
-.newsletter-block .newsletter-input-wrap .btn-submit svg { width: 22px; height: 22px; }
-.newsletter-block .newsletter-input-wrap .btn-submit:hover { background: var(--green-mint-hover) !important; transform: scale(1.05); }
-.newsletter-block .btn-solid-green { background-color: var(--green-mint) !important; color: var(--dark-navy) !important; padding: 16px; border-radius: 30px; text-align: center; text-decoration: none !important; font-family: 'Inter', sans-serif !important; font-weight: 600 !important; font-size: 1rem !important; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
-.newsletter-block .btn-solid-green svg { width: 18px; height: 18px; }
-.newsletter-block .btn-solid-green:hover { background-color: var(--green-mint-hover) !important; transform: translateY(-2px); }
-.newsletter-block .btn-solid-dark { background-color: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.1) !important; color: #FFFFFF !important; padding: 16px; border-radius: 30px; text-align: center; text-decoration: none !important; font-family: 'Inter', sans-serif !important; font-weight: 500 !important; font-size: 0.95rem !important; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; backdrop-filter: blur(5px); }
-.newsletter-block .btn-solid-dark svg { width: 20px; height: 20px; opacity: 0.9; }
-.newsletter-block .btn-solid-dark:hover { background-color: rgba(255,255,255,0.25) !important; }
+    .newsletter-block .btn-solid-dark {
+      background-color: rgba(255, 255, 255, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #FFFFFF !important;
+      padding: 16px;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 500 !important;
+      font-size: 0.95rem !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: 0.3s;
+      backdrop-filter: blur(5px);
+    }
 
-/* ============================
+    .newsletter-block .btn-solid-dark svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.9;
+    }
+
+    .newsletter-block .btn-solid-dark:hover {
+      background-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    /* ============================
    4. RESPONSIVIDAD Y TABLETA 
    ============================ */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .side-col { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-  .side-col h2.title-small { grid-column: 1 / -1; text-align: center; }
-  .side-col .newsletter-block { grid-column: 1 / -1; }
-}
-@media (max-width: 767px) {
-  .header-container h2.masonry-title { font-size: 2.2rem !important; }
-  .header-container h2.masonry-title .cursive { font-size: 3rem !important; }
-  .vertical-card .card-content .card-title { font-size: 1.4rem !important; }
-  .side-col h2.title-small { font-size: 1.8rem !important; }
-  .side-col h2.title-small .cursive { font-size: 2.4rem !important; }
-  .search-filter-bar { flex-wrap: wrap; gap: 10px; }
-  .search-filter-bar .search-input-wrap { width: 100%; max-width: 100% !important; }
-  .search-filter-bar button { flex: 1; padding: 10px 15px !important; font-size: 0.85rem !important; border-radius: 20px !important; }
-}
-    </style>
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .side-col {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .side-col h2.title-small {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+
+      .side-col .newsletter-block {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .header-container h2.masonry-title {
+        font-size: 2.2rem !important;
+      }
+
+      .header-container h2.masonry-title .cursive {
+        font-size: 3rem !important;
+      }
+
+      .vertical-card .card-content .card-title {
+        font-size: 1.4rem !important;
+      }
+
+      .side-col h2.title-small {
+        font-size: 1.8rem !important;
+      }
+
+      .side-col h2.title-small .cursive {
+        font-size: 2.4rem !important;
+      }
+
+      .search-filter-bar {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .search-filter-bar .search-input-wrap {
+        width: 100%;
+        max-width: 100% !important;
+      }
+
+      .search-filter-bar button {
+        flex: 1;
+        padding: 10px 15px !important;
+        font-size: 0.85rem !important;
+        border-radius: 20px !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ==============================================
+  <div id="yatezzitos-blog-redesign">
+
+  <!-- ==============================================
      COMPONENTE 1: THE HERO 
      ============================================== -->
-<section class="blog-hero-section">
-  <div class="blog-hero-overlay"></div>
-  <div class="blog-hero-content">
-    <h1 class="blog-hero-title">
-      Encuentra tu próximo <br/> destino de lujo.
-    </h1>
-  </div>
-</section>
+  <section class="blog-hero-section">
+    <div class="blog-hero-overlay"></div>
+    <div class="blog-hero-content">
+      <h1 class="blog-hero-title">
+        Encuentra tu próximo <br /> destino de lujo.
+      </h1>
+    </div>
+  </section>
 
-<!-- ==============================================
+  <!-- ==============================================
      COMPONENTE 2: MASONRY GRID Y CTA 
      ============================================== -->
-<section class="latest-articles-section" id="yz-blog-masonry">
-  <!-- Cabecera -->
-  <div class="header-container">
-    <h2 class="masonry-title"><span class="cursive">Últimos</span> Artículos</h2>
-    <p class="masonry-subtitle">Encuentra la inspiración perfecta explorando nuestras categorías y entradas exclusivas.</p>
-    
-    <div class="search-filter-bar">
-      <div class="search-input-wrap">
-        <input type="text" id="live-search-input" placeholder="Ej. Cancún, Pesca, Yates...">
-      </div>
-      <button class="btn-search" id="btn-search-trigger">Buscar</button>
-      
-      <div class="filter-dropdown-container">
-        <button class="btn-filter" id="btn-filter-toggle">Filtros ▾</button>
-        
-        <!-- MENÚ DE FILTROS ACTUALIZADO CON TODAS LAS CATEGORÍAS -->
-        <div class="filter-dropdown-menu" id="filter-dropdown-menu">
-          <button class="filter-option" data-filter="all">Toda la República</button>
-          <button class="filter-option" data-filter="los cabos">Experiencias Los Cabos</button>
-          <button class="filter-option" data-filter="cancun">Experiencias Cancún</button>
-          <button class="filter-option" data-filter="la paz">Experiencias La Paz</button>
-          <button class="filter-option" data-filter="mazatlan">Experiencias Mazatlán</button>
-          <button class="filter-option" data-filter="puerto vallarta">Experiencias Puerto Vallarta</button>
-          <button class="filter-option" data-filter="nuevo vallarta">Experiencias Nuevo Vallarta</button>
-          <button class="filter-option" data-filter="playa del carmen">Experiencias Playa del Carmen</button>
-          <button class="filter-option" data-filter="huatulco">Experiencias Huatulco</button>
-          <button class="filter-option" data-filter="ixtapa">Experiencias Ixtapa Zihuatanejo</button>
-          <button class="filter-option" data-filter="acapulco">Experiencias Acapulco</button>
-          <button class="filter-option" data-filter="recomendaciones">Recomendaciones y Tips</button>
+  <section class="latest-articles-section" id="yz-blog-masonry">
+    <!-- Cabecera -->
+    <div class="header-container">
+      <h2 class="masonry-title"><span class="cursive">Últimos</span> Artículos</h2>
+      <p class="masonry-subtitle">Encuentra la inspiración perfecta explorando nuestras categorías y entradas
+        exclusivas.</p>
+
+      <div class="search-filter-bar">
+        <div class="search-input-wrap">
+          <input type="text" id="live-search-input" placeholder="Ej. Cancún, Pesca, Yates...">
         </div>
-      </div>
-    </div>
-  </div>
+        <button class="btn-search" id="btn-search-trigger">Buscar</button>
 
-  <div class="articles-masonry" id="masonry-grid-items">
-    
-    <!-- COLUMNA 1: CATEGORÍAS (Izquierda) -->
-    <div class="masonry-col">
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="La Paz"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Destino</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias La Paz</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-la-paz/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
+        <div class="filter-dropdown-container">
+          <button class="btn-filter" id="btn-filter-toggle">Filtros ▾</button>
 
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Cancún"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Caribe</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Cancún</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-cancun/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Los Cabos"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Lujo</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Los Cabos</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-los-cabos/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Mazatlán"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Pacífico</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Mazatlán</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-mazatlan/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Puerto Vallarta"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Sunset</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Puerto Vallarta</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-puerto-vallarta/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- COLUMNA 2: CATEGORÍAS (Centro) -->
-    <div class="masonry-col">
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Nuevo Vallarta"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Resorts</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Nuevo Vallarta</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-nuevo-vallarta/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Playa del Carmen"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Riviera</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Playa del Carmen</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-en-playa-del-carmen/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Huatulco"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Paraíso</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Huatulco</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-huatulco/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Ixtapa"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Relax</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Ixtapa Zihuatanejo</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-en-ixtapa-zihuatanejo/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-
-      <article class="vertical-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Acapulco"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Clásico</span></div>
-        <div class="card-content">
-          <h3 class="card-title">Experiencias Acapulco</h3>
-          <a href="https://yatezzitos.com/es/category/experiencias-acapulco/" class="btn-read-more">Ver Categoría ↗</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- COLUMNA 3: ENTRADAS Y CTA (Derecha estricta) -->
-    <div class="masonry-col side-col">
-      <h2 class="title-small"><span class="cursive">Entradas</span> Destacadas</h2>
-      
-      <!-- 10 Tarjetas de Entradas -->
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#LaPaz</span></div>
-        <div class="card-content">
-          <div class="card-date">16 Mar, 2026</div><h3 class="card-title">Playa Tecolote: Rincón Natural para Aventureros</h3>
-        </div><a href="https://yatezzitos.com/es/playa-tecolote-la-paz-baja-california-sur/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Ballenas</span> <span class="tag">#LosCabos</span></div>
-        <div class="card-content">
-          <div class="card-date">16 Mar, 2026</div><h3 class="card-title">Avistamiento de Ballenas en Los Cabos</h3>
-        </div><a href="https://yatezzitos.com/es/avistamiento-de-ballenas-en-los-cabos/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Marlin</span> <span class="tag">#Mazatlán</span></div>
-        <div class="card-content">
-          <div class="card-date">15 Mar, 2026</div><h3 class="card-title">Pesca Deportiva: Capital del Marlín</h3>
-        </div><a href="https://yatezzitos.com/es/pesca-de-lujo-en-mazatlan-reserva-tu-aventura-en-yate-hoy/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Arco</span></div>
-        <div class="card-content">
-          <div class="card-date">14 Mar, 2026</div><h3 class="card-title">El Arco de Cabo San Lucas en Yate</h3>
-        </div><a href="https://yatezzitos.com/es/el-arco-de-cabo-san-lucas/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Cancún</span></div>
-        <div class="card-content">
-          <div class="card-date">13 Mar, 2026</div><h3 class="card-title">Renta de Yates en Cancún: Guía rápida</h3>
-        </div><a href="https://yatezzitos.com/es/cancun-quintana-roo/" class="invisible-link"></a>
-      </article>
-      
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Riviera</span> <span class="tag">#Playa</span></div>
-        <div class="card-content">
-          <div class="card-date">10 Mar, 2026</div><h3 class="card-title">Las mejores playas virgenes cerca de Tulum</h3>
-        </div><a href="https://yatezzitos.com/es/top-5-playas-de-cancun-en-yate/" class="invisible-link"></a>
-      </article>
-      
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Acapulco</span></div>
-        <div class="card-content">
-          <div class="card-date">9 Mar, 2026</div><h3 class="card-title">Atardeceres Mágicos paseando en Acapulco</h3>
-        </div><a href="https://yatezzitos.com/es/category/experiencias-acapulco/" class="invisible-link"></a>
-      </article>
-      
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Vallarta</span></div>
-        <div class="card-content">
-          <div class="card-date">8 Mar, 2026</div><h3 class="card-title">Islas Marietas: Tour Responsable</h3>
-        </div><a href="https://yatezzitos.com/es/category/experiencias-puerto-vallarta/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Huatulco</span></div>
-        <div class="card-content">
-          <div class="card-date">7 Mar, 2026</div><h3 class="card-title">Bahías de Huatulco: Paraíso Virgen 2026</h3>
-        </div><a href="https://yatezzitos.com/es/renta-un-yate-en-huatulco-y-descubre-sus-tesoros-escondidos/" class="invisible-link"></a>
-      </article>
-
-      <article class="horizontal-card filterable-item">
-        <div class="card-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');" title="Post"></div>
-        <div class="card-overlay"></div>
-        <div class="card-tags"><span class="tag">#Mazatlán</span></div>
-        <div class="card-content">
-          <div class="card-date">6 Mar, 2026</div><h3 class="card-title">Guía de las tres islas en Mazatlán</h3>
-        </div><a href="https://yatezzitos.com/es/principales-playas-e-islas-de-la-ciudad-de-mazatlan/" class="invisible-link"></a>
-      </article>
-
-      <!-- BLOQUE CTA NEWSLETTER -->
-      <div class="newsletter-block">
-        <div class="newsletter-bg" style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-135-1.png');"></div>
-        <div class="newsletter-overlay"></div>
-        
-        <div class="newsletter-content">
-          <h3 class="newsletter-title">
-            <span class="cursive">Suscríbete</span>
-            a nuestro Boletín
-          </h3>
-          <p>Mantente informado con nuestras últimas noticias y ofertas exclusivas - solo ingresa tu correo abajo</p>
-          
-          <div class="newsletter-input-wrap">
-            <svg class="mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7"/></svg>
-            <input type="email" placeholder="Ingresa tu correo">
-            <button class="btn-submit">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </button>
+          <!-- MENÚ DE FILTROS ACTUALIZADO CON TODAS LAS CATEGORÍAS -->
+          <div class="filter-dropdown-menu" id="filter-dropdown-menu">
+            <button class="filter-option" data-filter="all">Toda la República</button>
+            <button class="filter-option" data-filter="los cabos">Experiencias Los Cabos</button>
+            <button class="filter-option" data-filter="cancun">Experiencias Cancún</button>
+            <button class="filter-option" data-filter="la paz">Experiencias La Paz</button>
+            <button class="filter-option" data-filter="mazatlan">Experiencias Mazatlán</button>
+            <button class="filter-option" data-filter="puerto vallarta">Experiencias Puerto Vallarta</button>
+            <button class="filter-option" data-filter="nuevo vallarta">Experiencias Nuevo Vallarta</button>
+            <button class="filter-option" data-filter="playa del carmen">Experiencias Playa del Carmen</button>
+            <button class="filter-option" data-filter="huatulco">Experiencias Huatulco</button>
+            <button class="filter-option" data-filter="ixtapa">Experiencias Ixtapa Zihuatanejo</button>
+            <button class="filter-option" data-filter="acapulco">Experiencias Acapulco</button>
+            <button class="filter-option" data-filter="recomendaciones">Recomendaciones y Tips</button>
           </div>
-          
-          <a href="#" class="btn-solid-green">
-            Reserva un Yate 
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-arrow"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-          </a>
-          
-          <a href="#" class="btn-solid-dark">
-            Descargar Guía de Viaje 
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-download"><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12"/></svg>
-          </a>
         </div>
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="articles-masonry" id="masonry-grid-items">
 
-<!-- SCRIPT DE BÚSQUEDA TIPO AJAX FRONTEND -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("live-search-input");
-  const searchBtn = document.getElementById("btn-search-trigger");
-  const gridItems = document.querySelectorAll(".filterable-item");
-  const filterToggle = document.getElementById("btn-filter-toggle");
-  const filterMenu = document.getElementById("filter-dropdown-menu");
-  const filterOptions = document.querySelectorAll(".filter-option");
+      <!-- COLUMNA 1: CATEGORÍAS (Izquierda) -->
+      <div class="masonry-col">
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="La Paz">
+          </div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Destino</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias La Paz</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-la-paz/" class="btn-read-more">Ver Categoría ↗</a>
+          </div>
+        </article>
 
-  function filterCards(searchTerm) {
-    const term = searchTerm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    gridItems.forEach(function (card) {
-      const cardText = card.innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if (term === "all" || term === "" || cardText.includes(term)) {
-        card.style.display = "flex"; 
-      } else {
-        card.style.display = "none"; 
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');"
+            title="Cancún"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Caribe</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Cancún</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-cancun/" class="btn-read-more">Ver Categoría ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');"
+            title="Los Cabos"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Lujo</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Los Cabos</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-los-cabos/" class="btn-read-more">Ver Categoría
+              ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');"
+            title="Mazatlán"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Pacífico</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Mazatlán</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-mazatlan/" class="btn-read-more">Ver Categoría
+              ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');"
+            title="Puerto Vallarta"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Sunset</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Puerto Vallarta</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-puerto-vallarta/" class="btn-read-more">Ver
+              Categoría ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- COLUMNA 2: CATEGORÍAS (Centro) -->
+      <div class="masonry-col">
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');"
+            title="Nuevo Vallarta"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Resorts</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Nuevo Vallarta</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-nuevo-vallarta/" class="btn-read-more">Ver
+              Categoría ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');"
+            title="Playa del Carmen"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Riviera</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Playa del Carmen</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-en-playa-del-carmen/" class="btn-read-more">Ver
+              Categoría ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');"
+            title="Huatulco"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Paraíso</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Huatulco</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-huatulco/" class="btn-read-more">Ver Categoría
+              ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Ixtapa">
+          </div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Relax</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Ixtapa Zihuatanejo</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-en-ixtapa-zihuatanejo/" class="btn-read-more">Ver
+              Categoría ↗</a>
+          </div>
+        </article>
+
+        <article class="vertical-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');"
+            title="Acapulco"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Clásico</span></div>
+          <div class="card-content">
+            <h3 class="card-title">Experiencias Acapulco</h3>
+            <a href="https://yatezzitos.com/es/category/experiencias-acapulco/" class="btn-read-more">Ver Categoría
+              ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- COLUMNA 3: ENTRADAS Y CTA (Derecha estricta) -->
+      <div class="masonry-col side-col">
+        <h2 class="title-small"><span class="cursive">Entradas</span> Destacadas</h2>
+
+        <!-- 10 Tarjetas de Entradas -->
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post">
+          </div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#LaPaz</span></div>
+          <div class="card-content">
+            <div class="card-date">16 Mar, 2026</div>
+            <h3 class="card-title">Playa Tecolote: Rincón Natural para Aventureros</h3>
+          </div><a href="https://yatezzitos.com/es/playa-tecolote-la-paz-baja-california-sur/"
+            class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Ballenas</span> <span class="tag">#LosCabos</span></div>
+          <div class="card-content">
+            <div class="card-date">16 Mar, 2026</div>
+            <h3 class="card-title">Avistamiento de Ballenas en Los Cabos</h3>
+          </div><a href="https://yatezzitos.com/es/avistamiento-de-ballenas-en-los-cabos/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Marlin</span> <span class="tag">#Mazatlán</span></div>
+          <div class="card-content">
+            <div class="card-date">15 Mar, 2026</div>
+            <h3 class="card-title">Pesca Deportiva: Capital del Marlín</h3>
+          </div><a href="https://yatezzitos.com/es/pesca-de-lujo-en-mazatlan-reserva-tu-aventura-en-yate-hoy/"
+            class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Arco</span></div>
+          <div class="card-content">
+            <div class="card-date">14 Mar, 2026</div>
+            <h3 class="card-title">El Arco de Cabo San Lucas en Yate</h3>
+          </div><a href="https://yatezzitos.com/es/el-arco-de-cabo-san-lucas/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-1371.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Cancún</span></div>
+          <div class="card-content">
+            <div class="card-date">13 Mar, 2026</div>
+            <h3 class="card-title">Renta de Yates en Cancún: Guía rápida</h3>
+          </div><a href="https://yatezzitos.com/es/cancun-quintana-roo/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/07.jpg');" title="Post">
+          </div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Riviera</span> <span class="tag">#Playa</span></div>
+          <div class="card-content">
+            <div class="card-date">10 Mar, 2026</div>
+            <h3 class="card-title">Las mejores playas virgenes cerca de Tulum</h3>
+          </div><a href="https://yatezzitos.com/es/top-5-playas-de-cancun-en-yate/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Acapulco</span></div>
+          <div class="card-content">
+            <div class="card-date">9 Mar, 2026</div>
+            <h3 class="card-title">Atardeceres Mágicos paseando en Acapulco</h3>
+          </div><a href="https://yatezzitos.com/es/category/experiencias-acapulco/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2025/06/IMG_4491.jpeg');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Vallarta</span></div>
+          <div class="card-content">
+            <div class="card-date">8 Mar, 2026</div>
+            <h3 class="card-title">Islas Marietas: Tour Responsable</h3>
+          </div><a href="https://yatezzitos.com/es/category/experiencias-puerto-vallarta/" class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-137.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Huatulco</span></div>
+          <div class="card-content">
+            <div class="card-date">7 Mar, 2026</div>
+            <h3 class="card-title">Bahías de Huatulco: Paraíso Virgen 2026</h3>
+          </div><a href="https://yatezzitos.com/es/renta-un-yate-en-huatulco-y-descubre-sus-tesoros-escondidos/"
+            class="invisible-link"></a>
+        </article>
+
+        <article class="horizontal-card filterable-item">
+          <div class="card-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/ChatGPT-Image-28-feb-2026-06_46_14-p.m.png');"
+            title="Post"></div>
+          <div class="card-overlay"></div>
+          <div class="card-tags"><span class="tag">#Mazatlán</span></div>
+          <div class="card-content">
+            <div class="card-date">6 Mar, 2026</div>
+            <h3 class="card-title">Guía de las tres islas en Mazatlán</h3>
+          </div><a href="https://yatezzitos.com/es/principales-playas-e-islas-de-la-ciudad-de-mazatlan/"
+            class="invisible-link"></a>
+        </article>
+
+        <!-- BLOQUE CTA NEWSLETTER -->
+        <div class="newsletter-block">
+          <div class="newsletter-bg"
+            style="background-image: url('https://yatezzitos.com/wp-content/uploads/2026/03/Rectangle-135-1.png');">
+          </div>
+          <div class="newsletter-overlay"></div>
+
+          <div class="newsletter-content">
+            <h3 class="newsletter-title">
+              <span class="cursive">Suscríbete</span>
+              a nuestro Boletín
+            </h3>
+            <p>Mantente informado con nuestras últimas noticias y ofertas exclusivas - solo ingresa tu correo abajo</p>
+
+            <div class="newsletter-input-wrap">
+              <svg class="mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" />
+              </svg>
+              <input type="email" placeholder="Ingresa tu correo">
+              <button class="btn-submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </button>
+            </div>
+
+            <a href="#" class="btn-solid-green">
+              Reserva un Yate
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-arrow">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+
+            <a href="#" class="btn-solid-dark">
+              Descargar Guía de Viaje
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-download">
+                <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 11l5 5 5-5M12 4v12" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  </div> <!-- End #yatezzitos-blog-redesign -->
+
+  <!-- SCRIPT DE BÚSQUEDA TIPO AJAX FRONTEND -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("live-search-input");
+      const searchBtn = document.getElementById("btn-search-trigger");
+      const gridItems = document.querySelectorAll(".filterable-item");
+      const filterToggle = document.getElementById("btn-filter-toggle");
+      const filterMenu = document.getElementById("filter-dropdown-menu");
+      const filterOptions = document.querySelectorAll(".filter-option");
+
+      function filterCards(searchTerm) {
+        const term = searchTerm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        gridItems.forEach(function (card) {
+          const cardText = card.innerText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          if (term === "all" || term === "" || cardText.includes(term)) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
       }
+
+      searchInput.addEventListener("input", function (e) {
+        filterToggle.innerHTML = "Filtros ▾";
+        filterCards(e.target.value);
+      });
+      searchBtn.addEventListener("click", function () { filterCards(searchInput.value); });
+
+      filterToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        filterMenu.classList.toggle("active");
+      });
+
+      document.addEventListener("click", function () {
+        filterMenu.classList.remove("active");
+      });
+
+      filterOptions.forEach(function (option) {
+        option.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const filterValue = this.getAttribute("data-filter");
+          filterToggle.innerHTML = this.innerText + " ▾";
+          searchInput.value = "";
+          filterCards(filterValue);
+          filterMenu.classList.remove("active");
+        });
+      });
     });
-  }
-
-  searchInput.addEventListener("input", function (e) {
-    filterToggle.innerHTML = "Filtros ▾"; 
-    filterCards(e.target.value);
-  });
-  searchBtn.addEventListener("click", function() { filterCards(searchInput.value); });
-
-  filterToggle.addEventListener("click", function(e) {
-    e.stopPropagation();
-    filterMenu.classList.toggle("active");
-  });
-
-  document.addEventListener("click", function() {
-    filterMenu.classList.remove("active");
-  });
-
-  filterOptions.forEach(function(option) {
-    option.addEventListener("click", function(e) {
-      e.stopPropagation();
-      const filterValue = this.getAttribute("data-filter");
-      filterToggle.innerHTML = this.innerText + " ▾";
-      searchInput.value = ""; 
-      filterCards(filterValue);
-      filterMenu.classList.remove("active"); 
-    });
-  });
-});
-</script>
+  </script>
 
 </body>
+
 </html>
