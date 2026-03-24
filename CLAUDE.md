@@ -131,11 +131,34 @@ Reglas principales de redacción y formato:
 
 Tenemos acceso a servidores MCP para operar directamente con las plataformas:
 
-- **WordPress MCP:** Lo utilizamos para leer, crear y actualizar entradas del blog o páginas en vivo. Es vital para actualizar los metadatos de **Yoast SEO** (usando los campos `_yoast_wpseo_title`, `_yoast_wpseo_metadesc`, y `_yoast_wpseo_focuskw`) de manera rápida y masiva sin salir de la terminal.
-- **Google Search Console (GSC):** Lo usamos para extraer datos reales de rendimiento, impresiones y clics para descubrir oportunidades de palabras clave y optimizar URLs con base en datos verificados.
+- **WordPress MCP:** Lo utilizamos para leer, crear y actualizar entradas (campo `content`). Para metadatos Yoast SEO, ver regla crítica abajo.
+- **Google Search Console (GSC):** ✅ Acceso confirmado vía `https://yatezzitos.com/` — NO usar `sc-domain:yatezzitos.com`. Utilizamos GSC para extraer datos reales de rendimiento, impresiones y clics para descubrir oportunidades de palabras clave.
 - **NotebookLM MCP (`jacob-bd/notebooklm-mcp-cli`):** Herramienta autorizada para ingestar, organizar, consultar y gestionar programáticamente la base de conocimiento del proyecto dentro de Google NotebookLM. Se usa para mantener actualizados los documentos canónicos en libretas de estudio.
 - **GoHighLevel (GHL) MCP:** Herramienta para conectar agentes IA al CRM de Yatezzitos mediante comandos de WhatsApp / GitHub Issues. Opera bajo Whitelist estricta, previniendo alucinaciones y con protección contra "Prompt Injection".
   - **REGLA DE ETIQUETADO:** Todo correo o plantilla generada de manera autónoma o asistida por un agente de IA en GoHighLevel, **debe llevar obligatoriamente la etiqueta `(IA)` al final de su nombre/título** (Ej. "Recordatorio de Pago (IA)") para garantizar la trazabilidad visual por el equipo humano.
+
+### 🚨 Regla Crítica: Actualización de Yoast SEO vía WordPress MCP
+
+**NUNCA usar** `meta: {_yoast_wpseo_*}` ni `property_meta: {_yoast_wpseo_*}` en el endpoint estándar. Esos campos no están registrados en la REST API y los datos **no se guardan**.
+
+**SIEMPRE usar** el plugin propio:
+- **Plugin:** `plugins/yatezzitos-yoast-rest-api/yatezzitos-yoast-rest-api.php`
+- **Endpoint:** `POST /yatezzitos/v1/update-yoast`
+- **Params:** `{ "id": {wp_id}, "type": "post", "title": "...", "desc": "...", "focuskw": "..." }`
+- **Para términos/ciudades:** `"type": "term"` con el ID del término de taxonomía
+- **Flujo completo:** `.agents/workflows/seo-wordpress-mcp.md`
+
+### 🚨 Regla Crítica: H1 en Descripciones Largas
+
+El **primer encabezado de toda descripción larga SIEMPRE es `<h1>`** con la keyword focus. Los demás son `<h2>` y `<h3>`. **NUNCA iniciar con `<h2>`**.
+
+### 📁 Fuente de verdad local de yates (JSON)
+
+Los metadatos SEO de yates se mantienen en `data/yachts/Destinos/{Ciudad}/{Tipo}/{nombre}.json`:
+```json
+{ "wp_id": 56362, "yoast_focuskw": "...", "yoast_title": "...", "yoast_metadesc": "..." }
+```
+Leer estos JSONs **antes** de proponer keywords — detecta canibalizaciones con yates ya optimizados.
 
 ---
 
