@@ -174,3 +174,43 @@ function yatezzitos_sync_yoast_post_indexable( $meta_id, $post_id, $meta_key, $m
 
     clean_post_cache( $post_id );
 }
+
+add_action('rest_api_init', function () {
+    register_rest_route('yatezzitos/v1', '/update-yoast', array(
+        'methods' => 'POST',
+        'permission_callback' => function () {
+            return current_user_can('edit_posts');
+        },
+        'callback' => function ($request) {
+            $id = $request->get_param('id');
+            $type = $request->get_param('type'); // 'post' or 'term'
+            $title = $request->get_param('title');
+            $desc = $request->get_param('desc');
+            $focuskw = $request->get_param('focuskw');
+
+            if (!$id || !$type) return new WP_Error('missing_params', 'Missing ID or type', array('status' => 400));
+
+            if ($type === 'term') {
+                $term = get_term($id);
+                if (!is_wp_error($term) && $term) {
+                    $tax = $term->taxonomy;
+                    $tax_meta = get_option('wpseo_taxonomy_meta', array());
+                    if (!isset($tax_meta[$tax])) $tax_meta[$tax] = array();
+                    if (!isset($tax_meta[$tax][$id])) $tax_meta[$tax][$id] = array();
+                    
+                    if ($title) $tax_meta[$tax][$id]['wpseo_title'] = $title;
+                    if ($desc) $tax_meta[$tax][$id]['wpseo_desc'] = $desc;
+                    if ($focuskw) $tax_meta[$tax][$id]['wpseo_focuskw'] = $focuskw;
+                    
+                    update_option('wpseo_taxonomy_meta', $tax_meta);
+                }
+            } else {
+                if ($title) update_post_meta($id, '_yoast_wpseo_title', $title);
+                if ($desc) update_post_meta($id, '_yoast_wpseo_metadesc', $desc);
+                if ($focuskw) update_post_meta($id, '_yoast_wpseo_focuskw', $focuskw);
+            }
+
+            return rest_ensure_response(array('success' => true, 'message' => 'Yoast SEO fields updated successfully for ' . $type . ' ' . $id));
+        }
+    ));
+});
