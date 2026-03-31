@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu guía de yates en México ya está aquí</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .articles-block { background-color: #f9fbfc; border-left: 4px solid #9DE0CA; border-radius: 4px; padding: 20px 24px; margin-bottom: 28px; }
+    .articles-block p { margin: 0 0 10px 0; font-size: 15px; font-weight: 600; color: #002d5b; }
+    .articles-block a { display: block; color: #002d5b; text-decoration: none; font-size: 15px; margin-bottom: 8px; }
+    .articles-block a:hover { text-decoration: underline; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}}, 👋</p>
+      <p>Bienvenido a la comunidad de <strong>Yatezzitos</strong>. Nos alegra mucho que estés aquí.</p>
+      <p>Eres parte de una comunidad que comparte algo especial: la pasión por el mar, los destinos únicos y las experiencias que no se olvidan.</p>
+      <p>Para comenzar con buen pie, aquí tienes los tres artículos que más han resonado con nuestra comunidad este año:</p>
+
+      <div class="articles-block">
+        <p>📖 Artículos recomendados para ti</p>
+        <a href="https://yatezzitos.com/es/el-arco-de-cabo-san-lucas/">→ El Arco de Cabo San Lucas en Yate</a>
+        <a href="https://yatezzitos.com/es/avistamiento-de-ballenas-en-los-cabos/">→ Avistamiento de Ballenas en Los Cabos</a>
+        <a href="https://yatezzitos.com/es/principales-playas-e-islas-de-la-ciudad-de-mazatlan/">→ Las mejores islas de Mazatlán desde el mar</a>
+      </div>
+
+      <p>En los próximos días te compartiremos guías, historias reales y todo lo que necesitas saber para vivir tu primera (o próxima) experiencia a bordo.</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Explorar destinos</a>
+      </div>
+
+      <hr class="divider">
+      <p style="font-size: 14px; color: #777;">Navega con calma,<br><strong>El equipo de Yatezzitos</strong> 🛥️</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

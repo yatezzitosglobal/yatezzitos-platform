@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los 3 destinos más reservados este año</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .dest-card { border: 1px solid #e8e8e8; border-radius: 6px; margin-bottom: 24px; overflow: hidden; }
+    .dest-card-header { background-color: #002d5b; padding: 14px 20px; }
+    .dest-card-header h3 { margin: 0; color: #d4af37; font-size: 17px; font-weight: 600; }
+    .dest-card-body { padding: 18px 20px; }
+    .dest-card-body p { margin: 0 0 12px 0; font-size: 15px; color: #444; }
+    .dest-card-body a { display: inline-block; color: #002d5b; font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #d4af37; padding-bottom: 2px; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Tenemos 10 destinos activos en México, pero hay tres que año tras año concentran la mayor demanda. Aquí te contamos por qué.</p>
+
+      <div class="dest-card">
+        <div class="dest-card-header"><h3>🐪 #1 — Los Cabos, Baja California Sur</h3></div>
+        <div class="dest-card-body">
+          <p>El Arco de Cabo San Lucas es probablemente la imagen náutica más icónica de México. Navegar hasta él en yate privado, con el encuentro del Mar de Cortés y el Pacífico a tus pies, es algo que no tiene comparación. Ideal para pesca deportiva de marlin y snorkel en El Pelícano.</p>
+          <a href="https://yatezzitos.com/es/ciudad/yates-cabos/">Ver yates en Los Cabos →</a>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-card-header"><h3>💃 #2 — Cancún, Quintana Roo</h3></div>
+        <div class="dest-card-body">
+          <p>El Caribe mexicano en su máxima expresión. Aguas turquesa, arrecifes de coral, la Isla Mujeres y Isla Contoy al alcance de un yate privado. Muy popular para grupos de amigos y celebraciones especiales por la variedad de actividades disponibles.</p>
+          <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-cancun/">Ver yates en Cancún →</a>
+        </div>
+      </div>
+
+      <div class="dest-card">
+        <div class="dest-card-header"><h3>🌊 #3 — Puerto Vallarta, Jalisco</h3></div>
+        <div class="dest-card-body">
+          <p>La Bahía de Banderas ofrece algunas de las mejores condiciones del Pacífico. Las Islas Marietas, el avistamiento de ballenas jorobadas en temporada y los atardeceres desde cubierta lo convierten en el favorito para quienes buscan lujo con naturaleza viva.</p>
+          <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-en-puerto-vallarta/">Ver yates en Puerto Vallarta →</a>
+        </div>
+      </div>
+
+      <p>¿Alguno de estos destinos ya está en tu radar? Responde este correo y te ayudamos a armar la experiencia perfecta.</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Ver todos los destinos</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Con gusto,<br><strong>El equipo de Yatezzitos</strong> 🌊</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

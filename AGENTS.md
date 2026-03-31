@@ -301,4 +301,13 @@ Para evaluar si los agentes están funcionando, se medirán (cuando estén opera
 
 ---
 
+## Actualizaciones Recientes (Changelog de Ecosistema IA)
+
+- **30 de marzo 2026**: Integración de endpoint nativo `POST /yatezzitos/v1/update-yoast` para inyectar optimizaciones de SEO de manera aislada (protección de Elementor).
+- **30 de marzo 2026**: Aprobación de workflows de enrutamiento (Master Routing) y plantillas de correo HTML optimizadas para GoHighLevel.
+- **30 de marzo 2026**: Validación de la integración MCP de Google NotebookLM para organizar bases de conocimiento de forma automatizada por bots.
+- **22-30 de marzo 2026**: Ejecución del método SEO "Striking Distance" conectado al servidor MCP de Google Search Console.
+
+---
+
 *Este documento es la fuente de verdad para las reglas de operación de agentes IA en Yatezzitos Global.*

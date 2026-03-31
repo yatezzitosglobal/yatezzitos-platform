@@ -21,30 +21,23 @@ Cancún, Los Cabos, Puerto Vallarta, La Paz, Mazatlán, Acapulco, Huatulco, Ixta
 - **Colaboración:** Trabajar en ramas aisladas y usar Pull Requests para revisión.
 - **Naturalidad del contenido:** Prioridad máxima a la calidad y naturalidad del lenguaje sobre la optimización técnica.
 
-## Últimos Trabajos y Desarrollos Recientes (Actualización: 22 de marzo 2026)
+## Últimos Trabajos y Desarrollos Recientes (Actualización: 30 de marzo 2026)
 
-Hemos estado enfocados en fortalecer la infraestructura y las capacidades operativas de Yatezzitos Global, con un énfasis particular en la integración de agentes de IA para optimizar nuestros flujos de trabajo.
+Hemos fortalecido significativamente las herramientas de inteligencia artificial y la infraestructura de marketing y SEO para acelerar el desarrollo de la Fase 1.
 
-### 1. Establecimiento de Instrucciones Maestras para Agentes de IA
-Se han definido y documentado las "Instrucciones Maestras del Proyecto Yatezzitos Global" (`README.md`), que guían el comportamiento, las convenciones y los guardrails de seguridad para todos los agentes de codificación autónomos. Esto incluye:
-- Definición de identidad y contexto del proyecto.
-- Principios operativos globales y guardrails de seguridad no negociables.
-- Convenciones de trabajo (ramas, commits, PRs).
-- Enrutamiento de tareas y archivos de contexto específicos.
-- Reglas detalladas para SEO, fichas de yates, auditoría SEO, frontend, mantenimiento y CRM.
-- Estructura del repositorio y tono de comunicación.
+### 1. Endpoint Seguro para Yoast SEO y Estrategia "Striking Distance"
+Se desarrolló e implementó el plugin `yatezzitos-yoast-rest-api` que habilita el endpoint `POST /yatezzitos/v1/update-yoast`. Esto nos permite inyectar metadatos y contenido HTML de forma segura, evitando corromper la estructura JSON de Elementor. Esta herramienta fue fundamental para ejecutar la optimización de palabras clave "Striking Distance" basándonos en Google Search Console para impulsar páginas desde la página 2 de Google hacia arriba (ej. Catamaranes, Colomitos, Chachacual).
 
-### 2. Integración de Agentes de IA a través de WhatsApp
-Una mejora clave ha sido la implementación de un flujo de trabajo que permite la creación automática de issues en GitHub directamente desde mensajes de WhatsApp. Este proceso utiliza:
-- **WhatsApp → GoHighLevel (GHL) → Webhook → GitHub Issue.**
-Esta integración facilita la asignación de tareas y la comunicación con los agentes de IA de manera más fluida y directa, permitiendo que las solicitudes operativas se conviertan en tareas de desarrollo o contenido de forma eficiente.
+### 2. Automatizaciones de GoHighLevel y Correos (CRM)
+Avances profundos en la automatización del embudo de operaciones:
+- Creación de un "Master Routing Workflow" estructurado para manejar transiciones de estados de reservas (Confirmadas, Canceladas, Pospuestas, Pendientes).
+- Estandarización de plantillas de correo HTML alineadas cien por ciento a los tokens de diseño y lenguajes premium de la marca Yatezzitos.
 
-### 3. Avances en Prioridades del Proyecto (Fase 1)
-Continuamos progresando en las prioridades de la Fase 1, que incluyen:
-- Rediseño web (Home, Blog, Blog Details) de Figma a WordPress.
-- Optimización SEO de ciudades activas y asignación de keywords a la flota.
-- Organización y optimización del CRM (GoHighLevel).
-- Automatización de procesos clave como cotizaciones, recibos de depósito y seguimiento.
+### 3. Integración de NotebookLM MCP
+Se validó con éxito el servidor MCP de NotebookLM (`notebooklm-mcp-cli`), estableciendo la integración local para crear y automatizar "Libretas de Estudio". Esta herramienta es indispensable para consolidar el conocimiento arquitéctonico y de negocio al que accederán los agentes.
+
+### 4. Instrucciones Maestras para Agentes de IA y WhatsApp
+(Se mantienen vigentes las convenciones de enrutamiento webhooks de WhatsApp a GitHub Issues, guardrails de seguridad estrictos y el rol premium de los subagentes).
 
 ### Antes de modificar cualquier cosa
 1. Leer el archivo antes de editarlo
