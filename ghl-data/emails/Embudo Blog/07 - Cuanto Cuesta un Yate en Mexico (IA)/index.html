@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cuánto cuesta realmente un yate en México?</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .price-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+    .price-table th { background-color: #002d5b; color: #d4af37; padding: 12px 16px; text-align: left; font-size: 14px; font-weight: 600; }
+    .price-table td { padding: 12px 16px; font-size: 14px; color: #444; border-bottom: 1px solid #eeeeee; }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background-color: #f9fbfc; }
+    .factor-list { margin: 0 0 20px 0; padding: 0; }
+    .factor-list li { font-size: 15px; color: #444; margin-bottom: 10px; list-style: none; padding-left: 24px; position: relative; }
+    .factor-list li::before { content: '→'; position: absolute; left: 0; color: #d4af37; font-weight: bold; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Seamos directos: el precio es siempre la pregunta detrás de todas las demás. Hoy la respondemos sin rodeos.</p>
+      <p>El costo de rentar un yate en México varía según varios factores. Estos son los principales:</p>
+
+      <ul class="factor-list">
+        <li><strong>Tipo de embarcación:</strong> desde lanchas express hasta catamaranes de lujo y yates de cabina.</li>
+        <li><strong>Número de horas:</strong> los tours básicos duran 4 horas; una experiencia completa puede ser de 8 a 10 horas.</li>
+        <li><strong>Destino:</strong> la demanda varía; Los Cabos y Cancún tienen precios más altos que Mazatlán o Ixtapa.</li>
+        <li><strong>Número de personas:</strong> mayor grupo = mejor costo por persona.</li>
+        <li><strong>Temporada:</strong> alta temporada (diciembre–abril) tiene disponibilidad más ajustada y precios más elevados.</li>
+      </ul>
+
+      <p><strong>Rangos orientativos por experiencia:</strong></p>
+      <table class="price-table">
+        <tr>
+          <th>Tipo de experiencia</th>
+          <th>Rango aproximado</th>
+        </tr>
+        <tr>
+          <td>Tour express en lancha (4h, hasta 10 personas)</td>
+          <td>$6,000 – $12,000 MXN</td>
+        </tr>
+        <tr>
+          <td>Yate privado día completo (8h, hasta 15 personas)</td>
+          <td>$18,000 – $35,000 MXN</td>
+        </tr>
+        <tr>
+          <td>Catamarán o yate de lujo (todo el día)</td>
+          <td>$40,000 – $80,000 MXN</td>
+        </tr>
+      </table>
+
+      <p style="font-size: 13px; color: #888;">* Precios de referencia. La cotización real depende de destino, fecha y embarcación disponible.</p>
+
+      <hr class="divider">
+      <p>La mejor forma de saber el precio exacto para tu situación es simplemente cotizar. Es gratis, sin compromiso y respondemos en menos de 24 horas.</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Cotizar mi experiencia</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Con transparencia,<br><strong>El equipo de Yatezzitos</strong> 🛥️</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

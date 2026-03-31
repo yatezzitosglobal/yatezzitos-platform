@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una experiencia que no se repite dos veces</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .story-block { border-left: 4px solid #d4af37; padding: 4px 0 4px 24px; margin: 28px 0; }
+    .story-block p { font-size: 16px; color: #444; margin: 0 0 16px 0; font-style: italic; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Déjame contarte algo que pasó hace unos meses en Puerto Vallarta.</p>
+
+      <div class="story-block">
+        <p>Un grupo de ocho amigos cumplía diez años de conocerse. Decidieron celebrarlo diferente: sin restaurantes, sin reservas de hotel, sin el mismo plan de siempre.</p>
+        <p>Contrataron un yate para el día. Salieron al amanecer desde la marina, llegaron hasta las Islas Marietas antes de que llegaran los tours masivos. Nadaron en aguas que parecían de otro planeta. Comieron a bordo con el horizonte como único vecino.</p>
+        <p>A las seis de la tarde, mientras regresaban al muelle con el sol bajando sobre la bahía, uno de ellos dijo algo que el capitán nos contó después: "Esto es lo que debería ser siempre un cumpleaños."</p>
+      </div>
+
+      <p>Eso es exactamente lo que hacemos en Yatezzitos. No vendemos horas de embarcación. Creamos el tipo de momentos que la gente recuerda cuando habla de sus mejores viajes.</p>
+      <p>Y la verdad es que no hace falta una ocasión especial. A veces el mejor motivo es simplemente que el mar está ahí y tú también.</p>
+
+      <hr class="divider">
+      <p style="text-align: center; font-size: 15px; color: #002d5b; font-weight: 600;">¿Y si fuera tu turno?</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Quiero cotizar mi experiencia</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Hasta la próxima,<br><strong>El equipo de Yatezzitos</strong> 🌊</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

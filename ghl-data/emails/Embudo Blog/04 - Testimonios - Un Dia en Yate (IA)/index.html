@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lo que dice la gente después de un día en yate</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .testimonial { background-color: #f9fbfc; border-radius: 6px; padding: 22px 24px; margin-bottom: 24px; position: relative; }
+    .testimonial::before { content: '\201C'; font-size: 60px; color: #d4af37; position: absolute; top: -8px; left: 16px; line-height: 1; font-family: Georgia, serif; }
+    .testimonial p { font-size: 15px; font-style: italic; color: #444; margin: 0 0 12px 0; padding-top: 18px; }
+    .testimonial .author { font-size: 13px; color: #002d5b; font-weight: 600; font-style: normal; }
+    .testimonial .stars { color: #d4af37; font-size: 16px; margin-bottom: 6px; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Nosotros podemos describir lo que es un día a bordo de uno de nuestros yates. Pero la verdad es que nada lo dice mejor que quienes ya lo vivieron.</p>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Contratamos un yate para el cumpleaños de mi esposa en Los Cabos. El capitán fue increíblemente atento, llegamos al Arco en menos de 20 minutos y pasamos el día nadando, comiendo y disfrutando el sol sin preocuparnos de nada. Fue la mejor decisión de nuestro viaje.</p>
+        <div class="author">— Rodrigo M., Guadalajara · Los Cabos</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Éramos un grupo de 10 amigas celebrando una despedida de soltera en Cancún. El yate tenía música, bebidas frías, el equipo de snorkel listo y una tripulación que nos hizo sentir como en casa desde el primer momento. No esperábamos tanto nivel de servicio.</p>
+        <div class="author">— Fernanda L., Ciudad de México · Cancún</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>Fui con mi familia en Mazatlán. Los niños alucinaron viendo los pelícanos y las fragatas desde cubierta. Mi esposo y yo simplemente nos dejamos llevar. El atardecer de regreso al muelle fue algo que recordaremos para siempre.</p>
+        <div class="author">— Patricia V., Monterrey · Mazatlán</div>
+      </div>
+
+      <hr class="divider">
+      <p>¿Listo para escribir tu propia historia? Podemos armarte algo a medida, sea para dos personas o para veinte.</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Quiero vivir esto</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Con cariño desde el mar,<br><strong>El equipo de Yatezzitos</strong> 🌅</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

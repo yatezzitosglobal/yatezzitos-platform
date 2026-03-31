@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cómo funciona rentar un yate en México?</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .step { display: flex; align-items: flex-start; margin-bottom: 22px; }
+    .step-num { background-color: #002d5b; color: #d4af37; font-weight: bold; font-size: 16px; min-width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 16px; margin-top: 2px; }
+    .step-text strong { display: block; color: #002d5b; font-size: 15px; margin-bottom: 4px; }
+    .step-text span { font-size: 15px; color: #555; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .cta-container { text-align: center; margin: 32px 0; }
+    .cta-button { display: inline-block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Una de las preguntas que más nos llegan es: <strong>"¿cómo funciona esto exactamente?"</strong> Hoy te lo explicamos sin tecnicismos ni letra chica.</p>
+      <p>Rentar un yate con Yatezzitos es más sencillo de lo que parece:</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Elige tu destino y fecha</strong>
+          <span>Operamos en 10 destinos de México: Cancún, Los Cabos, Puerto Vallarta, La Paz, Mazatlán, Acapulco, Playa del Carmen, Nuevo Vallarta, Ixtapa y Huatulco.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Cotizamos tu experiencia sin compromiso</strong>
+          <span>Nos dices cuántas personas son, qué quieres hacer (tour, pesca, celebración, snorkel) y te enviamos opciones reales de flota y precio.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Confirmas con un depósito</strong>
+          <span>Para apartar la embarcación se requiere un depósito del 50%. El resto se liquida antes o el día del viaje.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>El día del viaje, solo disfruta</strong>
+          <span>El capitán y la tripulación se encargan de todo. Tú solo llegas al muelle a la hora acordada.</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+      <p>¿Qué incluye? Tripulación profesional, combustible, equipo de seguridad y, según el paquete, snorkel, bebidas y botana a bordo.</p>
+      <p>¿Dudas? Responde este correo y con gusto te orientamos.</p>
+
+      <div class="cta-container">
+        <a href="https://yatezzitos.com/es/" class="cta-button">Ver opciones de yates</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Hasta pronto,<br><strong>El equipo de Yatezzitos</strong> ⚓</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -73,17 +73,17 @@ async def push_emails(session: ClientSession, specific_id=None, specific_folder=
                 else:
                     # CREATE NEW TEMPLATE
                     print(f"[ghl_push] Creando NUEVA plantilla '{meta.get('name')}' en GHL...")
-                    parent_id = meta.get("parentId")
-                    if not parent_id:
-                        print(f"[ghl_push] ❌ No se puede crear '{meta.get('name')}' sin un 'parentId' en meta.json")
-                        continue
-                        
-                    result = await session.call_tool("create_email_template", {
+                    parent_id = meta.get("parentId", "")
+                    
+                    payload = {
                         "title": meta.get("name"),
                         "html": html_content,
-                        "parentId": parent_id,
                         "isPlainText": False
-                    })
+                    }
+                    if parent_id:
+                        payload["parentId"] = parent_id
+                        
+                    result = await session.call_tool("create_email_template", payload)
                     
                     if not result.isError:
                         # Extract the new ID from the response to update meta.json

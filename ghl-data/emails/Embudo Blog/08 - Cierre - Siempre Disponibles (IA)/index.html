@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguimos aquí cuando tú quieras</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background-color: #002d5b; padding: 36px 20px; text-align: center; }
+    .header h1 { margin: 0 0 6px 0; font-size: 30px; font-weight: 300; letter-spacing: 2px; color: #d4af37; }
+    .header p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+    .content { padding: 40px 36px; color: #333333; line-height: 1.7; }
+    .content p { margin: 0 0 20px 0; font-size: 16px; }
+    .dest-grid { display: table; width: 100%; margin: 24px 0; }
+    .dest-row { display: table-row; }
+    .dest-cell { display: table-cell; width: 50%; padding: 8px 10px 8px 0; font-size: 15px; color: #002d5b; font-weight: 500; vertical-align: top; }
+    .dest-cell a { color: #002d5b; text-decoration: none; }
+    .dest-cell a:hover { text-decoration: underline; }
+    .divider { border: none; border-top: 1px solid #eeeeee; margin: 28px 0; }
+    .cta-row { display: table; width: 100%; margin: 28px 0; }
+    .cta-cell { display: table-cell; width: 50%; padding: 0 8px 0 0; vertical-align: top; }
+    .cta-cell:last-child { padding: 0 0 0 8px; }
+    .cta-button-primary { display: block; background-color: #d4af37; color: #002d5b; text-decoration: none; padding: 14px 20px; font-size: 14px; font-weight: bold; border-radius: 4px; letter-spacing: 1px; text-align: center; text-transform: uppercase; }
+    .cta-button-secondary { display: block; background-color: #f4f4f4; color: #002d5b; text-decoration: none; padding: 14px 20px; font-size: 14px; font-weight: 600; border-radius: 4px; letter-spacing: 0.5px; text-align: center; border: 1px solid #dddddd; }
+    .footer { background-color: #f9f9f9; color: #999999; text-align: center; padding: 24px 20px; font-size: 12px; border-top: 1px solid #eeeeee; }
+    .footer a { color: #002d5b; text-decoration: none; margin: 0 8px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>YATEZZITOS</h1>
+      <p>Experiencias Náuticas de Lujo en México</p>
+    </div>
+    <div class="content">
+      <p>Hola {{contact.first_name}},</p>
+      <p>Han pasado unas semanas desde que te uniste a nuestra comunidad y queremos decirte algo sencillo:</p>
+      <p><strong>Seguimos aquí. Cuando tú quieras.</strong></p>
+      <p>No hay prisa, no hay presión. El mar no va a ningún lado y nosotros tampoco. Si en algún momento decides que llegó el momento de tu experiencia a bordo, solo escríbenos.</p>
+      <p>Mientras tanto, aquí tienes acceso directo a todos nuestros destinos:</p>
+
+      <div class="dest-grid">
+        <div class="dest-row">
+          <div class="dest-cell">🐪 <a href="https://yatezzitos.com/es/ciudad/yates-cabos/">Los Cabos</a></div>
+          <div class="dest-cell">💃 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-cancun/">Cancún</a></div>
+        </div>
+        <div class="dest-row">
+          <div class="dest-cell">🌊 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-en-puerto-vallarta/">Puerto Vallarta</a></div>
+          <div class="dest-cell">🐬 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-en-la-paz/">La Paz</a></div>
+        </div>
+        <div class="dest-row">
+          <div class="dest-cell">🐋 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-mazatlan/">Mazatlán</a></div>
+          <div class="dest-cell">🏄 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-en-acapulco/">Acapulco</a></div>
+        </div>
+        <div class="dest-row">
+          <div class="dest-cell">🤿 <a href="https://yatezzitos.com/es/ciudad/yates-playa-del-carmen/">Playa del Carmen</a></div>
+          <div class="dest-cell">🌴 <a href="https://yatezzitos.com/es/ciudad/yates-en-nuevo-vallarta/">Nuevo Vallarta</a></div>
+        </div>
+        <div class="dest-row">
+          <div class="dest-cell">🐠 <a href="https://yatezzitos.com/es/ciudad/yates-ixtapa/">Ixtapa</a></div>
+          <div class="dest-cell">🌺 <a href="https://yatezzitos.com/es/ciudad/renta-de-yates-huatulco/">Huatulco</a></div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="cta-row">
+        <div class="cta-cell">
+          <a href="https://yatezzitos.com/es/" class="cta-button-primary">Ver todos los destinos</a>
+        </div>
+        <div class="cta-cell">
+          <a href="https://wa.me/5213221234567" class="cta-button-secondary">Hablar con un asesor</a>
+        </div>
+      </div>
+
+      <p style="font-size: 14px; color: #777;">Con afecto y desde el mar,<br><strong>El equipo de Yatezzitos</strong> 🛥️</p>
+    </div>
+    <div class="footer">
+      <a href="https://yatezzitos.com">Sitio Web</a> |
+      <a href="https://instagram.com/yatezzitos">Instagram</a> |
+      <a href="https://wa.me/5213221234567">WhatsApp</a>
+      <p style="margin-top: 14px;">&copy; {{ "now" | date: "%Y" }} Yatezzitos. Todos los derechos reservados.</p>
+      <p>Recibiste este correo porque te suscribiste a nuestro blog.</p>
+    </div>
+  </div>
+</body>
+</html>
