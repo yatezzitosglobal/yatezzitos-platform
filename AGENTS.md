@@ -211,6 +211,7 @@ Los agentes tienen permiso y deben utilizar las siguientes integraciones MCP cua
 - **NotebookLM MCP:** (`jacob-bd/notebooklm-mcp-cli`) Autorizado para crear libretas, sincronizar documentos canónicos de arquitectura/negocio, y facilitar búsquedas de conocimiento global del repositorio usando los agentes de soporte.
 - **GoHighLevel (GHL) MCP:** Autorizado exclusivamente para el agente de **Soporte Interno**. Operará bajo un modelo de "Zero Trust" leyendo contactos, notas y oportunidades, pudiendo escribir tareas/notas sin acciones destructivas ni envíos directos a clientes.
   - **Identidad en GHL:** Todo correo, plantilla o automatización generada por un agente IA en GoHighLevel DEBE incluir la etiqueta **`(IA)`** en su título o nombre para dejar un rastro de auditoría claro (Ej. "Plantilla de Rescate de Ventas (IA)").
+- **GHL Email API (REST directo):** Para crear o actualizar templates de email en GHL, el MCP de Docker no expone tools directas. Usar la API REST de GHL directamente con las credenciales de `.env.ghl-mcp`. **Flujo completo y errores documentados:** `.agents/workflows/ghl-email-upload.md`
 
 ### 🚨 Regla Crítica: Actualización de Yoast SEO vía WordPress MCP
 
@@ -303,6 +304,8 @@ Para evaluar si los agentes están funcionando, se medirán (cuando estén opera
 
 ## Actualizaciones Recientes (Changelog de Ecosistema IA)
 
+- **31 de marzo 2026**: Documentado el flujo correcto para crear y actualizar templates de email en GHL vía API REST (sin navegador). Ver `.agents/workflows/ghl-email-upload.md`. Bugs críticos de HTML para email documentados (preheader huérfano, margin-bottom en tables, SSL con urllib).
+- **31 de marzo 2026**: Creados templates de email para flujo de solicitud de reserva: `Cliente - Bienvenida` (DARK theme) e `Interno - Nueva solicitud` (LIGHT theme), genéricos para cualquier yate del sitio.
 - **30 de marzo 2026**: Integración de endpoint nativo `POST /yatezzitos/v1/update-yoast` para inyectar optimizaciones de SEO de manera aislada (protección de Elementor).
 - **30 de marzo 2026**: Aprobación de workflows de enrutamiento (Master Routing) y plantillas de correo HTML optimizadas para GoHighLevel.
 - **30 de marzo 2026**: Validación de la integración MCP de Google NotebookLM para organizar bases de conocimiento de forma automatizada por bots.

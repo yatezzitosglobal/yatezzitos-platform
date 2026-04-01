@@ -1,0 +1,322 @@
+<!--
+YATEZZITOS MÉXICO | Email INTERNO — Nueva solicitud de reserva (cualquier yate)
+✅ LIGHT theme operativo
+✅ 100% tablas (compatible Gmail/Outlook/iOS)
+✅ Ancho fijo 640 + responsive
+✅ Preheader correcto con <div> (no td huérfano)
+✅ Sin margin-bottom en tables — se usan spacers de fila
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="x-apple-disable-message-reformatting">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Nueva solicitud de reserva</title>
+  <style>
+    html,body{margin:0!important;padding:0!important;width:100%!important;background:#F0F2F7;}
+    table{border-collapse:collapse!important;border-spacing:0!important;}
+    img{border:0;outline:none;text-decoration:none;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .txt{font-family:Barlow,Arial,Helvetica,sans-serif;}
+    .container{width:640px;max-width:640px;}
+    @media screen and (max-width:680px){
+      .container{width:100%!important;max-width:100%!important;}
+    }
+  </style>
+</head>
+
+<body style="margin:0;padding:0;background:#F0F2F7;">
+
+  <!-- PREHEADER — div correcto, nunca td huérfano -->
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;font-size:1px;line-height:1px;mso-hide:all;">
+    Nueva solicitud: {{contact.name}} quiere rentar {{contact.yacht_name}}. Contáctalo ahora.
+  </div>
+
+  <table role="presentation" width="100%" bgcolor="#F0F2F7">
+    <tr>
+      <td align="center" style="padding:24px 10px;">
+
+        <table role="presentation" class="container" width="640"
+          style="width:640px;max-width:640px;table-layout:fixed;">
+
+          <!-- LOGO -->
+          <tr>
+            <td align="center" style="padding-bottom:18px;">
+              <a href="https://yatezzitos.com/" target="_blank" rel="noopener">
+                <img
+                  src="https://assets.cdn.filesafe.space/4vhgNiuaT3jtuf3hWj35/media/656acf3f45e5a0601e677d1a.png"
+                  alt="Yatezzitos México" width="90"
+                  style="display:block;width:90px;height:auto;margin:0 auto;">
+              </a>
+            </td>
+          </tr>
+
+          <!-- HEADER — fondo oscuro tipo alerta -->
+          <tr>
+            <td>
+              <table role="presentation" width="100%"
+                style="width:100%;table-layout:fixed;background:#0B1220;border-radius:14px 14px 0 0;">
+                <tr>
+                  <td style="padding:20px 24px 8px;">
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:11px;font-weight:900;color:rgba(255,255,255,.65);letter-spacing:.8px;text-transform:uppercase;">
+                          Yatezzitos &middot; Notificación Interna
+                        </td>
+                        <td align="right">
+                          <span class="txt" style="display:inline-block;background:#CA003D;color:#FFFFFF;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;">
+                            Acción requerida
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 24px 6px;">
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:22px;font-weight:900;color:#FFFFFF;line-height:1.2;">
+                          Nueva solicitud de reserva
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 24px 10px;">
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.75);line-height:1.5;">
+                          Un cliente solicitó una reserva desde la ficha del yate.
+                          <strong style="color:#F6EA69;">Contáctalo cuanto antes.</strong>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 24px 20px;">
+                    <table role="presentation" style="table-layout:fixed;">
+                      <tr>
+                        <td>
+                          <span class="txt" style="display:inline-block;background:#1A4A30;border:1px solid rgba(0,148,94,.50);color:#FFFFFF;border-radius:999px;font-size:11px;font-weight:800;padding:4px 10px;">
+                            Lead nuevo
+                          </span>
+                        </td>
+                        <td style="padding-left:6px;">
+                          <span class="txt" style="display:inline-block;background:#2A2200;border:1px solid rgba(246,234,105,.40);color:#F6EA69;border-radius:999px;font-size:11px;font-weight:800;padding:4px 10px;">
+                            ID: {{contact.reservacion_id}}
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BODY BLANCO -->
+          <tr>
+            <td>
+              <table role="presentation" width="100%"
+                style="width:100%;table-layout:fixed;background:#FFFFFF;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
+                <tr>
+                  <td style="padding:22px 24px 0 24px;">
+
+                    <!-- Instrucción -->
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:14px;line-height:1.6;font-weight:600;color:#0B1220;padding-bottom:18px;">
+                          Equipo, aquí están los datos del nuevo lead. Revisen la embarcación
+                          solicitada, confirmen disponibilidad y manden propuesta a la brevedad.
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- ═══ DATOS DEL CLIENTE ═══ -->
+                    <table role="presentation" width="100%"
+                      style="table-layout:fixed;border:1px solid #E5E7EB;border-radius:12px;background:#F9FBFF;">
+                      <tr>
+                        <td style="padding:14px 16px 8px;">
+                          <table role="presentation" width="100%" style="table-layout:fixed;">
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:900;color:#194395;text-transform:uppercase;letter-spacing:.5px;padding-bottom:10px;">
+                                Datos del cliente
+                              </td>
+                            </tr>
+                            <!-- Nombre -->
+                            <tr>
+                              <td width="38%" class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;">Nombre completo</td>
+                              <td class="txt" style="font-size:13px;font-weight:900;color:#0B1220;padding:7px 0;border-top:1px solid #E5E7EB;">{{contact.name}}</td>
+                            </tr>
+                            <!-- Teléfono -->
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;">Teléfono</td>
+                              <td class="txt" style="font-size:13px;font-weight:900;color:#0B1220;padding:7px 0;border-top:1px solid #E5E7EB;">{{contact.phone}}</td>
+                            </tr>
+                            <!-- Email -->
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;">Correo</td>
+                              <td class="txt" style="font-size:13px;font-weight:900;color:#194395;padding:7px 0;border-top:1px solid #E5E7EB;">{{contact.email}}</td>
+                            </tr>
+                            <!-- Mensaje -->
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;vertical-align:top;">Mensaje</td>
+                              <td class="txt" style="font-size:13px;font-weight:700;color:#0B1220;padding:7px 0;border-top:1px solid #E5E7EB;line-height:1.5;">{{contact.message}}</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- spacer -->
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr><td style="height:14px;line-height:14px;font-size:14px;">&nbsp;</td></tr>
+                    </table>
+
+                    <!-- ═══ DATOS DEL YATE ═══ -->
+                    <table role="presentation" width="100%"
+                      style="table-layout:fixed;border:1px solid #E5E7EB;border-radius:12px;background:#F9FBFF;">
+                      <tr>
+                        <td style="padding:14px 16px 8px;">
+                          <table role="presentation" width="100%" style="table-layout:fixed;">
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:900;color:#194395;text-transform:uppercase;letter-spacing:.5px;padding-bottom:10px;">
+                                Embarcacion solicitada
+                              </td>
+                            </tr>
+                            <!-- Nombre yate -->
+                            <tr>
+                              <td width="38%" class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;">Nombre del yate</td>
+                              <td class="txt" style="font-size:13px;font-weight:900;color:#0B1220;padding:7px 0;border-top:1px solid #E5E7EB;">{{contact.yacht_name}}</td>
+                            </tr>
+                            <!-- URL -->
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:700;color:#6B7280;padding:7px 0;border-top:1px solid #E5E7EB;vertical-align:top;">URL del yate</td>
+                              <td class="txt" style="font-size:12px;font-weight:700;color:#194395;padding:7px 0;border-top:1px solid #E5E7EB;word-break:break-all;line-height:1.4;">
+                                <a href="{{contact.url_del_yate}}" target="_blank" rel="noopener" style="color:#194395;font-weight:700;">{{contact.url_del_yate}}</a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- spacer -->
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr><td style="height:14px;line-height:14px;font-size:14px;">&nbsp;</td></tr>
+                    </table>
+
+                    <!-- ═══ ACCIÓN SUGERIDA ═══ -->
+                    <table role="presentation" width="100%"
+                      style="table-layout:fixed;border:1px solid #C5D3F5;border-radius:12px;background:#EEF4FF;">
+                      <tr>
+                        <td style="padding:14px 16px;">
+                          <table role="presentation" width="100%" style="table-layout:fixed;">
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:900;color:#194395;padding-bottom:8px;">
+                                Accion sugerida
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="txt" style="font-size:12px;line-height:1.7;font-weight:700;color:#0B1220;">
+                                1) Contactar al cliente por WhatsApp o email en menos de 1 hora.<br>
+                                2) Revisar disponibilidad del yate solicitado.<br>
+                                3) Enviar propuesta formal con cotizacion y detalles del servicio.<br>
+                                4) Cerrar con: <strong>"Con cuantos pasajeros y que fecha tienes en mente?"</strong>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- spacer -->
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr><td style="height:14px;line-height:14px;font-size:14px;">&nbsp;</td></tr>
+                    </table>
+
+                    <!-- ═══ GUION WA ═══ -->
+                    <table role="presentation" width="100%"
+                      style="table-layout:fixed;border:1px solid #B7EBD5;border-radius:12px;background:#ECFDF5;">
+                      <tr>
+                        <td style="padding:14px 16px;">
+                          <table role="presentation" width="100%" style="table-layout:fixed;">
+                            <tr>
+                              <td class="txt" style="font-size:12px;font-weight:900;color:#007A4D;padding-bottom:8px;">
+                                Guion rapido para WhatsApp (copy/pegar)
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="txt" style="font-size:12px;line-height:1.7;font-weight:700;color:#0B1220;">
+                                Hola {{contact.first_name}}, soy del equipo de Yatezzitos.
+                                Vi que te interesa el yate {{contact.yacht_name}}.
+                                Ya tienes una fecha en mente y cuantas personas serian?
+                                Con eso te armo una propuesta personalizada de inmediato.
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- spacer bottom -->
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr><td style="height:22px;line-height:22px;font-size:22px;">&nbsp;</td></tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td>
+              <table role="presentation" width="100%"
+                style="width:100%;table-layout:fixed;background:#0B1220;border-radius:0 0 14px 14px;">
+                <tr>
+                  <td style="padding:14px 20px 6px;">
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:12px;font-weight:700;color:rgba(255,255,255,.70);">
+                          Este correo es automatico. Si ya fue atendido, ignoralo.
+                        </td>
+                        <td align="right" class="txt" style="font-size:12px;font-weight:900;color:#F6EA69;">
+                          Yatezzitos
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 20px 14px;">
+                    <table role="presentation" width="100%" style="table-layout:fixed;">
+                      <tr>
+                        <td class="txt" style="font-size:11px;font-weight:600;color:rgba(255,255,255,.50);line-height:1.5;">
+                          Si el cliente no contesta, haz 2 follow-ups (30 min y 3 hrs) cambiando el angulo del mensaje.
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
