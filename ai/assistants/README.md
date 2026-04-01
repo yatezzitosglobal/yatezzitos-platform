@@ -38,7 +38,7 @@ graph TB
 | Agente | Nombre | Archivo | Estado | Descripción |
 |---|---|---|---|---|
 | 🧠 Orquestador | — | [orchestrator.md](orchestrator.md) | ✅ Definido | Agente principal que enruta solicitudes al subagente correcto |
-| 🌊 Marina | Turista | [turista.md](turista.md) | ✅ Definido | Atención a turistas: cotización, reserva, dudas, WhatsApp. [Issue #16](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/16) |
+| 🌊 Marina | Turista / Cliente | [marina.md](marina.md) | ✅ En producción | Atención a clientes: cotización, reserva, dudas, WhatsApp. Instrucciones reales de producción documentadas. [Issue #16](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/16) |
 | ⚓ Timón | Propietario | [propietario.md](propietario.md) | ✅ Definido | Asistencia a propietarios: onboarding, documentos, disponibilidad. [Issue #17](https://github.com/YatezzitosMexico/yatezzitos-platform/issues/17) |
 | 🧭 Capitán | Broker | [broker.md](broker.md) | 📋 Planificado | Asistencia a brokers y agencias B2B |
 | 🌊 Ola | Afiliado | [afiliado.md](afiliado.md) | 📋 Planificado | Asistencia a afiliados: links, UTMs, comisiones |
@@ -106,4 +106,4 @@ Para agregar un nuevo agente al ecosistema:
 
 ---
 
-*Última actualización: 17 de marzo 2026*
+*Última actualización: 31 de marzo 2026*
