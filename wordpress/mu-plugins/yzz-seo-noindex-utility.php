@@ -69,14 +69,40 @@ function yzz_seo_utility_paths() {
 
 /**
  * Detecta si la request actual cae en una URL utilitaria.
+ *
+ * WPML elimina el prefijo de idioma de $wp->request (ej. "es/gracias" → "gracias"),
+ * por eso comparamos contra REQUEST_URI completo (que sí incluye "/es/gracias/")
+ * y también contra $wp->request como fallback.
  */
 function yzz_seo_is_utility_request() {
-    global $wp;
-    if ( ! isset( $wp->request ) ) {
-        return false;
+    $paths = yzz_seo_utility_paths();
+
+    // Comparar usando REQUEST_URI (incluye prefijo de idioma WPML, ej. /es/gracias/).
+    if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+        $uri_path  = wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+        $uri_path  = trim( $uri_path, '/' );
+        if ( in_array( $uri_path, $paths, true ) ) {
+            return true;
+        }
     }
-    $current = untrailingslashit( $wp->request );
-    return in_array( $current, yzz_seo_utility_paths(), true );
+
+    // Fallback: $wp->request (sin prefijo de idioma en instalaciones WPML).
+    global $wp;
+    if ( isset( $wp->request ) ) {
+        $current = untrailingslashit( $wp->request );
+        if ( in_array( $current, $paths, true ) ) {
+            return true;
+        }
+        // También comparar las rutas sin su segmento de idioma inicial.
+        foreach ( $paths as $path ) {
+            $slug = preg_replace( '#^[a-z]{2}/#', '', $path );
+            if ( $slug === $current ) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 /**
