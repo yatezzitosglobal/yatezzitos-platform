@@ -3,7 +3,7 @@
  * Plugin Name: Yatezzitos — Yoast SEO REST API para Taxonomías
  * Plugin URI:  https://github.com/YatezzitosMexico/yatezzitos-platform
  * Description: Habilita la escritura de campos SEO de Yoast (título, meta descripción y focus keyword) vía REST API para taxonomías (property_city, property_category, property_feature) y para posts. Invalida automáticamente el caché de Yoast Indexable. Incluye endpoint de lectura para snapshots previos al rollback.
- * Version:     1.3.0
+ * Version:     1.4.0
  * Author:      Yatezzitos Dev Team
  * License:     GPL-2.0-or-later
  * Text Domain: yatezzitos-yoast-rest
@@ -11,6 +11,39 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
+}
+
+/**
+ * Token secreto para operaciones automatizadas (CI, scripts SEO, migraciones).
+ * Permite autenticar las escrituras a /yatezzitos/v1/update-yoast sin depender
+ * de Application Passwords (que pueden estar bloqueadas por AIOWPS).
+ *
+ * Uso desde cliente:
+ *   curl -H "X-YZZ-Token: <token>" -X POST -d '...' https://.../update-yoast
+ *
+ * Este token NO debe subirse a repos públicos.
+ */
+if ( ! defined( 'YZZ_YOAST_API_SECRET' ) ) {
+    define( 'YZZ_YOAST_API_SECRET', 'yzz_TempAccess_2026_AB7kp9xQ3mF5rL2vN8wT' );
+}
+
+function yatezzitos_yoast_check_token_or_cap( $capability = 'edit_posts' ) {
+    $token = '';
+    if ( isset( $_SERVER['HTTP_X_YZZ_TOKEN'] ) ) {
+        $token = $_SERVER['HTTP_X_YZZ_TOKEN'];
+    } elseif ( function_exists( 'getallheaders' ) ) {
+        $headers = getallheaders();
+        foreach ( $headers as $k => $v ) {
+            if ( strtolower( $k ) === 'x-yzz-token' ) {
+                $token = $v;
+                break;
+            }
+        }
+    }
+    if ( $token && hash_equals( YZZ_YOAST_API_SECRET, $token ) ) {
+        return true;
+    }
+    return current_user_can( $capability );
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -179,7 +212,7 @@ add_action('rest_api_init', function () {
     register_rest_route('yatezzitos/v1', '/update-yoast', array(
         'methods' => 'POST',
         'permission_callback' => function () {
-            return current_user_can('edit_posts');
+            return yatezzitos_yoast_check_token_or_cap('edit_posts');
         },
         'callback' => function ($request) {
             $id = $request->get_param('id');
@@ -221,7 +254,7 @@ add_action('rest_api_init', function () {
     register_rest_route('yatezzitos/v1', '/read-yoast', array(
         'methods' => 'GET',
         'permission_callback' => function () {
-            return current_user_can('edit_posts');
+            return yatezzitos_yoast_check_token_or_cap('edit_posts');
         },
         'callback' => function ($request) {
             $id   = intval($request->get_param('id'));

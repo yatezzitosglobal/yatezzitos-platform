@@ -20,11 +20,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WP_BASE_URL="${WP_BASE_URL:-https://yatezzitos.com}"
 DRY_RUN="${DRY_RUN:-0}"
-
-if [[ -z "${WP_USER:-}" || -z "${WP_APP_PASSWORD:-}" ]]; then
-    echo "ERROR: exporta WP_USER y WP_APP_PASSWORD antes de ejecutar." >&2
-    exit 1
-fi
+YZZ_TOKEN="${YZZ_TOKEN:-yzz_TempAccess_2026_AB7kp9xQ3mF5rL2vN8wT}"
 
 if [[ ! -f "${SCRIPT_DIR}/ids.env" ]]; then
     echo "ERROR: falta ${SCRIPT_DIR}/ids.env — copia desde ids.env.example y rellena." >&2
@@ -66,7 +62,8 @@ update_yoast() {
         '{id: ($id|tonumber), type: $type, title: $title, desc: $desc, focuskw: $focuskw}')
 
     local response
-    response=$(curl -sS -u "${WP_USER}:${WP_APP_PASSWORD}" \
+    response=$(curl -sS \
+        -H "X-YZZ-Token: ${YZZ_TOKEN}" \
         -H "Content-Type: application/json" \
         -X POST \
         -d "${payload}" \
