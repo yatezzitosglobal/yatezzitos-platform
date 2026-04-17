@@ -17,7 +17,7 @@ if [[ -z "${WP_USER:-}" || -z "${WP_APP_PASSWORD:-}" ]]; then
 fi
 
 if [[ ! -f "${SCRIPT_DIR}/ids.env" ]]; then
-    echo "ERROR: falta ${SCRIPT_DIR}/ids.env — copia desde ids.env.example y rellena." >&2
+    echo "ERROR: falta ${SCRIPT_DIR}/ids.env — ejecuta primero fetch-wp-ids.sh." >&2
     exit 1
 fi
 # shellcheck disable=SC1091
@@ -30,34 +30,42 @@ OUT="${SCRIPT_DIR}/snapshots/${TS}.json"
 read_yoast() {
     local type="$1"
     local id="$2"
+    local label="$3"
     if [[ -z "$id" || "$id" == "0" ]]; then
-        echo "{\"type\":\"$type\",\"id\":null,\"skipped\":\"id no configurado\"}"
+        printf '{"label":"%s","type":"%s","id":null,"skipped":true}' "$label" "$type"
         return
     fi
-    curl -sS -u "${WP_USER}:${WP_APP_PASSWORD}" \
-        "${WP_BASE_URL}/wp-json/yatezzitos/v1/read-yoast?type=${type}&id=${id}"
+    local result
+    result=$(curl -sS -u "${WP_USER}:${WP_APP_PASSWORD}" \
+        "${WP_BASE_URL}/wp-json/yatezzitos/v1/read-yoast?type=${type}&id=${id}")
+    # Añadir label y type al resultado para trazabilidad
+    printf '%s' "$result" | jq --arg label "$label" --arg type "$type" --arg id "$id" \
+        '. + {label: $label, type: $type, id: ($id | tonumber)}'
 }
 
-echo "[" > "${OUT}"
-{
-    read_yoast post "${HOME_PAGE_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_CANCUN_TERM_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_PUERTO_VALLARTA_TERM_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_HUATULCO_TERM_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_MAZATLAN_TERM_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_LA_PAZ_TERM_ID:-0}"
-    echo ","
-    read_yoast term "${CITY_ACAPULCO_TERM_ID:-0}"
-    echo ","
-    read_yoast post "${PAGE_PLAYAS_PV_ID:-0}"
-    echo ","
-    read_yoast post "${PAGE_YATES_EN_MEXICO_ID:-0}"
-} >> "${OUT}"
-echo "]" >> "${OUT}"
+echo "→ Capturando snapshot de Yoast antes de cualquier cambio..."
 
-echo "✓ Snapshot guardado en ${OUT}"
+ENTRIES=()
+ENTRIES+=( "$(read_yoast post "${HOME_PAGE_ID:-0}" "homepage")" )
+ENTRIES+=( "$(read_yoast term "${CITY_CANCUN_TERM_ID:-0}" "cancun-city")" )
+ENTRIES+=( "$(read_yoast term "${CITY_PUERTO_VALLARTA_TERM_ID:-0}" "puerto-vallarta-city")" )
+ENTRIES+=( "$(read_yoast term "${CITY_HUATULCO_TERM_ID:-0}" "huatulco-city")" )
+ENTRIES+=( "$(read_yoast term "${CITY_MAZATLAN_TERM_ID:-0}" "mazatlan-city")" )
+ENTRIES+=( "$(read_yoast term "${CITY_LA_PAZ_TERM_ID:-0}" "la-paz-city")" )
+ENTRIES+=( "$(read_yoast term "${CITY_ACAPULCO_TERM_ID:-0}" "acapulco-city")" )
+ENTRIES+=( "$(read_yoast post "${PAGE_PLAYAS_PV_ID:-0}" "playas-puerto-vallarta")" )
+ENTRIES+=( "$(read_yoast post "${PAGE_YATES_EN_MEXICO_ID:-0}" "yates-en-mexico")" )
+
+# Construir JSON array válido uniendo con comas
+printf '[\n' > "${OUT}"
+for i in "${!ENTRIES[@]}"; do
+    if [[ $i -lt $(( ${#ENTRIES[@]} - 1 )) ]]; then
+        printf '%s,\n' "${ENTRIES[$i]}" >> "${OUT}"
+    else
+        printf '%s\n' "${ENTRIES[$i]}" >> "${OUT}"
+    fi
+done
+printf ']\n' >> "${OUT}"
+
+echo "✅ Snapshot guardado en ${OUT}"
+echo "   Úsalo para rollback: bash scripts/seo/rollback-yoast.sh ${OUT}"

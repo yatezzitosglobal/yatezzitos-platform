@@ -182,6 +182,22 @@ add_action( 'wp_head', function () {
 
     $home_url = home_url( '/' );
 
+    // Intentar obtener logo del theme customizer; si no, usar el favicon como fallback.
+    $logo_url    = '';
+    $logo_width  = 400;
+    $logo_height = 400;
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    if ( $custom_logo_id ) {
+        $logo_data   = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+        $logo_url    = $logo_data[0] ?? '';
+        $logo_width  = $logo_data[1] ?? 400;
+        $logo_height = $logo_data[2] ?? 400;
+    }
+    if ( ! $logo_url ) {
+        // Filtro para sobreescribir desde functions.php del child theme.
+        $logo_url = apply_filters( 'yzz_schema_logo_url', $home_url . 'wp-content/uploads/yatezzitos-logo.png' );
+    }
+
     $organization = array(
         '@context'     => 'https://schema.org',
         '@type'        => 'Organization',
@@ -190,10 +206,10 @@ add_action( 'wp_head', function () {
         'alternateName' => 'Yatezzitos Global',
         'url'          => $home_url,
         'logo'         => array(
-            '@type' => 'ImageObject',
-            'url'   => $home_url . 'wp-content/uploads/2024/01/yatezzitos-logo.png',
-            'width' => 400,
-            'height' => 400,
+            '@type'  => 'ImageObject',
+            'url'    => $logo_url,
+            'width'  => $logo_width,
+            'height' => $logo_height,
         ),
         'description'  => 'Plataforma de renta de yates, catamaranes, lanchas y veleros en los 10 principales destinos de playa de México.',
         'sameAs'       => array(
