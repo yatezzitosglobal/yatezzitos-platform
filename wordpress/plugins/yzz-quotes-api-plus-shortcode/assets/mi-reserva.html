@@ -1,0 +1,1858 @@
+<div id="yzzr-root" class="yzzr">
+  <div class="yzzr-card yzzr-hero">
+    <h1 class="yzzr-title">Mi reserva</h1>
+    <p id="yzzr-hello" class="yzzr-sub">Cargando información de tu reserva...</p>
+    <div style="height:10px"></div>
+    <span id="yzzr-load-status" class="yzzr-status">Consultando...</span>
+    <div id="yzzr-countdown" class="yzzr-countdown">
+      <div class="yzzr-timebox">
+        <div id="yzzr-d" class="yzzr-time-num">--</div>
+        <div class="yzzr-time-lbl">Días</div>
+      </div>
+      <div class="yzzr-timebox">
+        <div id="yzzr-h" class="yzzr-time-num">--</div>
+        <div class="yzzr-time-lbl">Horas</div>
+      </div>
+      <div class="yzzr-timebox">
+        <div id="yzzr-m" class="yzzr-time-num">--</div>
+        <div class="yzzr-time-lbl">Min</div>
+      </div>
+      <div class="yzzr-timebox">
+        <div id="yzzr-s" class="yzzr-time-num">--</div>
+        <div class="yzzr-time-lbl">Seg</div>
+      </div>
+    </div>
+    <p id="yzzr-count-note" class="yzzr-note"></p>
+  </div>
+
+  <div id="yzzr-error" class="yzzr-card yzzr-hidden">
+    <h2 id="yzzr-error-title" class="yzzr-err-title">Reserva no disponible</h2>
+    <p id="yzzr-error-msg" class="yzzr-sub">No pudimos cargar la reserva.</p>
+  </div>
+
+  <div id="yzzr-img-wrap" class="yzzr-card yzzr-img-wrap yzzr-hidden">
+    <img id="yzzr-img" class="yzzr-img" alt="Embarcación">
+  </div>
+
+  <div id="yzzr-content" class="yzzr-hidden">
+    <div class="yzzr-grid">
+      <div class="yzzr-card">
+        <div class="yzzr-row">
+          <div class="yzzr-k">Cliente</div>
+          <div id="yzzr-name" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Embarcación</div>
+          <div id="yzzr-yacht" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Tipo de experiencia reservada</div>
+          <div id="yzzr-exp" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Destino</div>
+          <div id="yzzr-dest" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Fecha</div>
+          <div id="yzzr-date" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Horario</div>
+          <div id="yzzr-time" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Pasajeros</div>
+          <div id="yzzr-pax" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Marina</div>
+          <div id="yzzr-marina" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Ubicación de abordaje</div>
+          <div class="yzzr-v"><a id="yzzr-meeting-link" class="yzzr-map-link yzzr-disabled" href="#" target="_blank"
+              rel="noopener">—</a></div>
+        </div>
+      </div>
+
+      <div class="yzzr-card">
+        <div class="yzzr-row">
+          <div class="yzzr-k">Estado de la reserva</div>
+          <div><span id="yzzr-res-status" class="yzzr-pill is-pending">Pendiente de confirmación</span></div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Reservación ID</div>
+          <div id="yzzr-res-id" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Anticipo pagado</div>
+          <div id="yzzr-deposit" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Saldo pendiente</div>
+          <div id="yzzr-balance" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Costo total</div>
+          <div id="yzzr-total" class="yzzr-v">—</div>
+        </div>
+        <div class="yzzr-row">
+          <div class="yzzr-k">Método de pago</div>
+          <div id="yzzr-payment" class="yzzr-v">—</div>
+        </div>
+        <div style="text-align:center;padding:10px 0 4px">
+          <button class="yzzr-btn" type="button" data-yzz-open-cargos style="background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;font-size:15px;border-radius:12px;padding:14px 20px;width:100%;max-width:380px;margin:0 auto">💰 Ver cargos adicionales por destino</button>
+          <p style="font-size:11px;color:#9ca3af;margin:6px 0 0">Impuestos de muelle, acceso a playas, propinas y más</p>
+        </div>
+        <div class="yzzr-actions">
+          <a id="yzzr-map-btn" class="yzzr-btn yzzr-btn-primary yzzr-hidden" href="#" target="_blank" rel="noopener">📍
+            Ver ubicación</a>
+          <button id="yzzr-receipt-btn" class="yzzr-btn yzzr-btn-success" type="button">🧾 Descargar recibo de
+            depósito</button>
+          <button id="yzzr-balance-btn" class="yzzr-btn yzzr-btn-warning yzzr-hidden" type="button">💳 Pagar
+            balance</button>
+          <a id="yzzr-wa-btn" class="yzzr-btn yzzr-btn-dark" href="#" target="_blank" rel="noopener">🟢 Contactar por
+            WhatsApp</a>
+        </div>
+        <p class="yzzr-note">Si algún dato no aparece, se mostrará como “—”.</p>
+      </div>
+    </div>
+
+    <div class="yzzr-card">
+      <details class="yzzr-faq">
+        <summary>Características y amenidades incluidas</summary>
+        <div id="yzzr-amenities-list" class="yzzr-amen-list"></div>
+      </details>
+    </div>
+
+    <div class="yzzr-card">
+      <h2 class="yzzr-sec-title">Política de anticipo y pago</h2>
+      <div class="yzzr-faq-wrap">
+        <details class="yzzr-faq">
+          <summary>¿Cómo funciona el anticipo?</summary>
+          <p><b>Anticipo:</b> 50% del costo total para confirmar tu reservación.</p>
+        </details>
+        <details class="yzzr-faq">
+          <summary>¿Cuándo se paga el balance restante?</summary>
+          <p><b>Balance restante:</b> Se abona el día del evento antes de iniciar el viaje (efectivo, transferencia o
+            tarjeta con 5% adicional).</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="yzzr-card yzzr-inline-actions">
+      <button id="yzzr-reco-btn" class="yzzr-btn yzzr-btn-primary" type="button">🧭 Recomendaciones del viaje</button>
+      <button id="yzzr-terms-btn" class="yzzr-btn yzzr-btn-dark" type="button">📘 Términos y condiciones</button>
+    </div>
+    <div id="yzz-cargos-modal" class="yzz-ca-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="yzz-ca-box">
+    <div class="yzz-ca-head">
+      <strong>💰 Cargos adicionales</strong>
+      <button type="button" class="yzz-ca-close" data-yzz-ca-close>&times;</button>
+    </div>
+
+    <!-- Tabs horizontales de destinos -->
+    <div class="yzz-ca-tabs-wrap">
+      <div class="yzz-ca-tabs" id="yzz-ca-tabs">
+        <!-- llenos dinámicamente por JS -->
+      </div>
+    </div>
+
+    <!-- Notas generales (siempre visibles) -->
+    <div class="yzz-ca-info-grid">
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">💵</div>
+        <div>
+          <div class="yzz-ca-info-title">Propina para tripulantes</div>
+          <div class="yzz-ca-info-desc">La propina <strong>no está incluida</strong> en ningún viaje. Se recomienda entre un <strong>5% y 10%</strong> del costo del yate como reconocimiento a nuestros capitanes y marineros que dan su máximo por tu experiencia.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">🅿️</div>
+        <div>
+          <div class="yzz-ca-info-title">Estacionamiento en marina</div>
+          <div class="yzz-ca-info-desc">La tarifa de estacionamiento <strong>no está incluida</strong> y varía según cada marina. Consulta costos directamente en la marina o con tu asesor.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">🏝️</div>
+        <div>
+          <div class="yzz-ca-info-title">Acceso a playas protegidas</div>
+          <div class="yzz-ca-info-desc">Algunas playas como <strong>Balandra</strong> y <strong>Espíritu Santo</strong> cobran una tarifa de acceso gestionada por autoridades ambientales, ajena a Yatezzitos.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">⚓</div>
+        <div>
+          <div class="yzz-ca-info-title">Impuesto de muelle</div>
+          <div class="yzz-ca-info-desc">El impuesto de muelle es <strong>establecido por cada marina</strong> y es ajeno a Yatezzitos. Se paga <strong>únicamente en efectivo (pesos mexicanos)</strong> directamente en la marina antes de que el viaje inicie.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de cargos por destino -->
+    <div id="yzz-ca-content" class="yzz-ca-content"></div>
+  </div>
+</div>
+
+<style>
+  .yzz-ca-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:14px}
+  .yzz-ca-box{background:#fff;border-radius:18px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .yzz-ca-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;background:#fff;z-index:2;border-radius:18px 18px 0 0}
+  .yzz-ca-head strong{font-size:18px;color:#111827}
+  .yzz-ca-close{background:none;border:none;font-size:24px;cursor:pointer;color:#6b7280;line-height:1}
+  .yzz-ca-close:hover{color:#111}
+  .yzz-ca-tabs-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:12px 20px 0;scrollbar-width:none}
+  .yzz-ca-tabs-wrap::-webkit-scrollbar{display:none}
+  .yzz-ca-tabs{display:flex;gap:8px;flex-wrap:nowrap}
+  .yzz-ca-tab{flex-shrink:0;padding:8px 16px;border-radius:999px;border:2px solid #e5e7eb;background:#fafafa;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;color:#374151;transition:all .15s}
+  .yzz-ca-tab:hover{border-color:#93c5fd;background:#eff6ff}
+  .yzz-ca-tab.is-active{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+  .yzz-ca-info-grid{display:grid;grid-template-columns:1fr;gap:8px;padding:14px 20px 0}
+  @media(min-width:500px){.yzz-ca-info-grid{grid-template-columns:1fr 1fr}}
+  .yzz-ca-info-card{display:flex;gap:10px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb}
+  .yzz-ca-info-icon{font-size:22px;flex-shrink:0;line-height:1.3}
+  .yzz-ca-info-title{font-weight:800;font-size:13px;margin-bottom:2px;color:#111827}
+  .yzz-ca-info-desc{font-size:12px;line-height:1.45;color:#4b5563}
+  .yzz-ca-content{padding:14px 20px 20px}
+  .yzz-ca-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+  .yzz-ca-table th{text-align:left;padding:10px 8px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:2px solid #e2e8f0}
+  .yzz-ca-table td{padding:10px 8px;border-bottom:1px solid #e5e7eb;color:#1f2937}
+  .yzz-ca-table tr:last-child td{border-bottom:0}
+  .yzz-ca-table tr:hover td{background:#f8fafc}
+  .yzz-ca-section-title{font-size:14px;font-weight:800;margin:14px 0 6px;color:#0f172a}
+  .yzz-ca-note{font-size:12px;color:#6b7280;margin:6px 0 0;line-height:1.45}
+</style>
+
+<script>
+(function(){
+  /* ── Datos reales de marinas por destino ── */
+  var CARGOS = [
+    {
+      dest: 'Cancún',
+      marinas: [
+        { name: 'Marina V&V',              muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Muelle Flamingos',         muelle: '$200 MXN p/p', vehiculo: '$200 MXN' },
+        { name: 'Residencial Nautilus',     muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Aquatours',                muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Puerto Cancún Muelle 7',   muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Puesta del Sol',           muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Hacienda del Mar',         muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Marina Kaybal',            muelle: '$200 MXN p/p', vehiculo: '$200 MXN' },
+        { name: 'Golf Puerto Cancún',       muelle: '$200 MXN p/p', vehiculo: '$200 MXN' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Acapulco',
+      marinas: [
+        { name: 'Marina Acapulco',           muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Santa Lucía',        muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Club de Yates de Acapulco', muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Malecón de Acapulco',       muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Terminal Marítima',          muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Huatulco',
+      marinas: [
+        { name: 'Holiday Inn',               muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Turística Chahué',   muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: [
+        { name: 'Parque Nacional Bahías de Huatulco', costo: '$60 MXN p/p', nota: 'Cobro obligatorio por acceso al área natural protegida' }
+      ]
+    },
+    {
+      dest: 'Ixtapa',
+      marinas: [
+        { name: 'Porto Ixtapa',            muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Muelle de Zihuatanejo',   muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Ixtapa',           muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'La Paz',
+      marinas: [
+        { name: 'Marina El Palmar',  muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Palmira',    muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina La Paz',     muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Don José',   muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Abaroa',     muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: [
+        { name: 'Playa Balandra',       costo: '$68 MXN p/p',    nota: 'Cobro obligatorio de acceso' },
+        { name: 'Isla Espíritu Santo',  costo: '$108 MXN p/p',   nota: 'Cobro obligatorio de acceso' },
+        { name: 'Nado con lobos marinos', costo: '$1,500 MXN',   nota: 'Guía obligatorio para el nado (costo por guía, no por persona)' }
+      ]
+    },
+    {
+      dest: 'Los Cabos',
+      marinas: [
+        { name: 'Marina Cabo Muelle 2',  muelle: '$20 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle F',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Terminal de Cabo',       muelle: '$100 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle B',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle J',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle M',  muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle C',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle E',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo',           muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle H',  muelle: '$100 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle L',  muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle D',  muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Mazatlán',
+      marinas: [
+        { name: 'Marina Fonatur (Operadora Portuaria)',            muelle: '$20 MXN p/p',   vehiculo: '$50 MXN' },
+        { name: 'Marina Mazatlán Muelle 8',                        muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Restaurante Ana Mar',                             muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 10',                       muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Isla Mazatlán Muelle A / La Tostadería del Mar',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 7 (Gus Gus)',              muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 3',                        muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Naviera Tres Marías',                             muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 7',                        muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Nuevo Vallarta',
+      marinas: [
+        { name: 'Marina Nuevo Vallarta',        muelle: 'Sin impuesto',   vehiculo: '—' },
+        { name: 'Marina Cruz de Huanacaxtle',   muelle: '$400 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Paradise Village',      muelle: 'Sin impuesto',   vehiculo: '—' }
+      ],
+      playas: [],
+      notas: ['⚠️ La embarcación Kusi Wasi (Marina Cruz de Huanacaxtle) exige propina obligatoria del 10% del costo del viaje.']
+    },
+    {
+      dest: 'Playa del Carmen',
+      marinas: [
+        { name: 'Gran Marina (Puerto Aventuras)',  muelle: '$400 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cozumel ASIPONA',          muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: [],
+      notas: [
+        '⚠️ Algunas embarcaciones en Gran Marina (Sunseeker 55, Azimut 43, Bali 40, Aventura 34) exigen propina obligatoria del 10%.',
+        '⚠️ La embarcación Blue Ray en Marina Cozumel ASIPONA cobra $200 MXN p/p de impuesto de muelle.'
+      ]
+    },
+    {
+      dest: 'Puerto Vallarta',
+      marinas: [
+        { name: 'Marina Vallarta Muelle C',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle E',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle F',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle G',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle H',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle I',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle J',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle K',        muelle: '$50–$100 MXN p/p', vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle M',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Flamingo Vallarta Hotel',  muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: [],
+      notas: ['⚠️ Algunas embarcaciones absorben el impuesto de muelle y lo ofrecen como cortesía. Verifica con tu asesor.']
+    }
+  ];
+
+  var tabsEl = document.getElementById('yzz-ca-tabs');
+  var contentEl = document.getElementById('yzz-ca-content');
+  var overlay = document.getElementById('yzz-cargos-modal');
+  if (!tabsEl || !contentEl || !overlay) return;
+
+  function renderTabs() {
+    tabsEl.innerHTML = CARGOS.map(function(c, i){
+      return '<button class="yzz-ca-tab'+(i===0? ' is-active':'')+'" data-yzz-ca-idx="'+i+'">📍 '+c.dest+'</button>';
+    }).join('');
+  }
+
+  function renderContent(idx) {
+    var c = CARGOS[idx]; if (!c) return;
+    var hasVehiculo = c.marinas.some(function(m){ return m.vehiculo && m.vehiculo !== '—'; });
+    var h = '<div class="yzz-ca-section-title">⚓ Impuestos de muelle — '+c.dest+'</div>';
+    h += '<table class="yzz-ca-table"><thead><tr><th>Marina</th><th>Impuesto</th>';
+    if (hasVehiculo) h += '<th>Vehículo</th>';
+    h += '</tr></thead><tbody>';
+    c.marinas.forEach(function(m){
+      h += '<tr><td>'+m.name+'</td><td><strong>'+m.muelle+'</strong></td>';
+      if (hasVehiculo) h += '<td>'+(m.vehiculo||'—')+'</td>';
+      h += '</tr>';
+    });
+    h += '</tbody></table>';
+    if (c.playas && c.playas.length) {
+      h += '<div class="yzz-ca-section-title">🏝️ Acceso a playas — '+c.dest+'</div>';
+      h += '<table class="yzz-ca-table"><thead><tr><th>Playa / Isla</th><th>Costo</th><th>Notas</th></tr></thead><tbody>';
+      c.playas.forEach(function(p){ h += '<tr><td>'+p.name+'</td><td><strong>'+p.costo+'</strong></td><td>'+(p.nota||'—')+'</td></tr>'; });
+      h += '</tbody></table>';
+    }
+    if (c.notas && c.notas.length) {
+      c.notas.forEach(function(n){ h += '<p class="yzz-ca-note" style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:8px 12px;color:#92400e;font-weight:600">'+n+'</p>'; });
+    }
+    h += '<p class="yzz-ca-note">⚠️ Los montos son aproximados y pueden cambiar sin previo aviso. Verifica con tu asesor antes del viaje.</p>';
+    contentEl.innerHTML = h;
+  }
+
+  renderTabs();
+  renderContent(0);
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-yzz-ca-idx]');
+    if (!btn) return;
+    tabsEl.querySelectorAll('.yzz-ca-tab').forEach(function(t){ t.classList.remove('is-active'); });
+    btn.classList.add('is-active');
+    renderContent(Number(btn.getAttribute('data-yzz-ca-idx')));
+  });
+
+  // Open / close
+  function openCargos(){ overlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeCargos(){ overlay.style.display = 'none'; document.body.style.overflow = ''; }
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-yzz-open-cargos]')) { e.preventDefault(); openCargos(); return; }
+    if (e.target.closest('[data-yzz-ca-close]'))    { e.preventDefault(); closeCargos(); return; }
+    if (e.target === overlay) closeCargos();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.style.display === 'flex') closeCargos(); });
+
+  // Exponer globalmente para poder abrir desde otros scripts
+  window.yzzOpenCargos = openCargos;
+})();
+</script>
+  </div>
+</div>
+
+<div id="yzzr-receipt-modal" class="yzzr-modal" aria-hidden="true">
+  <div class="yzzr-modal-back" data-yzzr-close="yzzr-receipt-modal"></div>
+  <div class="yzzr-modal-wrap">
+    <div class="yzzr-modal-card">
+      <div class="yzzr-modal-head">
+        <strong>Recibo de depósito</strong>
+        <button type="button" class="yzzr-close" data-yzzr-close="yzzr-receipt-modal">Cerrar</button>
+      </div>
+      <p class="yzzr-note">Si el formulario no carga en el popup, usa el enlace de respaldo.</p>
+      <iframe id="yzzr-receipt-frame" title="Recibo de depósito"
+        style="width:100%;height:70vh;border:0;border-radius:10px;background:#fff"></iframe>
+      <div style="height:8px"></div>
+      <a id="yzzr-receipt-fallback" class="yzzr-btn yzzr-btn-primary" href="#" target="_blank" rel="noopener">Abrir
+        formulario en nueva pestaña</a>
+    </div>
+  </div>
+</div>
+
+<div id="yzzr-balance-modal" class="yzzr-modal" aria-hidden="true">
+  <div class="yzzr-modal-back" data-yzzr-close="yzzr-balance-modal"></div>
+  <div class="yzzr-modal-wrap">
+    <div class="yzzr-modal-card">
+      <div class="yzzr-modal-head">
+        <strong>Pagar balance pendiente</strong>
+        <button type="button" class="yzzr-close" data-yzzr-close="yzzr-balance-modal">Cerrar</button>
+      </div>
+      <p id="yzzr-balance-amount" class="yzzr-note"></p>
+      <div id="yzzr-balance-choices" class="yzzr-pay-choices">
+        <button id="yzzr-balance-card-btn" class="yzzr-btn yzzr-btn-primary" type="button">Pagar con tarjeta de crédito
+          / débito</button>
+        <button id="yzzr-balance-transfer-btn" class="yzzr-btn yzzr-btn-dark" type="button">Pagar con transferencia
+          bancaria</button>
+      </div>
+      <div id="yzzr-balance-survey-wrap" class="yzzr-survey-wrap">
+        <iframe src="" style="border:none;width:100%;min-height:680px;" scrolling="no" id="yzzr-balance-survey-frame"
+          title="survey"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="yzzr-reco-modal" class="yzzr-modal" aria-hidden="true">
+  <div class="yzzr-modal-back" data-yzzr-close="yzzr-reco-modal"></div>
+  <div class="yzzr-modal-wrap">
+    <div class="yzzr-modal-card">
+      <div class="yzzr-modal-head">
+        <strong>Recomendaciones para tu aventura en el mar</strong>
+        <button type="button" class="yzzr-close" data-yzzr-close="yzzr-reco-modal">Cerrar</button>
+      </div>
+      <div class="yzzr-copy">
+        <p><b>Alimentos y bebidas:</b> Le recomendamos llevar sus alimentos y bebidas favoritas para disfrutar durante
+          el recorrido. Aunque muchos destinos ofrecen la opción de bajar a un restaurante o envíos a bordo del yate,
+          incluir snacks saludables, bebidas refrescantes y opciones especiales mejora la experiencia.</p>
+        <p><b>Toallas:</b> Lleve toallas suficientes para usted y sus acompañantes para mantenerse cómodos y secos
+          durante el recorrido.</p>
+        <p><b>Protección solar:</b> Lleve protector solar, sombrero, gafas con protección UV y ropa ligera para
+          protegerse de los rayos solares.</p>
+        <p><b>Medicamentos para el mareo:</b> Si es propenso al mareo, considere prevención antes de abordar.</p>
+        <p><b>Actitud positiva:</b> Venga preparado para relajarse, explorar y crear recuerdos inolvidables.</p>
+        <p><b>Hidratación:</b> Lleve suficiente agua potable, especialmente si hará snorkel, kayac o paddleboard.</p>
+        <p><b>Ropa adecuada:</b> Use ropa cómoda, ligera y de secado rápido. Lleve una muda adicional.</p>
+        <p><b>Calzado adecuado:</b> Evite suelas duras o tacones. Recomendamos calzado antideslizante o náutico.</p>
+        <p><b>Fotografía y entretenimiento:</b> Proteja su celular o use cámara impermeable. Lleve batería portátil.</p>
+        <p><b>Disfrute responsable:</b> Si consume alcohol, hágalo con moderación para mantener una experiencia segura.
+        </p>
+        <p><b>Respete las indicaciones de la tripulación:</b> Ellos están capacitados para su seguridad y comodidad.</p>
+        <p><b>Puntualidad:</b> Llegue al menos 30 minutos antes de la salida programada.</p>
+        <p>Siguiendo estas recomendaciones, su experiencia con Yatezzitos será cómoda, segura y memorable. ¡Nos vemos a
+          bordo!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="yzzr-terms-modal" class="yzzr-modal" aria-hidden="true">
+  <div class="yzzr-modal-back" data-yzzr-close="yzzr-terms-modal"></div>
+  <div class="yzzr-modal-wrap">
+    <div class="yzzr-modal-card">
+      <div class="yzzr-modal-head">
+        <strong>Términos y condiciones del servicio</strong>
+        <button type="button" class="yzzr-close" data-yzzr-close="yzzr-terms-modal">Cerrar</button>
+      </div>
+      <div class="yzzr-copy">
+        <p><b>1. Reembolso</b></p>
+        <p><b>1.1 Cancelaciones:</b> No se realizan reembolsos por cancelación. Se ofrece re-agendar bajo condiciones
+          establecidas.</p>
+        <p><b>1.2 Condiciones climáticas:</b> Si el mal clima impide navegación segura, se permite re-agendar sin costo
+          adicional.</p>
+        <p><b>2. Cambios</b></p>
+        <p><b>2.1 Cambio de titular:</b> Debe notificarse con mínimo 24 horas de anticipación.</p>
+        <p><b>2.2 Cambio de fecha:</b> Debe solicitarse con al menos 14 días de anticipación.</p>
+        <p><b>2.3 Cambio de embarcación:</b> No aplica salvo autorización extraordinaria de Yatezzitos México.</p>
+        <p><b>2.4 Fecha abierta:</b> Puede otorgarse en casos especiales, sujeta a disponibilidad y ajustes en precio.
+        </p>
+        <p><b>3. Reservación</b></p>
+        <p><b>3.1</b> Se requiere anticipo de 50% para confirmar la reservación.</p>
+        <p><b>3.2</b> Si el anticipo queda incompleto, se debe completar hasta 7 días antes del viaje.</p>
+        <p><b>4. Responsabilidad de daños y riesgos</b></p>
+        <p><b>4.1</b> Los clientes son responsables de daños ocasionados durante el uso de la embarcación.</p>
+        <p><b>4.2</b> Deben seguirse todas las instrucciones de la tripulación.</p>
+        <p><b>5. Horarios y puntualidad</b></p>
+        <p><b>5.1</b> Tolerancia máxima de 15 minutos siempre que no afecte otras reservaciones.</p>
+        <p><b>5.2</b> Retrasos mayores a 60 minutos sin justificación se consideran servicio cumplido.</p>
+        <p><b>5.3</b> Se recomienda llegar 30 minutos antes de la salida.</p>
+        <p><b>6. Pérdida de objetos personales</b></p>
+        <p>Yatezzitos no se hace responsable de objetos extraviados durante el recorrido.</p>
+        <p>Gracias por confiar en Yatezzitos México.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #yzzr-root {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 16px;
+    color: #111827;
+    font-family: var(--yzz-font-family, Arial, sans-serif);
+    box-sizing: border-box
+  }
+
+  #yzzr-root *,
+  .yzzr-modal * {
+    box-sizing: border-box
+  }
+
+  .yzzr-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px
+  }
+
+  .yzzr-title {
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.15
+  }
+
+  .yzzr-sub {
+    margin: 0;
+    color: #6b7280
+  }
+
+  .yzzr-note {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.45
+  }
+
+  .yzzr-sec-title {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.3
+  }
+
+  .yzzr-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px
+  }
+
+  .yzzr-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px dashed #e5e7eb;
+    padding: 10px 0
+  }
+
+  .yzzr-row:last-child {
+    border-bottom: 0
+  }
+
+  .yzzr-k {
+    color: #6b7280
+  }
+
+  .yzzr-v {
+    font-weight: 700;
+    text-align: right;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    max-width: 62%
+  }
+
+  .yzzr-status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: #e5e7eb;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 700
+  }
+
+  .yzzr-status.is-ok {
+    background: #d1fae5;
+    color: #065f46
+  }
+
+  .yzzr-status.is-warn {
+    background: #fef3c7;
+    color: #92400e
+  }
+
+  .yzzr-status.is-error {
+    background: #fee2e2;
+    color: #991b1b
+  }
+
+  .yzzr-countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 12px
+  }
+
+  .yzzr-timebox {
+    background: #0b1939;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px
+  }
+
+  .yzzr-time-num {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1
+  }
+
+  .yzzr-time-lbl {
+    font-size: 11px;
+    color: #cbd5e1;
+    text-transform: uppercase;
+    margin-top: 4px
+  }
+
+  .yzzr-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700
+  }
+
+  .yzzr-pill.is-confirmed {
+    background: #d1fae5;
+    color: #065f46
+  }
+
+  .yzzr-pill.is-pending {
+    background: #fef3c7;
+    color: #92400e
+  }
+
+  .yzzr-pill.is-cancelled {
+    background: #fee2e2;
+    color: #991b1b
+  }
+
+  .yzzr-pill.is-other {
+    background: #e5e7eb;
+    color: #1f2937
+  }
+
+  .yzzr-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 12px
+  }
+
+  .yzzr-inline-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  .yzzr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    min-height: 44px;
+    touch-action: manipulation
+  }
+
+  .yzzr-btn-primary {
+    background: #194395
+  }
+
+  .yzzr-btn-success {
+    background: #00945e
+  }
+
+  .yzzr-btn-dark {
+    background: #111827
+  }
+
+  .yzzr-btn-warning {
+    background: #d97706
+  }
+
+  .yzzr-btn:hover,
+  .yzzr-btn:focus,
+  .yzzr-btn:active {
+    color: #fff !important;
+    text-decoration: none !important
+  }
+
+  .yzzr-map-link {
+    font-weight: 700;
+    color: #194395;
+    text-decoration: underline;
+    word-break: break-all
+  }
+
+  .yzzr-map-link.yzzr-disabled {
+    pointer-events: none;
+    color: #9ca3af;
+    text-decoration: none
+  }
+
+  .yzzr-hidden {
+    display: none !important
+  }
+
+  .yzzr-img-wrap {
+    padding: 0;
+    overflow: hidden
+  }
+
+  .yzzr-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover
+  }
+
+  .yzzr-amen-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  .yzzr-amen-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafafa
+  }
+
+  .yzzr-amen-emo {
+    font-size: 18px;
+    line-height: 1.2
+  }
+
+  .yzzr-amen-txt {
+    font-size: 14px;
+    line-height: 1.35
+  }
+
+  .yzzr-faq-wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px
+  }
+
+  .yzzr-faq {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    background: #fcfcfd
+  }
+
+  .yzzr-faq summary {
+    cursor: pointer;
+    font-weight: 700
+  }
+
+  .yzzr-faq p {
+    margin: 10px 0 0;
+    line-height: 1.45
+  }
+
+  .yzzr-faq .yzzr-amen-list {
+    margin-top: 10px
+  }
+
+  .yzzr-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999
+  }
+
+  .yzzr-modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px
+  }
+
+  .yzzr-modal-back {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .58);
+    z-index: 0
+  }
+
+  .yzzr-modal-wrap {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 900px);
+    max-width: 900px;
+    margin: 0;
+    padding: 0
+  }
+
+  .yzzr-modal-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 14px;
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch
+  }
+
+  .yzzr-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px
+  }
+
+  .yzzr-close {
+    border: 0;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 40px
+  }
+
+  .yzzr-copy p {
+    margin: 0 0 10px;
+    line-height: 1.5
+  }
+
+  .yzzr-survey-wrap {
+    display: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px
+  }
+
+  .yzzr-survey-wrap.active {
+    display: block
+  }
+
+  .yzzr-pay-choices {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  .yzzr-err-title {
+    margin: 0 0 6px;
+    color: #991b1b;
+    font-size: 22px
+  }
+
+  @media(min-width:760px) {
+    .yzzr-grid {
+      grid-template-columns: 1fr 1fr
+    }
+
+    .yzzr-inline-actions {
+      grid-template-columns: 1fr 1fr
+    }
+  }
+
+  @media(max-width:759px) {
+    .yzzr-modal.open {
+      align-items: flex-end;
+      padding: 0
+    }
+
+    .yzzr-modal-wrap {
+      width: 100%;
+      max-width: none
+    }
+
+    .yzzr-modal-card {
+      border-radius: 18px 18px 0 0;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      max-height: min(86dvh, calc(100dvh - 24px));
+      padding: 16px 14px calc(16px + env(safe-area-inset-bottom))
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.getElementById('yzzr-root');
+    if (!root) { return; }
+
+    var DASH = '—';
+    var PATHNAME = (location.pathname || '').toLowerCase();
+    var IS_EN = /^\/en(\/|$)/.test(PATHNAME);
+    function tt(es, en) { return IS_EN ? en : es; }
+    var WA_NUMBER = '526691324073';
+    var SURVEY_BASE = 'https://link.yatezzitos.com/widget/survey/OXyI9rBvZVpcE877iYso';
+    var TRANSFER_URL = location.origin + (function () {
+      var p = (location.pathname || '').toLowerCase();
+      if (/^\/en(\/|$)/.test(p)) return '/en';
+      if (/^\/es(\/|$)/.test(p)) return '/es';
+      return '/es';
+    })() + '/pagos-con-transferencia/';
+    var RECEIPT_BASE = 'https://link.yatezzitos.com/documents/doc-form/6781ebb6ec779a2e3e9dcc33?locale=' + (IS_EN ? 'en' : 'es');
+    var state = {
+      qt: (new URLSearchParams(location.search).get('qt') || '').trim(),
+      data: null,
+      countdownId: null,
+      balanceAmount: NaN
+    };
+    var debugMode = (function () {
+      var v = (new URLSearchParams(location.search).get('debug') || '').trim().toLowerCase();
+      return v === '1' || v === 'true' || v === 'yes';
+    })();
+    function applyReservationLocale() {
+      if (!IS_EN) return;
+      var map = {
+        'Cliente': 'Customer',
+        'Embarcación': 'Yacht',
+        'Tipo de experiencia reservada': 'Reserved experience',
+        'Destino': 'Destination',
+        'Fecha': 'Date',
+        'Horario': 'Schedule',
+        'Pasajeros': 'Guests',
+        'Marina': 'Marina',
+        'Ubicación de abordaje': 'Boarding location',
+        'Estado de la reserva': 'Reservation status',
+        'Reservación ID': 'Reservation ID',
+        'Anticipo pagado': 'Deposit paid',
+        'Saldo pendiente': 'Remaining balance',
+        'Costo total': 'Total cost',
+        'Método de pago': 'Payment method'
+      };
+      var labels = root.querySelectorAll('.yzzr-row .yzzr-k');
+      labels.forEach(function (el) {
+        var txt = String(el.textContent || '').trim();
+        if (map[txt]) el.textContent = map[txt];
+      });
+      if ($('yzzr-hello')) $('yzzr-hello').textContent = 'Loading your reservation details...';
+      if ($('yzzr-load-status')) $('yzzr-load-status').textContent = 'Checking...';
+      if ($('yzzr-error-title')) $('yzzr-error-title').textContent = 'Reservation unavailable';
+      if ($('yzzr-error-msg')) $('yzzr-error-msg').textContent = 'We could not load the reservation.';
+      if ($('yzzr-name')) $('yzzr-name').textContent = DASH;
+      if ($('yzzr-meeting-link')) $('yzzr-meeting-link').textContent = DASH;
+      if ($('yzzr-res-status')) $('yzzr-res-status').textContent = 'Pending confirmation';
+      if ($('yzzr-map-btn')) $('yzzr-map-btn').textContent = '📍 View location';
+      if ($('yzzr-receipt-btn')) $('yzzr-receipt-btn').textContent = '🧾 Download deposit receipt';
+      if ($('yzzr-balance-btn')) $('yzzr-balance-btn').textContent = '💳 Pay balance';
+      if ($('yzzr-wa-btn')) $('yzzr-wa-btn').textContent = '🟢 Contact on WhatsApp';
+      var titles = root.querySelectorAll('.yzzr-title');
+      titles.forEach(function (t) { t.textContent = 'My reservation'; });
+      var countLbls = root.querySelectorAll('.yzzr-time-lbl');
+      if (countLbls[0]) countLbls[0].textContent = 'Days';
+      if (countLbls[1]) countLbls[1].textContent = 'Hours';
+      if (countLbls[2]) countLbls[2].textContent = 'Min';
+      if (countLbls[3]) countLbls[3].textContent = 'Sec';
+      var secTitle = root.querySelector('.yzzr-sec-title');
+      if (secTitle) secTitle.textContent = 'Deposit and payment policy';
+      var faqSummaries = root.querySelectorAll('.yzzr-faq > summary');
+      faqSummaries.forEach(function (summary) {
+        var txt = String(summary.textContent || '').trim();
+        if (txt === 'Características y amenidades incluidas') summary.textContent = 'Included features and amenities';
+        if (txt === '¿Cómo funciona el anticipo?') summary.textContent = 'How does the deposit work?';
+        if (txt === '¿Cuándo se paga el balance restante?') summary.textContent = 'When is the remaining balance due?';
+      });
+      if ($('yzzr-reco-btn')) $('yzzr-reco-btn').textContent = '🧭 Trip recommendations';
+      if ($('yzzr-terms-btn')) $('yzzr-terms-btn').textContent = '📘 Terms and conditions';
+      var note = root.querySelector('.yzzr-actions + .yzzr-note');
+      if (note) note.textContent = 'If any field is missing, it will be shown as “—”.';
+
+      var receiptHead = root.querySelector('#yzzr-receipt-modal .yzzr-modal-head strong');
+      if (receiptHead) receiptHead.textContent = 'Deposit receipt';
+      var receiptNote = root.querySelector('#yzzr-receipt-modal .yzzr-note');
+      if (receiptNote) receiptNote.textContent = 'If the form does not load in the popup, use the backup link.';
+      if ($('yzzr-receipt-fallback')) $('yzzr-receipt-fallback').textContent = 'Open form in a new tab';
+      var balanceHead = root.querySelector('#yzzr-balance-modal .yzzr-modal-head strong');
+      if (balanceHead) balanceHead.textContent = 'Pay pending balance';
+      if ($('yzzr-balance-card-btn')) $('yzzr-balance-card-btn').textContent = 'Pay with credit/debit card';
+      if ($('yzzr-balance-transfer-btn')) $('yzzr-balance-transfer-btn').textContent = 'Pay by bank transfer';
+      var recoHead = root.querySelector('#yzzr-reco-modal .yzzr-modal-head strong');
+      if (recoHead) recoHead.textContent = 'Recommendations for your sea adventure';
+      var termsHead = root.querySelector('#yzzr-terms-modal .yzzr-modal-head strong');
+      if (termsHead) termsHead.textContent = 'Service terms and conditions';
+      var closeBtns = root.querySelectorAll('.yzzr-close');
+      closeBtns.forEach(function (btn) { btn.textContent = 'Close'; });
+    }
+    applyReservationLocale();
+
+    function $(id) { return document.getElementById(id); }
+    function mountReservationModalToBody(id) {
+      var modal = $(id);
+      if (modal && modal.parentNode !== document.body) {
+        document.body.appendChild(modal);
+      }
+    }
+    mountReservationModalToBody('yzzr-receipt-modal');
+    mountReservationModalToBody('yzzr-balance-modal');
+    mountReservationModalToBody('yzzr-reco-modal');
+    mountReservationModalToBody('yzzr-terms-modal');
+    function nonEmpty(v) { return v !== undefined && v !== null && String(v).trim() !== ''; }
+    function normalizeKey(key) { return String(key || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+    function unique(arr) { return arr.filter(function (v, i) { return arr.indexOf(v) === i; }); }
+    function setText(id, value) { var el = $(id); if (!el) return; el.textContent = nonEmpty(value) ? String(value) : DASH; }
+    function show(id) { var el = $(id); if (el) { el.classList.remove('yzzr-hidden'); } }
+    function hide(id) { var el = $(id); if (el) { el.classList.add('yzzr-hidden'); } }
+
+    function getScopes(raw) {
+      return [raw, raw && typeof raw.payload === 'object' ? raw.payload : null, raw && typeof raw.data === 'object' ? raw.data : null];
+    }
+
+    function pick(raw, keys) {
+      var scopes = getScopes(raw);
+      var normalized = (keys || []).map(normalizeKey);
+      for (var s = 0; s < scopes.length; s++) {
+        var scope = scopes[s];
+        if (!scope) { continue; }
+        for (var i = 0; i < keys.length; i++) {
+          var key = keys[i];
+          if (Object.prototype.hasOwnProperty.call(scope, key) && nonEmpty(scope[key])) return scope[key];
+        }
+      }
+      for (var ss = 0; ss < scopes.length; ss++) {
+        var looseScope = scopes[ss];
+        if (!looseScope) { continue; }
+        for (var k in looseScope) {
+          if (!Object.prototype.hasOwnProperty.call(looseScope, k)) continue;
+          if (!nonEmpty(looseScope[k])) continue;
+          if (normalized.indexOf(normalizeKey(k)) > -1) return looseScope[k];
+        }
+      }
+      return '';
+    }
+
+    function pickByPattern(obj, regex) {
+      if (!obj || typeof obj !== 'object') return '';
+      for (var k in obj) {
+        if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
+        if (!nonEmpty(obj[k])) continue;
+        if (regex.test(String(k))) return obj[k];
+      }
+      return '';
+    }
+
+    function pickAmenitiesSource(raw) {
+      var direct = pick(raw, [
+        'amenities_raw',
+        'amenities_raw_text',
+        'caractersticas_y_amenidades_del_yate',
+        'caracteristicas_y_amenidades_del_yate',
+        'caracteristicas_amenidades_del_yate',
+        'amenidades',
+        'amenity_list',
+        'amenities'
+      ]);
+      if (nonEmpty(direct)) return direct;
+      var fuzzy = pickByPattern(raw, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+      if (nonEmpty(fuzzy)) return fuzzy;
+      if (raw && typeof raw.payload === 'object') {
+        var nested = pickByPattern(raw.payload, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+        if (nonEmpty(nested)) return nested;
+      }
+      if (raw && typeof raw.data === 'object') {
+        var nestedData = pickByPattern(raw.data, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+        if (nonEmpty(nestedData)) return nestedData;
+      }
+      return '';
+    }
+
+    function normalizeAmenityKey(value) {
+      return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[()]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    var AMENITY_EMOJI_MAP = {
+      'agua embotellada': '💧',
+      'aire acondicionado': '❄️',
+      'alfombra / tapete acuatico': '🌊',
+      'cervezas 12': '🍺',
+      'cervezas 24': '🍺',
+      'ceviches o alimentos de bienvenida': '🍤',
+      'chalecos salvavidas': '🛟',
+      'chef a bordo': '👨‍🍳',
+      'cocina funcional': '🍽️',
+      'conexion usb para telefonos': '🔌',
+      'dona inflable': '🛟',
+      'equipo de pesca deportiva': '🎣',
+      'equipo de snorkel': '🤿',
+      'equipo de sonido conexion bluetooth': '🔊',
+      'luces subacuaticas': '💡',
+      'frente acolchonado': '🛥️',
+      'fruta fresca de bienvenida': '🍉',
+      'gastos de peaje / impuestos de muelle': '🧾',
+      'acceso a todas las playas / brazaletes': '🏝️',
+      'campamento para playa': '⛱️',
+      'guacamole de bienvenida': '🥑',
+      'gps': '🧭',
+      'guia de turismo': '🧑‍💼',
+      'hielera': '🧊',
+      'hielo': '🧊',
+      'internet': '📶',
+      'jetski / moto acuatica': '🏍️',
+      'juguetes inflables': '🛟',
+      'kayacs dobles': '🛶',
+      'kayac individual': '🛶',
+      'tabla de paddle board': '🏄',
+      'kit de primeros auxilios': '⛑️',
+      'lancha auxiliar / dingui': '🚤',
+      'margaritas / bebidas durante el viaje': '🍹',
+      'capitan y marinero certificados': '👨‍✈️',
+      'mesa de comedor': '🍽️',
+      'parrilla': '🔥',
+      'refrescos': '🥤',
+      'refrigerador': '🧊',
+      'sala con tv': '📺',
+      'seguro de viaje': '🛡️',
+      'suite nupcial': '💍',
+      'terraza / flybridge': '☀️',
+      'toallas': '🧺',
+      'tripulantes multilingues': '🗣️'
+    };
+
+    function amenityEmoji(item) {
+      var normalized = normalizeAmenityKey(item);
+      if (AMENITY_EMOJI_MAP[normalized]) return AMENITY_EMOJI_MAP[normalized];
+      return '✅';
+    }
+
+    function parseAmenities(raw) {
+      if (!nonEmpty(raw)) return [];
+      if (Array.isArray(raw)) return raw.map(function (x) { return String(x).trim(); }).filter(Boolean);
+      var s = String(raw).trim().replace(/&quot;/g, '"').replace(/&#34;/g, '"').replace(/\\"/g, '"');
+      for (var i = 0; i < 2; i++) {
+        if ((s[0] === '[' && s[s.length - 1] === ']') || (s[0] === '{' && s[s.length - 1] === '}') || (s[0] === '"' && s[s.length - 1] === '"')) {
+          try {
+            var j = JSON.parse(s);
+            if (Array.isArray(j)) return j.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (j && Array.isArray(j.values)) return j.values.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (typeof j === 'string') { s = j.trim(); continue; }
+          } catch (e) { }
+        }
+        break;
+      }
+      if ((s[0] === '"' && s[s.length - 1] === '"') || (s[0] === "'" && s[s.length - 1] === "'")) s = s.slice(1, -1);
+      return s.split(/\n|,|;|\|/).map(function (x) { return String(x).replace(/^\s*[-•]\s*/, '').trim(); }).filter(Boolean);
+    }
+
+    function renderAmenities(raw) {
+      var box = $('yzzr-amenities-list');
+      if (!box) return;
+      var items = parseAmenities(raw);
+      if (!items.length) {
+        box.innerHTML = '<p class="yzzr-note">' + tt('No hay amenidades registradas en esta reservación.', 'No amenities were registered for this reservation.') + '</p>';
+        return;
+      }
+      box.innerHTML = items.map(function (it) {
+        return '<div class="yzzr-amen-item"><span class="yzzr-amen-emo">' + amenityEmoji(it) + '</span><div class="yzzr-amen-txt">' + it + '</div></div>';
+      }).join('');
+    }
+
+    function normalizeUrl(value) {
+      if (!nonEmpty(value)) return '';
+      var txt = String(value).trim();
+      if (/^www\./i.test(txt)) txt = 'https://' + txt;
+      try { return new URL(txt).toString(); } catch (e) { return ''; }
+    }
+
+    function parseMaybeJson(value) {
+      if (!nonEmpty(value) || typeof value !== 'string') return null;
+      var txt = String(value).trim();
+      if (!txt) return null;
+      var first = txt.charAt(0);
+      if (first !== '{' && first !== '[' && first !== '"') return null;
+      try { return JSON.parse(txt); } catch (e) { return null; }
+    }
+
+    function extractFirstUrl(value, depth) {
+      depth = depth || 0;
+      if (depth > 6 || value == null) return '';
+      if (typeof value === 'string') {
+        var txt = value.trim();
+        var direct = normalizeUrl(txt);
+        if (direct) return direct;
+        var parsed = parseMaybeJson(txt);
+        if (parsed != null) return extractFirstUrl(parsed, depth + 1);
+        return '';
+      }
+      if (Array.isArray(value)) {
+        for (var i = 0; i < value.length; i++) {
+          var hit = extractFirstUrl(value[i], depth + 1);
+          if (hit) return hit;
+        }
+        return '';
+      }
+      if (typeof value === 'object') {
+        for (var k in value) {
+          if (!Object.prototype.hasOwnProperty.call(value, k)) continue;
+          if (/(url|link|src|download)/i.test(String(k))) {
+            var hitDirect = extractFirstUrl(value[k], depth + 1);
+            if (hitDirect) return hitDirect;
+          }
+        }
+        for (var k2 in value) {
+          if (!Object.prototype.hasOwnProperty.call(value, k2)) continue;
+          var hitAny = extractFirstUrl(value[k2], depth + 1);
+          if (hitAny) return hitAny;
+        }
+      }
+      return '';
+    }
+
+    function cleanDisplayText(value) {
+      if (!nonEmpty(value)) return '';
+      if (typeof value !== 'string') value = String(value);
+      var txt = value.trim();
+      if (!txt) return '';
+      var parsed = parseMaybeJson(txt);
+      if (parsed != null) {
+        if (Array.isArray(parsed)) {
+          return parsed.length ? cleanDisplayText(parsed[0]) : '';
+        }
+        if (typeof parsed === 'object') {
+          var preferred = ['name', 'label', 'title', 'value', 'text'];
+          for (var i = 0; i < preferred.length; i++) {
+            var key = preferred[i];
+            if (Object.prototype.hasOwnProperty.call(parsed, key)) {
+              var got = cleanDisplayText(parsed[key]);
+              if (got) return got;
+            }
+          }
+        }
+        return '';
+      }
+      if (/^https?:\/\//i.test(txt)) return '';
+      if (txt.length > 180 && /(documentid|mimetype|encoding|uuid|fieldname|meta)/i.test(txt)) return '';
+      return txt;
+    }
+
+    function parseAmount(value) {
+      if (typeof value === 'number') return isFinite(value) ? value : NaN;
+      if (!nonEmpty(value)) return NaN;
+      var cleaned = String(value).replace(/[^0-9,.\-]/g, '').replace(/\s+/g, '');
+      if (cleaned === '' || cleaned === '-' || cleaned === '.' || cleaned === ',') return NaN;
+      var hasDot = cleaned.indexOf('.') > -1;
+      var hasComma = cleaned.indexOf(',') > -1;
+      if (hasDot && hasComma) {
+        if (cleaned.lastIndexOf(',') > cleaned.lastIndexOf('.')) cleaned = cleaned.replace(/\./g, '').replace(',', '.');
+        else cleaned = cleaned.replace(/,/g, '');
+      } else if (hasComma) {
+        if (/,\d{1,2}$/.test(cleaned)) cleaned = cleaned.replace(',', '.');
+        else cleaned = cleaned.replace(/,/g, '');
+      }
+      var n = Number(cleaned);
+      return isFinite(n) ? n : NaN;
+    }
+
+    function mxn(value) {
+      return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(value);
+    }
+
+    function setLoadStatus(text, cls) {
+      var el = $('yzzr-load-status');
+      if (!el) return;
+      el.textContent = text;
+      el.className = 'yzzr-status' + (cls ? (' ' + cls) : '');
+    }
+
+    function normalizeStatus(rawStatus) {
+      if (!nonEmpty(rawStatus)) return { label: tt('Pendiente de confirmación', 'Pending confirmation'), className: 'is-pending' };
+      var label = String(rawStatus).trim();
+      var norm = label.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (norm === 'open' || norm === 'won' || norm === 'lost' || norm === 'abandoned') {
+        return { label: tt('Pendiente de confirmación', 'Pending confirmation'), className: 'is-pending' };
+      }
+      if (norm.indexOf('cancel') > -1 || norm.indexOf('rechaz') > -1) return { label: label, className: 'is-cancelled' };
+      if (norm.indexOf('confirm') > -1 || norm.indexOf('reservad') > -1 || norm.indexOf('pagad') > -1) return { label: label, className: 'is-confirmed' };
+      if (norm.indexOf('pend') > -1 || norm.indexOf('proceso') > -1 || norm.indexOf('vigente') > -1) return { label: label, className: 'is-pending' };
+      return { label: label, className: 'is-other' };
+    }
+
+    function looksLikePaymentMethod(value) {
+      if (!nonEmpty(value)) return false;
+      var text = String(value).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return /(transfer|tarjet|card|credito|debito|efectivo|cash|spei|pago)/.test(text);
+    }
+
+    function looksLikeReservationId(value) {
+      if (!nonEmpty(value)) return false;
+      var text = String(value).trim();
+      if (/^(rsv|res|bk|booking)[-_ ]?\d+/i.test(text)) return true;
+      if (/^[A-Za-z]{2,}[-_ ]?\d{2,}$/i.test(text)) return true;
+      if (/^\d{4,}$/.test(text)) return true;
+      return false;
+    }
+
+    function paintReservationStatus(value) {
+      var st = normalizeStatus(value);
+      var pill = $('yzzr-res-status');
+      if (!pill) return;
+      pill.textContent = st.label;
+      pill.className = 'yzzr-pill ' + st.className;
+    }
+
+    function parseDateTime(dateStr, timeStr) {
+      if (!nonEmpty(dateStr)) return null;
+      var d = String(dateStr).trim();
+      var t = nonEmpty(timeStr) ? String(timeStr).trim() : '00:00';
+      if (d.indexOf('T') > -1) {
+        var asIso = new Date(d);
+        if (!isNaN(asIso.getTime())) return asIso;
+      }
+      var iso = d.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+      var lat = d.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
+      var tm = t.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i);
+      var hh = tm ? Number(tm[1]) : 0;
+      var mm = tm ? Number(tm[2] || 0) : 0;
+      var ap = tm && tm[3] ? tm[3].toLowerCase() : '';
+      if (ap === 'pm' && hh < 12) hh += 12;
+      if (ap === 'am' && hh === 12) hh = 0;
+      if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]), hh, mm, 0);
+      if (lat) {
+        var year = lat[3].length === 2 ? Number('20' + lat[3]) : Number(lat[3]);
+        return new Date(year, Number(lat[2]) - 1, Number(lat[1]), hh, mm, 0);
+      }
+      return null;
+    }
+
+    function setCountdownNumbers(d, h, m, s) {
+      $('yzzr-d').textContent = String(d).padStart(2, '0');
+      $('yzzr-h').textContent = String(h).padStart(2, '0');
+      $('yzzr-m').textContent = String(m).padStart(2, '0');
+      $('yzzr-s').textContent = String(s).padStart(2, '0');
+    }
+
+    function stopCountdown() {
+      if (state.countdownId) {
+        clearInterval(state.countdownId);
+        state.countdownId = null;
+      }
+    }
+
+    function startCountdown(target) {
+      stopCountdown();
+      var note = $('yzzr-count-note');
+      var tick = function () {
+        var diff = target.getTime() - Date.now();
+        if (diff <= 0) {
+          setCountdownNumbers(0, 0, 0, 0);
+          if (note) note.textContent = tt('Tu salida es hoy o ya comenzó.', 'Your departure is today or has already started.');
+          setLoadStatus(tt('Reserva lista', 'Reservation ready'), 'is-ok');
+          return;
+        }
+        var days = Math.floor(diff / 86400000); diff -= days * 86400000;
+        var hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
+        var mins = Math.floor(diff / 60000); diff -= mins * 60000;
+        var secs = Math.floor(diff / 1000);
+        setCountdownNumbers(days, hours, mins, secs);
+        if (note) note.textContent = IS_EN
+          ? ('Your trip is in ' + days + ' day(s).')
+          : ('Faltan ' + days + ' día(s) para tu viaje.');
+      };
+      tick();
+      state.countdownId = setInterval(tick, 1000);
+    }
+
+    function langPrefix() {
+      var p = (location.pathname || '').toLowerCase();
+      if (/^\/es(\/|$)/.test(p)) return '/es';
+      if (/^\/en(\/|$)/.test(p)) return '/en';
+      return '';
+    }
+
+    // La página «Mi Reserva» consume el endpoint /received (recibo de depósito),
+    // NO el endpoint /quote (cotizaciones).
+    var apiCandidates = unique([
+      location.origin + langPrefix() + '/wp-json/yzz/v1/contact-live',
+      location.origin + '/wp-json/yzz/v1/contact-live',
+      location.origin + '/es/wp-json/yzz/v1/contact-live',
+      location.origin + '/en/wp-json/yzz/v1/contact-live'
+    ]);
+
+    async function fetchOne(url) {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, 9000);
+      try {
+        var response = await fetch(url, { method: 'GET', cache: 'no-store', credentials: 'omit', signal: ctrl.signal });
+        var body = await response.json().catch(function () { return {}; });
+        if (response.ok && body && !body.error) return { ok: true, data: body };
+        return { ok: false, error: (body && body.error) ? String(body.error) : ('http_' + response.status) };
+      } catch (e) {
+        return { ok: false, error: 'network' };
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function fetchReservation() {
+      var notFound = false;
+      var lastError = 'network';
+      for (var i = 0; i < apiCandidates.length; i++) {
+        var qs = 'qt=' + encodeURIComponent(state.qt) + '&_ts=' + Date.now();
+        if (debugMode) { qs += '&debug=1'; }
+        var result = await fetchOne(apiCandidates[i] + '?' + qs);
+        if (result.ok) {
+          if (debugMode && result.data && result.data._meta && result.data._meta.ghl_debug) {
+            try { console.log('YZZ GHL DEBUG', result.data._meta.ghl_debug); } catch (e) { }
+          }
+          return result.data;
+        }
+        lastError = result.error || lastError;
+        if (result.error === 'not_found') notFound = true;
+        if (result.error === 'missing_qt') throw new Error('missing_qt');
+      }
+      if (notFound) throw new Error('not_found');
+      throw new Error(lastError || 'network');
+    }
+
+    function setWa(message) {
+      var btn = $('yzzr-wa-btn');
+      if (!btn) return;
+      btn.href = 'https://api.whatsapp.com/send?phone=' + WA_NUMBER + '&text=' + encodeURIComponent(message || tt('Hola, necesito ayuda con mi reserva.', 'Hi, I need help with my reservation.'));
+    }
+
+    function syncReservationBodyModalState() {
+      var anyOpen = document.querySelector('.yzzr-modal.open');
+      document.body.style.overflow = anyOpen ? 'hidden' : '';
+    }
+
+    function openModal(id) {
+      mountReservationModalToBody(id);
+      var modal = $(id);
+      if (!modal) return;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      syncReservationBodyModalState();
+    }
+
+    function closeModal(id) {
+      var modal = $(id);
+      if (!modal) return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      syncReservationBodyModalState();
+    }
+
+    function ensureEmbedScript() {
+      if (document.getElementById('yzz-ghl-survey-script')) return;
+      var script = document.createElement('script');
+      script.id = 'yzz-ghl-survey-script';
+      script.src = 'https://link.yatezzitos.com/js/form_embed.js';
+      document.body.appendChild(script);
+    }
+
+    function firstName(full) {
+      if (!nonEmpty(full)) return '';
+      return String(full).trim().split(/\s+/)[0] || '';
+    }
+
+    function assignAliasesToUrl(url, value, aliases) {
+      if (!nonEmpty(value)) return;
+      for (var i = 0; i < aliases.length; i++) {
+        url.searchParams.set(aliases[i], String(value));
+      }
+    }
+
+    function buildReceiptUrl() {
+      var d = state.data || {};
+      var url = new URL(RECEIPT_BASE);
+      var fullName = nonEmpty(d.name) ? String(d.name).trim() : [d.first_name, d.last_name].filter(nonEmpty).join(' ');
+      var first = nonEmpty(d.first_name) ? String(d.first_name).trim() : firstName(fullName);
+      var last = nonEmpty(d.last_name) ? String(d.last_name).trim() : (nonEmpty(fullName) ? String(fullName).split(/\s+/).slice(1).join(' ') : '');
+      var email = nonEmpty(d.email) ? String(d.email).trim() : '';
+      var phone = nonEmpty(d.phone) ? String(d.phone).trim() : '';
+
+      if (nonEmpty(state.qt)) {
+        url.searchParams.set('qt', state.qt);
+        url.searchParams.set('token', state.qt);
+        url.searchParams.set('quote_token', state.qt);
+      }
+      if (nonEmpty(d.reservation_id)) {
+        url.searchParams.set('reservation_id', d.reservation_id);
+        url.searchParams.set('reservacion_id', d.reservation_id);
+      }
+
+      assignAliasesToUrl(url, fullName, ['name', 'nombre', 'full_name', 'fullName']);
+      assignAliasesToUrl(url, first, ['first_name', 'firstname', 'firstName', 'contact.first_name', 'contact[first_name]']);
+      assignAliasesToUrl(url, last, ['last_name', 'lastname', 'lastName', 'contact.last_name', 'contact[last_name]']);
+      assignAliasesToUrl(url, email, ['email', 'correo', 'contact_email', 'contact.email', 'contact[email]']);
+      assignAliasesToUrl(url, phone, ['phone', 'telefono', 'contact_phone', 'mobile']);
+      assignAliasesToUrl(url, d.contact_id, ['contact_id', 'contactId', 'cid']);
+      return url.toString();
+    }
+
+    function buildBalanceTransferUrl() {
+      var url = new URL(TRANSFER_URL);
+      url.searchParams.set('qt', state.qt);
+      if (isFinite(state.balanceAmount)) {
+        url.searchParams.set('a', String(Math.round(state.balanceAmount)));
+        url.searchParams.set('amount', String(Math.round(state.balanceAmount)));
+      }
+      if (state.data && nonEmpty(state.data.reservation_id)) {
+        url.searchParams.set('reservation_id', state.data.reservation_id);
+      }
+      url.searchParams.set('payment_type', 'balance');
+      return url.toString();
+    }
+
+    function buildBalanceSurveyUrl() {
+      var d = state.data || {};
+      var url = new URL(SURVEY_BASE);
+      var fullName = nonEmpty(d.name) ? String(d.name).trim() : [d.first_name, d.last_name].filter(nonEmpty).join(' ');
+      var first = nonEmpty(d.first_name) ? String(d.first_name).trim() : firstName(fullName);
+      var last = nonEmpty(d.last_name) ? String(d.last_name).trim() : (nonEmpty(fullName) ? String(fullName).split(/\s+/).slice(1).join(' ') : '');
+      var email = nonEmpty(d.email) ? String(d.email).trim() : '';
+      var phone = nonEmpty(d.phone) ? String(d.phone).trim() : '';
+      var amount = isFinite(state.balanceAmount) ? String(Math.round(state.balanceAmount)) : '';
+
+      url.searchParams.set('qt', state.qt);
+      url.searchParams.set('payment_context', 'balance');
+      if (nonEmpty(d.contact_id)) url.searchParams.set('contact_id', d.contact_id);
+      if (nonEmpty(d.reservation_id)) {
+        url.searchParams.set('reservation_id', d.reservation_id);
+        url.searchParams.set('reservacion_id', d.reservation_id);
+      }
+
+      assignAliasesToUrl(url, fullName, ['name', 'nombre', 'full_name']);
+      assignAliasesToUrl(url, first, ['first_name', 'contact.first_name', 'contact[first_name]']);
+      assignAliasesToUrl(url, last, ['last_name', 'contact.last_name', 'contact[last_name]']);
+      assignAliasesToUrl(url, email, ['email', 'correo', 'contact_email', 'contact.email', 'contact[email]']);
+      assignAliasesToUrl(url, phone, ['phone', 'telefono', 'contact_phone']);
+      assignAliasesToUrl(url, amount, ['amount', 'balance_due', 'remaining_balance', 'payment_amount']);
+      return url.toString();
+    }
+
+    function openReceiptModal() {
+      var url = buildReceiptUrl();
+      $('yzzr-receipt-frame').src = url;
+      $('yzzr-receipt-fallback').href = url;
+      openModal('yzzr-receipt-modal');
+    }
+
+    function resetBalanceModal() {
+      var choices = $('yzzr-balance-choices');
+      var wrap = $('yzzr-balance-survey-wrap');
+      if (choices) choices.style.display = 'grid';
+      if (wrap) wrap.classList.remove('active');
+      if ($('yzzr-balance-survey-frame')) $('yzzr-balance-survey-frame').src = '';
+    }
+
+    function openBalanceModal() {
+      resetBalanceModal();
+      $('yzzr-balance-amount').textContent = isFinite(state.balanceAmount)
+        ? (tt('Saldo pendiente: ', 'Remaining balance: ') + mxn(state.balanceAmount))
+        : tt('Selecciona el método para pagar el balance pendiente.', 'Select a payment method for your pending balance.');
+      openModal('yzzr-balance-modal');
+    }
+
+    function openBalanceCardSurvey() {
+      ensureEmbedScript();
+      var choices = $('yzzr-balance-choices');
+      var wrap = $('yzzr-balance-survey-wrap');
+      var frame = $('yzzr-balance-survey-frame');
+      if (choices) choices.style.display = 'none';
+      if (wrap) wrap.classList.add('active');
+      if (frame) frame.src = buildBalanceSurveyUrl();
+    }
+
+    function showError(title, message, waMessage) {
+      hide('yzzr-content');
+      hide('yzzr-img-wrap');
+      show('yzzr-error');
+      setText('yzzr-error-title', title);
+      setText('yzzr-error-msg', message);
+      setLoadStatus(tt('Reserva no disponible', 'Reservation unavailable'), 'is-error');
+      paintReservationStatus(tt('Pendiente de confirmación', 'Pending confirmation'));
+      setWa(waMessage || (IS_EN ? ('Hi, I need help with my reservation. Token: ' + (state.qt || 'no_token')) : ('Hola, necesito ayuda con mi reserva. Token: ' + (state.qt || 'sin_token'))));
+    }
+
+    function render(raw) {
+      hide('yzzr-error');
+      show('yzzr-content');
+
+      var data = {
+        name: pick(raw, ['name', 'full_name', 'contact_name']),
+        first_name: pick(raw, ['first_name', 'firstName', 'firstname', 'nombre', 'contact_first_name', 'contactfirstname', 'contactfirst_name']),
+        last_name: pick(raw, ['last_name', 'lastName', 'lastname', 'apellido', 'apellidos', 'contact_last_name', 'contactlastname', 'contactlast_name']),
+        email: pick(raw, ['email', 'correo', 'contact_email', 'contactemail']),
+        phone: pick(raw, ['phone', 'telefono', 'contact_phone', 'mobile', 'whatsapp', 'contactphone']),
+        contact_id: pick(raw, ['contact_id', 'contactid', 'cid', 'id']),
+        yacht: cleanDisplayText(pick(raw, ['y', 'yacht_name', 'yacht', 'embarcacion', 'embarcacion_nombre', 'boat_name'])),
+        destination: pick(raw, ['d', 'destinos', 'destino']),
+        exp: pick(raw, ['exp', 'experiencia', 'experiencia_reservada', 'tipo_de_experiencia_reservada', 'tipo_experiencia']),
+        date: pick(raw, ['f', 'fecha_de_viaje', 'travel_date']),
+        hs: pick(raw, ['hs', 'departure_time', 'hora_de_salida']),
+        hr: pick(raw, ['hr', 'return_time', 'hora_de_regreso']),
+        pax: pick(raw, ['pax', 'number_of_passengers', 'passengers']),
+        marina: pick(raw, ['mar', 'marina_name', 'nombre_de_la_marina']),
+        meeting_point: pick(raw, ['meeting_point', 'ubicacion_de_abordaje', 'maps', 'google_maps_link']),
+        status: pick(raw, ['reservation_status', 'status', 'estado_de_la_reserva', 'estadodelareserva', 'status_booking', 'booking_status', 'status_reserva', 'status_cotizacion']),
+        deposit_paid: pick(raw, ['deposit_paid', 'deposit_amount', 'deposito_entregado', 'anticipo_pagado', 'anticipo', 'deposito_pagado', 'abono', 'a', 'contact_deposit_amount', 'contactdepositamount']),
+        remaining_balance: pick(raw, ['remaining_balance', 'balance_due', 'saldo_pendiente', 'saldo', 'restante', 'saldo_restante', 'adeudo', 'adeudo_pendiente', 'amount_due', 'contact_balance_due', 'contactbalancedue']),
+        payment_method: pick(raw, ['payment_method', 'metodo_de_pago', 'metododepago', 'metodo_pago', 'metodopago', 'forma_de_pago', 'forma_pago']),
+        reservation_id: pick(raw, ['reservation_id', 'reservacion_id', 'reserva_id', 'id_reserva', 'booking_id', 'id_booking', 'idbooking', 'id_booking_reserva']),
+        total: pick(raw, ['total', 'total_cost', 'costo_total', 'precio_total', 'monto_total']),
+        img: pick(raw, ['img', 'image', 'imagen_principal_del_yate_upload']),
+        amenities_raw: pickAmenitiesSource(raw)
+      };
+
+      if (!nonEmpty(data.yacht)) {
+        data.yacht = cleanDisplayText(pickByPattern(raw, /(yacht.*name|nombre.*yate|embarcacion|boat.*name)/i));
+      }
+
+      if (nonEmpty(data.reservation_id) && !nonEmpty(data.payment_method) && looksLikePaymentMethod(data.reservation_id)) {
+        data.payment_method = data.reservation_id;
+        data.reservation_id = '';
+      }
+      if (nonEmpty(data.payment_method) && !nonEmpty(data.reservation_id) && looksLikeReservationId(data.payment_method) && !looksLikePaymentMethod(data.payment_method)) {
+        data.reservation_id = data.payment_method;
+        data.payment_method = '';
+      }
+      if (nonEmpty(data.payment_method) && nonEmpty(data.reservation_id)) {
+        var payLooksMethod = looksLikePaymentMethod(data.payment_method);
+        var payLooksId = looksLikeReservationId(data.payment_method);
+        var resLooksMethod = looksLikePaymentMethod(data.reservation_id);
+        var resLooksId = looksLikeReservationId(data.reservation_id);
+        if (!payLooksMethod && payLooksId && resLooksMethod && !resLooksId) {
+          var tmpValue = data.payment_method;
+          data.payment_method = data.reservation_id;
+          data.reservation_id = tmpValue;
+        }
+      }
+
+      var dep = parseAmount(data.deposit_paid);
+      var bal = parseAmount(data.remaining_balance);
+      var total = parseAmount(data.total);
+      if (!isFinite(dep) && isFinite(total) && isFinite(bal)) dep = total - bal;
+      if (!isFinite(bal) && isFinite(total) && isFinite(dep)) bal = total - dep;
+      if (isFinite(dep) && isFinite(bal)) {
+        var expectedTotal = dep + bal;
+        if (!isFinite(total) || Math.abs(total - expectedTotal) > 1) {
+          total = expectedTotal;
+        }
+      }
+
+      if (isFinite(dep)) data.deposit_paid = String(Math.round(dep));
+      if (isFinite(bal)) data.remaining_balance = String(Math.round(bal));
+      if (isFinite(total)) data.total = String(Math.round(total));
+      state.balanceAmount = isFinite(bal) ? Math.max(0, bal) : NaN;
+      state.data = data;
+
+      $('yzzr-hello').textContent = nonEmpty(data.name)
+        ? (IS_EN ? ('Hi ' + data.name + ', your reservation is ready.') : ('Hola ' + data.name + ', tu reserva está lista.'))
+        : tt('Aquí está la información de tu reserva.', 'Here is your reservation information.');
+      setText('yzzr-name', data.name);
+      setText('yzzr-yacht', data.yacht);
+      setText('yzzr-exp', data.exp);
+      setText('yzzr-dest', data.destination);
+      setText('yzzr-date', data.date);
+      setText('yzzr-time', [data.hs, data.hr].filter(nonEmpty).join(' - '));
+      setText('yzzr-pax', data.pax);
+      setText('yzzr-marina', data.marina);
+      setText('yzzr-res-id', data.reservation_id);
+      setText('yzzr-payment', data.payment_method);
+      setText('yzzr-deposit', isFinite(dep) ? mxn(dep) : data.deposit_paid);
+      setText('yzzr-balance', isFinite(bal) ? mxn(bal) : data.remaining_balance);
+      setText('yzzr-total', isFinite(total) ? mxn(total) : data.total);
+      paintReservationStatus(data.status);
+      setLoadStatus(tt('Reserva cargada', 'Reservation loaded'), 'is-ok');
+      renderAmenities(data.amenities_raw);
+
+      var mapUrl = normalizeUrl(data.meeting_point);
+      if (mapUrl) {
+        $('yzzr-meeting-link').href = mapUrl;
+        $('yzzr-meeting-link').classList.remove('yzzr-disabled');
+        $('yzzr-meeting-link').textContent = tt('Ver ubicación', 'View location');
+        $('yzzr-map-btn').href = mapUrl;
+        show('yzzr-map-btn');
+      } else {
+        $('yzzr-meeting-link').removeAttribute('href');
+        $('yzzr-meeting-link').classList.add('yzzr-disabled');
+        $('yzzr-meeting-link').textContent = DASH;
+        hide('yzzr-map-btn');
+      }
+
+      var normalizedImg = extractFirstUrl(data.img);
+      if (!normalizedImg) {
+        normalizedImg = extractFirstUrl(pick(raw, ['img', 'image', 'imagen_principal_del_yate_upload']));
+      }
+      if (nonEmpty(normalizedImg)) {
+        $('yzzr-img').src = normalizedImg;
+        show('yzzr-img-wrap');
+      } else {
+        hide('yzzr-img-wrap');
+      }
+
+      if (isFinite(state.balanceAmount) && state.balanceAmount > 0) {
+        show('yzzr-balance-btn');
+        $('yzzr-balance-btn').textContent = (IS_EN ? '💳 Pay balance ' : '💳 Pagar balance ') + mxn(state.balanceAmount);
+      } else {
+        hide('yzzr-balance-btn');
+      }
+
+      var dt = parseDateTime(data.date, data.hs);
+      if (dt && !isNaN(dt.getTime())) startCountdown(dt);
+      else {
+        stopCountdown();
+        setCountdownNumbers(0, 0, 0, 0);
+        $('yzzr-count-note').textContent = tt('No se pudo calcular el contador por formato de fecha/hora.', 'Could not calculate countdown due to date/time format.');
+        setLoadStatus(tt('Reserva cargada con advertencias', 'Reservation loaded with warnings'), 'is-warn');
+      }
+
+      var waMsg = (IS_EN ? 'Hi, I need help with my reservation.' : 'Hola, necesito ayuda con mi reserva.') +
+        (IS_EN ? '\nToken: ' : '\nToken: ') + state.qt +
+        (nonEmpty(data.reservation_id) ? (IS_EN ? ('\nReservation: ' + data.reservation_id) : ('\nReserva: ' + data.reservation_id)) : '') +
+        (nonEmpty(data.status) ? (IS_EN ? ('\nStatus: ' + data.status) : ('\nEstado: ' + data.status)) : '') +
+        (nonEmpty(data.date) ? (IS_EN ? ('\nDate: ' + data.date + (nonEmpty(data.hs) ? (' ' + data.hs) : '')) : ('\nFecha: ' + data.date + (nonEmpty(data.hs) ? (' ' + data.hs) : ''))) : '');
+      setWa(waMsg);
+    }
+
+    document.addEventListener('click', function (e) {
+      var closeTarget = e.target && e.target.getAttribute ? e.target.getAttribute('data-yzzr-close') : null;
+      if (closeTarget) {
+        if (closeTarget === 'yzzr-balance-modal') resetBalanceModal();
+        closeModal(closeTarget);
+        return;
+      }
+      if (e.target.closest('#yzzr-receipt-btn')) { e.preventDefault(); openReceiptModal(); return; }
+      if (e.target.closest('#yzzr-balance-btn')) { e.preventDefault(); openBalanceModal(); return; }
+      if (e.target.closest('#yzzr-balance-card-btn')) { e.preventDefault(); openBalanceCardSurvey(); return; }
+      if (e.target.closest('#yzzr-balance-transfer-btn')) { e.preventDefault(); window.location.href = buildBalanceTransferUrl(); return; }
+      if (e.target.closest('#yzzr-reco-btn')) { e.preventDefault(); openModal('yzzr-reco-modal'); return; }
+      if (e.target.closest('#yzzr-terms-btn')) { e.preventDefault(); openModal('yzzr-terms-modal'); return; }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeModal('yzzr-receipt-modal');
+        closeModal('yzzr-balance-modal');
+        closeModal('yzzr-reco-modal');
+        closeModal('yzzr-terms-modal');
+        resetBalanceModal();
+      }
+    });
+
+    if (!nonEmpty(state.qt)) {
+      showError(
+        tt('Token inválido o ausente', 'Invalid or missing token'),
+        tt('Este enlace no contiene el token de reserva (qt). Solicita un enlace nuevo a tu asesor.', 'This link does not contain the reservation token (qt). Ask your advisor for a new link.'),
+        tt('Hola, mi enlace de reserva no trae token (qt). ¿Me apoyas con uno nuevo?', 'Hi, my reservation link does not include a token (qt). Can you send me a new one?')
+      );
+      return;
+    }
+
+    setWa((IS_EN ? 'Hi, I need help with my reservation. Token: ' : 'Hola, necesito ayuda con mi reserva. Token: ') + state.qt);
+    setLoadStatus(tt('Consultando reserva...', 'Checking reservation...'), '');
+    fetchReservation().then(function (raw) {
+      render(raw);
+    }).catch(function (err) {
+      var reason = err && err.message ? String(err.message) : 'network';
+      if (reason === 'not_found') {
+        showError(
+          tt('Reserva no encontrada', 'Reservation not found'),
+          tt('No encontramos una reserva asociada a este enlace. Solicita un enlace actualizado a tu asesor.', 'No reservation was found for this link. Ask your advisor for an updated link.'),
+          (IS_EN ? 'Hi, I could not open my reservation. Token: ' : 'Hola, no pude abrir mi reserva. Token: ') + state.qt
+        );
+        return;
+      }
+      if (reason === 'missing_qt') {
+        showError(
+          tt('Token inválido', 'Invalid token'),
+          tt('El endpoint respondió que falta el token. Verifica que el enlace tenga ?qt=...', 'The endpoint indicates the token is missing. Verify the link includes ?qt=...'),
+          (IS_EN ? 'Hi, my reservation link seems invalid. Token: ' : 'Hola, mi enlace de reserva parece inválido. Token: ') + state.qt
+        );
+        return;
+      }
+      showError(
+        tt('No pudimos cargar tu reserva', 'We could not load your reservation'),
+        tt('Tuvimos un problema de conexión o de lectura. Intenta de nuevo en unos minutos.', 'We had a connection or data-read issue. Please try again in a few minutes.'),
+        (IS_EN ? 'Hi, I could not load my reservation due to a connection error. Token: ' : 'Hola, no pude cargar mi reserva por error de conexión. Token: ') + state.qt
+      );
+    });
+  })();
+</script>

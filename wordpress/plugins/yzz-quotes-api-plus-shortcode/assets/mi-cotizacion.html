@@ -1,0 +1,1327 @@
+<div id="yzzq-root"></div>
+<div id="yzz-cargos-modal" class="yzz-ca-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="yzz-ca-box">
+    <div class="yzz-ca-head">
+      <strong>💰 Cargos adicionales</strong>
+      <button type="button" class="yzz-ca-close" data-yzz-ca-close>&times;</button>
+    </div>
+
+    <!-- Tabs horizontales de destinos -->
+    <div class="yzz-ca-tabs-wrap">
+      <div class="yzz-ca-tabs" id="yzz-ca-tabs">
+        <!-- llenos dinámicamente por JS -->
+      </div>
+    </div>
+
+    <!-- Notas generales (siempre visibles) -->
+    <div class="yzz-ca-info-grid">
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">💵</div>
+        <div>
+          <div class="yzz-ca-info-title">Propina para tripulantes</div>
+          <div class="yzz-ca-info-desc">La propina <strong>no está incluida</strong> en ningún viaje. Se recomienda entre un <strong>5% y 10%</strong> del costo del yate como reconocimiento a nuestros capitanes y marineros que dan su máximo por tu experiencia.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">🅿️</div>
+        <div>
+          <div class="yzz-ca-info-title">Estacionamiento en marina</div>
+          <div class="yzz-ca-info-desc">La tarifa de estacionamiento <strong>no está incluida</strong> y varía según cada marina. Consulta costos directamente en la marina o con tu asesor.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">🏝️</div>
+        <div>
+          <div class="yzz-ca-info-title">Acceso a playas protegidas</div>
+          <div class="yzz-ca-info-desc">Algunas playas como <strong>Balandra</strong> y <strong>Espíritu Santo</strong> cobran una tarifa de acceso gestionada por autoridades ambientales, ajena a Yatezzitos.</div>
+        </div>
+      </div>
+      <div class="yzz-ca-info-card">
+        <div class="yzz-ca-info-icon">⚓</div>
+        <div>
+          <div class="yzz-ca-info-title">Impuesto de muelle</div>
+          <div class="yzz-ca-info-desc">El impuesto de muelle es <strong>establecido por cada marina</strong> y es ajeno a Yatezzitos. Se paga <strong>únicamente en efectivo (pesos mexicanos)</strong> directamente en la marina antes de que el viaje inicie.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de cargos por destino -->
+    <div id="yzz-ca-content" class="yzz-ca-content"></div>
+  </div>
+</div>
+
+<style>
+  .yzz-ca-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:14px}
+  .yzz-ca-box{background:#fff;border-radius:18px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .yzz-ca-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #e5e7eb;position:sticky;top:0;background:#fff;z-index:2;border-radius:18px 18px 0 0}
+  .yzz-ca-head strong{font-size:18px;color:#111827}
+  .yzz-ca-close{background:none;border:none;font-size:24px;cursor:pointer;color:#6b7280;line-height:1}
+  .yzz-ca-close:hover{color:#111}
+  .yzz-ca-tabs-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:12px 20px 0;scrollbar-width:none}
+  .yzz-ca-tabs-wrap::-webkit-scrollbar{display:none}
+  .yzz-ca-tabs{display:flex;gap:8px;flex-wrap:nowrap}
+  .yzz-ca-tab{flex-shrink:0;padding:8px 16px;border-radius:999px;border:2px solid #e5e7eb;background:#fafafa;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;color:#374151;transition:all .15s}
+  .yzz-ca-tab:hover{border-color:#93c5fd;background:#eff6ff}
+  .yzz-ca-tab.is-active{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
+  .yzz-ca-info-grid{display:grid;grid-template-columns:1fr;gap:8px;padding:14px 20px 0}
+  @media(min-width:500px){.yzz-ca-info-grid{grid-template-columns:1fr 1fr}}
+  .yzz-ca-info-card{display:flex;gap:10px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb}
+  .yzz-ca-info-icon{font-size:22px;flex-shrink:0;line-height:1.3}
+  .yzz-ca-info-title{font-weight:800;font-size:13px;margin-bottom:2px;color:#111827}
+  .yzz-ca-info-desc{font-size:12px;line-height:1.45;color:#4b5563}
+  .yzz-ca-content{padding:14px 20px 20px}
+  .yzz-ca-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+  .yzz-ca-table th{text-align:left;padding:10px 8px;background:#f1f5f9;color:#334155;font-weight:700;border-bottom:2px solid #e2e8f0}
+  .yzz-ca-table td{padding:10px 8px;border-bottom:1px solid #e5e7eb;color:#1f2937}
+  .yzz-ca-table tr:last-child td{border-bottom:0}
+  .yzz-ca-table tr:hover td{background:#f8fafc}
+  .yzz-ca-section-title{font-size:14px;font-weight:800;margin:14px 0 6px;color:#0f172a}
+  .yzz-ca-note{font-size:12px;color:#6b7280;margin:6px 0 0;line-height:1.45}
+</style>
+
+<script>
+(function(){
+  /* ── Datos reales de marinas por destino ── */
+  var CARGOS = [
+    {
+      dest: 'Cancún',
+      marinas: [
+        { name: 'Marina V&V',              muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Muelle Flamingos',         muelle: '$200 MXN p/p', vehiculo: '$200 MXN' },
+        { name: 'Residencial Nautilus',     muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Aquatours',                muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Puerto Cancún Muelle 7',   muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Puesta del Sol',           muelle: '$150 MXN p/p', vehiculo: '—' },
+        { name: 'Hacienda del Mar',         muelle: '$250 MXN p/p', vehiculo: '—' },
+        { name: 'Marina Kaybal',            muelle: '$200 MXN p/p', vehiculo: '$200 MXN' },
+        { name: 'Golf Puerto Cancún',       muelle: '$200 MXN p/p', vehiculo: '$200 MXN' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Acapulco',
+      marinas: [
+        { name: 'Marina Acapulco',           muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Santa Lucía',        muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Club de Yates de Acapulco', muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Malecón de Acapulco',       muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Terminal Marítima',          muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Huatulco',
+      marinas: [
+        { name: 'Holiday Inn',               muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Turística Chahué',   muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: [
+        { name: 'Parque Nacional Bahías de Huatulco', costo: '$60 MXN p/p', nota: 'Cobro obligatorio por acceso al área natural protegida' }
+      ]
+    },
+    {
+      dest: 'Ixtapa',
+      marinas: [
+        { name: 'Porto Ixtapa',            muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Muelle de Zihuatanejo',   muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Ixtapa',           muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'La Paz',
+      marinas: [
+        { name: 'Marina El Palmar',  muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Palmira',    muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina La Paz',     muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Don José',   muelle: 'Sin impuesto', vehiculo: '—' },
+        { name: 'Marina Abaroa',     muelle: 'Sin impuesto', vehiculo: '—' }
+      ],
+      playas: [
+        { name: 'Playa Balandra',       costo: '$68 MXN p/p',    nota: 'Cobro obligatorio de acceso' },
+        { name: 'Isla Espíritu Santo',  costo: '$108 MXN p/p',   nota: 'Cobro obligatorio de acceso' },
+        { name: 'Nado con lobos marinos', costo: '$1,500 MXN',   nota: 'Guía obligatorio para el nado (costo por guía, no por persona)' }
+      ]
+    },
+    {
+      dest: 'Los Cabos',
+      marinas: [
+        { name: 'Marina Cabo Muelle 2',  muelle: '$20 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle F',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Terminal de Cabo',       muelle: '$100 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle B',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle J',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle M',  muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle C',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle E',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo',           muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle H',  muelle: '$100 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cabo Muelle L',  muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Cabo Muelle D',  muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Mazatlán',
+      marinas: [
+        { name: 'Marina Fonatur (Operadora Portuaria)',            muelle: '$20 MXN p/p',   vehiculo: '$50 MXN' },
+        { name: 'Marina Mazatlán Muelle 8',                        muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Restaurante Ana Mar',                             muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 10',                       muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Isla Mazatlán Muelle A / La Tostadería del Mar',  muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 7 (Gus Gus)',              muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 3',                        muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Naviera Tres Marías',                             muelle: 'Sin impuesto',  vehiculo: '—' },
+        { name: 'Marina Mazatlán Muelle 7',                        muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: []
+    },
+    {
+      dest: 'Nuevo Vallarta',
+      marinas: [
+        { name: 'Marina Nuevo Vallarta',        muelle: 'Sin impuesto',   vehiculo: '—' },
+        { name: 'Marina Cruz de Huanacaxtle',   muelle: '$400 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Paradise Village',      muelle: 'Sin impuesto',   vehiculo: '—' }
+      ],
+      playas: [],
+      notas: ['⚠️ La embarcación Kusi Wasi (Marina Cruz de Huanacaxtle) exige propina obligatoria del 10% del costo del viaje.']
+    },
+    {
+      dest: 'Playa del Carmen',
+      marinas: [
+        { name: 'Gran Marina (Puerto Aventuras)',  muelle: '$400 MXN p/p',  vehiculo: '—' },
+        { name: 'Marina Cozumel ASIPONA',          muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: [],
+      notas: [
+        '⚠️ Algunas embarcaciones en Gran Marina (Sunseeker 55, Azimut 43, Bali 40, Aventura 34) exigen propina obligatoria del 10%.',
+        '⚠️ La embarcación Blue Ray en Marina Cozumel ASIPONA cobra $200 MXN p/p de impuesto de muelle.'
+      ]
+    },
+    {
+      dest: 'Puerto Vallarta',
+      marinas: [
+        { name: 'Marina Vallarta Muelle C',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle E',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle F',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle G',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle H',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle I',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle J',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle K',        muelle: '$50–$100 MXN p/p', vehiculo: '—' },
+        { name: 'Marina Vallarta Muelle M',        muelle: '$50 MXN p/p',   vehiculo: '—' },
+        { name: 'Marina Flamingo Vallarta Hotel',  muelle: 'Sin impuesto',  vehiculo: '—' }
+      ],
+      playas: [],
+      notas: ['⚠️ Algunas embarcaciones absorben el impuesto de muelle y lo ofrecen como cortesía. Verifica con tu asesor.']
+    }
+  ];
+
+  var tabsEl = document.getElementById('yzz-ca-tabs');
+  var contentEl = document.getElementById('yzz-ca-content');
+  var overlay = document.getElementById('yzz-cargos-modal');
+  if (!tabsEl || !contentEl || !overlay) return;
+
+  function renderTabs() {
+    tabsEl.innerHTML = CARGOS.map(function(c, i){
+      return '<button class="yzz-ca-tab'+(i===0? ' is-active':'')+'" data-yzz-ca-idx="'+i+'">📍 '+c.dest+'</button>';
+    }).join('');
+  }
+
+  function renderContent(idx) {
+    var c = CARGOS[idx]; if (!c) return;
+    var hasVehiculo = c.marinas.some(function(m){ return m.vehiculo && m.vehiculo !== '—'; });
+    var h = '<div class="yzz-ca-section-title">⚓ Impuestos de muelle — '+c.dest+'</div>';
+    h += '<table class="yzz-ca-table"><thead><tr><th>Marina</th><th>Impuesto</th>';
+    if (hasVehiculo) h += '<th>Vehículo</th>';
+    h += '</tr></thead><tbody>';
+    c.marinas.forEach(function(m){
+      h += '<tr><td>'+m.name+'</td><td><strong>'+m.muelle+'</strong></td>';
+      if (hasVehiculo) h += '<td>'+(m.vehiculo||'—')+'</td>';
+      h += '</tr>';
+    });
+    h += '</tbody></table>';
+    if (c.playas && c.playas.length) {
+      h += '<div class="yzz-ca-section-title">🏝️ Acceso a playas — '+c.dest+'</div>';
+      h += '<table class="yzz-ca-table"><thead><tr><th>Playa / Isla</th><th>Costo</th><th>Notas</th></tr></thead><tbody>';
+      c.playas.forEach(function(p){ h += '<tr><td>'+p.name+'</td><td><strong>'+p.costo+'</strong></td><td>'+(p.nota||'—')+'</td></tr>'; });
+      h += '</tbody></table>';
+    }
+    if (c.notas && c.notas.length) {
+      c.notas.forEach(function(n){ h += '<p class="yzz-ca-note" style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:8px 12px;color:#92400e;font-weight:600">'+n+'</p>'; });
+    }
+    h += '<p class="yzz-ca-note">⚠️ Los montos son aproximados y pueden cambiar sin previo aviso. Verifica con tu asesor antes del viaje.</p>';
+    contentEl.innerHTML = h;
+  }
+
+  renderTabs();
+  renderContent(0);
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-yzz-ca-idx]');
+    if (!btn) return;
+    tabsEl.querySelectorAll('.yzz-ca-tab').forEach(function(t){ t.classList.remove('is-active'); });
+    btn.classList.add('is-active');
+    renderContent(Number(btn.getAttribute('data-yzz-ca-idx')));
+  });
+
+  // Open / close
+  function openCargos(){ overlay.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function closeCargos(){ overlay.style.display = 'none'; document.body.style.overflow = ''; }
+
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-yzz-open-cargos]')) { e.preventDefault(); openCargos(); return; }
+    if (e.target.closest('[data-yzz-ca-close]'))    { e.preventDefault(); closeCargos(); return; }
+    if (e.target === overlay) closeCargos();
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.style.display === 'flex') closeCargos(); });
+
+  // Exponer globalmente para poder abrir desde otros scripts
+  window.yzzOpenCargos = openCargos;
+})();
+</script>
+<style>
+  #yzzq-root {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    color: #111827
+  }
+
+  .yzzq-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px
+  }
+
+  .yzzq-grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr
+  }
+
+  @media(min-width:760px) {
+    .yzzq-grid {
+      grid-template-columns: 1fr 1fr
+    }
+  }
+
+  .yzzq-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e5e7eb
+  }
+
+  .yzzq-row:last-child {
+    border-bottom: 0
+  }
+
+  .yzzq-k {
+    color: #6b7280
+  }
+
+  .yzzq-v {
+    font-weight: 700;
+    text-align: right;
+    word-break: break-word
+  }
+
+  .yzzq-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: #fff;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent
+  }
+
+  .yzzq-btn-primary {
+    background: #194395
+  }
+
+  .yzzq-btn-success {
+    background: #00945e
+  }
+
+  .yzzq-btn-dark {
+    background: #111827
+  }
+
+  .yzzq-btn-light {
+    background: #4b5563;
+    color: #fff;
+    border: 1px solid #4b5563
+  }
+
+  .yzzq-btn:hover,
+  .yzzq-btn:focus,
+  .yzzq-btn:active {
+    color: #fff !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    filter: none !important
+  }
+
+  .yzzq-status {
+    display: inline-block;
+    background: #e5e7eb;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-weight: 700
+  }
+
+  .yzzq-status.ok {
+    background: #d1fae5;
+    color: #065f46
+  }
+
+  .yzzq-status.err {
+    background: #fee2e2;
+    color: #991b1b
+  }
+
+  .yzzq-img-wrap {
+    display: none;
+    background: #0b1939;
+    border-radius: 14px;
+    overflow: hidden;
+    min-height: 220px;
+    align-items: center;
+    justify-content: center
+  }
+
+  .yzzq-img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    display: block
+  }
+
+  .yzzq-timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 12px
+  }
+
+  .yzzq-box {
+    background: #0b1939;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center
+  }
+
+  .yzzq-num {
+    font-size: 24px;
+    font-weight: 700
+  }
+
+  .yzzq-lbl {
+    font-size: 11px;
+    color: #cbd5e1;
+    text-transform: uppercase
+  }
+
+  .yzzq-trip-wrap {
+    opacity: .72
+  }
+
+  .yzzq-trip-wrap .yzzq-box {
+    background: #334155
+  }
+
+  .yzzq-offer {
+    margin-top: 12px;
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #7c2d12, #b45309);
+    padding: 12px
+  }
+
+  .yzzq-offer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px
+  }
+
+  .yzzq-offer-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800
+  }
+
+  .yzzq-offer-btn {
+    width: auto !important;
+    display: inline-block !important;
+    padding: 10px 14px !important;
+    background: #16a34a !important;
+    color: #fff !important;
+    border-radius: 10px;
+    font-weight: 800;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent
+  }
+
+  .yzzq-offer-timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px
+  }
+
+  .yzzq-offer-box {
+    background: #111827;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center
+  }
+
+  .yzzq-offer-num {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 900
+  }
+
+  .yzzq-offer-lbl {
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #d1d5db
+  }
+
+  .yzzq-note {
+    font-size: 12px;
+    color: #6b7280
+  }
+
+  .yzzq-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  .yzzq-acc summary {
+    cursor: pointer;
+    font-weight: 700
+  }
+
+  .yzzq-map-btn {
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #194395;
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent
+  }
+
+  .yzzq-map-btn:hover,
+  .yzzq-map-btn:focus,
+  .yzzq-map-btn:active {
+    color: #fff !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    filter: none !important
+  }
+
+  .yzzq-toggle summary {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2
+  }
+
+  .yzzq-toggle-body {
+    padding-top: 10px
+  }
+
+  .yzzq-toggle-body p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 10px
+  }
+
+  .yzzq-amen-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  .yzzq-amen-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafafa
+  }
+
+  .yzzq-amen-emo {
+    font-size: 18px;
+    line-height: 1.2
+  }
+
+  .yzzq-amen-txt {
+    font-size: 14px;
+    line-height: 1.35
+  }
+
+  .yzzq-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999999
+  }
+
+  .yzzq-modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px
+  }
+
+  .yzzq-modal__back {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .58);
+    z-index: 0
+  }
+
+  .yzzq-modal__wrap {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 760px);
+    max-width: 760px;
+    margin: 0;
+    padding: 0
+  }
+
+  .yzzq-modal__card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 14px;
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch
+  }
+
+  .yzzq-modal__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px
+  }
+
+  .yzzq-close {
+    border: 0;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-weight: 700
+  }
+
+  .yzzq-survey-wrap {
+    display: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden
+  }
+
+  .yzzq-survey-wrap.active {
+    display: block
+  }
+
+  .yzzq-pay-choices {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px
+  }
+
+  @media(min-width:760px) {
+    .yzzq-pay-choices {
+      grid-template-columns: 1fr 1fr
+    }
+  }
+
+  @media(max-width:759px) {
+    .yzzq-modal.open {
+      align-items: flex-end;
+      padding: 0
+    }
+
+    .yzzq-modal__wrap {
+      width: 100%;
+      max-width: none
+    }
+
+    .yzzq-modal__card {
+      border-radius: 18px 18px 0 0;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      max-height: min(86dvh, calc(100dvh - 24px));
+      padding: 16px 14px calc(16px + env(safe-area-inset-bottom))
+    }
+  }
+</style>
+<script>
+  (function () {
+    var root = document.getElementById('yzzq-root');
+    if (!root) return;
+    root.innerHTML = '' +
+      '<div class="yzzq-card yzzq-img-wrap" id="imgWrap"><img class="yzzq-img" id="img" alt="Yate"></div>' +
+      '<div class="yzzq-card"><h1 style="margin:0 0 8px;font-size:28px">Tu cotizacion</h1><p id="hello" style="margin:0;color:#6b7280">Cargando informacion...</p><div style="height:10px"></div><span id="status" class="yzzq-status">Cargando...</span>' +
+      '<div class="yzzq-offer">' +
+      '<div class="yzzq-offer-head"><div class="yzzq-offer-title">Tu viaje es en:</div><button id="acceptOfferBtn" class="yzzq-offer-btn" type="button">💳 Reservar ahora</button></div>' +
+      '<div class="yzzq-offer-timer" id="offerTimer">' +
+      '<div class="yzzq-offer-box"><div class="yzzq-offer-num" id="od">--</div><div class="yzzq-offer-lbl">Días</div></div>' +
+      '<div class="yzzq-offer-box"><div class="yzzq-offer-num" id="oh">--</div><div class="yzzq-offer-lbl">Horas</div></div>' +
+      '<div class="yzzq-offer-box"><div class="yzzq-offer-num" id="om">--</div><div class="yzzq-offer-lbl">Min</div></div>' +
+      '<div class="yzzq-offer-box"><div class="yzzq-offer-num" id="os">--</div><div class="yzzq-offer-lbl">Seg</div></div>' +
+      '</div>' +
+      '<div id="tripDaysBadge" style="margin-top:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:10px 12px;color:#fff;font-size:15px;font-weight:700">Calculando días restantes para tu viaje...</div>' +
+      '</div>' +
+      '<p id="timerNote" style="font-size:12px;color:#6b7280;margin-top:8px"></p></div>' +
+      '<div class="yzzq-grid"><div class="yzzq-card">' +
+      '<div class="yzzq-row"><div class="yzzq-k">Cliente</div><div id="name" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Yate</div><div id="yacht" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Destino</div><div id="dest" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Fecha</div><div id="date" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Horario</div><div id="time" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Pax</div><div id="pax" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Marina</div><div id="marina" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Ubicacion De Abordaje</div><div class="yzzq-v"><a id="maps" class="yzzq-map-btn" href="#" target="_blank" rel="noopener">📍 Ver ubicación</a></div></div>' +
+      '</div><div class="yzzq-card">' +
+      '<div class="yzzq-row"><div class="yzzq-k">Experiencia</div><div id="exp" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Extras</div><div id="extra" class="yzzq-v">-</div></div>' +
+      '<div class="yzzq-row"><div class="yzzq-k">Total</div><div id="total" class="yzzq-v">-</div></div><div style="height:12px"></div>' +
+      '<div style="text-align:center;padding:10px 0 4px">' +
+      '<button class="yzzq-btn" type="button" data-yzz-open-cargos style="background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;font-size:15px;border-radius:12px;padding:14px 20px;width:100%;max-width:380px;margin:0 auto">💰 Ver cargos adicionales por destino</button>' +
+      '<p style="font-size:11px;color:#9ca3af;margin:6px 0 0">Impuestos de muelle, acceso a playas, propinas y más</p>' +
+      '</div>' +
+      '<div class="yzzq-actions">' +
+      '<button id="reserveBtn" class="yzzq-btn yzzq-btn-success" type="button">💳 Reservar Con 50%</button>' +
+      '<a id="yachtUrlBtn" class="yzzq-btn yzzq-btn-primary" target="_blank" rel="noopener">🖼️ Ver más imagenes</a>' +
+      '<button id="termsBtn" class="yzzq-btn yzzq-btn-light" type="button">📘 Ver terminos y condiciones</button>' +
+      '<a id="waBtn" class="yzzq-btn yzzq-btn-dark" target="_blank" rel="noopener">🟢 Contactar asesor</a>' +
+      '</div>' +
+      '<p id="depositNote" style="font-size:12px;color:#6b7280"></p></div></div>';
+
+    root.innerHTML += '' +
+      '<div class="yzzq-card yzzq-toggle"><details id="reco"><summary>Recomendaciones Del Viaje</summary>' +
+      '<div class="yzzq-toggle-body">' +
+      '<p><b>Antes:</b> llega 20 minutos antes, confirma clima, punto de abordaje y lista de pasajeros.</p>' +
+      '<p><b>Durante:</b> sigue indicaciones de capitan y tripulacion, mantente hidratado y cuida tus pertenencias.</p>' +
+      '<p><b>Despues:</b> comparte cualquier incidencia el mismo dia para una atencion rapida y efectiva.</p>' +
+      '</div></details></div>';
+
+    root.innerHTML += '' +
+      '<div class="yzzq-card yzzq-toggle"><details id="amenitiesDetails"><summary>Caracteristicas Y Amenidades Del Yate</summary>' +
+      '<div class="yzzq-toggle-body"><div id="amenitiesList" class="yzzq-amen-list"></div></div>' +
+      '</details></div>';
+
+    root.innerHTML += '' +
+      '<div id="payModal" class="yzzq-modal" aria-hidden="true">' +
+      '<div class="yzzq-modal__back" data-close="payModal"></div>' +
+      '<div class="yzzq-modal__wrap"><div class="yzzq-modal__card">' +
+      '<div class="yzzq-modal__head"><strong>Reserva con 50%</strong><button class="yzzq-close" data-close="payModal" type="button">Cerrar</button></div>' +
+      '<p id="depositLabel" class="yzzq-note"></p>' +
+      '<div id="payChoices" class="yzzq-pay-choices">' +
+      '<button id="payCardBtn" class="yzzq-btn yzzq-btn-primary" type="button">Pagar con tarjeta credito / debito</button>' +
+      '<button id="payTransferBtn" class="yzzq-btn yzzq-btn-dark" type="button">Pagar con transferencia</button>' +
+      '</div>' +
+      '<div id="definePayDateWrap" style="margin-top:8px;text-align:center;display:none"><button id="definePayDateBtn" class="define-pay-date-btn" type="button" style="border:0;background:#f3f4f6;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700;cursor:pointer">📅 Definir una fecha de pago</button></div>' +
+      '<div id="surveyWrap" class="yzzq-survey-wrap">' +
+      '<iframe src="" style="border:none;width:100%;min-height:680px;" scrolling="no" id="OXyI9rBvZVpcE877iYso" title="survey"></iframe>' +
+      '</div>' +
+      '</div></div></div>';
+
+    root.innerHTML += '' +
+      '<div id="termsModal" class="yzzq-modal" aria-hidden="true">' +
+      '<div class="yzzq-modal__back" data-close="termsModal"></div>' +
+      '<div class="yzzq-modal__wrap"><div class="yzzq-modal__card">' +
+      '<div class="yzzq-modal__head"><strong>Terminos y condiciones - Yatezzitos Mexico</strong><button class="yzzq-close" data-close="termsModal" type="button">Cerrar</button></div>' +
+      '<div style="line-height:1.6">' +
+      '<p><b>Reembolsos:</b> no validos bajo ninguna situacion.</p>' +
+      '<p><b>Cancelacion por cliente:</b> las cancelaciones no son reembolsables.</p>' +
+      '<p><b>Causas ajenas:</b> si hay cierre de puerto por mal clima o falla tecnica de la embarcacion antes del abordaje, se intentara reprogramar segun disponibilidad.</p>' +
+      '<p><b>Cambios de fecha o titular:</b> deben solicitarse con al menos 15 dias de anticipacion. Estan sujetos a disponibilidad y politicas vigentes.</p>' +
+      '<p><b>Reservacion:</b> se requiere anticipo para bloquear fecha. El saldo restante se liquida segun instrucciones de pago confirmadas por tu asesor.</p>' +
+      '<p><b>Puntualidad:</b> existe tolerancia maxima de 15 minutos. El tiempo perdido por llegada tarde no se repone ni reembolsa.</p>' +
+      '<p><b>Responsabilidad por danos:</b> cualquier dano por mal uso de la embarcacion o accesorios sera responsabilidad del cliente.</p>' +
+      '<p><b>Pertenencias personales:</b> cada pasajero es responsable de sus objetos personales durante y despues del servicio.</p>' +
+      '<p><b>Seguridad:</b> es obligatorio seguir las indicaciones del capitan y tripulacion. Conductas de riesgo pueden limitar actividades a bordo.</p>' +
+      '<p><b>Consumo responsable:</b> el consumo de alcohol debe realizarse con responsabilidad y sin poner en riesgo a los pasajeros o tripulacion.</p>' +
+      '<p><b>Fuerza mayor:</b> situaciones externas fuera de control operativo se atenderan bajo politica de reprogramacion cuando aplique.</p>' +
+      '</div>' +
+      '</div></div></div>';
+
+    root.innerHTML += '' +
+      '<div id="payDateModal" class="yzzq-modal" aria-hidden="true">' +
+      '<div class="yzzq-modal__back" data-close="payDateModal"></div>' +
+      '<div class="yzzq-modal__wrap"><div class="yzzq-modal__card">' +
+      '<div class="yzzq-modal__head"><strong>Definir Fecha De Pago</strong><button class="yzzq-close" data-close="payDateModal" type="button">Cerrar</button></div>' +
+      '<iframe src="" style="width:100%;height:636px;border:none;border-radius:3px" id="inline-KiQhwWCcVHUnUNh94QiL" data-layout="{\'id\':\'INLINE\'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Definir fecha de pago" data-height="636" data-layout-iframe-id="inline-KiQhwWCcVHUnUNh94QiL" data-form-id="KiQhwWCcVHUnUNh94QiL" title="Definir fecha de pago"></iframe>' +
+      '</div></div></div>';
+
+    var $ = function (id) { return document.getElementById(id); };
+    function mountModalToBody(id) {
+      var modal = $(id);
+      if (modal && modal.parentNode !== document.body) {
+        document.body.appendChild(modal);
+      }
+    }
+    mountModalToBody('payModal');
+    mountModalToBody('termsModal');
+    mountModalToBody('payDateModal');
+    var qt = (new URLSearchParams(location.search).get('qt') || '').trim();
+    var state = { qt: qt, deposit50: NaN, data: null };
+    var WA = '526691324073';
+    var SURVEY_BASE = 'https://link.yatezzitos.com/widget/survey/OXyI9rBvZVpcE877iYso';
+    var TRANSFER_URL = 'https://yatezzitos.com/es/pagos-con-transferencia/';
+
+    function setStatus(msg, type) { var s = $('status'); if (!s) return; s.textContent = msg; s.className = 'yzzq-status' + (type ? ' ' + type : ''); }
+    function money(v) { if (typeof v === 'number') return v; if (!v) return NaN; var n = Number(String(v).replace(/[^0-9.,-]/g, '').replace(/,/g, '')); return isFinite(n) ? n : NaN; }
+    function mxn(n) { return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n); }
+    function wa(msg) { var a = $('waBtn'); if (!a) return; a.href = 'https://api.whatsapp.com/send?phone=' + WA + '&text=' + encodeURIComponent(msg || 'Hola, necesito ayuda con mi cotizacion.'); }
+    function langPrefix() { var p = location.pathname || ''; if (p.indexOf('/es/') === 0) return '/es'; if (p.indexOf('/en/') === 0) return '/en'; return ''; }
+    function uniq(arr) { return arr.filter(function (v, i, a) { return a.indexOf(v) === i; }); }
+    function syncBodyModalState() {
+      var anyOpen = document.querySelector('.yzzq-modal.open');
+      document.body.style.overflow = anyOpen ? 'hidden' : '';
+    }
+    function openModal(id) {
+      mountModalToBody(id);
+      var m = $(id);
+      if (!m) return;
+      m.classList.add('open');
+      m.setAttribute('aria-hidden', 'false');
+      syncBodyModalState();
+    }
+    function closeModal(id) {
+      var m = $(id);
+      if (!m) return;
+      m.classList.remove('open');
+      m.setAttribute('aria-hidden', 'true');
+      syncBodyModalState();
+    }
+    function firstName(full) { if (!full) return ''; return String(full).trim().split(/\s+/)[0] || ''; }
+
+    var endpoints = uniq([
+      location.origin + langPrefix() + '/wp-json/yzz/v1/contact-live',
+      location.origin + '/wp-json/yzz/v1/contact-live',
+      location.origin + '/es/wp-json/yzz/v1/contact-live',
+      location.origin + '/en/wp-json/yzz/v1/contact-live'
+    ]);
+
+    function parseDT(d, t) {
+      if (!d) return null;
+      var ds = String(d).trim(), ts = String(t || '00:00').trim();
+      var iso = ds.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/), lat = ds.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/), tm = ts.match(/^(\d{1,2}):(\d{2})/);
+      var hh = tm ? Number(tm[1]) : 0, mm = tm ? Number(tm[2]) : 0;
+      if (iso) return new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]), hh, mm, 0);
+      if (lat) { var y = lat[3].length === 2 ? Number('20' + lat[3]) : Number(lat[3]); return new Date(y, Number(lat[2]) - 1, Number(lat[1]), hh, mm, 0); }
+      return null;
+    }
+
+    function startTripCountdown(target) {
+      var badge = $('tripDaysBadge');
+      function tick() {
+        var diff = target.getTime() - Date.now();
+        if (diff <= 0) {
+          $('od').textContent = '00'; $('oh').textContent = '00'; $('om').textContent = '00'; $('os').textContent = '00';
+          if (badge) badge.textContent = '🚀 Tu salida es hoy o ya comenzó. ¡Buen viaje!';
+          return;
+        }
+        var d = Math.floor(diff / 86400000); diff -= d * 86400000;
+        var h = Math.floor(diff / 3600000); diff -= h * 3600000;
+        var m = Math.floor(diff / 60000); diff -= m * 60000;
+        var s = Math.floor(diff / 1000);
+        $('od').textContent = String(d).padStart(2, '0');
+        $('oh').textContent = String(h).padStart(2, '0');
+        $('om').textContent = String(m).padStart(2, '0');
+        $('os').textContent = String(s).padStart(2, '0');
+        if (badge) badge.textContent = 'Faltan ' + d + ' día(s) para tu viaje. ¡Prepárate!';
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    function pick(obj, keys) {
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (obj[k] !== undefined && obj[k] !== null && String(obj[k]).trim() !== '') return obj[k];
+      }
+      return '';
+    }
+    function deepPick(obj, keys) {
+      var direct = pick(obj, keys);
+      if (String(direct || '').trim() !== '') return direct;
+      if (obj && typeof obj.payload === 'object') {
+        var nestedObj = pick(obj.payload, keys);
+        if (String(nestedObj || '').trim() !== '') return nestedObj;
+      }
+      if (obj && typeof obj.data === 'object') {
+        var nestedData = pick(obj.data, keys);
+        if (String(nestedData || '').trim() !== '') return nestedData;
+      }
+      return '';
+    }
+    function pickByPattern(obj, regex) {
+      if (!obj || typeof obj !== 'object') return '';
+      for (var k in obj) {
+        if (!Object.prototype.hasOwnProperty.call(obj, k)) continue;
+        var v = obj[k];
+        if (v === undefined || v === null) continue;
+        if (String(v).trim() === '') continue;
+        if (regex.test(String(k))) return v;
+      }
+      return '';
+    }
+    function pickAmenitiesSource(obj) {
+      var value = deepPick(obj, [
+        'amenities_raw',
+        'amenities_raw_text',
+        'caractersticas_y_amenidades_del_yate',
+        'caracteristicas_y_amenidades_del_yate',
+        'caracteristicas_amenidades_del_yate',
+        'amenidades',
+        'amenity_list',
+        'amenities'
+      ]);
+      if (String(value || '').trim() !== '') return value;
+      var fuzzy = pickByPattern(obj, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+      if (String(fuzzy || '').trim() !== '') return fuzzy;
+      if (obj && typeof obj.payload === 'object') {
+        var fuzzyPayload = pickByPattern(obj.payload, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+        if (String(fuzzyPayload || '').trim() !== '') return fuzzyPayload;
+      }
+      if (obj && typeof obj.data === 'object') {
+        var fuzzyData = pickByPattern(obj.data, /(amenid|amenit|caracteri|caracters|feature|inclu)/i);
+        if (String(fuzzyData || '').trim() !== '') return fuzzyData;
+      }
+      var maybeExtra = deepPick(obj, ['extra', 'extras', 'inclusiones_adicionales']);
+      if (String(maybeExtra || '').trim() !== '' && /,|;|\n|\||\[/.test(String(maybeExtra))) return maybeExtra;
+      return '';
+    }
+    function normalizeAmenityKey(value) {
+      return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[()]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+    var AMENITY_EMOJI_MAP = {
+      'agua embotellada': '💧',
+      'aire acondicionado': '❄️',
+      'alfombra / tapete acuatico': '🌊',
+      'alfombra / tapete acuatico': '🌊',
+      'cervezas 12': '🍺',
+      'cervezas 24': '🍺',
+      'ceviches o alimentos de bienvenida': '🍤',
+      'chalecos salvavidas': '🛟',
+      'chef a bordo': '👨‍🍳',
+      'cocina funcional': '🍽️',
+      'conexion usb para telefonos': '🔌',
+      'dona inflable': '🛟',
+      'equipo de pesca deportiva': '🎣',
+      'equipo de snorkel': '🤿',
+      'equipo de sonido conexion bluetooth': '🔊',
+      'luces subacuaticas': '💡',
+      'frente acolchonado': '🛥️',
+      'fruta fresca de bienvenida': '🍉',
+      'gastos de peaje / impuestos de muelle': '🧾',
+      'acceso a todas las playas / brazaletes': '🏝️',
+      'campamento para playa': '⛱️',
+      'guacamole de bienvenida': '🥑',
+      'gps': '🧭',
+      'guia de turismo': '🧑‍💼',
+      'hielera': '🧊',
+      'hielo': '🧊',
+      'internet': '📶',
+      'jetski / moto acuatica': '🏍️',
+      'juguetes inflables': '🛟',
+      'kayacs dobles': '🛶',
+      'kayac individual': '🛶',
+      'tabla de paddle board': '🏄',
+      'kit de primeros auxilios': '⛑️',
+      'lancha auxiliar / dingui': '🚤',
+      'margaritas / bebidas durante el viaje': '🍹',
+      'capitan y marinero certificados': '👨‍✈️',
+      'mesa de comedor': '🍽️',
+      'parrilla': '🔥',
+      'refrescos': '🥤',
+      'refrigerador': '🧊',
+      'sala con tv': '📺',
+      'seguro de viaje': '🛡️',
+      'suite nupcial': '💍',
+      'terraza / flybridge': '☀️',
+      'toallas': '🧺',
+      'tripulantes multilingues': '🗣️'
+    };
+    function amenityEmoji(item) {
+      var normalized = normalizeAmenityKey(item);
+      if (AMENITY_EMOJI_MAP[normalized]) return AMENITY_EMOJI_MAP[normalized];
+      var t = normalized;
+      if (t.indexOf('aire') > -1) return '❄️';
+      if (t.indexOf('agua') > -1) return '💧';
+      if (t.indexOf('cerveza') > -1 || t.indexOf('margarita') > -1 || t.indexOf('refresco') > -1 || t.indexOf('hielo') > -1) return '🍹';
+      if (t.indexOf('chaleco') > -1 || t.indexOf('primeros auxilios') > -1 || t.indexOf('seguro') > -1) return '🛟';
+      if (t.indexOf('capitan') > -1 || t.indexOf('marinero') > -1 || t.indexOf('tripulante') > -1 || t.indexOf('guia') > -1) return '👨‍✈️';
+      if (t.indexOf('snorkel') > -1 || t.indexOf('pesca') > -1 || t.indexOf('paddle') > -1 || t.indexOf('kayak') > -1 || t.indexOf('jetski') > -1 || t.indexOf('moto acuatica') > -1 || t.indexOf('moto acu') > -1 || t.indexOf('inflable') > -1) return '🌊';
+      if (t.indexOf('bluetooth') > -1 || t.indexOf('sonido') > -1) return '🔊';
+      if (t.indexOf('wifi') > -1 || t.indexOf('internet') > -1 || t.indexOf('usb') > -1 || t.indexOf('gps') > -1) return '📶';
+      if (t.indexOf('chef') > -1 || t.indexOf('cocina') > -1 || t.indexOf('parrilla') > -1 || t.indexOf('fruta') > -1 || t.indexOf('guacamole') > -1 || t.indexOf('ceviche') > -1 || t.indexOf('comedor') > -1) return '🍽️';
+      if (t.indexOf('toalla') > -1 || t.indexOf('suite') > -1 || t.indexOf('sala') > -1 || t.indexOf('tv') > -1) return '🛋️';
+      if (t.indexOf('terraza') > -1 || t.indexOf('flybridge') > -1 || t.indexOf('frente acolchonado') > -1) return '🛥️';
+      return '✅';
+    }
+    function parseAmenities(raw) {
+      if (!raw) return [];
+      if (Array.isArray(raw)) return raw.map(function (x) { return String(x).trim(); }).filter(Boolean);
+      var s = String(raw).trim();
+      if (!s) return [];
+      s = s.replace(/&quot;/g, '"').replace(/&#34;/g, '"').replace(/\\"/g, '"');
+      // Try JSON decode up to 2 times (for double-encoded payloads)
+      for (var i = 0; i < 2; i++) {
+        if ((s[0] === '[' && s[s.length - 1] === ']') || (s[0] === '{' && s[s.length - 1] === '}') || (s[0] === '"' && s[s.length - 1] === '"')) {
+          try {
+            var j = JSON.parse(s);
+            if (Array.isArray(j)) return j.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (j && Array.isArray(j.values)) return j.values.map(function (x) { return String(x).trim(); }).filter(Boolean);
+            if (typeof j === 'string') {
+              s = j.trim();
+              continue;
+            }
+          } catch (e) { }
+        }
+        break;
+      }
+      if ((s[0] === '"' && s[s.length - 1] === '"') || (s[0] === "'" && s[s.length - 1] === "'")) {
+        s = s.slice(1, -1);
+      }
+      return s
+        .split(/\n|,|;|\|/)
+        .map(function (x) { return String(x).replace(/^\s*[-•]\s*/, '').trim(); })
+        .filter(Boolean);
+    }
+    function renderAmenities(raw) {
+      var box = $('amenitiesList');
+      if (!box) return;
+      var items = parseAmenities(raw);
+      if (!items.length) {
+        box.innerHTML = '<p class="yzzq-note">No hay amenidades registradas en esta cotizacion.</p>';
+        if (location.search.indexOf('debug=1') > -1) {
+          box.innerHTML += '<p class="yzzq-note"><b>DEBUG amenities_raw:</b> ' + String(raw || '').replace(/</g, '&lt;') + '</p>';
+        }
+        return;
+      }
+      box.innerHTML = items.map(function (it) {
+        return '<div class="yzzq-amen-item"><span class="yzzq-amen-emo">' + amenityEmoji(it) + '</span><div class="yzzq-amen-txt">' + it + '</div></div>';
+      }).join('');
+    }
+    function buildTransferUrl() {
+      var url = new URL(TRANSFER_URL);
+      url.searchParams.set('qt', state.qt);
+      if (isFinite(state.deposit50)) { url.searchParams.set('a', String(Math.round(state.deposit50))); }
+      return url.toString();
+    }
+    function buildSurveyUrl() {
+      var url = new URL(SURVEY_BASE);
+      var d = state.data || {};
+      var n = d.name || '';
+      var e = d.email || '';
+      var p = d.phone || '';
+      var amt = isFinite(state.deposit50) ? String(Math.round(state.deposit50)) : '';
+      url.searchParams.set('qt', state.qt);
+      if (d.contact_id) { url.searchParams.set('contact_id', d.contact_id); }
+      if (n) {
+        url.searchParams.set('name', n);
+        url.searchParams.set('full_name', n);
+        url.searchParams.set('first_name', firstName(n));
+      }
+      if (e) {
+        url.searchParams.set('email', e);
+        url.searchParams.set('contact_email', e);
+      }
+      if (p) {
+        url.searchParams.set('phone', p);
+        url.searchParams.set('contact_phone', p);
+      }
+      if (amt) {
+        url.searchParams.set('amount', amt);
+        url.searchParams.set('deposit_50', amt);
+      }
+      return url.toString();
+    }
+    function buildPayDateFormUrl() {
+      var url = new URL('https://link.yatezzitos.com/widget/form/KiQhwWCcVHUnUNh94QiL');
+      var d = state.data || {};
+      var n = d.name || '';
+      var e = d.email || '';
+      var p = d.phone || '';
+      url.searchParams.set('ts', String(Date.now()));
+      url.searchParams.set('qt', state.qt);
+      if (d.contact_id) { url.searchParams.set('contact_id', d.contact_id); }
+      if (n) {
+        url.searchParams.set('name', n);
+        url.searchParams.set('full_name', n);
+        url.searchParams.set('first_name', firstName(n));
+        url.searchParams.set('contact_name', n);
+      }
+      if (e) {
+        url.searchParams.set('email', e);
+        url.searchParams.set('contact_email', e);
+        url.searchParams.set('correo', e);
+      }
+      if (p) {
+        url.searchParams.set('phone', p);
+        url.searchParams.set('contact_phone', p);
+        url.searchParams.set('telefono', p);
+      }
+      return url.toString();
+    }
+    function openPayDateModalWithPrefill() {
+      ensureSurveyScript();
+      var payDateFrame = $('inline-KiQhwWCcVHUnUNh94QiL');
+      if (payDateFrame) {
+        payDateFrame.src = buildPayDateFormUrl();
+      }
+      openModal('payDateModal');
+    }
+    function ensureSurveyScript() {
+      if (document.getElementById('yzz-ghl-survey-script')) return;
+      var s = document.createElement('script');
+      s.id = 'yzz-ghl-survey-script';
+      s.src = 'https://link.yatezzitos.com/js/form_embed.js';
+      document.body.appendChild(s);
+    }
+    function openCardSurvey() {
+      var choices = $('payChoices');
+      var wrap = $('surveyWrap');
+      var frame = $('OXyI9rBvZVpcE877iYso');
+      if (!choices || !wrap || !frame) return;
+      choices.style.display = 'none';
+      wrap.classList.add('active');
+      frame.src = buildSurveyUrl();
+      ensureSurveyScript();
+    }
+    function setPayDateVisibility(show) {
+      var wrap = $('definePayDateWrap');
+      if (!wrap) return;
+      wrap.style.display = show ? 'block' : 'none';
+    }
+    function openPaymentModal(mode) {
+      $('depositLabel').textContent = isFinite(state.deposit50)
+        ? ('Anticipo para reservar: ' + mxn(state.deposit50))
+        : 'Anticipo para reservar: 50% del total';
+      resetPayModal();
+      setPayDateVisibility(mode === 'offer');
+      openModal('payModal');
+    }
+    function resetPayModal() {
+      var choices = $('payChoices');
+      var wrap = $('surveyWrap');
+      if (choices) choices.style.display = 'grid';
+      if (wrap) wrap.classList.remove('active');
+      setPayDateVisibility(false);
+    }
+    var lastUiActionAt = 0;
+    function allowUiAction() {
+      var now = Date.now();
+      if (now - lastUiActionAt < 450) return false;
+      lastUiActionAt = now;
+      return true;
+    }
+    function handleUiAction(e) {
+      if (!e || !e.target || !e.target.closest) return false;
+
+      var reserve = e.target.closest('#reserveBtn');
+      if (reserve) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        openPaymentModal('reserve');
+        return true;
+      }
+
+      var offer = e.target.closest('#acceptOfferBtn');
+      if (offer) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        openPaymentModal('offer');
+        return true;
+      }
+
+      var terms = e.target.closest('#termsBtn');
+      if (terms) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        openModal('termsModal');
+        return true;
+      }
+
+      var payCard = e.target.closest('#payCardBtn');
+      if (payCard) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        openCardSurvey();
+        return true;
+      }
+
+      var payTransfer = e.target.closest('#payTransferBtn');
+      if (payTransfer) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        window.location.href = buildTransferUrl();
+        return true;
+      }
+
+      var payDate = e.target.closest('.define-pay-date-btn');
+      if (payDate) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        openPayDateModalWithPrefill();
+        return true;
+      }
+
+      var close = e.target.getAttribute ? e.target.getAttribute('data-close') : null;
+      if (close) {
+        e.preventDefault();
+        if (!allowUiAction()) return true;
+        closeModal(close);
+        if (close === 'payModal') { resetPayModal(); }
+        return true;
+      }
+
+      return false;
+    }
+
+    if (!qt) { setStatus('No se encontro token', 'err'); $('hello').textContent = 'No encontramos tu cotizacion. Pide a tu asesor que reenvie el enlace.'; wa('Hola, mi enlace de cotizacion no trae token (qt).'); return; }
+
+    wa('Hola, necesito ayuda con mi cotizacion. Token: ' + qt);
+    /* countdown se inicia después de cargar los datos del viaje */
+
+    (async function () {
+      var raw = null, lastErr = null;
+      for (var i = 0; i < endpoints.length; i++) {
+        try {
+          var r = await fetch(endpoints[i] + '?qt=' + encodeURIComponent(qt), { method: 'GET', cache: 'no-store', credentials: 'omit' });
+          var j = await r.json().catch(function () { return {}; });
+          if (r.ok && j && !j.error) { raw = j; break; }
+        } catch (e) { lastErr = e; }
+      }
+      if (!raw) { throw (lastErr || new Error('not_found')); }
+
+      var data = {
+        name: pick(raw, ['name', 'full_name', 'contact_name']),
+        y: pick(raw, ['y', 'yacht', 'yacht_name']),
+        d: pick(raw, ['d', 'dest', 'destino', 'destinos']),
+        f: pick(raw, ['f', 'fecha', 'fecha_de_viaje', 'travel_date']),
+        hs: pick(raw, ['hs', 'hora_de_salida', 'departure_time']),
+        hr: pick(raw, ['hr', 'hora_de_regreso', 'return_time']),
+        pax: pick(raw, ['pax', 'passengers', 'number_of_passengers']),
+        mar: pick(raw, ['mar', 'marina', 'marina_name']),
+        maps: pick(raw, ['maps', 'map', 'google_maps_link']),
+        img: pick(raw, ['img', 'image', 'imagen_principal_del_yate_upload']),
+        total: pick(raw, ['total', 'total_cost', 'precio_total']),
+        exp: pick(raw, ['exp', 'experiencia', 'experiencia_reservada']),
+        extra: pick(raw, ['extra', 'extras', 'inclusiones_adicionales']),
+        email: pick(raw, ['email', 'correo', 'contact_email']),
+        phone: pick(raw, ['phone', 'telefono', 'tel', 'contact_phone', 'mobile']),
+        contact_id: pick(raw, ['contact_id']),
+        yacht_url: pick(raw, ['url_del_yate', 'yacht_url', 'url_yate']),
+        amenities_raw: pickAmenitiesSource(raw)
+      };
+      state.data = data;
+
+      $('hello').textContent = data.name ? ('Hola ' + data.name + ', esta es tu cotizacion completa.') : 'Esta es tu cotizacion completa.';
+      $('name').textContent = data.name || '-'; $('yacht').textContent = data.y || '-'; $('dest').textContent = data.d || '-'; $('date').textContent = data.f || '-';
+      $('time').textContent = [data.hs, data.hr].filter(Boolean).join(' - ') || '-'; $('pax').textContent = data.pax || '-'; $('marina').textContent = data.mar || '-';
+      $('exp').textContent = data.exp || '-'; $('extra').textContent = data.extra || '-';
+      if (data.maps) { $('maps').href = data.maps; }
+
+      if (data.img) {
+        var img = String(data.img).split(',')[0].trim();
+        if (img) { $('img').src = img; $('imgWrap').style.display = 'flex'; }
+      }
+      if ($('yachtUrlBtn')) {
+        if (data.yacht_url) {
+          $('yachtUrlBtn').href = data.yacht_url;
+          $('yachtUrlBtn').style.display = 'block';
+        } else {
+          $('yachtUrlBtn').style.display = 'none';
+        }
+      }
+      renderAmenities(data.amenities_raw);
+
+      var total = money(data.total); $('total').textContent = isFinite(total) ? mxn(total) : (data.total || '-');
+      state.deposit50 = isFinite(total) ? total * 0.5 : NaN;
+      $('reserveBtn').textContent = isFinite(state.deposit50) ? ('💳 Reservar Con ' + mxn(state.deposit50) + ' (50%)') : '💳 Reservar Con 50%';
+      $('depositNote').textContent = isFinite(state.deposit50) ? ('Anticipo para apartar: ' + mxn(state.deposit50) + ' (50%).') : 'Anticipo para apartar: 50% del total.';
+
+      wa('Hola, estoy viendo mi cotizacion (token ' + qt + ') de ' + (data.y || 'mi yate') + ' hacia ' + (data.d || 'mi destino') + '. Me apoyas?');
+      setStatus('Cotizacion cargada', 'ok');
+
+      var dt = parseDT(data.f, data.hs);
+      if (dt) { startTripCountdown(dt); $('timerNote').textContent = 'Fecha y hora del viaje: ' + (data.f || '-') + ' ' + (data.hs || ''); } else { $('timerNote').textContent = 'No se pudo calcular los días restantes por formato de fecha/hora.'; }
+
+      if (location.search.indexOf('debug=1') > -1) {
+        var pre = document.createElement('pre');
+        pre.style.whiteSpace = 'pre-wrap'; pre.style.fontSize = '11px'; pre.style.marginTop = '10px';
+        pre.textContent = 'DEBUG RAW RESPONSE\\n' + JSON.stringify(raw, null, 2);
+        root.appendChild(pre);
+      }
+
+      var payDateFramePreload = $('inline-KiQhwWCcVHUnUNh94QiL');
+      if (payDateFramePreload) {
+        payDateFramePreload.src = buildPayDateFormUrl();
+      }
+
+      document.addEventListener('click', handleUiAction, true);
+      document.addEventListener('pointerup', function (e) {
+        if (e.pointerType === 'touch') {
+          handleUiAction(e);
+        }
+      }, true);
+      document.addEventListener('touchend', handleUiAction, { passive: false, capture: true });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeModal('payModal');
+          closeModal('termsModal');
+          closeModal('payDateModal');
+          resetPayModal();
+        }
+      });
+    })().catch(function () {
+      setStatus('No encontrada', 'err');
+      $('hello').textContent = 'No se encontro tu cotizacion. Pide a tu asesor que te reenvie el enlace.';
+      if ($('tripDaysBadge')) $('tripDaysBadge').textContent = 'No se pudo calcular la fecha de viaje.';
+      wa('Hola, no pude abrir mi cotizacion. Token: ' + qt);
+    });
+  })();
+</script>
