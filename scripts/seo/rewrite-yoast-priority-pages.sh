@@ -79,8 +79,8 @@ echo
 # #4 — HOMEPAGE — Pos 9.5 GSC, CTR 5.61% (razonable, posición débil)
 # ─────────────────────────────────────────────────────────
 update_yoast post "${HOME_PAGE_ID:-0}" \
-    "Renta de yates en México %%currentyear%% | Yatezzitos — 10 destinos premium" \
-    "Renta de yates, catamaranes y lanchas en México. Flota privada en Cancún, Puerto Vallarta, Los Cabos y 7 destinos más. Cotización en minutos, tripulación certificada." \
+    "Renta de yates en México %%currentyear%% · 10 destinos | Yatezzitos" \
+    "Renta de yates, catamaranes y lanchas en México. Flota privada en Cancún, Puerto Vallarta, Los Cabos y 7 destinos más. Cotización en minutos." \
     "renta de yates" \
     "Homepage"
 
@@ -89,7 +89,7 @@ update_yoast post "${HOME_PAGE_ID:-0}" \
 # Target: duplicar CTR replicando patrón La Paz (8.66%)
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_CANCUN_TERM_ID:-0}" \
-    "Renta de yates en Cancún %%currentyear%% · desde \$8,000/hr · Todo incluido | Yatezzitos" \
+    "Renta de yates en Cancún %%currentyear%% · Todo incluido | Yatezzitos" \
     "Renta de yates en Cancún con tripulación, combustible y bebidas. Isla Mujeres, Playa Tortugas y el Caribe. Yates para 6-40 personas. Cotiza en 2 minutos." \
     "renta de yates en cancun" \
     "Cancún city"
@@ -98,8 +98,8 @@ update_yoast term "${CITY_CANCUN_TERM_ID:-0}" \
 # #8 — PUERTO VALLARTA — Página #1 del site pero cluster en pos 7-9
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_PUERTO_VALLARTA_TERM_ID:-0}" \
-    "Renta de yates en Puerto Vallarta %%currentyear%% · Marina Vallarta · desde \$6,500/hr" \
-    "Renta de yates en Puerto Vallarta con salidas desde Marina Vallarta. Recorre Playa Madagascar, Yelapa, Mismaloya y las Islas Marietas. Cotización inmediata 24/7." \
+    "Renta de yates en Puerto Vallarta %%currentyear%% · Desde \$6,500/hr" \
+    "Renta de yates en Puerto Vallarta desde Marina Vallarta. Recorre Playa Madagascar, Yelapa, Mismaloya y las Islas Marietas. Cotización 24/7." \
     "renta de yates en puerto vallarta" \
     "Puerto Vallarta city"
 
@@ -107,8 +107,8 @@ update_yoast term "${CITY_PUERTO_VALLARTA_TERM_ID:-0}" \
 # #9 — HUATULCO — Ya rinde muy bien (CTR 8.52%), defender posición
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_HUATULCO_TERM_ID:-0}" \
-    "Yates en Huatulco %%currentyear%% · Tour 36 bahías · Playa La India | Yatezzitos" \
-    "Renta de yates en Huatulco para recorrer las 36 bahías y Playa La India. Avistamiento de ballenas en temporada, snorkel y chef a bordo. Flota privada Oaxaca." \
+    "Yates en Huatulco %%currentyear%% · Tour 36 bahías | Yatezzitos" \
+    "Yates en Huatulco para recorrer las 36 bahías y Playa La India. Avistamiento de ballenas, snorkel y chef a bordo. Flota privada en Oaxaca." \
     "yates huatulco" \
     "Huatulco city"
 
@@ -116,8 +116,8 @@ update_yoast term "${CITY_HUATULCO_TERM_ID:-0}" \
 # #9 — MAZATLÁN — Pos 4.2 / CTR 3.56%
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_MAZATLAN_TERM_ID:-0}" \
-    "Yates en Mazatlán %%currentyear%% · Combate Naval · Avistamiento ballenas" \
-    "Renta de yates en Mazatlán con tours únicos: Combate Naval iluminado, avistamiento de ballenas jorobadas (nov-abr) y playas vírgenes de Sinaloa. Desde \$5,000/hr." \
+    "Yates en Mazatlán %%currentyear%% · Combate Naval y ballenas" \
+    "Yates en Mazatlán con Combate Naval iluminado, avistamiento de ballenas jorobadas (nov-abr) y playas vírgenes de Sinaloa. Desde \$5,000/hr." \
     "yates mazatlan" \
     "Mazatlán city"
 
@@ -126,8 +126,8 @@ update_yoast term "${CITY_MAZATLAN_TERM_ID:-0}" \
 # Mantener + microfine-tune
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_LA_PAZ_TERM_ID:-0}" \
-    "Renta de yates en La Paz BCS %%currentyear%% · Isla Espíritu Santo · UNESCO" \
-    "Renta de yates en La Paz BCS para visitar Isla Espíritu Santo (Patrimonio UNESCO), nadar con lobos marinos y snorkel en arrecifes. Yates para todos los presupuestos." \
+    "Yates en La Paz BCS %%currentyear%% · Isla Espíritu Santo UNESCO" \
+    "Yates en La Paz BCS para visitar Isla Espíritu Santo (UNESCO), nadar con lobos marinos y snorkel en arrecifes. Opciones para todo presupuesto." \
     "renta de yates en la paz" \
     "La Paz city"
 
@@ -135,8 +135,8 @@ update_yoast term "${CITY_LA_PAZ_TERM_ID:-0}" \
 # #9 — ACAPULCO — Ya rinde (CTR 7.90%), empujar a top 3
 # ─────────────────────────────────────────────────────────
 update_yoast term "${CITY_ACAPULCO_TERM_ID:-0}" \
-    "Renta de yates en Acapulco %%currentyear%% · Bahía · La Roqueta | Yatezzitos" \
-    "Renta de yates en Acapulco para recorrer la Bahía, La Roqueta y ver a los Clavadistas de La Quebrada desde el mar. Tripulación certificada, desde \$5,500/hr." \
+    "Renta de yates en Acapulco %%currentyear%% · La Roqueta | Yatezzitos" \
+    "Renta de yates en Acapulco para recorrer la Bahía, La Roqueta y ver a los Clavadistas de La Quebrada desde el mar. Tripulación certificada." \
     "renta de yates en acapulco" \
     "Acapulco city"
 
@@ -145,7 +145,7 @@ update_yoast term "${CITY_ACAPULCO_TERM_ID:-0}" \
 # Mayor oportunidad "informacional → transaccional" del site
 # ─────────────────────────────────────────────────────────
 update_yoast post "${PAGE_PLAYAS_PV_ID:-0}" \
-    "Las 12 mejores playas de Puerto Vallarta en yate (%%currentyear%%) — guía" \
+    "Las 12 mejores playas de Puerto Vallarta en yate %%currentyear%%" \
     "Guía completa de las mejores playas de Puerto Vallarta: Madagascar, Las Ánimas, Yelapa, Colomitos. Cómo llegar en yate privado con cotización inmediata." \
     "playas en puerto vallarta" \
     "Playas PV (blog)"
@@ -155,7 +155,7 @@ update_yoast post "${PAGE_PLAYAS_PV_ID:-0}" \
 # Solo reescribimos meta aquí; el contenido es del Grupo C
 # ─────────────────────────────────────────────────────────
 update_yoast post "${PAGE_YATES_EN_MEXICO_ID:-0}" \
-    "Renta de yates en México %%currentyear%% · 10 destinos · Guía por ciudad" \
+    "Renta de yates en México %%currentyear%% · Guía por 10 destinos" \
     "Guía completa de renta de yates en México: precios, flota y playas en Cancún, Puerto Vallarta, Los Cabos, La Paz, Mazatlán, Acapulco, Huatulco y Ixtapa." \
     "renta de yates en mexico" \
     "Yates en México (hub país)"
