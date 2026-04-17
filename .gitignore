@@ -42,3 +42,14 @@ scripts/yatezzitos_crawler/logs/
 
 # GHL MCP Env Variables
 .env.ghl-mcp
+
+# MCP Integrations — allow tracked configs, keep real secrets out
+!integrations/**/*.json
+integrations/wp-mcp/wp-sites.json
+integrations/mcp-gsc/client_secrets.json
+integrations/mcp-gsc/token.json
+integrations/mcp-gsc/service_account_credentials.json
+integrations/**/.venv/
+integrations/ghl-mcp/dist/
+integrations/ghl-mcp/coverage/
+!integrations/**/.env.example
