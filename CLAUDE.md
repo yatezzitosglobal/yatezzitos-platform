@@ -27,8 +27,9 @@ Este proyecto operaba con **Google Anti Gravity** entre marzo y abril 2026. Se m
 
 - [`docs/memory/anti-gravity-migration.md`](docs/memory/anti-gravity-migration.md) — resumen ejecutivo del trabajo hecho, convenciones heredadas y trabajo abierto.
 - [`docs/memory/claude-mcp-setup.md`](docs/memory/claude-mcp-setup.md) — cómo configurar los 6 MCPs (GHL, GSC, WordPress, Figma, NotebookLM, GitHub) en Claude Desktop.
+- [`docs/memory/wordpress-yoast-guide.md`](docs/memory/wordpress-yoast-guide.md) — guía técnica de operación WP + plugin Yoast REST API + JSONs locales de yates + matriz anti-canibalización de keywords.
 
-**Al iniciar una sesión de Claude, leer primero esos dos archivos + este CLAUDE.md + AGENTS.md + `.agents/workflows/*.md`.**
+**Al iniciar una sesión de Claude, leer primero esos tres archivos + este CLAUDE.md + AGENTS.md + `.agents/workflows/*.md`.**
 
 ---
 
