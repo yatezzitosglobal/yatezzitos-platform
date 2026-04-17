@@ -21,6 +21,17 @@ Cancún, Los Cabos, Puerto Vallarta, La Paz, Mazatlán, Acapulco, Huatulco, Ixta
 - **Colaboración:** Trabajar en ramas aisladas y usar Pull Requests para revisión.
 - **Naturalidad del contenido:** Prioridad máxima a la calidad y naturalidad del lenguaje sobre la optimización técnica.
 
+## Migración desde Anti Gravity (16 de abril 2026)
+
+Este proyecto operaba con **Google Anti Gravity** entre marzo y abril 2026. Se migró a Claude sin perder contexto. La memoria consolidada del agente anterior vive en:
+
+- [`docs/memory/anti-gravity-migration.md`](docs/memory/anti-gravity-migration.md) — resumen ejecutivo del trabajo hecho, convenciones heredadas y trabajo abierto.
+- [`docs/memory/claude-mcp-setup.md`](docs/memory/claude-mcp-setup.md) — cómo configurar los 6 MCPs (GHL, GSC, WordPress, Figma, NotebookLM, GitHub) en Claude Desktop.
+
+**Al iniciar una sesión de Claude, leer primero esos dos archivos + este CLAUDE.md + AGENTS.md + `.agents/workflows/*.md`.**
+
+---
+
 ## Últimos Trabajos y Desarrollos Recientes (Actualización: 30 de marzo 2026)
 
 Hemos fortalecido significativamente las herramientas de inteligencia artificial y la infraestructura de marketing y SEO para acelerar el desarrollo de la Fase 1.
