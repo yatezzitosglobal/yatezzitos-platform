@@ -70,7 +70,7 @@ update_yoast() {
         -H "Content-Type: application/json" \
         -X POST \
         -d "${payload}" \
-        "${WP_BASE_URL}/wp-json/yatezzitos/v1/update-yoast")
+        "${WP_BASE_URL}/es/wp-json/yatezzitos/v1/update-yoast")
 
     echo "    response: ${response}"
 }
