@@ -8,8 +8,8 @@ Uso:
 Hace:
     1. Backup timestamped del claude_desktop_config.json actual.
     2. Lee el JSON actual (conservando bloque `preferences` y lo demas).
-    3. Agrega/reemplaza la seccion `mcpServers` con los 4 MCPs del proyecto:
-       GHL, GSC, WordPress, NotebookLM.
+    3. Agrega/reemplaza la seccion `mcpServers` con los 3 MCPs del proyecto:
+       GHL, GSC, NotebookLM.
     4. Escribe el resultado y muestra un resumen.
 
 Idempotente: si ya corriste este script antes, solo reescribe mcpServers.
@@ -17,12 +17,15 @@ Idempotente: si ya corriste este script antes, solo reescribe mcpServers.
 Todas las rutas a MCPs vendoreados se resuelven desde la raiz del repo
 (`integrations/*`), no desde directorios externos.
 
+NOTA sobre WordPress: el MCP de WordPress (paquete npm `wordpress-mcp` + plugin
+`WordPress MCP` de Automattic en el sitio) NO se configura aqui. Vive en
+`~/.claude/settings.json` porque corre bajo Claude Code, no Claude Desktop.
+Ver `docs/memory/claude-mcp-setup.md` seccion 3.
+
 Prerequisitos (correr una vez por MCP):
     integrations/ghl-mcp/      -> npm install && npm run build && docker build -t ghl-mcp-server .
     integrations/mcp-gsc/      -> uv venv && uv pip install -r requirements.txt
                                   + copiar client_secrets.json (no commitear)
-    integrations/wp-mcp/       -> npm install
-                                  + crear wp-sites.json (no commitear)
     notebooklm-mcp             -> curl -LsSf https://astral.sh/uv/install.sh | sh  (si falta uvx)
 """
 
@@ -45,8 +48,6 @@ GHL_ENV_FILE = str(REPO_ROOT / ".env.ghl-mcp")
 GSC_VENV_PYTHON = str(REPO_ROOT / "integrations/mcp-gsc/.venv/bin/python")
 GSC_SERVER_SCRIPT = str(REPO_ROOT / "integrations/mcp-gsc/gsc_server.py")
 GSC_CLIENT_SECRETS = str(REPO_ROOT / "integrations/mcp-gsc/client_secrets.json")
-WP_MCP_INDEX = str(REPO_ROOT / "integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js")
-WP_SITES_PATH = str(REPO_ROOT / "integrations/wp-mcp/wp-sites.json")
 
 # uvx path (Astral). Cambia si lo instalaste en otro lugar
 UVX_PATH = os.path.expanduser("~/.local/bin/uvx")
@@ -73,11 +74,6 @@ MCP_SERVERS = {
             "GSC_DATA_STATE": "all",
         },
     },
-    "wordpress": {
-        "command": "node",
-        "args": [WP_MCP_INDEX],
-        "env": {"WP_SITES_PATH": WP_SITES_PATH},
-    },
     "notebooklm-mcp": {
         "command": UVX_PATH,
         "args": ["--from", "notebooklm-mcp-cli", "notebooklm-mcp"],
@@ -94,10 +90,6 @@ def check_prerequisites():
         missing.append(f"  - {GSC_VENV_PYTHON} (correr: cd integrations/mcp-gsc && uv venv && uv pip install -r requirements.txt)")
     if not os.path.exists(GSC_CLIENT_SECRETS):
         missing.append(f"  - {GSC_CLIENT_SECRETS} (copiar desde ~/.gemini/antigravity/scratch/mcp-gsc/)")
-    if not os.path.exists(WP_MCP_INDEX):
-        missing.append(f"  - {WP_MCP_INDEX} (correr: cd integrations/wp-mcp && npm install)")
-    if not os.path.exists(WP_SITES_PATH):
-        missing.append(f"  - {WP_SITES_PATH} (cp integrations/wp-mcp/wp-sites.example.json integrations/wp-mcp/wp-sites.json y editar)")
     if not os.path.exists(UVX_PATH):
         missing.append(f"  - {UVX_PATH} (instalar uv: curl -LsSf https://astral.sh/uv/install.sh | sh)")
 

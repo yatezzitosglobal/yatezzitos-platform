@@ -1,8 +1,10 @@
-# WordPress MCP — Yatezzitos
+# WordPress MCP — Yatezzitos (LEGACY)
 
-Conecta Claude Desktop / Cowork a la REST API de WordPress de `yatezzitos.com`.
+> ⚠️ **Esta ruta ya no es la activa (abril 2026).** El MCP de WordPress en uso es el paquete npm [`wordpress-mcp`](https://www.npmjs.com/package/wordpress-mcp) configurado en `~/.claude/settings.json` y respaldado por el plugin `WordPress MCP v0.2.5` de Automattic instalado en el sitio. Ver [`docs/memory/claude-mcp-setup.md`](../../docs/memory/claude-mcp-setup.md) §3.
+>
+> Esta carpeta se mantiene como fallback por si el paquete `wordpress-mcp` deja de mantenerse o si algún colaborador necesita una alternativa vía `claude_desktop_config.json`.
 
-Wrapper del paquete npm [`server-wp-mcp`](https://www.npmjs.com/package/server-wp-mcp) v1.0.1 — **sin código custom**, sólo un `package.json` + archivo de sitios + config.
+Conecta Claude Desktop a la REST API de WordPress de `yatezzitos.com` vía el wrapper del paquete npm [`server-wp-mcp`](https://www.npmjs.com/package/server-wp-mcp) v1.0.1 — **sin código custom**, sólo un `package.json` + archivo de sitios + config.
 
 ---
 
