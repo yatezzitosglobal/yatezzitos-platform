@@ -25,78 +25,64 @@ wp_get() {
     curl -sS --fail \
         -u "${WP_USER}:${WP_APP_PASSWORD}" \
         -H "Accept: application/json" \
-        "${WP_BASE_URL}/wp-json/${endpoint}"
+        "${WP_BASE_URL}/es/wp-json/${endpoint}"
+}
+
+resolve_term() {
+    local var_name="$1" slug="$2"
+    local id
+    id=$(wp_get "wp/v2/property_city?slug=${slug}" | jq -r '.[0].id // empty' 2>/dev/null || true)
+    if [[ -n "${id}" ]]; then
+        echo "   ✅ ${var_name}=${id}  (slug: ${slug})"
+    else
+        id="0"
+        echo "   ⚠️  ${var_name}=0  (no encontrado — slug: ${slug})"
+    fi
+    printf '%s' "${id}"
+}
+
+resolve_page() {
+    local var_name="$1" slug="$2"
+    local id
+    id=$(wp_get "wp/v2/pages?slug=${slug}" | jq -r '.[0].id // empty' 2>/dev/null || true)
+    if [[ -z "${id}" ]]; then
+        id=$(wp_get "wp/v2/posts?slug=${slug}" | jq -r '.[0].id // empty' 2>/dev/null || true)
+    fi
+    if [[ -n "${id}" ]]; then
+        echo "   ✅ ${var_name}=${id}  (slug: ${slug})"
+    else
+        id="0"
+        echo "   ⚠️  ${var_name}=0  (no encontrado — slug: ${slug})"
+    fi
+    printf '%s' "${id}"
 }
 
 echo "━━━ Descubriendo IDs de WordPress en ${WP_BASE_URL} ━━━"
 echo
 
-# ── Taxonomía property_city ─────────────────────────────────────────────────
-declare -A CITY_SLUGS
-CITY_SLUGS=(
-    [CITY_CANCUN_TERM_ID]="renta-de-yates-cancun"
-    [CITY_PUERTO_VALLARTA_TERM_ID]="renta-de-yates-en-puerto-vallarta"
-    [CITY_HUATULCO_TERM_ID]="renta-de-yates-huatulco"
-    [CITY_MAZATLAN_TERM_ID]="renta-de-yates-mazatlan"
-    [CITY_LA_PAZ_TERM_ID]="renta-de-yates-en-la-paz"
-    [CITY_ACAPULCO_TERM_ID]="renta-de-yates-en-acapulco"
-    [CITY_LOS_CABOS_TERM_ID]="yates-cabos"
-    [CITY_IXTAPA_TERM_ID]="yates-ixtapa"
-    [CITY_NUEVO_VALLARTA_TERM_ID]="yates-en-nuevo-vallarta"
-    [CITY_PLAYA_DEL_CARMEN_TERM_ID]="yates-playa-del-carmen"
-)
-
-declare -A RESOLVED_IDS
-
 echo "→ Consultando términos de property_city..."
-for VAR_NAME in "${!CITY_SLUGS[@]}"; do
-    SLUG="${CITY_SLUGS[$VAR_NAME]}"
-    TERM_ID=$(wp_get "wp/v2/property_city?slug=${SLUG}" | jq -r '.[0].id // empty' 2>/dev/null || true)
-    if [[ -n "${TERM_ID}" ]]; then
-        RESOLVED_IDS[$VAR_NAME]="${TERM_ID}"
-        echo "   ✅ ${VAR_NAME}=${TERM_ID}  (slug: ${SLUG})"
-    else
-        RESOLVED_IDS[$VAR_NAME]="0"
-        echo "   ⚠️  ${VAR_NAME}=0  (no encontrado — slug: ${SLUG})"
-    fi
-done
+CITY_CANCUN_TERM_ID=$(resolve_term          CITY_CANCUN_TERM_ID          "renta-de-yates-cancun")
+CITY_PUERTO_VALLARTA_TERM_ID=$(resolve_term CITY_PUERTO_VALLARTA_TERM_ID  "renta-de-yates-en-puerto-vallarta")
+CITY_HUATULCO_TERM_ID=$(resolve_term        CITY_HUATULCO_TERM_ID        "renta-de-yates-huatulco")
+CITY_MAZATLAN_TERM_ID=$(resolve_term        CITY_MAZATLAN_TERM_ID        "renta-de-yates-mazatlan")
+CITY_LA_PAZ_TERM_ID=$(resolve_term          CITY_LA_PAZ_TERM_ID          "renta-de-yates-en-la-paz")
+CITY_ACAPULCO_TERM_ID=$(resolve_term        CITY_ACAPULCO_TERM_ID        "renta-de-yates-en-acapulco")
+CITY_LOS_CABOS_TERM_ID=$(resolve_term       CITY_LOS_CABOS_TERM_ID       "yates-cabos")
+CITY_IXTAPA_TERM_ID=$(resolve_term          CITY_IXTAPA_TERM_ID          "yates-ixtapa")
+CITY_NUEVO_VALLARTA_TERM_ID=$(resolve_term  CITY_NUEVO_VALLARTA_TERM_ID  "yates-en-nuevo-vallarta")
+CITY_PLAYA_DEL_CARMEN_TERM_ID=$(resolve_term CITY_PLAYA_DEL_CARMEN_TERM_ID "yates-playa-del-carmen")
 
-# ── Páginas / posts ──────────────────────────────────────────────────────────
 echo
 echo "→ Consultando páginas..."
+PAGE_PLAYAS_PV_ID=$(resolve_page      PAGE_PLAYAS_PV_ID     "playas-en-puerto-vallarta")
+PAGE_YATES_EN_MEXICO_ID=$(resolve_page PAGE_YATES_EN_MEXICO_ID "yates-en-mexico")
 
-declare -A PAGE_SLUGS
-PAGE_SLUGS=(
-    [HOME_PAGE_ID]="inicio"
-    [PAGE_PLAYAS_PV_ID]="playas-en-puerto-vallarta"
-    [PAGE_YATES_EN_MEXICO_ID]="yates-en-mexico"
-)
-
-for VAR_NAME in "${!PAGE_SLUGS[@]}"; do
-    SLUG="${PAGE_SLUGS[$VAR_NAME]}"
-
-    # Intentar como página
-    POST_ID=$(wp_get "wp/v2/pages?slug=${SLUG}" | jq -r '.[0].id // empty' 2>/dev/null || true)
-
-    # Si no hay resultado, intentar como post
-    if [[ -z "${POST_ID}" ]]; then
-        POST_ID=$(wp_get "wp/v2/posts?slug=${SLUG}" | jq -r '.[0].id // empty' 2>/dev/null || true)
-    fi
-
-    if [[ -n "${POST_ID}" ]]; then
-        RESOLVED_IDS[$VAR_NAME]="${POST_ID}"
-        echo "   ✅ ${VAR_NAME}=${POST_ID}  (slug: ${SLUG})"
-    else
-        RESOLVED_IDS[$VAR_NAME]="0"
-        echo "   ⚠️  ${VAR_NAME}=0  (no encontrado — slug: ${SLUG})"
-    fi
-done
-
-# ── Intentar homepage como front page estática ──────────────────────────────
-if [[ "${RESOLVED_IDS[HOME_PAGE_ID]}" == "0" ]]; then
+# Homepage: intentar slug "inicio", luego page_on_front
+HOME_PAGE_ID=$(resolve_page HOME_PAGE_ID "inicio")
+if [[ "${HOME_PAGE_ID}" == "0" ]]; then
     FRONT_ID=$(wp_get "wp/v2/settings" | jq -r '.page_on_front // empty' 2>/dev/null || true)
     if [[ -n "${FRONT_ID}" && "${FRONT_ID}" != "0" ]]; then
-        RESOLVED_IDS[HOME_PAGE_ID]="${FRONT_ID}"
+        HOME_PAGE_ID="${FRONT_ID}"
         echo "   ✅ HOME_PAGE_ID=${FRONT_ID}  (via page_on_front setting)"
     fi
 fi
@@ -104,29 +90,29 @@ fi
 # ── Generar ids.env ──────────────────────────────────────────────────────────
 OUTPUT="${SCRIPT_DIR}/ids.env"
 
-{
-    echo "# Generado automáticamente por fetch-wp-ids.sh — $(date -u '+%Y-%m-%d %H:%M UTC')"
-    echo "# NO commitear — contiene IDs reales de producción"
-    echo
-    echo "HOME_PAGE_ID=${RESOLVED_IDS[HOME_PAGE_ID]:-0}"
-    echo "CITY_CANCUN_TERM_ID=${RESOLVED_IDS[CITY_CANCUN_TERM_ID]:-0}"
-    echo "CITY_PUERTO_VALLARTA_TERM_ID=${RESOLVED_IDS[CITY_PUERTO_VALLARTA_TERM_ID]:-0}"
-    echo "CITY_HUATULCO_TERM_ID=${RESOLVED_IDS[CITY_HUATULCO_TERM_ID]:-0}"
-    echo "CITY_MAZATLAN_TERM_ID=${RESOLVED_IDS[CITY_MAZATLAN_TERM_ID]:-0}"
-    echo "CITY_LA_PAZ_TERM_ID=${RESOLVED_IDS[CITY_LA_PAZ_TERM_ID]:-0}"
-    echo "CITY_ACAPULCO_TERM_ID=${RESOLVED_IDS[CITY_ACAPULCO_TERM_ID]:-0}"
-    echo "CITY_LOS_CABOS_TERM_ID=${RESOLVED_IDS[CITY_LOS_CABOS_TERM_ID]:-0}"
-    echo "CITY_IXTAPA_TERM_ID=${RESOLVED_IDS[CITY_IXTAPA_TERM_ID]:-0}"
-    echo "CITY_NUEVO_VALLARTA_TERM_ID=${RESOLVED_IDS[CITY_NUEVO_VALLARTA_TERM_ID]:-0}"
-    echo "CITY_PLAYA_DEL_CARMEN_TERM_ID=${RESOLVED_IDS[CITY_PLAYA_DEL_CARMEN_TERM_ID]:-0}"
-    echo "PAGE_PLAYAS_PV_ID=${RESOLVED_IDS[PAGE_PLAYAS_PV_ID]:-0}"
-    echo "PAGE_YATES_EN_MEXICO_ID=${RESOLVED_IDS[PAGE_YATES_EN_MEXICO_ID]:-0}"
-} > "${OUTPUT}"
+cat > "${OUTPUT}" <<EOF
+# Generado automáticamente por fetch-wp-ids.sh — $(date -u '+%Y-%m-%d %H:%M UTC')
+# NO commitear — contiene IDs reales de producción
+
+HOME_PAGE_ID=${HOME_PAGE_ID}
+CITY_CANCUN_TERM_ID=${CITY_CANCUN_TERM_ID}
+CITY_PUERTO_VALLARTA_TERM_ID=${CITY_PUERTO_VALLARTA_TERM_ID}
+CITY_HUATULCO_TERM_ID=${CITY_HUATULCO_TERM_ID}
+CITY_MAZATLAN_TERM_ID=${CITY_MAZATLAN_TERM_ID}
+CITY_LA_PAZ_TERM_ID=${CITY_LA_PAZ_TERM_ID}
+CITY_ACAPULCO_TERM_ID=${CITY_ACAPULCO_TERM_ID}
+CITY_LOS_CABOS_TERM_ID=${CITY_LOS_CABOS_TERM_ID}
+CITY_IXTAPA_TERM_ID=${CITY_IXTAPA_TERM_ID}
+CITY_NUEVO_VALLARTA_TERM_ID=${CITY_NUEVO_VALLARTA_TERM_ID}
+CITY_PLAYA_DEL_CARMEN_TERM_ID=${CITY_PLAYA_DEL_CARMEN_TERM_ID}
+PAGE_PLAYAS_PV_ID=${PAGE_PLAYAS_PV_ID}
+PAGE_YATES_EN_MEXICO_ID=${PAGE_YATES_EN_MEXICO_ID}
+EOF
 
 echo
 echo "━━━ ids.env generado en ${OUTPUT} ━━━"
 echo
-MISSING=$(grep "=0$" "${OUTPUT}" | wc -l)
+MISSING=$(grep -c "=0$" "${OUTPUT}" || true)
 if [[ "${MISSING}" -gt 0 ]]; then
     echo "⚠️  ${MISSING} IDs quedaron en 0 — revisa los slugs en WordPress admin."
 else
@@ -134,5 +120,6 @@ else
 fi
 echo
 echo "Siguiente paso:"
+echo "  bash scripts/seo/snapshot-yoast-before.sh"
 echo "  DRY_RUN=1 bash scripts/seo/rewrite-yoast-priority-pages.sh   ← verificar sin cambios"
 echo "  bash scripts/seo/rewrite-yoast-priority-pages.sh              ← aplicar cambios"
