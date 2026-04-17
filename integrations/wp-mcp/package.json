@@ -1,0 +1,12 @@
+{
+  "name": "yatezzitos-wp-mcp",
+  "version": "1.0.0",
+  "description": "WordPress MCP server for Yatezzitos — wraps server-wp-mcp to expose yatezzitos.com REST API to Claude",
+  "private": true,
+  "dependencies": {
+    "server-wp-mcp": "^1.0.1"
+  },
+  "scripts": {
+    "start": "node node_modules/server-wp-mcp/dist/index.js"
+  }
+}

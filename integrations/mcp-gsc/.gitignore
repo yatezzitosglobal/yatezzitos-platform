@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OAuth credentials (NEVER commit)
+client_secrets.json
+token.json
+service_account_credentials.json
+credentials.json
+
+# Local env
+.env
+*.env
+
+# OS
+.DS_Store

@@ -54,12 +54,14 @@ Y se cargan antes de arrancar Claude Desktop (o se meten en un Launch Agent que 
 
 ## 1. GoHighLevel (CRM)
 
-**Transport:** Docker local (imagen propia `ghl-mcp-server`, forkeada de `mastanley13/GoHighLevel-MCP` + parches Yatezzitos).
+**Transport:** Docker local (imagen propia `ghl-mcp-server`, forkeada de `mastanley13/GoHighLevel-MCP` + 4 parches Yatezzitos).
+
+**Ubicación del fuente:** `integrations/ghl-mcp/` (vendoreado dentro del repo — antes vivía en `~/.gemini/antigravity/scratch/GoHighLevel-MCP/`).
 
 **Prerequisitos:**
 - Docker Desktop corriendo
-- Imagen `ghl-mcp-server` construida (instrucciones en `docs/integraciones/mcp-notebooklm-knowledge.md`)
-- `.env.ghl-mcp` con las credenciales en `/Users/luisvelazquez/Projects/yatezzitos-platform/.env.ghl-mcp`
+- Imagen `ghl-mcp-server` construida desde `integrations/ghl-mcp/`
+- `.env.ghl-mcp` con credenciales en la raíz del repo (`/Users/luisvelazquez/Projects/yatezzitos-platform/.env.ghl-mcp`) — gitignored
 
 **Config:**
 
@@ -75,12 +77,16 @@ Y se cargan antes de arrancar Claude Desktop (o se meten en un Launch Agent que 
 }
 ```
 
-**Idéntica a Anti Gravity — sin cambios.** Solo reconstruir la imagen si hay parches nuevos:
+**Build inicial / reconstrucción tras parches:**
 
 ```bash
-cd /Users/luisvelazquez/.gemini/antigravity/scratch/GoHighLevel-MCP
+cd /Users/luisvelazquez/Projects/yatezzitos-platform/integrations/ghl-mcp
+npm install
+npm run build
 docker build -t ghl-mcp-server .
 ```
+
+Los 4 parches Yatezzitos vigentes (todos sobre email builder API) están documentados en `integrations/ghl-mcp/YATEZZITOS.md`.
 
 ---
 
@@ -88,27 +94,29 @@ docker build -t ghl-mcp-server .
 
 **Transport:** Python local dentro de un venv.
 
-**Ubicación del server:** `/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/`
-- Ejecutable: `.venv/bin/python`
+**Ubicación del server:** `integrations/mcp-gsc/` (vendoreado — copia upstream `AminForou/mcp-gsc@v0.2.1` sin parches locales).
+- Ejecutable: `.venv/bin/python` (crear con `uv venv && uv pip install -r requirements.txt`)
 - Script: `gsc_server.py`
-- Credenciales OAuth: `client_secrets.json` (no commitear)
+- Credenciales OAuth: `client_secrets.json` + `token.json` (gitignored)
 
 **Config:**
 
 ```json
 "gscServer": {
-  "command": "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/.venv/bin/python",
+  "command": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/.venv/bin/python",
   "args": [
-    "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/gsc_server.py"
+    "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/gsc_server.py"
   ],
   "env": {
-    "GSC_OAUTH_CLIENT_SECRETS_FILE": "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/client_secrets.json",
+    "GSC_OAUTH_CLIENT_SECRETS_FILE": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/client_secrets.json",
     "GSC_DATA_STATE": "all"
   }
 }
 ```
 
-**Opcional (recomendado a mediano plazo):** mover el server de GSC dentro del repo en `integrations/mcp-gsc/` para que no dependa del directorio de Anti Gravity.
+**Migración:** copiar `client_secrets.json` + `token.json` desde `~/.gemini/antigravity/scratch/mcp-gsc/` a `integrations/mcp-gsc/`. El venv se recrea local con `cd integrations/mcp-gsc && uv venv && uv pip install -r requirements.txt`.
+
+**Futuro:** cuando upstream publique `[project.scripts]` en su `pyproject.toml`, podremos migrar a `uvx --from mcp-gsc <cmd>` y eliminar la copia vendoreada. Ver `integrations/mcp-gsc/README.md`.
 
 **Regla crítica heredada:** usar `https://yatezzitos.com/` como property, NO `sc-domain:yatezzitos.com`.
 
@@ -118,9 +126,9 @@ docker build -t ghl-mcp-server .
 
 **Transport:** Node local (`server-wp-mcp` instalado en un `node_modules` dedicado).
 
-**Ubicación:** `/Users/luisvelazquez/.gemini/antigravity/scratch/wp-mcp/`
-- Entry: `node_modules/server-wp-mcp/dist/index.js`
-- Config de sitios: `wp-sites.json` (contiene Application Passwords — no commitear)
+**Ubicación:** `integrations/wp-mcp/` (vendoreado — sólo un `package.json` que referencia `server-wp-mcp@^1.0.1` de npm).
+- Entry: `node_modules/server-wp-mcp/dist/index.js` (crear con `npm install`)
+- Config de sitios: `wp-sites.json` (contiene Application Passwords — gitignored)
 
 **Config:**
 
@@ -128,12 +136,19 @@ docker build -t ghl-mcp-server .
 "wordpress": {
   "command": "node",
   "args": [
-    "/Users/luisvelazquez/.gemini/antigravity/scratch/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
+    "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
   ],
   "env": {
-    "WP_SITES_PATH": "/Users/luisvelazquez/.gemini/antigravity/scratch/wp-mcp/wp-sites.json"
+    "WP_SITES_PATH": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/wp-sites.json"
   }
 }
+```
+
+**Setup inicial:**
+```bash
+cd integrations/wp-mcp
+npm install
+cp wp-sites.example.json wp-sites.json  # luego editar con credenciales reales
 ```
 
 **Regla crítica heredada:** para Yoast siempre usar el endpoint propio `POST /yatezzitos/v1/update-yoast`, nunca `meta: {_yoast_wpseo_*}` del endpoint estándar.
@@ -214,6 +229,8 @@ open -a Claude
 
 ## Archivo `claude_desktop_config.json` completo (plantilla)
 
+> ⚡ En la práctica esta plantilla no se edita a mano. El script `scripts/update-claude-mcp-config.py` genera/actualiza la sección `mcpServers` sin tocar las `preferences` de Cowork. Corriendo `python3 scripts/update-claude-mcp-config.py` desde la raíz del repo alcanza.
+
 ```json
 {
   "mcpServers": {
@@ -227,22 +244,22 @@ open -a Claude
       ]
     },
     "gscServer": {
-      "command": "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/.venv/bin/python",
+      "command": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/.venv/bin/python",
       "args": [
-        "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/gsc_server.py"
+        "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/gsc_server.py"
       ],
       "env": {
-        "GSC_OAUTH_CLIENT_SECRETS_FILE": "/Users/luisvelazquez/.gemini/antigravity/scratch/mcp-gsc/client_secrets.json",
+        "GSC_OAUTH_CLIENT_SECRETS_FILE": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/mcp-gsc/client_secrets.json",
         "GSC_DATA_STATE": "all"
       }
     },
     "wordpress": {
       "command": "node",
       "args": [
-        "/Users/luisvelazquez/.gemini/antigravity/scratch/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
+        "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
       ],
       "env": {
-        "WP_SITES_PATH": "/Users/luisvelazquez/.gemini/antigravity/scratch/wp-mcp/wp-sites.json"
+        "WP_SITES_PATH": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/wp-sites.json"
       }
     },
     "notebooklm-mcp": {
@@ -286,16 +303,21 @@ Si alguno falla:
 
 ---
 
-## Plan a mediano plazo: mover MCPs custom al repo
+## Estructura final (post-migración)
 
-Hoy los MCPs custom viven en `~/.gemini/antigravity/scratch/`. Para no depender del directorio del agente anterior, conviene mover:
-- `GoHighLevel-MCP/` → `integrations/ghl-mcp/` en este repo
-- `mcp-gsc/` → `integrations/mcp-gsc/` en este repo
-- `wp-mcp/wp-sites.json` → fuera del repo (archivo con secretos), el código queda en `integrations/wp-mcp/`
+Los MCPs custom ahora viven dentro del repo — ya no dependen del directorio heredado de Anti Gravity:
 
-Así el proyecto es autocontenido y cualquier miembro del equipo puede clonarlo y levantar los MCPs sin tener Anti Gravity instalado.
+- `integrations/ghl-mcp/` — fork vendoreado `mastanley13/GoHighLevel-MCP` + 4 parches Yatezzitos (email builder)
+- `integrations/mcp-gsc/` — copia vendoreada upstream `AminForou/mcp-gsc@v0.2.1` (sin parches locales)
+- `integrations/wp-mcp/` — wrapper de `server-wp-mcp@^1.0.1` (npm)
+
+Cada carpeta tiene su propio `README.md` con setup y un `.gitignore` que bloquea sus secretos específicos (`.env`, `wp-sites.json`, `client_secrets.json`, `token.json`, `.venv/`, `node_modules/`, `dist/`).
+
+El `.gitignore` raíz del repo tiene excepciones para permitir commitear los JSONs de config bajo `integrations/**/*.json` sin dejar pasar los secretos, que están explícitamente re-ignorados.
+
+Cualquier colaborador puede clonar el repo y levantar los MCPs sin tener Anti Gravity instalado siguiendo el README de cada carpeta.
 
 ---
 
-**Última actualización:** 16 de abril 2026
+**Última actualización:** 16 de abril 2026 — MCPs migrados a `integrations/`
 **Relacionado:** `docs/memory/anti-gravity-migration.md`
