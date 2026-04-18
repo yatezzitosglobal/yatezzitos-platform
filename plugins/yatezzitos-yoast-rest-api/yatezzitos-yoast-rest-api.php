@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Yatezzitos — Yoast SEO REST API para Taxonomías
  * Plugin URI:  https://github.com/YatezzitosMexico/yatezzitos-platform
- * Description: Habilita la escritura de campos SEO de Yoast (título, meta descripción y focus keyword) vía REST API para taxonomías (property_city, property_category, property_feature) y para posts. Invalida automáticamente el caché de Yoast Indexable.
- * Version:     1.2.0
+ * Description: Habilita la escritura de campos SEO de Yoast (título, meta descripción y focus keyword) vía REST API para taxonomías (property_city, property_category, property_feature) y para posts. Invalida automáticamente el caché de Yoast Indexable. Incluye endpoint de lectura para snapshots previos al rollback.
+ * Version:     1.3.0
  * Author:      Yatezzitos Dev Team
  * License:     GPL-2.0-or-later
  * Text Domain: yatezzitos-yoast-rest
@@ -211,6 +211,57 @@ add_action('rest_api_init', function () {
             }
 
             return rest_ensure_response(array('success' => true, 'message' => 'Yoast SEO fields updated successfully for ' . $type . ' ' . $id));
+        }
+    ));
+
+    // ─────────────────────────────────────────────────────────
+    // Endpoint de LECTURA: snapshot antes de cualquier update.
+    // Permite guardar el estado previo para rollback rápido.
+    // ─────────────────────────────────────────────────────────
+    register_rest_route('yatezzitos/v1', '/read-yoast', array(
+        'methods' => 'GET',
+        'permission_callback' => function () {
+            return current_user_can('edit_posts');
+        },
+        'callback' => function ($request) {
+            $id   = intval($request->get_param('id'));
+            $type = $request->get_param('type');
+
+            if (!$id || !$type) {
+                return new WP_Error('missing_params', 'Missing ID or type', array('status' => 400));
+            }
+
+            if ($type === 'term') {
+                $tax_meta = get_option('wpseo_taxonomy_meta', array());
+                $term = get_term($id);
+                if (is_wp_error($term) || !$term) {
+                    return new WP_Error('term_not_found', 'Term not found', array('status' => 404));
+                }
+                $tax    = $term->taxonomy;
+                $values = isset($tax_meta[$tax][$id]) ? $tax_meta[$tax][$id] : array();
+                return rest_ensure_response(array(
+                    'id'       => $id,
+                    'type'     => 'term',
+                    'taxonomy' => $tax,
+                    'slug'     => $term->slug,
+                    'title'    => isset($values['wpseo_title'])    ? $values['wpseo_title']    : '',
+                    'desc'     => isset($values['wpseo_desc'])     ? $values['wpseo_desc']     : '',
+                    'focuskw'  => isset($values['wpseo_focuskw'])  ? $values['wpseo_focuskw']  : '',
+                ));
+            }
+
+            $post = get_post($id);
+            if (!$post) {
+                return new WP_Error('post_not_found', 'Post not found', array('status' => 404));
+            }
+            return rest_ensure_response(array(
+                'id'      => $id,
+                'type'    => 'post',
+                'slug'    => $post->post_name,
+                'title'   => get_post_meta($id, '_yoast_wpseo_title', true),
+                'desc'    => get_post_meta($id, '_yoast_wpseo_metadesc', true),
+                'focuskw' => get_post_meta($id, '_yoast_wpseo_focuskw', true),
+            ));
         }
     ));
 });

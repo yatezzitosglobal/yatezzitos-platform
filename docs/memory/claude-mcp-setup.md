@@ -176,34 +176,48 @@ Los 4 parches Yatezzitos vigentes (todos sobre email builder API) están documen
 
 ## 3. WordPress (yatezzitos.com self-hosted)
 
-**Transport:** Node local (`server-wp-mcp` instalado en un `node_modules` dedicado).
+**Cambio desde Anti Gravity (abril 2026):** la ruta activa ya **no** es el Node local `server-wp-mcp` de `integrations/wp-mcp/`. Ahora es el paquete npm `wordpress-mcp` invocado vía `npx`, que habla con el plugin **WordPress MCP v0.2.5** (by Automattic AI) instalado en el sitio WordPress.
 
-**Ubicación:** `integrations/wp-mcp/` (vendoreado — sólo un `package.json` que referencia `server-wp-mcp@^1.0.1` de npm).
-- Entry: `node_modules/server-wp-mcp/dist/index.js` (crear con `npm install`)
-- Config de sitios: `wp-sites.json` (contiene Application Passwords — gitignored)
+**Transport:** `npx -y wordpress-mcp` (stdio).
+
+**Ubicación del config:** `~/.claude/settings.json` → bloque `mcpServers.wordpress`. Claude Code lee este archivo automáticamente; **no es el mismo archivo** que `~/Library/Application Support/Claude/claude_desktop_config.json` (ese es solo Claude Desktop).
 
 **Config:**
 
 ```json
 "wordpress": {
-  "command": "node",
-  "args": [
-    "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
-  ],
+  "command": "npx",
+  "args": ["-y", "wordpress-mcp"],
   "env": {
-    "WP_SITES_PATH": "/Users/luisvelazquez/Projects/yatezzitos-platform/integrations/wp-mcp/wp-sites.json"
+    "WORDPRESS_HOST_URL": "https://yatezzitos.com",
+    "WORDPRESS_API_USERNAME": "Yatezzitos",
+    "WORDPRESS_API_PASSWORD": "${WORDPRESS_API_PASSWORD}",
+    "WORDPRESS_POST_AUTHOR_ID": "1"
   }
 }
 ```
 
-**Setup inicial:**
-```bash
-cd integrations/wp-mcp
-npm install
-cp wp-sites.example.json wp-sites.json  # luego editar con credenciales reales
-```
+> ⚠️ **Secreto:** `WORDPRESS_API_PASSWORD` es una **Application Password** de WordPress (formato `XXXX XXXX XXXX XXXX XXXX XXXX`) generada desde WP Admin → **Users → Profile → Application Passwords**. Referenciarla por variable de entorno, nunca inline. Rotable sin cerrar sesión del usuario.
 
-**Regla crítica heredada:** para Yoast siempre usar el endpoint propio `POST /yatezzitos/v1/update-yoast`, nunca `meta: {_yoast_wpseo_*}` del endpoint estándar.
+**Plugin servidor en WP:** `WordPress MCP v0.2.5` — debe estar **instalado y activo** en el sitio. Verificar con `mcp__wordpress-mcp__get_site_info` que aparece en la lista de plugins activos.
+
+**Tools expuestos (5):**
+
+| Tool | Para qué |
+|---|---|
+| `get_site_info` | Info del sitio, plugins, temas, roles de usuario |
+| `list_api_functions` | Lista todos los endpoints REST con soporte CRUD |
+| `get_function_details` | Metadata de un endpoint (params, auth requerido) |
+| `run_api_function` | Ejecuta GET/POST/PATCH/DELETE sobre cualquier ruta |
+| `wp_get_media_file` | Descarga archivo de media por ID |
+
+**Regla crítica heredada:** para Yoast siempre usar el endpoint propio `POST /yatezzitos/v1/update-yoast` vía `run_api_function`, nunca `meta: {_yoast_wpseo_*}` del endpoint estándar.
+
+> Detalles del plugin Yoast REST API propio, los 4 endpoints que usamos (posts, properties, taxonomías, búsqueda por slug) y ejemplos de `run_api_function` en [`docs/memory/wordpress-yoast-guide.md`](wordpress-yoast-guide.md).
+
+### Legacy: `integrations/wp-mcp/` + `server-wp-mcp` (inactivo)
+
+El repo todavía contiene `integrations/wp-mcp/` (wrapper de `server-wp-mcp@^1.0.1` de npm + `wp-sites.json`) y el script `scripts/update-claude-mcp-config.py` sigue generando la entrada `"wordpress"` apuntando a ese Node local en `claude_desktop_config.json`. **Ya no es la ruta activa.** Queda como fallback potencial si algún día el paquete `wordpress-mcp` deja de mantenerse. Decidir si borrarlo o mantenerlo es trabajo abierto.
 
 ---
 
@@ -332,8 +346,8 @@ Los MCPs custom viven dentro del repo — ya no dependen del directorio heredado
 
 - `integrations/ghl-mcp/` — fork de `mastanley13/GoHighLevel-MCP` + 4 parches Yatezzitos (email builder)
 - `integrations/mcp-gsc/` — copia upstream `AminForou/mcp-gsc@v0.2.1` (sin parches locales)
-- `integrations/wp-mcp/` — wrapper de `server-wp-mcp@^1.0.1` (npm, multi-site)
-- `integrations/wp-mcp-remote/` — wrapper de `@automattic/mcp-wordpress-remote` con `.env.wp-mcp-remote`
+- `integrations/wp-mcp/` — **legacy**: wrapper de `server-wp-mcp@^1.0.1` (multi-site). No activo; queda como fallback
+- `integrations/wp-mcp-remote/` — wrapper de `@automattic/mcp-wordpress-remote` con `.env.wp-mcp-remote` (ruta activa)
 
 Cada carpeta tiene su propio `README.md` y `.gitignore` específico.
 
@@ -355,4 +369,4 @@ El `.gitignore` raíz tiene excepciones para permitir commitear JSONs bajo `inte
 ---
 
 **Última actualización:** 18 de abril 2026 — sistema de sync único + LaunchAgent + 5to MCP (Automattic)
-**Relacionado:** `docs/memory/anti-gravity-migration.md`, [`integrations/mcp-servers.json`](../../integrations/mcp-servers.json), [`scripts/sync-mcp.py`](../../scripts/sync-mcp.py)
+**Relacionado:** `docs/memory/anti-gravity-migration.md`, `docs/memory/wordpress-yoast-guide.md`, [`integrations/mcp-servers.json`](../../integrations/mcp-servers.json), [`scripts/sync-mcp.py`](../../scripts/sync-mcp.py)

@@ -70,6 +70,8 @@ Anti Gravity (Google Gemini Agents) fue el agente principal de Yatezzitos Global
 - Evita corromper el JSON de Elementor al inyectar metadata/HTML
 - Regla: **nunca** usar `meta: {_yoast_wpseo_*}` en el endpoint estándar de WP REST — no se guarda
 
+> Para detalles técnicos del plugin, ejemplos de los 4 endpoints, schema del JSON de yates y matriz de canibalización de keywords, ver [`docs/memory/wordpress-yoast-guide.md`](wordpress-yoast-guide.md).
+
 **Workflow permanente:** `.agents/workflows/seo-blog-posts.md` con las reglas obligatorias de redacción SEO (naturalidad > densidad, HTML puro, enlaces internos/externos, legibilidad Yoast estricta).
 
 ### 3.2 Rediseño web
