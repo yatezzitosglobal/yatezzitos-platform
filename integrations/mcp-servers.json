@@ -54,6 +54,8 @@
       "description": "NotebookLM MCP - libretas de estudio del proyecto",
       "command": "{{HOME}}/.local/bin/uvx",
       "args": [
+        "--python",
+        "3.12",
         "--from",
         "notebooklm-mcp-cli",
         "notebooklm-mcp"
