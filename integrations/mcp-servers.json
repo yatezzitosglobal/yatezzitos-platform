@@ -1,0 +1,92 @@
+{
+  "$comment": "Fuente unica de verdad para MCPs del proyecto. scripts/sync-mcp.py lee este archivo y lo syncea a los 3 clientes (Claude Desktop, Claude Code, Antigravity). Secretos NUNCA van aqui: viven en .env.* gitignored cargados por wrappers.",
+  "version": 1,
+  "mcpServers": {
+    "go-high-level": {
+      "description": "GoHighLevel CRM - 253 tools (contactos, pipelines, campanas, email templates, etc.)",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--env-file",
+        "{{REPO_ROOT}}/.env.ghl-mcp",
+        "ghl-mcp-server",
+        "node",
+        "dist/server.js"
+      ],
+      "requires": [
+        "docker",
+        "{{REPO_ROOT}}/.env.ghl-mcp"
+      ]
+    },
+    "gscServer": {
+      "description": "Google Search Console - GSC para yatezzitos.com",
+      "command": "{{REPO_ROOT}}/integrations/mcp-gsc/.venv/bin/python",
+      "args": [
+        "{{REPO_ROOT}}/integrations/mcp-gsc/gsc_server.py"
+      ],
+      "env": {
+        "GSC_OAUTH_CLIENT_SECRETS_FILE": "{{REPO_ROOT}}/integrations/mcp-gsc/client_secrets.json",
+        "GSC_DATA_STATE": "all"
+      },
+      "requires": [
+        "{{REPO_ROOT}}/integrations/mcp-gsc/.venv/bin/python",
+        "{{REPO_ROOT}}/integrations/mcp-gsc/client_secrets.json"
+      ]
+    },
+    "wordpress": {
+      "description": "WordPress multi-site (server-wp-mcp local) - lee wp-sites.json",
+      "command": "node",
+      "args": [
+        "{{REPO_ROOT}}/integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js"
+      ],
+      "env": {
+        "WP_SITES_PATH": "{{REPO_ROOT}}/integrations/wp-mcp/wp-sites.json"
+      },
+      "requires": [
+        "node",
+        "{{REPO_ROOT}}/integrations/wp-mcp/node_modules/server-wp-mcp/dist/index.js",
+        "{{REPO_ROOT}}/integrations/wp-mcp/wp-sites.json"
+      ]
+    },
+    "notebooklm-mcp": {
+      "description": "NotebookLM MCP - libretas de estudio del proyecto",
+      "command": "{{HOME}}/.local/bin/uvx",
+      "args": [
+        "--from",
+        "notebooklm-mcp-cli",
+        "notebooklm-mcp"
+      ],
+      "requires": [
+        "{{HOME}}/.local/bin/uvx"
+      ]
+    },
+    "wordpress-mcp": {
+      "description": "WordPress (Automattic MCP oficial) - wrapper que carga .env.wp-mcp-remote",
+      "command": "{{REPO_ROOT}}/integrations/wp-mcp-remote/run.sh",
+      "requires": [
+        "{{REPO_ROOT}}/integrations/wp-mcp-remote/run.sh",
+        "{{REPO_ROOT}}/.env.wp-mcp-remote"
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "claude-desktop",
+      "path": "{{HOME}}/Library/Application Support/Claude/claude_desktop_config.json",
+      "strategy": "merge",
+      "preserve_keys": ["preferences"]
+    },
+    {
+      "name": "claude-code-project",
+      "path": "{{REPO_ROOT}}/.mcp.json",
+      "strategy": "merge"
+    },
+    {
+      "name": "antigravity",
+      "path": "{{HOME}}/.gemini/antigravity/mcp_config.json",
+      "strategy": "merge"
+    }
+  ]
+}

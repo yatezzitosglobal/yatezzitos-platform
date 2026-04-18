@@ -40,8 +40,13 @@ __pycache__/
 scripts/yatezzitos_crawler/logs/
 .vscode/
 
-# GHL MCP Env Variables
+# MCP env files (raiz del repo)
 .env.ghl-mcp
+.env.wp-mcp-remote
+
+# Config generado por scripts/sync-mcp.py (paths absolutos, no portable)
+/.mcp.json
+/.mcp.json.bak.*
 
 # MCP Integrations — allow tracked configs, keep real secrets out
 !integrations/**/*.json
@@ -53,3 +58,4 @@ integrations/**/.venv/
 integrations/ghl-mcp/dist/
 integrations/ghl-mcp/coverage/
 !integrations/**/.env.example
+!integrations/**/*.example
